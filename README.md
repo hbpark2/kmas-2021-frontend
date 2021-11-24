@@ -5,16 +5,16 @@
 > - typescript
 > - Google Analytics
 
-### 홈(HOME)
+> ### 홈(HOME)
 
-### 캠페인소개(INTRO)
+> ### 캠페인소개(INTRO)
 
-### 이벤트(EVENT)
+> ### 이벤트(EVENT)
 
-### 판매기획전(EXHIBITION)
+> ### 판매기획전(EXHIBITION)
 
-### 라이브커머스(LIVE COMMERCE)
+> ### 라이브커머스(LIVE COMMERCE)
 
-### 마켓뉴스(NEWS)
+> ### 마켓뉴스(NEWS)
 
-### 참여장터(MARKET)
+> ### 참여장터(MARKET)
