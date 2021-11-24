@@ -1,8 +1,9 @@
 # K-MAS 2021
 
 > with
-> -react-ga
-> -react-snap
+>
+> > typescript
+> > Google Analytics
 
 ### 홈(HOME)
 
