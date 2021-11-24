@@ -2,8 +2,8 @@
 
 > with
 >
-> > - typescript
-> > - Google Analytics
+> - typescript
+> - Google Analytics
 
 ### 홈(HOME)
 
