@@ -23,7 +23,7 @@ const deviceMin = {
 };
 
 export const defaultTheme: DefaultTheme = {
-	bgColor1: "#4d5e65",
+	bgColor1: "#fff",
 	bgColor2: "#706260",
 	bgColor3: "#9a7951",
 	accentColor: "#e4cbac",
@@ -57,25 +57,10 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
-	body::-webkit-scrollbar {
-	width: 5px;
-	height:5px;
-	/* display: none; */
-	}
-
-	body::-webkit-scrollbar-thumb {
-		background-color: rgba(255,255,255,0.7);
-		height: 20px;
-		border-radius: 10px;
-	}
-
-	body::-webkit-scrollbar-track {
-		background-color: rgba(0,0,0,0.1);
-	}
-
 	.overflow-hidden{
 		overflow:hidden;
 	}
+
 	.overflow-unset{
 		overflow:unset;
 	}
