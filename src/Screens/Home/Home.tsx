@@ -9,7 +9,6 @@ const Container = styled.main`
 	margin: 0;
 	height: ${({ theme: { fullHeight } }) => fullHeight};
 	.swiper-container {
-		position: fixed;
 		width: 100%;
 		height: ${({ theme: { fullHeight } }) => fullHeight};
 	}
@@ -29,13 +28,16 @@ const SwiperWrap = styled.div`
 	margin: 0 auto;
 	.swiper-button-next,
 	.swiper-button-prev {
-		/* color: #fff; */
+		color: #333;
 	}
 	.swiper-button-next {
 		margin-right: 65px;
 	}
 	.swiper-button-prev {
 		margin-left: 65px;
+	}
+	.swiper-pagination-bullet {
+		background-color: #333;
 	}
 	@media screen and (min-width: 1600px) {
 		width: 1600px;
@@ -93,74 +95,47 @@ const Home = () => {
 	return (
 		<Container>
 			<h2 className="blind">본문 &#40;K-MAS home&#41; </h2>
-			<Swiper
-				navigation={false}
-				slidesPerView={1}
-				spaceBetween={0}
-				direction="vertical"
-				mousewheel={true}
-				speed={500}
-				keyboard={true}
-				a11y={{
-					prevSlideMessage: "previousSlide",
-					nextSlideMessage: "nextSlide",
-				}}
-			>
-				<SwiperSlide>
-					<SwiperInner bgColor="rgba(0,0,0,0.3)" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<SwiperInner>
-						<SwiperWrap>
-							<Swiper
-								navigation
-								spaceBetween={0}
-								slidesPerView={1}
-								pagination={{ clickable: true }}
-							>
-								<SwiperSlide
-									style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-								>
-									{({ isActive }) =>
-										isActive && (
-											<div className="videoBox">
-												<iframe
-													width={window.innerWidth > 1280 ? "1200px" : "80%"}
-													height={window.innerWidth > 1280 ? "675px" : "80%"}
-													src="https://www.youtube.com/embed/OLTWCTsZPSw?mute=1&autoplay=1&playlist=OLTWCTsZPSw&loop=1"
-													title="YouTube video player"
-													frameBorder="0"
-													allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-													allowFullScreen
-												/>
-											</div>
-										)
-									}
-								</SwiperSlide>
-								<SwiperSlide
-									style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-								>
-									{({ isActive }) =>
-										isActive && (
-											<div className="videoBox">
-												<iframe
-													width={window.innerWidth > 1280 ? "1200px" : "80%"}
-													height={window.innerWidth > 1280 ? "675px" : "80%"}
-													src="https://www.youtube.com/embed/X6ypu7Oh_nE?mute=1&autoplay=1&playlist=X6ypu7Oh_nE&loop=1"
-													title="YouTube video player"
-													frameBorder="0"
-													allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-													allowFullScreen
-												/>
-											</div>
-										)
-									}
-								</SwiperSlide>
-							</Swiper>
-						</SwiperWrap>
-					</SwiperInner>
-				</SwiperSlide>
-			</Swiper>
+
+			<SwiperInner bgColor="rgba(0,0,0,0.3)" />
+
+			<SwiperWrap>
+				<Swiper navigation spaceBetween={0} slidesPerView={1} pagination={{ clickable: true }}>
+					<SwiperSlide style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+						{({ isActive }) =>
+							isActive && (
+								<div className="videoBox">
+									<iframe
+										width={window.innerWidth > 1280 ? "1200px" : "80%"}
+										height={window.innerWidth > 1280 ? "675px" : "80%"}
+										src="https://www.youtube.com/embed/OLTWCTsZPSw?mute=1&autoplay=1&playlist=OLTWCTsZPSw&loop=1"
+										title="YouTube video player"
+										frameBorder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowFullScreen
+									/>
+								</div>
+							)
+						}
+					</SwiperSlide>
+					<SwiperSlide style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+						{({ isActive }) =>
+							isActive && (
+								<div className="videoBox">
+									<iframe
+										width={window.innerWidth > 1280 ? "1200px" : "80%"}
+										height={window.innerWidth > 1280 ? "675px" : "80%"}
+										src="https://www.youtube.com/embed/X6ypu7Oh_nE?mute=1&autoplay=1&playlist=X6ypu7Oh_nE&loop=1"
+										title="YouTube video player"
+										frameBorder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowFullScreen
+									/>
+								</div>
+							)
+						}
+					</SwiperSlide>
+				</Swiper>
+			</SwiperWrap>
 		</Container>
 	);
 };

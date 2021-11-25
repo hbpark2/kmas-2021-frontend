@@ -47,9 +47,9 @@ const TableRow = styled.tr`
 const PAGE_SIZE = 2;
 const Market = () => {
 	const queryClient = useQueryClient();
+	const { modalOpen, setModalOpen, setSecondModalOpen } = useContext(CurrentContext);
 	const [page, setPage] = useState(1);
 	const [keyword, setKeyword] = useState("");
-	const { modalOpen, setModalOpen } = useContext(CurrentContext);
 
 	const [category, setCategory] = useState(0);
 	const [marketId, setMarketId] = useState<number | null>(null);
@@ -156,7 +156,7 @@ const Market = () => {
 								<dd>{Utils.addHttpHttps(marketData.exhibition_link)}</dd>
 							</dl>
 						</div>
-						<button>수정</button>
+						<button onClick={() => setSecondModalOpen(true)}>수정</button>
 					</div>
 				</Modal>
 			)}

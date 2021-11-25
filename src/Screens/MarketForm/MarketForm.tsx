@@ -51,8 +51,6 @@ const MarketForm = () => {
 	} = methods;
 
 	const { modalOpen, setModalOpen } = useContext(CurrentContext);
-
-	const [isPostOpen, setIsPostOpen] = useState(false);
 	const [preview, setPreview] = useState<string | null>("");
 
 	const onPostOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -111,7 +109,7 @@ const MarketForm = () => {
 		setValue("jibun_address", jibunAddress || autoJibunAddress);
 		setValue("road_address", address || roadAddress);
 		trigger("road_address");
-		setIsPostOpen(false);
+		setModalOpen(false);
 	};
 
 	console.log(errors);
