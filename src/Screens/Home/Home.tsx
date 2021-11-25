@@ -6,6 +6,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
 const Container = styled.main`
 	width: 100%;
+	margin: 0;
 	height: ${({ theme: { fullHeight } }) => fullHeight};
 	.swiper-container {
 		position: fixed;

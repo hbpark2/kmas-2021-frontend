@@ -22,6 +22,7 @@
 		"react-ga": "^3.3.0",
 		"react-helmet": "^6.1.0",
 		"react-hook-form": "^7.20.2",
+		"react-js-pagination": "^3.0.3",
 		"react-query": "^3.33.4",
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "4.0.3",
@@ -64,6 +65,7 @@
 		]
 	},
 	"devDependencies": {
+		"@types/react-js-pagination": "^3.0.4",
 		"@types/styled-components": "^5.1.15",
 		"babel-plugin-styled-components": "^1.13.3"
 	}

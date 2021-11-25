@@ -36,26 +36,21 @@ export const defaultTheme: DefaultTheme = {
 
 //global
 export const GlobalStyles = createGlobalStyle`
-  ${reset}
+  ${reset};
 
 	body, html{
 		height:100%;
 	}
   body{
-    font-family: 'Noto Sans KR', sans-serif;  
 		background-color:${(props) => props.theme.bgColor1};
 		transition: background-color 0.5s;
-
-		/* &::-webkit-scrollbar {
-			display: none;
-		} */
-
+    line-height: 1.2em;
 	}
 
   main{
-    /* padding-top: 150px; */
     width: auto;
     transition: all .5s;
+    margin-top: 120px;
   }
 
   a {

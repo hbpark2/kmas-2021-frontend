@@ -25,10 +25,12 @@ const NavUl = styled.ul`
 	display: grid;
 	grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
 	height: 100%;
+	max-width: 1280px;
 `;
 
 const NavList = styled.li`
 	height: 100%;
+	cursor: pointer;
 	a {
 		display: flex;
 		justify-content: center;
@@ -44,7 +46,48 @@ const NavList = styled.li`
 
 const SLink = styled(Link)``;
 
+const Decorataion = styled.div`
+	position: absolute;
+	top: 100px;
+	left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	height: 40px;
+	overflow: hidden;
+`;
+
+const Circle = styled.i<{ bgColor: string }>`
+	position: relative;
+	top: -40px;
+	display: block;
+	width: 80px;
+	height: 80px;
+	background-color: ${({ bgColor }) => bgColor};
+	border-radius: 50%;
+`;
+
 const Header = () => {
+	const CircleArr = [
+		"#040",
+		"#040",
+		"#050",
+		"#050",
+		"#050",
+		"#060",
+		"#060",
+		"#060",
+		"#060",
+		"#060",
+		"#050",
+		"#050",
+		"#050",
+		"#050",
+		"#040",
+		"#040",
+	];
+
 	return (
 		<Container>
 			<h1 className="blind">K-MAS</h1>
@@ -73,7 +116,7 @@ const Header = () => {
 					</NavList>
 					<NavList>
 						<SLink to="/exhibition">
-							<h3>판매기획전</h3>
+							<h3>판매 기획전</h3>
 						</SLink>
 					</NavList>
 					<NavList>
@@ -102,6 +145,11 @@ const Header = () => {
 					</NavList>
 				</NavUl>
 			</Nav>
+			{/* <Decorataion>
+				{CircleArr.map((item, index) => (
+					<Circle bgColor={item} key={`circle${index}`} />
+				))}
+			</Decorataion> */}
 		</Container>
 	);
 };
