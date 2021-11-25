@@ -53,6 +53,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
   main{
+    /* padding-top: 150px; */
     width: auto;
     transition: all .5s;
   }

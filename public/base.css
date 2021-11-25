@@ -1,0 +1,168 @@
+/*****************************
+	Base(reset) style
+*****************************/
+html,
+body {
+	height: 100%;
+	transition: all 0.5s;
+}
+html,
+body,
+blockquote,
+caption,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+frame,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+iframe,
+input,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+q,
+select,
+table,
+textarea,
+ul,
+tr,
+td {
+	margin: 0;
+	padding: 0;
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+fieldset {
+	display: block;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+legend {
+	position: absolute;
+	visibility: hidden;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+}
+form {
+	margin: 0;
+	padding: 0;
+}
+
+a,
+a:link,
+a:visited,
+a:active,
+a:hover {
+	text-decoration: none;
+	color: #333;
+	outline: none;
+}
+
+/* input,
+button {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-size: 14px;
+	vertical-align: middle;
+	background: none;
+	-webkit-appearance: none;
+	border: none;
+	outline: none;
+} */
+
+button,
+label {
+	cursor: pointer;
+}
+
+/* select::-ms-expand {
+  display: none;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center right;
+} */
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+input::placeholder {
+	color: #777;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+hr {
+	display: none;
+}
+
+em,
+address {
+	font-style: normal;
+}
+
+strong {
+	font-weight: 800;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+caption {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+}

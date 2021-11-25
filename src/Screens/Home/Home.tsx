@@ -26,11 +26,11 @@ const SwiperInner = styled.div<{ bgColor: string }>`
 const Home = () => {
 	return (
 		<Container>
+			<h2 className="blind">본문 &#40;K-MAS home&#41; </h2>
 			<Swiper
 				navigation={false}
 				slidesPerView={1}
 				spaceBetween={0}
-				// pagination={{ clickable: true }}
 				direction="vertical"
 				mousewheel={true}
 				speed={500}
