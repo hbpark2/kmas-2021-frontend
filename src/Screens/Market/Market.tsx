@@ -86,7 +86,7 @@ const Market = () => {
       <h2 className="blind">본문 &#40;참여장터&#41;</h2>
 
       <Table>
-        <caption>전 세계 웹 브라우저 점유율</caption>
+        <caption>참여장터 현황</caption>
 
         <thead>
           <tr>

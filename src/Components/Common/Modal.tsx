@@ -14,24 +14,18 @@ const Container = styled.div<{ width?: string; height?: string }>`
 	align-items: center;
 	background-color: #fff;
 	z-index: 200;
+	overflow-y: scroll;
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		width: 300px;
 	}
 `;
 
-const SecondContainer = styled.div<{ secondWidth?: string; secondHeight?: string }>`
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+const SecondContainer = styled(Container)<{ secondWidth?: string; secondHeight?: string }>`
 	width: ${(props) => (props.secondWidth ? props.secondWidth : "40vw")};
 	height: ${(props) => (props.secondHeight ? props.secondHeight : "50vh")};
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #fff;
 	z-index: 220;
+	overflow: unset;
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		width: 250px;
