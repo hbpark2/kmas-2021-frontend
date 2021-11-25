@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
+import { CurrentContext } from "../../Context/ContextStore";
 
 const Container = styled.div<{ width?: string; height?: string }>`
 	position: fixed;
@@ -32,10 +33,11 @@ interface ModalProps {
 	width?: string;
 	height?: string;
 	children: React.ReactChild;
-	onCloseModal: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ width, height, children, onCloseModal }) => {
+const Modal: React.FC<ModalProps> = ({ width, height, children }) => {
+	const { modalOpen, setModalOpen } = useContext(CurrentContext);
+
 	return (
 		<>
 			<Container width={width} height={height}>
@@ -43,7 +45,7 @@ const Modal: React.FC<ModalProps> = ({ width, height, children, onCloseModal }) 
 			</Container>
 			<Layer
 				onClick={() => {
-					onCloseModal();
+					setModalOpen(false);
 				}}
 			/>
 		</>
