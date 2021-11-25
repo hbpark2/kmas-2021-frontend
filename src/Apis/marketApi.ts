@@ -21,6 +21,14 @@ export const GET_MARKETS = async ({
   ).then((res) => res.json());
 };
 
+export const GET_MARKET = async ({ marketId }: { marketId: number | null }) => {
+  if (marketId) {
+    return fetch(`${BASE_URL}/companies/${marketId}/`).then((res) =>
+      res.json()
+    );
+  }
+};
+
 export const POST_MARKET = async (data: FormData) => {
   return fetch(`${BASE_URL}/companies/`, {
     method: "POST",
@@ -28,7 +36,28 @@ export const POST_MARKET = async (data: FormData) => {
   }).then((res) => res.json);
 };
 
-type TGetMarket = {
+type TCategory = {
+  name: string;
+};
+
+export interface TGetMarket {
+  id: number;
+  category: TCategory;
+  name: string;
+  hompage_link: string;
+  phone_number: string;
+  crn: string;
+  zonecode: string;
+  jibun_address: string;
+  road_address: string;
+  detail_address: string;
+  items: string;
+  promotion: string;
+  exhibition_link: string | null;
+  image: string | null;
+}
+
+type TGetMarkets = {
   id: number;
   name: string;
   phone_number: string;
@@ -37,5 +66,5 @@ type TGetMarket = {
 };
 
 export interface IGetMarkets extends IPagination {
-  results: TGetMarket[];
+  results: TGetMarkets[];
 }

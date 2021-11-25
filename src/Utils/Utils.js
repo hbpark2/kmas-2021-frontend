@@ -243,7 +243,7 @@ export default {
 
     return `${year}${gubun}${month}${gubun}${day}`;
   },
-  checkUrl(url) {
+  addHttpHttps(url) {
     const regex = /http:\/\/|https:\/\//gi;
     if (regex.test(url)) {
       return url;
