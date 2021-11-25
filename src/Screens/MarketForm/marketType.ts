@@ -13,30 +13,16 @@ export const schema = yup
     password: yup.string().required(REQUIRED_TEXT),
     crn: yup
       .string()
+      .required(REQUIRED_TEXT)
       .test("is-crn-test", "올바른 사업자 번호를 입력해주세요.", (value) => {
         return Utils.checkCrn(value);
-      })
-      .required(REQUIRED_TEXT),
+      }),
     zonecode: yup.string().required(REQUIRED_TEXT),
     jibun_address: yup.string().required(REQUIRED_TEXT),
     road_address: yup.string().required(REQUIRED_TEXT),
     detail_address: yup.string().required(REQUIRED_TEXT),
     items: yup.string().required(REQUIRED_TEXT),
     promotion: yup.string().required(REQUIRED_TEXT),
-    image: yup
-      .mixed()
-      .test("fileFormat", "jpg, png 파일만 선택해 주세요.", (value) => {
-        if (value && value.length > 0) {
-          return Utils.checkImageFile(value[0]);
-        }
-        return true;
-      })
-      .test("fileSize", "2MB 이하 파일만 등록할 수 있습니다.", (value) => {
-        if (value && value.length > 0) {
-          return Utils.checkFileSize(value[0]);
-        }
-        return true;
-      }),
   })
   .required();
 

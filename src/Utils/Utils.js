@@ -163,21 +163,20 @@ export default {
     return maskingStr;
   },
   checkImageFile(file) {
-    if (file && !/\.(jpg|jpeg|png)$/i.test(file.name)) {
-      console.log(file);
-      // alert(`jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ${file.name}`);
+    if (!/\.(jpg|jpeg|png)$/i.test(file.name)) {
+      alert(`jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ${file.name}`);
       return false;
     }
     return true;
   },
   checkFileSize(file, size) {
-    if (file && file.size > 1024 * 1024 * size) {
+    if (file.size > 1024 * 1024 * size) {
       // 용량 초과시 경고후 해당 파일의 용량도 보여줌
-      // alert(
-      //   `${"2MB 이하 파일만 등록할 수 있습니다.\n\n현재파일 용량 : "}${
-      //     Math.round((file.size / 1024 / 1024) * 100) / 100
-      //   }MB`
-      // );
+      alert(
+        `${"2MB 이하 파일만 등록할 수 있습니다.\n\n현재파일 용량 : "}${
+          Math.round((file.size / 1024 / 1024) * 100) / 100
+        }MB`
+      );
       return false;
     }
     return true;

@@ -173,6 +173,7 @@ const MarketForm = () => {
                 onChange: onFileChange,
               })}
             />
+            {errors && errors.image && <p>{errors.image?.message}</p>}
           </label>
 
           {isPostOpen && (
