@@ -1,10 +1,8 @@
-const { alert } = window;
-
-const week = ['일', '월', '화', '수', '목', '금', '토'];
+const week = ["일", "월", "화", "수", "목", "금", "토"];
 
 export default {
   checkNull(str) {
-    if (typeof str === 'undefined' || str === null || str === '') {
+    if (typeof str === "undefined" || str === null || str === "") {
       return true;
     }
     return false;
@@ -13,13 +11,13 @@ export default {
     const d = new Date(d0);
     return new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000)
       .toISOString()
-      .split('T')[0];
+      .split("T")[0];
   },
   checkCrn(number) {
     const numberMap = number
-      .replace(/-/gi, '')
-      .split('')
-      .map(d => {
+      .replace(/-/gi, "")
+      .split("")
+      .map((d) => {
         return parseInt(d, 10);
       });
 
@@ -38,11 +36,12 @@ export default {
     return false;
   },
   checkHomepage(url) {
-    const regex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
+    const regex =
+      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
     return regex.test(url);
   },
   checkPhoneNumber(phoneNumber) {
-    if (phoneNumber.toString().split('-').length !== 3) {
+    if (phoneNumber.toString().split("-").length !== 3) {
       // 1) - 가 없는경우
       const regex = /^[0-9]{9,12}$/;
       return regex.test(phoneNumber);
@@ -52,18 +51,19 @@ export default {
     return regex.test(phoneNumber);
   },
   checkEmail(email) {
-    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(email);
   },
   /*
    * 마지막 글자를 * 처리한다. (ex. 홍길동 → 홍길*)
    */
   maskingLastName(strName) {
-    if (strName === undefined || strName === '') {
-      return '';
+    if (strName === undefined || strName === "") {
+      return "";
     }
     const pattern = /.$/; // 정규식
-    return strName.replace(pattern, '*');
+    return strName.replace(pattern, "*");
   },
   /*
   ※ 이름 마스킹
@@ -73,16 +73,16 @@ export default {
   */
   maskingName(name) {
     if (name.length > 2) {
-      const originName = name.split('');
+      const originName = name.split("");
       originName.forEach((_, i) => {
         if (i === 0 || i === originName.length - 1) return;
-        originName[i] = '*';
+        originName[i] = "*";
       });
       const joinName = originName.join();
-      return joinName.replace(/,/g, '');
+      return joinName.replace(/,/g, "");
     }
     const pattern = /.$/; // 정규식
-    return name.replace(pattern, '*');
+    return name.replace(pattern, "*");
   },
   /*
   * ID 마스킹
@@ -94,7 +94,7 @@ export default {
       return id;
     }
     const pattern = /.{2}$/; // 정규식
-    return id.replace(pattern, '**');
+    return id.replace(pattern, "**");
   },
   /* 
   ※ 휴대폰 번호 마스킹 
@@ -110,7 +110,7 @@ export default {
     if (this.checkNull(originStr) === true) {
       return originStr;
     }
-    if (originStr.toString().split('-').length !== 3) {
+    if (originStr.toString().split("-").length !== 3) {
       // 1) -가 없는 경우
       phoneStr =
         originStr.length < 11
@@ -125,7 +125,7 @@ export default {
           .toString()
           .replace(
             phoneStr,
-            phoneStr.toString().replace(/(\d{3})(\d{3})(\d{4})/gi, '$1***$3'),
+            phoneStr.toString().replace(/(\d{3})(\d{3})(\d{4})/gi, "$1***$3")
           );
       } else {
         // 1.2) 01000000000
@@ -133,7 +133,7 @@ export default {
           .toString()
           .replace(
             phoneStr,
-            phoneStr.toString().replace(/(\d{3})(\d{4})(\d{4})/gi, '$1****$3'),
+            phoneStr.toString().replace(/(\d{3})(\d{4})(\d{4})/gi, "$1****$3")
           );
       }
     } else {
@@ -148,7 +148,7 @@ export default {
           .toString()
           .replace(
             phoneStr,
-            phoneStr.toString().replace(/-[0-9]{3}-/g, '-***-'),
+            phoneStr.toString().replace(/-[0-9]{3}-/g, "-***-")
           );
       } else if (/-[0-9]{4}-/.test(phoneStr)) {
         // 2.2) 00-0000-0000
@@ -156,27 +156,28 @@ export default {
           .toString()
           .replace(
             phoneStr,
-            phoneStr.toString().replace(/-[0-9]{4}-/g, '-****-'),
+            phoneStr.toString().replace(/-[0-9]{4}-/g, "-****-")
           );
       }
     }
     return maskingStr;
   },
   checkImageFile(file) {
-    if (!/\.(jpg|jpeg|png)$/i.test(file.name)) {
-      alert(`jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ${file.name}`);
+    if (file && !/\.(jpg|jpeg|png)$/i.test(file.name)) {
+      console.log(file);
+      // alert(`jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ${file.name}`);
       return false;
     }
     return true;
   },
   checkFileSize(file, size) {
-    if (file.size > 1024 * 1024 * size) {
+    if (file && file.size > 1024 * 1024 * size) {
       // 용량 초과시 경고후 해당 파일의 용량도 보여줌
-      alert(
-        `${'2MB 이하 파일만 등록할 수 있습니다.\n\n현재파일 용량 : '}${
-          Math.round((file.size / 1024 / 1024) * 100) / 100
-        }MB`,
-      );
+      // alert(
+      //   `${"2MB 이하 파일만 등록할 수 있습니다.\n\n현재파일 용량 : "}${
+      //     Math.round((file.size / 1024 / 1024) * 100) / 100
+      //   }MB`
+      // );
       return false;
     }
     return true;
@@ -198,7 +199,7 @@ export default {
       strDate = dateMove.toISOString().slice(0, 10);
       const today = new Date(strDate).getDay();
       listDate.push({
-        text: strDate.slice(5).replace(/-/g, '.'),
+        text: strDate.slice(5).replace(/-/g, "."),
         date: strDate,
         label: week[today],
       });
@@ -207,7 +208,7 @@ export default {
         strDate = dateMove.toISOString().slice(0, 10);
         const today = new Date(strDate).getDay();
         listDate.push({
-          text: strDate.slice(5).replace(/-/g, '.'),
+          text: strDate.slice(5).replace(/-/g, "."),
           date: strDate,
           label: week[today],
         });
@@ -220,11 +221,11 @@ export default {
   copyToClipboard(val) {
     const brRegex = /<br\s*[\\/]?>/gi;
 
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
-    t.value = val.replace(brRegex, '\r\n');
+    t.value = val.replace(brRegex, "\r\n");
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
   },
   getToday(gubun) {
@@ -251,7 +252,7 @@ export default {
     return `http://${url}`;
   },
   betweenTime(startTime, endTime, startDate, endDate) {
-    const thisDate = startDate || this.getToday('-');
+    const thisDate = startDate || this.getToday("-");
     const otherDate = endDate || thisDate;
 
     const start = new Date(`${thisDate}T${startTime}`);
@@ -264,7 +265,7 @@ export default {
     return false;
   },
   openTime(startTime, date) {
-    const thisDate = date || this.getToday('-');
+    const thisDate = date || this.getToday("-");
     const start = new Date(`${thisDate}T${startTime}`);
     const now = new Date();
 
@@ -274,7 +275,7 @@ export default {
     return false;
   },
   closeTime(endTime, date) {
-    const thisDate = date || this.getToday('-');
+    const thisDate = date || this.getToday("-");
     const end = new Date(`${thisDate}T${endTime}`);
     const now = new Date();
 
@@ -315,6 +316,6 @@ export default {
       tmp.push(arr.splice(0, n));
     }
 
-    return tmp.filter(data => data.length > 0);
+    return tmp.filter((data) => data.length > 0);
   },
 };
