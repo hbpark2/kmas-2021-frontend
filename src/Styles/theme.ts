@@ -45,7 +45,11 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;  
 		background-color:${(props) => props.theme.bgColor1};
 		transition: background-color 0.5s;
-		
+
+		/* &::-webkit-scrollbar {
+			display: none;
+		} */
+
 	}
 
   main{
