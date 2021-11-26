@@ -5,25 +5,26 @@ import Exhibition from "../Screens/Exhibition/Exhibition";
 import Home from "../Screens/Home/Home";
 import Intro from "../Screens/Intro/Intro";
 import Live from "../Screens/Live/Live";
-import MarketForm from "../Screens/MarketForm/MarketForm";
+import MarketForm from "../Screens/MarketForm";
 import Market from "../Screens/Market/Market";
 
 import News from "../Screens/News/News";
 const Routes = () => {
-	useGoogleAnalytics();
+  useGoogleAnalytics();
 
-	return (
-		<Switch>
-			<Route exact path="/" component={Home} />
-			<Route exact path="/intro" component={Intro} />
-			<Route exact path="/exhibition" component={Exhibition} />
-			<Route exact path="/event" component={Event} />
-			<Route exact path="/live" component={Live} />
-			<Route exact path="/news" component={News} />
-			<Route exact path="/market" component={Market} />
-			<Route exact path="/market_form" component={MarketForm} />
-		</Switch>
-	);
+  return (
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/intro" component={Intro} />
+      <Route exact path="/exhibition" component={Exhibition} />
+      <Route exact path="/event" component={Event} />
+      <Route exact path="/live" component={Live} />
+      <Route exact path="/news" component={News} />
+      <Route exact path="/market" component={Market} />
+      <Route exact path="/market/register" component={MarketForm} />
+      <Route exact path="/market/modify" component={MarketForm} />
+    </Switch>
+  );
 };
 
 export default Routes;

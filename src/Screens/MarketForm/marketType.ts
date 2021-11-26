@@ -1,9 +1,8 @@
 import * as yup from "yup";
+import { REQUIRED_TEXT } from "../../constants";
 import Utils from "../../Utils/Utils";
 
-const REQUIRED_TEXT = "필수 항목입니다.";
-
-export const schema = yup
+export const createValidSchema = yup
   .object()
   .shape({
     category: yup.string().required(REQUIRED_TEXT),
@@ -11,6 +10,30 @@ export const schema = yup
     hompage_link: yup.string().required(REQUIRED_TEXT),
     phone_number: yup.string().required(REQUIRED_TEXT),
     password: yup.string().required(REQUIRED_TEXT),
+    crn: yup
+      .string()
+      .required(REQUIRED_TEXT)
+      .test("is-crn-test", "올바른 사업자 번호를 입력해주세요.", (value) => {
+        return Utils.checkCrn(value);
+      }),
+    zonecode: yup.string().required(REQUIRED_TEXT),
+    jibun_address: yup.string().required(REQUIRED_TEXT),
+    road_address: yup.string().required(REQUIRED_TEXT),
+    detail_address: yup.string().required(REQUIRED_TEXT),
+    items: yup.string().required(REQUIRED_TEXT),
+    promotion: yup.string().required(REQUIRED_TEXT),
+  })
+  .required();
+
+export const modifyValidSchema = yup
+  .object()
+  .shape({
+    category: yup.string().required(REQUIRED_TEXT),
+    name: yup.string().min(5, "5자 이상").required(REQUIRED_TEXT),
+    hompage_link: yup.string().required(REQUIRED_TEXT),
+    phone_number: yup.string().required(REQUIRED_TEXT),
+    original_password: yup.string().required(REQUIRED_TEXT),
+    password: yup.string(),
     crn: yup
       .string()
       .required(REQUIRED_TEXT)
@@ -95,10 +118,11 @@ export const categoryArr = [
 ];
 
 export type MarketFormValues = {
-  category: string;
+  category: number;
   name: string;
   hompage_link: string;
   phone_number: string;
+  original_password: string;
   password: string;
   crn: string;
   zonecode: string;

@@ -1,8 +1,9 @@
 import { useQuery } from "react-query";
-import { GET_MARKET, TGetMarket } from "../Apis/marketApi";
+import { GET_MARKET } from "../Apis/MarketApi";
+import { IGetMarket } from "../Apis/MarketApi/marketApiTypes";
 
-export const useGetMarket = (marketId: number | null) => {
-  const { data, isLoading, isError } = useQuery<TGetMarket>(
+export const useGetMarket = (marketId?: number) => {
+  const { data, isLoading, isError } = useQuery<IGetMarket>(
     ["GET_MARKET", { marketId }],
     () => GET_MARKET({ marketId }),
     {
@@ -12,3 +13,8 @@ export const useGetMarket = (marketId: number | null) => {
 
   return { data, isLoading, isError };
 };
+
+// Promise<void | {
+//   status: number;
+//   error: string;
+//   results: false | Promise<any>;

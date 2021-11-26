@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { GET_MARKETS, IGetMarkets } from "../../Apis/marketApi";
+import { GET_MARKETS } from "../../Apis/MarketApi";
+import { IGetMarkets } from "../../Apis/MarketApi/marketApiTypes";
 import Modal from "../../Components/Common/Modal";
 import CustomPagination from "../../Components/Common/Pagination";
 import { CurrentContext } from "../../Context/ContextStore";
@@ -48,13 +50,14 @@ const TableRow = styled.tr`
 const PAGE_SIZE = 2;
 const Market = () => {
   const queryClient = useQueryClient();
-  const { modalOpen, setModalOpen, setSecondModalOpen } =
-    useContext(CurrentContext);
+  const history = useHistory();
+
+  const { modalOpen, setModalOpen } = useContext(CurrentContext);
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState("");
 
   const [category, setCategory] = useState(0);
-  const [marketId, setMarketId] = useState<number | null>(null);
+  const [marketId, setMarketId] = useState<number | undefined>();
 
   const { data: marketData } = useGetMarket(marketId);
 
@@ -120,7 +123,7 @@ const Market = () => {
       />
 
       {modalOpen && marketData && (
-        <Modal secondChildren={<PwdCheckForm />}>
+        <Modal secondChildren={<PwdCheckForm id={marketData.id} />}>
           <MarketDetail
             image={marketData.image}
             name={marketData.name}
@@ -135,6 +138,9 @@ const Market = () => {
           />
         </Modal>
       )}
+      <button onClick={() => history.push("/market/register")}>
+        마켓 등록
+      </button>
     </Container>
   );
 };
