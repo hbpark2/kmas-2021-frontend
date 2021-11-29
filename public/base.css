@@ -94,7 +94,7 @@ a:hover {
 	outline: none;
 }
 
-/* input,
+input,
 button {
 	padding: 0;
 	margin: 0;
@@ -103,9 +103,9 @@ button {
 	vertical-align: middle;
 	background: none;
 	-webkit-appearance: none;
-	border: none;
+	border: 1px solid #333;
 	outline: none;
-} */
+}
 
 button,
 label {

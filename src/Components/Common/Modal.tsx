@@ -60,10 +60,11 @@ const Modal: React.FC<ModalProps> = ({ width, height, children, secondChildren }
 
 	return (
 		<>
-			<Container width={width} height={height}>
+			<Container width={width} height={height} aria-hidden={secondModalOpen}>
 				{children}
 			</Container>
 			<Layer
+				aria-hidden={secondModalOpen}
 				onClick={() => {
 					setModalOpen(false);
 				}}
