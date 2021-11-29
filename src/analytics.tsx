@@ -5,8 +5,7 @@ import { TRACKING_ID } from "./constants";
 const initGA = () => {
   // Enable debug mode on the local development environment
   const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
-  console.log(isDev);
-  ReactGA.initialize(TRACKING_ID, { debug: true });
+  ReactGA.initialize(TRACKING_ID, { debug: isDev });
 };
 
 type sendEventType = (T: ParamsType) => void;
