@@ -14,25 +14,28 @@ const AddressInput: React.FC<AddressInpuProps> = ({ onPostOpen }) => {
           type="text"
           id="zonecode"
           readOnly={true}
+          placeholder="필수 입력사항입니다"
           {...register("zonecode")}
         />
         <button onClick={(e) => onPostOpen(e)} type="button">
           우편번호 찾기
         </button>
       </div>
-      <div>
+      <div style={{ display: "none" }}>
         <input
           type="text"
           id="jibun_address"
           readOnly={true}
+          placeholder="필수 입력사항입니다"
           {...register("jibun_address")}
         />
       </div>
-      <div style={{ display: "none" }}>
+      <div>
         <input
           type="text"
           id="road_address"
           readOnly={true}
+          placeholder="필수 입력사항입니다"
           {...register("road_address")}
         />
       </div>
@@ -45,7 +48,7 @@ const AddressInput: React.FC<AddressInpuProps> = ({ onPostOpen }) => {
           type="text"
           id="detail_address"
           {...register("detail_address")}
-          placeholder="상세주소"
+          placeholder="필수 입력사항입니다"
         />
       </div>
       {errors.detail_address && <p>{errors.detail_address.message}</p>}
