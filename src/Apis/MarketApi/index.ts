@@ -15,7 +15,9 @@ export const GET_MARKETS = async ({
   category: number;
 }) => {
   return fetch(
-    `${MARKET_BASE_URL}?page=${page}&page_size=${page_size}&category=${category}&keyword=${keyword}`
+    `${MARKET_BASE_URL}?page=${page}&page_size=${page_size}${
+      category !== 0 ? `&category=${category}` : ""
+    }${keyword !== "" ? `&keyword=${keyword}` : ""}`
   )
     .then(commonResponse)
     .catch(commonErrorResponse);
