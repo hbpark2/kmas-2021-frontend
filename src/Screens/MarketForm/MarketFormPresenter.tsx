@@ -45,6 +45,7 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
+        카테고리
         <select {...register("category")}>
           {categoryArr.map((item, index) => (
             <option key={`categoryOption${index}`} value={item.value}>
@@ -52,7 +53,7 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
             </option>
           ))}
         </select>
-
+        {errors["category"] && <p>{errors["category"].message}</p>}
         {inputArr.map((item, index) => {
           if (item.text === "주소") {
             return (
@@ -80,7 +81,6 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
             );
           }
         })}
-
         {preview && (
           <div>
             <img src={preview} alt="preview" />
@@ -91,7 +91,6 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
             </div>
           </div>
         )}
-
         <label htmlFor="image">
           <span>이미지 업로드</span>
           <input
@@ -105,7 +104,6 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
           />
           {errors && errors.image && <p>{errors.image?.message}</p>}
         </label>
-
         {pageMode === "C" && <input type="submit" value="신청하기" />}
         {pageMode !== "C" && (
           <>
