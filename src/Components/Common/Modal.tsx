@@ -8,6 +8,7 @@ const Container = styled.div<{ width?: string; height?: string }>`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: ${(props) => (props.width ? props.width : "50vw")};
+	max-width: 800px;
 	height: ${(props) => (props.height ? props.height : "60vh")};
 	display: flex;
 	justify-content: center;

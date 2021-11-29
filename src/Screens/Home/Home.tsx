@@ -2,30 +2,43 @@ import styled from "styled-components";
 import SwiperCore, { Navigation, Pagination, Autoplay, Keyboard, Mousewheel } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import KeyVisualImg from "../../Assets/main.png";
+import CardImg from "../../Assets/card.png";
+
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
 const Container = styled.main`
 	width: 100%;
 	margin: 0;
+	padding: 0;
 	height: ${({ theme: { fullHeight } }) => fullHeight};
-	.swiper-container {
-		width: 100%;
-		height: ${({ theme: { fullHeight } }) => fullHeight};
-	}
-	.swiper-wrapper {
-		transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-	}
 `;
 
-const SwiperInner = styled.div<{ bgColor?: string }>`
-	/* padding-top: 100px; */
+const KeyVisualWrap = styled.article`
 	width: 100%;
 	height: ${({ theme: { fullHeight } }) => fullHeight};
-	background-color: ${({ bgColor }) => bgColor || "transparent"};
+`;
+
+const KeyVisual = styled.img`
+	display: block;
+	width: 100%;
+	max-width: 1710px;
+	margin: 0 auto;
+`;
+
+const CardWrap = styled.article`
+	margin: 50px auto 150px;
+`;
+
+const Card = styled.img`
+	display: block;
+	margin: 0 auto;
+	transform: translateX(10px);
 `;
 
 const SwiperWrap = styled.div`
 	margin: 0 auto;
+	padding-bottom: 100px;
 	.swiper-button-next,
 	.swiper-button-prev {
 		color: #333;
@@ -54,15 +67,9 @@ const SwiperWrap = styled.div`
 		}
 		.swiper-button-next {
 			margin-right: 20px;
-			&::after {
-				font-size: 50px;
-			}
 		}
 		.swiper-button-prev {
 			margin-left: 20px;
-			&::after {
-				font-size: 50px;
-			}
 		}
 	}
 	@media screen and (max-width: 767px) {
@@ -73,13 +80,13 @@ const SwiperWrap = styled.div`
 		.swiper-button-next {
 			margin-right: -5px;
 			&::after {
-				font-size: 22px;
+				font-size: 2.2rem;
 			}
 		}
 		.swiper-button-prev {
 			margin-left: -5px;
 			&::after {
-				font-size: 22px;
+				font-size: 2.2rem;
 			}
 		}
 		.swiper-pagination {
@@ -96,7 +103,12 @@ const Home = () => {
 		<Container>
 			<h2 className="blind">본문 &#40;K-MAS home&#41; </h2>
 
-			<SwiperInner bgColor="rgba(0,0,0,0.3)" />
+			<KeyVisualWrap>
+				<KeyVisual src={KeyVisualImg} alt="키비주얼" />
+			</KeyVisualWrap>
+			<CardWrap>
+				<Card src={CardImg} alt="card" />
+			</CardWrap>
 
 			<SwiperWrap>
 				<Swiper navigation spaceBetween={0} slidesPerView={1} pagination={{ clickable: true }}>

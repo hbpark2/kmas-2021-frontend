@@ -19,15 +19,21 @@ const queryClient = new QueryClient({
 
 const App: React.FC = () => {
 	const { modalOpen } = useContext(CurrentContext);
+
+	// MODAL - ARIA-HIDDEN ON/OFF
 	useEffect(() => {
+		const mainTarget = document.querySelector("main")! as HTMLElement;
+		const headerTarget = document.querySelector("header")! as HTMLElement;
 		if (modalOpen) {
 			document.body?.classList.remove("overflow-unset");
 			document.body?.classList.add("overflow-hidden");
-			document.body?.setAttribute("aria-hidden", "true");
+			mainTarget?.setAttribute("aria-hidden", "true");
+			headerTarget?.setAttribute("aria-hidden", "true");
 		} else {
 			document.body?.classList.remove("overflow-hidden");
 			document.body?.classList.add("overflow-unset");
-			document.body?.setAttribute("aria-hidden", "false");
+			mainTarget?.setAttribute("aria-hidden", "false");
+			headerTarget?.setAttribute("aria-hidden", "false");
 		}
 	}, [modalOpen]);
 

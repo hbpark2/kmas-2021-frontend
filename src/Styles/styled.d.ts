@@ -11,5 +11,6 @@ declare module "styled-components" {
 		textShadow: string;
 		deviceScreenMax: { [T in "mobile" | "tablet" | "laptop"]: string };
 		deviceScreenMin: { [T in "mobile" | "tablet" | "laptop" | "wide"]: string };
+		blind: string;
 	}
 }

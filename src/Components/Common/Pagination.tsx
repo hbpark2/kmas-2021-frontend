@@ -20,8 +20,7 @@ const Container = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 1rem;
-
+		font-size: 1.6rem;
 		transition: all 0.5s;
 	}
 
@@ -36,8 +35,8 @@ const Container = styled.div`
 	ul.pagination li a {
 		text-decoration: none;
 		color: #337ab7;
-		font-size: 1rem;
 		transition: all 0.5s;
+		padding-top: 2px;
 	}
 
 	ul.pagination li.active a {

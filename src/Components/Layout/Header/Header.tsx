@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import GovLogo from "../../../Assets/gov_logo_layer.png";
 import SBDCLogo from "../../../Assets/sbdc_logo_layer.png";
+import Logo from "../../../Assets/kmas-logo.png";
+import HeaderBottom from "../../../Assets/header-bottom.png";
 
 const Container = styled.header`
 	position: fixed;
@@ -23,7 +25,7 @@ const Nav = styled.nav`
 const NavUl = styled.ul`
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+	grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	height: 100%;
 	max-width: 1280px;
 `;
@@ -38,6 +40,7 @@ const NavList = styled.li`
 		width: 100%;
 		height: 100%;
 		text-align: center;
+		font-family: "GmarketSansBold";
 	}
 	img {
 		width: 100%;
@@ -68,26 +71,16 @@ const Circle = styled.i<{ bgColor: string }>`
 	border-radius: 50%;
 `;
 
-const Header = () => {
-	const CircleArr = [
-		"#040",
-		"#040",
-		"#050",
-		"#050",
-		"#050",
-		"#060",
-		"#060",
-		"#060",
-		"#060",
-		"#060",
-		"#050",
-		"#050",
-		"#050",
-		"#050",
-		"#040",
-		"#040",
-	];
+const HeaderDecoration = styled.div`
+	img {
+		display: block;
+		width: 100%;
+		max-width: 1920px;
+		margin: 0 auto;
+	}
+`;
 
+const Header = () => {
 	return (
 		<Container>
 			<h1 className="blind">K-MAS</h1>
@@ -96,7 +89,7 @@ const Header = () => {
 				<NavUl>
 					<NavList>
 						<Link to="/">
-							<img src={GovLogo} alt="중소벤처기업부 로고" />
+							<img src={Logo} alt="중소벤처기업부 로고" />
 						</Link>
 					</NavList>
 					<NavList>
@@ -134,22 +127,11 @@ const Header = () => {
 							<h3>참여장터</h3>
 						</SLink>
 					</NavList>
-					<NavList>
-						<a
-							href="https://www.mss.go.kr/site/smba/main.do"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img src={GovLogo} alt="중소벤처기업부 로고" />
-						</a>
-					</NavList>
 				</NavUl>
 			</Nav>
-			{/* <Decorataion>
-				{CircleArr.map((item, index) => (
-					<Circle bgColor={item} key={`circle${index}`} />
-				))}
-			</Decorataion> */}
+			<HeaderDecoration>
+				<img src={HeaderBottom} alt="헤더장식이미지" />
+			</HeaderDecoration>
 		</Container>
 	);
 };

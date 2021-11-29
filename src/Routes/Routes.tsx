@@ -12,11 +12,10 @@ import News from "../Screens/News/News";
 import { useEffect } from "react";
 const Routes = () => {
 	const location = useLocation();
+	useGoogleAnalytics();
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, [location]);
-
-	useGoogleAnalytics();
 
 	return (
 		<Switch>

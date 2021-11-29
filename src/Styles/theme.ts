@@ -32,6 +32,7 @@ export const defaultTheme: DefaultTheme = {
 	fullHeight: window.innerWidth > 639 ? "100vh" : `${window.innerHeight}px`,
 	deviceScreenMax: deviceMax,
 	deviceScreenMin: deviceMin,
+	blind: "position: absolute; width: 1px; height: 1px; clip: rect(0 0 0 0); overflow: hidden;",
 };
 
 //global
@@ -40,17 +41,27 @@ export const GlobalStyles = createGlobalStyle`
 
 	body, html{
 		height:100%;
+    font-size:62.5%;
+    @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile}{
+      font-size:50%;
+    }
 	}
+
   body{
-		background-color:${(props) => props.theme.bgColor1};
+    background-color:${(props) => props.theme.bgColor1};
 		transition: background-color 0.5s;
-    line-height: 1.2em;
+    font-size:1.6rem;
+    /* line-height: 1.4em; */
+    @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile}{
+      font-size:1.4rem;
+      line-height: 1.2em;
+    }
 	}
 
   main{
     width: auto;
-    transition: all .5s;
-    margin-top: 120px;
+    margin-top:100px;
+    padding-top: 100px;
   }
 
   a {
