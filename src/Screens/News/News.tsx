@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useGetNewsList } from "../../Hook/useGetNews";
+import { useGetNewsList } from "../../Hook/useGetNewsList";
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 5;
 const News = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading, isError } = useGetNewsList({
