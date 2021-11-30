@@ -145,7 +145,7 @@ export const inputArr = [
     text: "기획전 링크",
     name: "exhibition_link",
     type: "text",
-    placeholder: "필수 입력사항입니다",
+    placeholder: "",
   },
 ];
 
