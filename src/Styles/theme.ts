@@ -41,7 +41,8 @@ export const defaultTheme: DefaultTheme = {
 	fullHeight: window.innerWidth > 639 ? "100vh" : `${window.innerHeight}px`,
 	deviceScreenMax: deviceMax,
 	deviceScreenMin: deviceMin,
-	blind: "position: absolute; width: 1px; height: 1px; clip: rect(0 0 0 0); overflow: hidden;",
+	blind:
+		"position: absolute; width: 1px !important; height: 1px !important; clip: rect(0 0 0 0); overflow: hidden;",
 };
 
 //global
@@ -64,6 +65,7 @@ button {
     border: none;
     cursor:pointer;
   }
+
 	body, html{
 		height:100%;
     font-size:62.5%;
@@ -76,6 +78,7 @@ button {
     background-color:${(props) => props.theme.bgColor1};
 		transition: background-color 0.5s;
     font-size:1.6rem;
+    height: auto;
     /* line-height: 1.4em; */
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile}{
       font-size:1.4rem;
