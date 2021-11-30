@@ -5,11 +5,6 @@ import AddressInput from "./components/AddressInput";
 import MarketInput, { Label } from "./components/MarketInput";
 import MarketUpdatePassword from "./components/MarketUpdatePassword";
 import { categoryArr, inputArr, MarketFormValues } from "./marketType";
-import MarketHeadeBg from "../../Assets/market/market-header-bg.png";
-import RequestHeader from "../../Assets/market/request-header.png";
-import SelectArrow from "../../Assets/market/select-arrow.png";
-import UploadLabel from "../../Assets/market/upload-image.png";
-import RequestBtnImg from "../../Assets/market/market-request-btn.png";
 import { RequestButton } from "../Market/Market";
 
 const Container = styled.main`
@@ -23,7 +18,7 @@ const MarketHeader = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: url(${MarketHeadeBg}) no-repeat;
+	background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png") no-repeat;
 	background-size: cover;
 	overflow: hidden;
 
@@ -64,7 +59,8 @@ const SelectBox = styled.select`
 	border-radius: 15px;
 	text-align: center;
 	appearance: none;
-	background: url(${SelectArrow}) no-repeat right 9px center;
+	background: url("https://thegn.speedgabia.com/kmas-2021/market/select-arrow.png") no-repeat right
+		9px center;
 	border: 1px solid ${({ theme: { gray } }) => gray};
 
 	&:focus {
@@ -123,7 +119,10 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 		<Container>
 			<h2 className="blind">참여업체 신청하기</h2>
 			<MarketHeader>
-				<img src={RequestHeader} alt="참여업체 신청하기 헤더이미지" />
+				<img
+					src="https://thegn.speedgabia.com/kmas-2021/market/request-header.png"
+					alt="참여업체 신청하기 헤더이미지"
+				/>
 			</MarketHeader>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<Label>
@@ -175,7 +174,10 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 				<UploadWrap htmlFor="image">
 					<h4>사진 업로드</h4>
 					<UploadButton>
-						<img src={UploadLabel} alt="사진업로드 버튼" />
+						<img
+							src="https://thegn.speedgabia.com/kmas-2021/market/upload-image.png"
+							alt="사진업로드 버튼"
+						/>
 					</UploadButton>
 					<input
 						type="file"
@@ -190,7 +192,10 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 				</UploadWrap>
 				{pageMode === "C" && (
 					<RequestBtn type="submit">
-						<img src={RequestBtnImg} alt="신청하기버튼" />
+						<img
+							src="https://thegn.speedgabia.com/kmas-2021/market/market-request-btn.png"
+							alt="신청하기버튼"
+						/>
 					</RequestBtn>
 				)}
 				{pageMode !== "C" && (

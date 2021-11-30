@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { CurrentContext } from "../../../Context/ContextStore";
 import styled from "styled-components";
 import Utils from "../../../Utils/Utils";
-import TitleImg from "../../../Assets/market/market-detail-header.png";
 import MarketButton from "./MarketButton";
+
 const Container = styled.article`
 	width: 90%;
 	max-width: 460px;
@@ -76,7 +76,10 @@ const MarketDetail: React.FC<IMarketDetailProps> = ({
 		<Container>
 			<Header>
 				<span className="blind">k-mas 참여업체</span>
-				<img src={TitleImg} alt="k-mas 참여업체" />
+				<img
+					src="https://thegn.speedgabia.com/kmas-2021/market/market-detail-header.png"
+					alt="k-mas 참여업체"
+				/>
 			</Header>
 
 			{image && <MarketImage src={image} alt={name} />}

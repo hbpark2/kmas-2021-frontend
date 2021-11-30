@@ -47,6 +47,19 @@ export const defaultTheme: DefaultTheme = {
 //global
 export const GlobalStyles = createGlobalStyle`
   ${reset};
+  input,
+button {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	vertical-align: middle;
+	background: none;
+	-webkit-appearance: none;
+	border: 1px solid #333;
+	outline: none;
+	box-sizing: border-box;
+}
+
   button{
     border: none;
     cursor:pointer;
@@ -73,6 +86,9 @@ export const GlobalStyles = createGlobalStyle`
   main{
     width: auto;
     margin-top:100px;
+    @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop}{
+    margin-top: 70px;
+    }
   }
 
   a {

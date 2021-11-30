@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
 import { Link } from "react-router-dom";
+import Utils from "../../Utils/Utils";
 
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
@@ -22,16 +23,26 @@ const KeyVisual = styled.img`
 	width: 100%;
 	max-width: 1710px;
 	margin: 0 auto;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		margin-top: 50px;
+	}
 `;
 
 const SnowSection = styled.section`
 	background: url("https://thegn.speedgabia.com/kmas-2021/main/main-snowbg.png") no-repeat;
 	background-size: cover;
 	background-position: center center;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		background-size: contain;
+	}
 `;
 
 const CardWrap = styled.article`
 	margin: 0px auto 150px;
+	overflow: hidden;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		margin: 0px auto 70px;
+	}
 `;
 
 const Card = styled.img`
@@ -40,6 +51,9 @@ const Card = styled.img`
 	width: 100%;
 	max-width: 1420px;
 	transform: translateX(10px);
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		transform: translateX(0);
+	}
 `;
 
 const SwiperWrap = styled.div`
@@ -61,11 +75,16 @@ const SwiperWrap = styled.div`
 	@media screen and (min-width: 1600px) {
 		width: 1600px;
 		margin: 0 auto;
+		iframe {
+			width: 85% !important;
+			height: 400px !important;
+		}
 	}
 
 	@media screen and (max-width: 1279px) {
 		iframe {
-			height: 300px !important;
+			width: 85% !important;
+			height: 400px !important;
 		}
 
 		.swiper-pagination {
@@ -79,6 +98,8 @@ const SwiperWrap = styled.div`
 		}
 	}
 	@media screen and (max-width: 767px) {
+		padding-bottom: 50px;
+
 		iframe {
 			width: 85% !important;
 			height: 198px !important;
@@ -109,6 +130,7 @@ const EventLinkButton = styled(Link)`
 	margin: 0 auto;
 	max-width: 700px;
 	margin: 0 auto;
+	width: 80%;
 	img {
 		width: 100%;
 	}
@@ -124,7 +146,11 @@ const Home = () => {
 			</KeyVisualWrap>
 			<SnowSection>
 				<CardWrap>
-					<Card src="https://thegn.speedgabia.com/kmas-2021/main/card.png" alt="card" />
+					{Utils.isMobile() ? (
+						<Card src="https://thegn.speedgabia.com/kmas-2021/main/mo-card.png" alt="card" />
+					) : (
+						<Card src="https://thegn.speedgabia.com/kmas-2021/main/card.png" alt="card" />
+					)}
 				</CardWrap>
 
 				<SwiperWrap>
@@ -134,17 +160,15 @@ const Home = () => {
 						>
 							{({ isActive }) =>
 								isActive && (
-									<div className="videoBox">
-										<iframe
-											width={window.innerWidth > 1280 ? "1200px" : "80%"}
-											height={window.innerWidth > 1280 ? "675px" : "80%"}
-											src="https://www.youtube.com/embed/OLTWCTsZPSw?mute=1&autoplay=1&playlist=OLTWCTsZPSw&loop=1"
-											title="YouTube video player"
-											frameBorder="0"
-											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-											allowFullScreen
-										/>
-									</div>
+									<iframe
+										width={window.innerWidth > 1280 ? "1200px" : "80%"}
+										height={window.innerWidth > 1280 ? "675px" : "80%"}
+										src="https://www.youtube.com/embed/OLTWCTsZPSw?mute=1&autoplay=1&playlist=OLTWCTsZPSw&loop=1"
+										title="YouTube video player"
+										frameBorder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowFullScreen
+									/>
 								)
 							}
 						</SwiperSlide>
@@ -154,17 +178,15 @@ const Home = () => {
 							{({ isActive }) => {
 								return (
 									isActive && (
-										<div className="videoBox">
-											<iframe
-												width={window.innerWidth > 1280 ? "1200px" : "80%"}
-												height={window.innerWidth > 1280 ? "675px" : "80%"}
-												src="https://www.youtube.com/embed/X6ypu7Oh_nE?mute=1&autoplay=1&playlist=X6ypu7Oh_nE&loop=1"
-												title="YouTube video player"
-												frameBorder="0"
-												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-												allowFullScreen
-											/>
-										</div>
+										<iframe
+											width={window.innerWidth > 1280 ? "1200px" : "80%"}
+											height={window.innerWidth > 1280 ? "675px" : "80%"}
+											src="https://www.youtube.com/embed/X6ypu7Oh_nE?mute=1&autoplay=1&playlist=X6ypu7Oh_nE&loop=1"
+											title="YouTube video player"
+											frameBorder="0"
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+											allowFullScreen
+										/>
 									)
 								);
 							}}

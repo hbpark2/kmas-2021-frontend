@@ -12,12 +12,7 @@ import Utils from "../../Utils/Utils";
 import { categoryArr } from "../MarketForm/marketType";
 import MarketDetail from "./components/MarketDetail";
 import PwdCheckForm from "./components/PwdCheckForm";
-import MarketHeadeBg from "../../Assets/market/market-header-bg.png";
-import MarketHeadeCard from "../../Assets/market/market-header.png";
-import MarketBgImg from "../../Assets/market/market-bg.png";
-import SelectArrow from "../../Assets/market/select-arrow.png";
-import SearchIcon from "../../Assets/market/search-icon.png";
-import RequestBtnImg from "../../Assets/market/market-request-btn.png";
+import MarketHeaderImage from "../../Assets/mo-market-header.png";
 
 const Container = styled.main``;
 const MarketHeader = styled.div`
@@ -26,27 +21,43 @@ const MarketHeader = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 370px;
-	background: url(${MarketHeadeBg}) no-repeat;
+	background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png") no-repeat;
 	background-size: cover;
 
 	img {
 		height: 380px;
 		margin-top: 50px;
 	}
+
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		height: auto;
+		img {
+			width: 100%;
+			height: auto;
+			margin-top: 35px;
+		}
+	}
 `;
 
 const MarketSection = styled.article`
 	padding-top: 120px;
-	background: url(${MarketBgImg}) no-repeat;
+	background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png") no-repeat;
 	background-size: cover;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		padding-top: 60px;
+		background: none;
+	}
 `;
 
 const MarketInner = styled.div`
 	max-width: 1100px;
-	width: 90%;
+	width: 96%;
 	margin: 0 auto;
-	/* background: #fff; */
 	padding: 50px;
+
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		padding: 0;
+	}
 `;
 
 const SearchSection = styled.div`
@@ -55,10 +66,30 @@ const SearchSection = styled.div`
 	height: 75px;
 	margin-bottom: 120px;
 	font-size: 2.2rem;
+
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		flex-direction: column;
+		height: auto;
+		margin-bottom: 60px;
+		input,
+		select,
+		button {
+			height: 55px;
+		}
+	}
+`;
+
+const MobileWrap = styled.div`
+	display: flex;
+	flex: 3.5;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		flex: 1;
+		justify-content: space-between;
+		margin-bottom: 20px;
+	}
 `;
 
 const SelectBox = styled.select`
-	/* width: 200px; */
 	border: 2px solid ${({ theme: { deepGreen } }) => deepGreen};
 	flex: 1;
 	margin-right: 40px;
@@ -67,7 +98,13 @@ const SelectBox = styled.select`
 	text-align: start;
 	text-indent: 20px;
 	appearance: none;
-	background: url(${SelectArrow}) no-repeat right 9px center;
+	background: url("https://thegn.speedgabia.com/kmas-2021/market/select-arrow.png") no-repeat right
+		9px center;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		width: 35%;
+		margin-right: 5%;
+		background-size: 2rem;
+	}
 `;
 
 const SearchInput = styled.input`
@@ -79,25 +116,36 @@ const SearchInput = styled.input`
 	border-radius: 15px;
 	border: 2px solid ${({ theme: { inputBorderColor } }) => inputBorderColor};
 	color: #777;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		width: 60%;
+		margin-right: 0;
+		text-indent: 10px;
+	}
 `;
 
 const SearchSubmit = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* width: 200px; */
 	flex: 1;
+	font-family: ${({ theme: { accentFont } }) => accentFont};
 	font-size: 2.2rem;
 	border-radius: 15px;
+
 	background-color: ${({ theme: { headerDefault } }) => headerDefault};
 	color: #fff;
 	border: none;
 	img {
 		margin-right: 15px;
 	}
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		flex: auto;
+		font-size: 2.6rem !important;
+	}
 `;
 
 const Table = styled.table`
+	width: 100%;
 	margin: 0 auto;
 	overflow: hidden;
 	text-align: center;
@@ -158,6 +206,12 @@ export const RequestButton = styled.button`
 	display: block;
 	margin: 50px auto;
 	border: none;
+
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		img {
+			width: 100%;
+		}
+	}
 `;
 
 const PAGE_SIZE = 5;
@@ -216,31 +270,43 @@ const Market = () => {
 			<Container>
 				<h2 className="blind">본문 &#40;참여장터&#41;</h2>
 				<MarketHeader>
-					<img src={MarketHeadeCard} alt="" />
+					<img
+						src={
+							Utils.isMobile()
+								? MarketHeaderImage
+								: "https://thegn.speedgabia.com/kmas-2021/market/market-header.png"
+						}
+						alt=""
+					/>
 				</MarketHeader>
 				<MarketSection>
 					<MarketInner>
 						<SearchSection>
-							<SelectBox ref={categoryRef}>
-								<option disabled>카테고리</option>
-								{categoryArr.map((item, index) => (
-									<option key={`categoryOption${index}`} value={item.value}>
-										{item.text}
-									</option>
-								))}
-							</SelectBox>
-							<SearchInput
-								ref={keywordRef}
-								type="text"
-								placeholder="기업명 또는 프로모션 내용을 입력해주세요."
-								onKeyPress={(e) => {
-									if (e.key === "Enter") {
-										onSearchClick();
-									}
-								}}
-							/>
+							<MobileWrap>
+								<SelectBox ref={categoryRef}>
+									<option disabled>카테고리</option>
+									{categoryArr.map((item, index) => (
+										<option key={`categoryOption${index}`} value={item.value}>
+											{item.text}
+										</option>
+									))}
+								</SelectBox>
+								<SearchInput
+									ref={keywordRef}
+									type="text"
+									placeholder="검색어를 입력하세요."
+									onKeyPress={(e) => {
+										if (e.key === "Enter") {
+											onSearchClick();
+										}
+									}}
+								/>
+							</MobileWrap>
 							<SearchSubmit onClick={onSearchClick}>
-								<img src={SearchIcon} alt="검색아이콘" />
+								<img
+									src="https://thegn.speedgabia.com/kmas-2021/market/search-icon.png"
+									alt="검색아이콘"
+								/>
 								검색
 							</SearchSubmit>
 						</SearchSection>
@@ -287,7 +353,10 @@ const Market = () => {
 							on_change={handlePageChange}
 						/>
 						<RequestButton onClick={() => history.push("/market/register")}>
-							<img src={RequestBtnImg} alt="신청하기 버튼" />
+							<img
+								src="https://thegn.speedgabia.com/kmas-2021/market/market-request-btn.png"
+								alt="신청하기 버튼"
+							/>
 						</RequestButton>
 					</MarketInner>
 				</MarketSection>
