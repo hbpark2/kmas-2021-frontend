@@ -186,10 +186,15 @@ const TableHead = styled.th<{ mobileActive?: boolean }>`
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		${({ mobileActive, theme: { blind } }) => !mobileActive && blind};
-	}
-
-	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		font-size: 2rem;
+		height: 40px;
+
+		&:nth-child(2) {
+			width: 30%;
+		}
+		&:nth-child(3) {
+			width: 70%;
+		}
 	}
 `;
 
@@ -220,7 +225,7 @@ export const RequestButton = styled.button`
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		margin: 25px auto;
 		img {
-			width: 100%;
+			width: 80%;
 		}
 	}
 `;
@@ -231,6 +236,10 @@ const PromotionBanner = styled.img`
 	margin: 0 auto 80px;
 	max-width: 1330px;
 	width: 100%;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		width: 96%;
+		margin-bottom: 20px;
+	}
 `;
 
 const KeyVisual = styled.img`
@@ -248,6 +257,10 @@ const DownloadButton = styled.button`
 	margin: 50px auto;
 	img {
 		width: 100%;
+	}
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		margin: 20px auto;
+		width: 90%;
 	}
 `;
 
@@ -276,6 +289,20 @@ const NoteWrap = styled.article`
 		list-style: disc;
 		margin: 10px 0;
 		margin-left: 50px;
+	}
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		dt {
+			margin-bottom: 10px;
+		}
+		dl {
+			padding: 20px 12px;
+		}
+		li {
+			width: 90%;
+			margin-left: 30px;
+			word-break: break-all;
+			line-height: 1.4em;
+		}
 	}
 `;
 

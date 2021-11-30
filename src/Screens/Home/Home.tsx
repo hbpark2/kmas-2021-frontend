@@ -41,7 +41,7 @@ const CardWrap = styled.article`
 	margin: 0px auto 130px;
 	overflow: hidden;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-		margin: 0px auto 70px;
+		margin: 0px auto 30px;
 	}
 `;
 
@@ -65,12 +65,17 @@ const BannerWrap = styled.div`
 		width: 100%;
 		max-width: 1360px;
 	}
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		margin-bottom: 50px;
+		img {
+			margin: 10px auto;
+		}
+	}
 `;
 
 const SwiperWrap = styled.div`
 	margin: 0 auto;
 	padding-bottom: 100px;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -129,7 +134,7 @@ const SwiperWrap = styled.div`
 	}
 
 	@media screen and (max-width: 767px) {
-		padding-bottom: 30px;
+		padding-bottom: 50px;
 
 		iframe {
 			width: 85% !important;
