@@ -1,44 +1,42 @@
 import { createContext, useState } from "react";
-import Bubble1 from "../Assets/bubble1.jpg";
-import Drawing from "../Assets/drawing-10.jpg";
+import Bubble1 from "../Assets/main/bubble1.jpg";
+import Drawing from "../Assets/main/drawing-10.jpg";
 
 type StoreProviderProp = {
-  children: React.ReactNode;
+	children: React.ReactNode;
 };
 
 type ValueType = {
-  menuOpen: boolean;
-  setMenuOpen: (T: boolean) => void;
-  modalOpen: boolean;
-  setModalOpen: (T: boolean) => void;
-  secondModalOpen: boolean;
-  setSecondModalOpen: (T: boolean) => void;
+	menuOpen: boolean;
+	setMenuOpen: (T: boolean) => void;
+	modalOpen: boolean;
+	setModalOpen: (T: boolean) => void;
+	secondModalOpen: boolean;
+	setSecondModalOpen: (T: boolean) => void;
 };
 
 export const CurrentContext = createContext<ValueType>({
-  menuOpen: false,
-  setMenuOpen: () => {},
-  modalOpen: false,
-  setModalOpen: () => {},
-  secondModalOpen: false,
-  setSecondModalOpen: () => {},
+	menuOpen: false,
+	setMenuOpen: () => {},
+	modalOpen: false,
+	setModalOpen: () => {},
+	secondModalOpen: false,
+	setSecondModalOpen: () => {},
 });
 
 export const StoreProvider: React.FC<StoreProviderProp> = ({ children }) => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [secondModalOpen, setSecondModalOpen] = useState<boolean>(false);
+	const [menuOpen, setMenuOpen] = useState<boolean>(false);
+	const [modalOpen, setModalOpen] = useState<boolean>(false);
+	const [secondModalOpen, setSecondModalOpen] = useState<boolean>(false);
 
-  const value: ValueType = {
-    menuOpen,
-    setMenuOpen,
-    modalOpen,
-    setModalOpen,
-    secondModalOpen,
-    setSecondModalOpen,
-  };
+	const value: ValueType = {
+		menuOpen,
+		setMenuOpen,
+		modalOpen,
+		setModalOpen,
+		secondModalOpen,
+		setSecondModalOpen,
+	};
 
-  return (
-    <CurrentContext.Provider value={value}>{children}</CurrentContext.Provider>
-  );
+	return <CurrentContext.Provider value={value}>{children}</CurrentContext.Provider>;
 };

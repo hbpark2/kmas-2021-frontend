@@ -16,6 +16,11 @@ const Container = styled.div<{ width?: string; height?: string }>`
 	background-color: #fff;
 	z-index: 200;
 	overflow-y: scroll;
+	border-radius: 20px;
+	padding: 20px 0;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		width: 300px;
@@ -58,6 +63,7 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ width, height, children, secondChildren }) => {
 	const { setModalOpen, secondModalOpen, setSecondModalOpen } = useContext(CurrentContext);
+	console.log(width);
 
 	return (
 		<>

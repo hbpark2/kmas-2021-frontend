@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Meta from "../Components/Common/Meta";
+import Footer from "../Components/Layout/Footer/Footer";
 import Header from "../Components/Layout/Header/Header";
 import { CurrentContext } from "../Context/ContextStore";
 
@@ -45,6 +46,7 @@ const App: React.FC = () => {
 					<GlobalStyles />
 					<Header />
 					<Routes />
+					<Footer />
 				</ThemeProvider>
 			</BrowserRouter>
 		</QueryClientProvider>

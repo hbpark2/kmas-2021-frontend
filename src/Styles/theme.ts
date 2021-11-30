@@ -6,6 +6,7 @@ const deviceSizes = {
 	mobile: 639,
 	tablet: 767,
 	laptop: 1023,
+	normalPC: 1279,
 	wide: 1920,
 };
 
@@ -13,6 +14,7 @@ const deviceMax = {
 	mobile: `screen and (max-width: ${deviceSizes.mobile}px)`,
 	tablet: `screen and (max-width: ${deviceSizes.tablet}px)`,
 	laptop: `screen and (max-width: ${deviceSizes.laptop}px)`,
+	normalPC: `screen and (max-width: ${deviceSizes.normalPC}px)`,
 };
 
 const deviceMin = {
@@ -26,8 +28,15 @@ export const defaultTheme: DefaultTheme = {
 	bgColor1: "#fff",
 	bgColor2: "#706260",
 	bgColor3: "#9a7951",
+	gray: "#dadada",
+	deepGreen: "#499a63",
+	inputBorderColor: "#a6a6a6",
+	tableAccent: "#499a63",
+	tableHeader: "rgba(226, 244, 233,0.8)",
+	headerDefault: "#0b983a",
+	headerActive: "#e73031",
 	accentColor: "#e4cbac",
-	accentFont: '"Cormorant Garamond", "Nanum Myeongjo", serif',
+	accentFont: "GmarketSansBold",
 	textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
 	fullHeight: window.innerWidth > 639 ? "100vh" : `${window.innerHeight}px`,
 	deviceScreenMax: deviceMax,
@@ -38,7 +47,10 @@ export const defaultTheme: DefaultTheme = {
 //global
 export const GlobalStyles = createGlobalStyle`
   ${reset};
-
+  button{
+    border: none;
+    cursor:pointer;
+  }
 	body, html{
 		height:100%;
     font-size:62.5%;
@@ -61,7 +73,6 @@ export const GlobalStyles = createGlobalStyle`
   main{
     width: auto;
     margin-top:100px;
-    padding-top: 100px;
   }
 
   a {
