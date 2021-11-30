@@ -174,7 +174,7 @@ const Home = () => {
 			<KeyVisualWrap>
 				<KeyVisual
 					src={
-						Utils.isMobile()
+						window.innerWidth < 640
 							? "https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"
 							: "https://thegn.speedgabia.com/kmas-2021/main/main.png"
 					}
@@ -183,7 +183,7 @@ const Home = () => {
 			</KeyVisualWrap>
 			<SnowSection>
 				<CardWrap>
-					{Utils.isMobile() ? (
+					{window.innerWidth < 640 ? (
 						<Card src="https://thegn.speedgabia.com/kmas-2021/main/mo-card.png" alt="card" />
 					) : (
 						<Card src="https://thegn.speedgabia.com/kmas-2021/main/main-card.png" alt="card" />

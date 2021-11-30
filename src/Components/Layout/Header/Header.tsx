@@ -219,7 +219,7 @@ const Header = () => {
 								? "https://thegn.speedgabia.com/kmas-2021/main/mo-logo.png"
 								: "https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
 						}
-						alt="k--mas 로고"
+						alt="k-mas 로고"
 					/>
 				</LogoWrap>
 
@@ -276,7 +276,7 @@ const Header = () => {
 				<HeaderDecoration>
 					<img
 						src={
-							Utils.isMobile()
+							window.innerWidth < 640
 								? "https://thegn.speedgabia.com/kmas-2021/common/mo-header-bottom.png"
 								: "https://thegn.speedgabia.com/kmas-2021/common/header-bottom.png"
 						}
