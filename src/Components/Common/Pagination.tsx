@@ -7,6 +7,7 @@ const Container = styled.div`
 		justify-content: center;
 		margin-top: 15px;
 	}
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -19,7 +20,7 @@ const Container = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 1.6rem;
+		font-size: 2.2rem;
 		transition: all 0.5s;
 	}
 
@@ -33,7 +34,7 @@ const Container = styled.div`
 
 	ul.pagination li a {
 		text-decoration: none;
-		color: #333;
+		color: #000;
 		transition: all 0.5s;
 		padding-top: 2px;
 	}
@@ -42,7 +43,6 @@ const Container = styled.div`
 		color: ${({ theme: { tableAccent } }) => tableAccent};
 	}
 
-	ul.pagination li a:hover,
 	ul.pagination li a.active {
 		color: ${({ theme: { tableAccent } }) => tableAccent};
 	}

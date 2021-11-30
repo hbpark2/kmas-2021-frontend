@@ -23,18 +23,24 @@ const Container = styled.div<{ width?: string; height?: string }>`
 	}
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
-		width: 300px;
+		width: ${(props) => (props.width ? props.width : "300px")};
 	}
 `;
 
 const SecondContainer = styled(Container)<{ secondWidth?: string; secondHeight?: string }>`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	width: ${(props) => (props.secondWidth ? props.secondWidth : "40vw")};
 	height: ${(props) => (props.secondHeight ? props.secondHeight : "50vh")};
 	z-index: 220;
 	overflow: unset;
+	box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
-		width: 250px;
+		width: ${(props) => (props.secondWidth ? props.secondWidth : "250px")};
+		min-height: ${(props) => (props.secondHeight ? props.secondHeight : "200px")};
 	}
 `;
 
@@ -61,7 +67,14 @@ interface ModalProps {
 	secondChildren?: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ width, height, children, secondChildren }) => {
+const Modal: React.FC<ModalProps> = ({
+	width,
+	height,
+	children,
+	secondChildren,
+	secondWidth,
+	secondHeight,
+}) => {
 	const { setModalOpen, secondModalOpen, setSecondModalOpen } = useContext(CurrentContext);
 	console.log(width);
 
@@ -79,7 +92,9 @@ const Modal: React.FC<ModalProps> = ({ width, height, children, secondChildren }
 
 			{secondModalOpen && (
 				<>
-					<SecondContainer>{secondChildren}</SecondContainer>
+					<SecondContainer secondWidth={secondWidth} secondHeight={secondHeight}>
+						{secondChildren}
+					</SecondContainer>
 					<SecondLayer
 						onClick={() => {
 							setSecondModalOpen(false);

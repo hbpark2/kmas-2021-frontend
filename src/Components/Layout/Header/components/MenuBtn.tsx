@@ -6,13 +6,13 @@ const Container = styled.button`
 	display: none;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		position: fixed;
-		top: 15px;
-		right: 25px;
+		top: 16.5px;
+		right: 22.5px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
-		width: 40px;
-		height: 40px;
+		width: 35px;
+		height: 35px;
 		/* z-index: 10; */
 	}
 `;

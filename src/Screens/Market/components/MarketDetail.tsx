@@ -44,7 +44,7 @@ const DetailWrap = styled.div`
 		justify-content: center;
 		align-items: center;
 		word-break: break-all;
-		height: 60px;
+		min-height: 60px;
 		line-height: 1.2em;
 	}
 	dt {
@@ -55,6 +55,17 @@ const DetailWrap = styled.div`
 		width: 70%;
 		justify-content: flex-start;
 		padding: 0 20px;
+	}
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		font-size: 2rem;
+		dt {
+			width: 40%;
+			padding: 5px 0;
+		}
+		dd {
+			overflow-y: scroll;
+			padding: 5px 20px;
+		}
 	}
 `;
 

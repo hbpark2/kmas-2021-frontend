@@ -13,23 +13,46 @@ const Container = styled.div`
 	width: 100%;
 `;
 const Form = styled.form`
-	width: 60%;
-	margin: 120px auto;
-
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	margin: 0 auto;
+	font-size: 2rem;
 	label {
 		display: block;
+		width: 100%;
+		text-align: center;
 	}
-	input {
-		padding: 5px;
-		margin-bottom: 5px;
-	}
+
 	span {
 		display: block;
-		margin: 10px auto;
+		margin: 10px auto 20px;
 	}
 	p {
 		color: #f00;
 	}
+`;
+
+const PWInput = styled.input`
+	padding: 10px;
+	width: 100%;
+	margin-bottom: 5px;
+	border: 1px solid ${({ theme: { gray } }) => gray};
+	margin-bottom: 10px;
+	border-radius: 5px;
+`;
+
+const Button = styled.input`
+	width: 250px;
+	border: 1px solid ${({ theme: { headerDefault } }) => headerDefault};
+	background-color: ${({ theme: { tableHeader } }) => tableHeader};
+	padding: 5px 0;
+	border-radius: 5px;
+	color: ${({ theme: { headerDefault } }) => headerDefault};
+	font-family: ${({ theme: { accentFont } }) => accentFont};
+	font-size: 2.4rem;
 `;
 
 const validSchema = yup.object().shape({
@@ -88,7 +111,7 @@ const PwdCheckForm = ({ id }: { id: number }) => {
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<label htmlFor="password">
 					<span>비밀번호를 입력하세요.</span>
-					<input
+					<PWInput
 						type="password"
 						id="password"
 						{...register("password")}
@@ -97,7 +120,7 @@ const PwdCheckForm = ({ id }: { id: number }) => {
 					/>
 					{errors.password && <p>{errors.password.message}</p>}
 				</label>
-				<input type="submit" value="확인" />
+				<Button type="submit" value="확인" />
 			</Form>
 		</Container>
 	);

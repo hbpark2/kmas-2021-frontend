@@ -23,6 +23,12 @@ export const Label = styled.label`
 			outline: none;
 		}
 	}
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		display: block;
+		h4 {
+			margin-bottom: 15px;
+		}
+	}
 `;
 
 const MarketInput: React.FC<IMarketInputProps> = ({ name, text, type, placeholder, errors }) => {

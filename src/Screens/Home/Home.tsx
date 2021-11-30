@@ -61,7 +61,7 @@ const SwiperWrap = styled.div`
 	padding-bottom: 100px;
 	.swiper-button-next,
 	.swiper-button-prev {
-		color: #333;
+		color: ${({ theme: { headerDefault } }) => headerDefault};
 	}
 	.swiper-button-next {
 		margin-right: 65px;
@@ -70,8 +70,9 @@ const SwiperWrap = styled.div`
 		margin-left: 65px;
 	}
 	.swiper-pagination-bullet {
-		background-color: #333;
+		background-color: ${({ theme: { headerDefault } }) => headerDefault};
 	}
+
 	@media screen and (min-width: 1600px) {
 		width: 1600px;
 		margin: 0 auto;
@@ -96,9 +97,20 @@ const SwiperWrap = styled.div`
 		.swiper-button-prev {
 			margin-left: 20px;
 		}
+
+		.swiper-button-next {
+			&::after {
+				font-size: 3.2rem;
+			}
+		}
+		.swiper-button-prev {
+			&::after {
+				font-size: 3.2rem;
+			}
+		}
 	}
 	@media screen and (max-width: 767px) {
-		padding-bottom: 50px;
+		padding-bottom: 30px;
 
 		iframe {
 			width: 85% !important;
@@ -106,15 +118,9 @@ const SwiperWrap = styled.div`
 		}
 		.swiper-button-next {
 			margin-right: -5px;
-			&::after {
-				font-size: 2.2rem;
-			}
 		}
 		.swiper-button-prev {
 			margin-left: -5px;
-			&::after {
-				font-size: 2.2rem;
-			}
 		}
 		.swiper-pagination {
 			span {
