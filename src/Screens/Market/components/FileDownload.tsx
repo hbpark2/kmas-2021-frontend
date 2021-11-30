@@ -38,6 +38,7 @@ const DeleteButton = styled.input`
 
 const FileDownload = () => {
 	const { setModalOpen } = useContext(CurrentContext);
+	//
 
 	const onFileDownload = () => {
 		window.location.href =
