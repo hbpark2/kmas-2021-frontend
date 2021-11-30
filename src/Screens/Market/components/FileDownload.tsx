@@ -1,5 +1,32 @@
 import { useContext } from "react";
+import styled from "styled-components";
 import { CurrentContext } from "../../../Context/ContextStore";
+
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  input {
+    display: block;
+    cursor: pointer;
+    width: 48%;
+    padding: 20px;
+    font-family: ${({ theme: { accentFont } }) => accentFont};
+    font-size: 1.6em;
+    border-radius: 15px;
+  }
+`;
+
+const SuccessButton = styled.input`
+  color: ${({ theme: { headerDefault } }) => headerDefault};
+  border: 2px solid ${({ theme: { headerDefault } }) => headerDefault};
+  background-color: ${({ theme: { tableHeader } }) => tableHeader};
+`;
+
+const DeleteButton = styled.input`
+  color: ${({ theme: { headerActive } }) => headerActive};
+  border: 2px solid ${({ theme: { headerActive } }) => headerActive};
+  background-color: rgba(255, 50, 50, 0.2);
+`;
 
 const FileDownload = () => {
   const { setModalOpen } = useContext(CurrentContext);
@@ -16,8 +43,18 @@ const FileDownload = () => {
         <br />
         데이터 요금이 발생할 수 있습니다.(515MB)
       </p>
-      <button onClick={() => setModalOpen(false)}>취소하기</button>
-      <button onClick={onFileDownload}>다운로드</button>
+      <ButtonWrap>
+        <DeleteButton
+          type="button"
+          value="취소하기"
+          onClick={() => setModalOpen(false)}
+        />
+        <SuccessButton
+          type="button"
+          value="수정하기"
+          onClick={onFileDownload}
+        />
+      </ButtonWrap>
     </div>
   );
 };

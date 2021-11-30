@@ -11,19 +11,6 @@ const MarketUpdatePassword: React.FC<IMarketUpdatePasswordProps> = ({
   return (
     <>
       <Label htmlFor={name}>
-        <h4>현재 비밀번호</h4>
-        <input
-          type={type}
-          id="original_password"
-          {...register("original_password")}
-          placeholder="현재 비밀번호"
-          autoComplete="on"
-        />
-      </Label>
-      {errors["original_password"] && (
-        <p>{errors["original_password"].message}</p>
-      )}
-      <Label htmlFor={name}>
         <h4>변경 비밀번호</h4>
         <input
           type={type}

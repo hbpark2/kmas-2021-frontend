@@ -64,7 +64,6 @@ export const modifyValidSchema = yup
           return Utils.checkPhoneNumber(value);
         }
       ),
-    original_password: yup.string().required(REQUIRED_TEXT),
     password: yup
       .string()
       .nullable()
@@ -102,6 +101,12 @@ export const inputArr = [
     placeholder: "필수 입력사항입니다",
   },
   {
+    text: "사업자 번호",
+    name: "crn",
+    type: "text",
+    placeholder: "필수 입력사항입니다",
+  },
+  {
     text: "홈페이지",
     name: "hompage_link",
     type: "text",
@@ -110,18 +115,6 @@ export const inputArr = [
   {
     text: "기업 전화번호",
     name: "phone_number",
-    type: "text",
-    placeholder: "필수 입력사항입니다",
-  },
-  {
-    text: "비밀번호",
-    name: "password",
-    type: "password",
-    placeholder: "필수 입력사항입니다",
-  },
-  {
-    text: "사업자 번호",
-    name: "crn",
     type: "text",
     placeholder: "필수 입력사항입니다",
   },
@@ -146,6 +139,16 @@ export const inputArr = [
     name: "exhibition_link",
     type: "text",
     placeholder: "",
+  },
+  {
+    text: "이미지",
+    name: "image",
+  },
+  {
+    text: "비밀번호",
+    name: "password",
+    type: "password",
+    placeholder: "필수 입력사항입니다",
   },
 ];
 
