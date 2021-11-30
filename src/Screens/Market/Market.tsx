@@ -182,6 +182,7 @@ const TableHead = styled.th<{ mobileActive?: boolean }>`
 	&:nth-child(5) {
 		width: 120px;
 	}
+	//
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		${({ mobileActive, theme: { blind } }) => !mobileActive && blind};
