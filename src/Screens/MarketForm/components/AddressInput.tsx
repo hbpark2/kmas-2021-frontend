@@ -36,9 +36,12 @@ const SLabel = styled(Label)`
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		display: block;
+		input {
+			width: 100%;
+		}
 		.label-button-wrap {
 			input {
-				width: 240px !important;
+				width: 200px !important;
 			}
 			button {
 				width: 120px;

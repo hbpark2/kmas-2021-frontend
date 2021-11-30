@@ -85,7 +85,7 @@ const SelectBox = styled.select`
 	background: url("https://thegn.speedgabia.com/kmas-2021/market/select-arrow.png") no-repeat right
 		9px center;
 	border: 1px solid ${({ theme: { gray } }) => gray};
-
+	color: #333;
 	&:focus {
 		border: 2px solid ${({ theme: { headerDefault } }) => headerDefault};
 		outline: none;

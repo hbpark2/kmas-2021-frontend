@@ -552,7 +552,7 @@ const Market = () => {
 				</Modal>
 			)}
 			{modalOpen && fileModal && (
-				<Modal width={Utils.isMobile() ? "90%" : "500px"}>
+				<Modal width="300px" height="150px">
 					<FileDownload />
 				</Modal>
 			)}
