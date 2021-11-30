@@ -3,18 +3,58 @@ import { CurrentContext } from "../../../Context/ContextStore";
 import styled from "styled-components";
 import Utils from "../../../Utils/Utils";
 import TitleImg from "../../../Assets/market/market-detail-header.png";
+import MarketButton from "./MarketButton";
 const Container = styled.article`
-	width: 96%;
+	width: 90%;
 	max-width: 460px;
 	margin: 0 auto;
-	padding: 10px 0;
 `;
 
 const Header = styled.h2`
-	padding: 20px 0;
+	margin-bottom: 20px;
 	img {
 		display: block;
 		margin: 0 auto;
+	}
+`;
+
+const MarketImage = styled.img`
+	width: 100%;
+	max-width: 460px;
+`;
+
+const DetailWrap = styled.div`
+	margin: 20px 0;
+	border: 2px solid ${({ theme: { gray } }) => gray};
+	border-radius: 20px;
+	overflow: hidden;
+	dl {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 1px solid ${({ theme: { gray } }) => gray};
+		&:last-child {
+			border: none;
+		}
+	}
+
+	dt,
+	dd {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		word-break: break-all;
+		height: 60px;
+		line-height: 1.2em;
+	}
+	dt {
+		width: 30%;
+		background-color: ${({ theme: { tableHeader } }) => tableHeader};
+	}
+	dd {
+		width: 70%;
+		justify-content: flex-start;
+		padding: 0 20px;
 	}
 `;
 
@@ -38,15 +78,25 @@ const MarketDetail: React.FC<IMarketDetailProps> = ({
 				<span className="blind">k-mas 참여업체</span>
 				<img src={TitleImg} alt="k-mas 참여업체" />
 			</Header>
-			{image && <img src={image} alt={name} style={{ width: 300, height: 300 }} />}
-			<div>
+
+			{image && <MarketImage src={image} alt={name} />}
+			<DetailWrap>
 				<dl>
 					<dt>기업명</dt>
 					<dd>{name}</dd>
 				</dl>
 				<dl>
 					<dt>홈페이지</dt>
-					<dd>{Utils.addHttpHttps(hompage_link)}</dd>
+					<dd>
+						<a
+							href={Utils.addHttpHttps(hompage_link)}
+							target="_blank"
+							title="기업홈페이지링크"
+							rel="noreferrer"
+						>
+							{Utils.addHttpHttps(hompage_link)}
+						</a>
+					</dd>
 				</dl>
 				<dl>
 					<dt>기업 전화번호</dt>
@@ -66,10 +116,19 @@ const MarketDetail: React.FC<IMarketDetailProps> = ({
 				</dl>
 				<dl>
 					<dt>기획전 링크</dt>
-					<dd>{Utils.addHttpHttps(exhibition_link)}</dd>
+					<dd>
+						<a
+							href={Utils.addHttpHttps(exhibition_link)}
+							target="_blank"
+							title="기업홈페이지링크"
+							rel="noreferrer"
+						>
+							{Utils.addHttpHttps(exhibition_link)}
+						</a>
+					</dd>
 				</dl>
-			</div>
-			<button onClick={() => setSecondModalOpen(true)}>수정</button>
+			</DetailWrap>
+			<MarketButton onClickFn={() => setSecondModalOpen(true)} text="수정" />
 		</Container>
 	);
 };

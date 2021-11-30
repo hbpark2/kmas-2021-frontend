@@ -95,6 +95,7 @@ button {
 	-webkit-appearance: none;
 	border: 1px solid #333;
 	outline: none;
+	box-sizing: border-box;
 }
 
 button,

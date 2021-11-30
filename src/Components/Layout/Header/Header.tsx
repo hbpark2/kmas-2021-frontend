@@ -23,6 +23,8 @@ const Nav = styled.nav`
 
 const NavUl = styled.ul`
 	display: flex;
+	justify-content: space-around;
+	width: 100%;
 	height: 100%;
 	max-width: 1280px;
 	margin-left: 100px;
@@ -31,7 +33,8 @@ const NavUl = styled.ul`
 const NavList = styled.li<{ current?: boolean | any }>`
 	height: 100%;
 	cursor: pointer;
-	margin: 0 50px;
+	/* margin: 0 50px; */
+
 	a {
 		display: flex;
 		justify-content: center;
@@ -45,10 +48,6 @@ const NavList = styled.li<{ current?: boolean | any }>`
 	h3 {
 		color: ${({ current, theme: { headerDefault, headerActive } }) =>
 			current ? headerActive : headerDefault};
-	}
-
-	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.normalPC} {
-		margin: 0 30px;
 	}
 `;
 

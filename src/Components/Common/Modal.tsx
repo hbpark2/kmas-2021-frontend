@@ -12,7 +12,7 @@ const Container = styled.div<{ width?: string; height?: string }>`
 	height: ${(props) => (props.height ? props.height : "60vh")};
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	background-color: #fff;
 	z-index: 200;
 	overflow-y: scroll;

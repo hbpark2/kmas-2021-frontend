@@ -40,8 +40,8 @@ const Form = styled.form`
 	margin: 120px auto;
 
 	input {
+		box-sizing: border-box;
 		margin-bottom: 5px;
-		transition: border 0.5s;
 		s &::placeholder {
 			color: ${({ theme: { gray } }) => gray};
 		}
@@ -57,7 +57,7 @@ const Form = styled.form`
 
 const SelectBox = styled.select`
 	display: block;
-	width: 590px;
+	width: 580px;
 	height: 60px;
 	padding: 10px;
 	font-size: 2rem;
@@ -73,14 +73,18 @@ const SelectBox = styled.select`
 	}
 `;
 
-const UploadButton = styled.button`
-	width: 590px;
+const UploadButton = styled.div`
+	width: 580px;
 	border: 1px solid ${({ theme: { gray } }) => gray};
 	padding: 70px 0;
 	display: block;
 	background: none;
 	cursor: pointer;
 	border-radius: 15px;
+	img {
+		display: block;
+		margin: 0 auto;
+	}
 `;
 
 const UploadWrap = styled(Label)`
@@ -170,7 +174,7 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 				)}
 				<UploadWrap htmlFor="image">
 					<h4>사진 업로드</h4>
-					<UploadButton type="button">
+					<UploadButton>
 						<img src={UploadLabel} alt="사진업로드 버튼" />
 					</UploadButton>
 					<input
