@@ -93,7 +93,15 @@ const MarketDetail: React.FC<IMarketDetailProps> = ({
 				/>
 			</Header>
 
-			{image && <MarketImage src={image} alt={name} />}
+			{image ? (
+				<MarketImage src={image} alt={name} />
+			) : (
+				<MarketImage
+					src="https://thegn.speedgabia.com/kmas-2021/market/market-keyvisual.png"
+					alt="기본이미지"
+				/>
+			)}
+
 			<DetailWrap>
 				<dl>
 					<dt>기업명</dt>

@@ -171,6 +171,15 @@ const Header = () => {
 	const { menuOpen, setMenuOpen } = useContext(CurrentContext);
 	const location = useLocation();
 
+	const menuArr = [
+		{ text: "K-mas", pathname: "/" },
+		{ text: "이벤트", pathname: "/event" },
+		{ text: "판매 기획전", pathname: "/exhibition" },
+		{ text: "라이브커머스", pathname: "/live" },
+		{ text: "마켓뉴스", pathname: "/news" },
+		{ text: "참여장터", pathname: "/market" },
+	];
+
 	return (
 		<Container>
 			<h1 className="blind">K-MAS</h1>
@@ -185,36 +194,13 @@ const Header = () => {
 				</LogoWrap>
 
 				<NavUl menuOpen={menuOpen}>
-					<NavList current={location.pathname === "/"}>
-						<SLink to="/">
-							<h3>K-mas</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/event"}>
-						<SLink to="/event">
-							<h3>이벤트</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/exhibition"}>
-						<SLink to="/exhibition">
-							<h3>판매 기획전</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/live"}>
-						<SLink to="/live">
-							<h3>라이브커머스</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/news"}>
-						<SLink to="/news">
-							<h3>마켓뉴스</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/market"}>
-						<SLink to="/market">
-							<h3>참여장터</h3>
-						</SLink>
-					</NavList>
+					{menuArr.map((item, index) => (
+						<NavList current={location.pathname === item.pathname}>
+							<SLink to={item.pathname}>
+								<h3>{item.text}</h3>
+							</SLink>
+						</NavList>
+					))}
 				</NavUl>
 			</Nav>
 			<MobileNavWrap menuOpen={menuOpen}>
@@ -223,42 +209,19 @@ const Header = () => {
 				</LeftBar>
 
 				<MobileLogoWrap>
-					<img
-						src="https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
-						alt="k--mas 로고"
-					/>
+					<img src="https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png" alt="k-mas 로고" />
 				</MobileLogoWrap>
 				<MobileNavUl>
-					<NavList current={location.pathname === "/"}>
-						<SLink to="/">
-							<h3>K-mas</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/event"}>
-						<SLink to="/event">
-							<h3>이벤트</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/exhibition"}>
-						<SLink to="/exhibition">
-							<h3>판매 기획전</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/live"}>
-						<SLink to="/live">
-							<h3>라이브커머스</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/news"}>
-						<SLink to="/news">
-							<h3>마켓뉴스</h3>
-						</SLink>
-					</NavList>
-					<NavList current={location.pathname === "/market"}>
-						<SLink to="/market">
-							<h3>참여장터</h3>
-						</SLink>
-					</NavList>
+					{menuArr.map((item, index) => (
+						<NavList
+							current={location.pathname === item.pathname}
+							onClick={() => setMenuOpen(false)}
+						>
+							<SLink to={item.pathname}>
+								<h3>{item.text}</h3>
+							</SLink>
+						</NavList>
+					))}
 				</MobileNavUl>
 			</MobileNavWrap>
 

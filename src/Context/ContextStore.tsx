@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
-import Bubble1 from "../Assets/main/bubble1.jpg";
-import Drawing from "../Assets/main/drawing-10.jpg";
+
 
 type StoreProviderProp = {
 	children: React.ReactNode;

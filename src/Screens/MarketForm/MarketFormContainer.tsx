@@ -79,7 +79,8 @@ const MarketFormContainer = () => {
 	};
 
 	// * 파일 삭제
-	const onFileClear = () => {
+	const onFileClear = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
 		setValue("image", null);
 		setPreview(null);
 	};

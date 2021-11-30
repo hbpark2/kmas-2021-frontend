@@ -30,7 +30,7 @@ const KeyVisual = styled.img`
 
 const SnowSection = styled.section`
 	background: url("https://thegn.speedgabia.com/kmas-2021/main/main-snowbg.png") no-repeat;
-	background-size: cover;
+	background-size: contain;
 	background-position: center center;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		background-size: contain;
@@ -38,7 +38,7 @@ const SnowSection = styled.section`
 `;
 
 const CardWrap = styled.article`
-	margin: 0px auto 150px;
+	margin: 0px auto 130px;
 	overflow: hidden;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		margin: 0px auto 70px;
@@ -56,9 +56,24 @@ const Card = styled.img`
 	}
 `;
 
+const BannerWrap = styled.div`
+	margin: 0px auto 130px;
+
+	img {
+		display: block;
+		margin: 30px auto;
+		width: 100%;
+		max-width: 1360px;
+	}
+`;
+
 const SwiperWrap = styled.div`
 	margin: 0 auto;
 	padding-bottom: 100px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	.swiper-button-next,
 	.swiper-button-prev {
 		color: ${({ theme: { headerDefault } }) => headerDefault};
@@ -72,13 +87,16 @@ const SwiperWrap = styled.div`
 	.swiper-pagination-bullet {
 		background-color: ${({ theme: { headerDefault } }) => headerDefault};
 	}
+	iframe {
+		margin: 0 auto;
+		width: 1220px;
+		height: 770px;
+	}
 
 	@media screen and (min-width: 1600px) {
 		width: 1600px;
-		margin: 0 auto;
 		iframe {
 			width: 85% !important;
-			height: 400px !important;
 		}
 	}
 
@@ -109,6 +127,7 @@ const SwiperWrap = styled.div`
 			}
 		}
 	}
+
 	@media screen and (max-width: 767px) {
 		padding-bottom: 30px;
 
@@ -155,12 +174,27 @@ const Home = () => {
 					{Utils.isMobile() ? (
 						<Card src="https://thegn.speedgabia.com/kmas-2021/main/mo-card.png" alt="card" />
 					) : (
-						<Card src="https://thegn.speedgabia.com/kmas-2021/main/card.png" alt="card" />
+						<Card src="https://thegn.speedgabia.com/kmas-2021/main/main-card.png" alt="card" />
 					)}
 				</CardWrap>
 
+				<BannerWrap>
+					<a href="/" target="_blank" title="소원링크" rel="noreferrer">
+						<img
+							src="https://thegn.speedgabia.com/kmas-2021/main/pc-wish-banner.png"
+							alt="WishBanner"
+						/>
+					</a>
+					<a href="/" target="_blank" title="vr링크" rel="noreferrer">
+						<img
+							src="https://thegn.speedgabia.com/kmas-2021/main/pc-vr-banner.png"
+							alt="VRBanner"
+						/>
+					</a>
+				</BannerWrap>
+
 				<SwiperWrap>
-					<Swiper navigation spaceBetween={0} slidesPerView={1} pagination={{ clickable: true }}>
+					{/* <Swiper navigation spaceBetween={0} slidesPerView={1} pagination={{ clickable: true }}>
 						<SwiperSlide
 							style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
 						>
@@ -169,7 +203,7 @@ const Home = () => {
 									<iframe
 										width={window.innerWidth > 1280 ? "1200px" : "80%"}
 										height={window.innerWidth > 1280 ? "675px" : "80%"}
-										src="https://www.youtube.com/embed/OLTWCTsZPSw?mute=1&autoplay=1&playlist=OLTWCTsZPSw&loop=1"
+										src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
 										title="YouTube video player"
 										frameBorder="0"
 										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -178,33 +212,21 @@ const Home = () => {
 								)
 							}
 						</SwiperSlide>
-						<SwiperSlide
-							style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-						>
-							{({ isActive }) => {
-								return (
-									isActive && (
-										<iframe
-											width={window.innerWidth > 1280 ? "1200px" : "80%"}
-											height={window.innerWidth > 1280 ? "675px" : "80%"}
-											src="https://www.youtube.com/embed/X6ypu7Oh_nE?mute=1&autoplay=1&playlist=X6ypu7Oh_nE&loop=1"
-											title="YouTube video player"
-											frameBorder="0"
-											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-											allowFullScreen
-										/>
-									)
-								);
-							}}
-						</SwiperSlide>
-					</Swiper>
+					</Swiper> */}
+					<iframe
+						src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
+						title="YouTube video player"
+						frameBorder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowFullScreen
+					/>
 				</SwiperWrap>
-				<EventLinkButton to="/">
+				{/* <EventLinkButton to="/">
 					<img
 						src="https://thegn.speedgabia.com/kmas-2021/main/video-event-btn.png"
 						alt="이벤트바로가기버튼"
 					/>
-				</EventLinkButton>
+				</EventLinkButton> */}
 			</SnowSection>
 		</Container>
 	);

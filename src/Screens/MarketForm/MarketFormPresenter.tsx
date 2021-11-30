@@ -68,7 +68,7 @@ const Form = styled.form`
 		margin: 60px auto;
 		width: 90%;
 		input {
-			width: 100% !important;
+			width: 100%;
 		}
 	}
 `;
@@ -95,7 +95,7 @@ const SelectBox = styled.select`
 	}
 `;
 
-const UploadButton = styled.div`
+const UploadButton = styled.div<{ preview?: string | null }>`
 	width: 580px;
 	border: 1px solid ${({ theme: { gray } }) => gray};
 	padding: 70px 0;
@@ -107,23 +107,25 @@ const UploadButton = styled.div`
 		display: block;
 		margin: 0 auto;
 	}
+
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		display: block;
 		width: 100%;
-		padding: 35px 0;
+		padding: ${({ preview }) => (preview ? "0" : "35px 0")};
+		border: ${({ preview }) => preview && "none"};
 	}
 `;
 
 const UploadWrap = styled(Label)`
 	display: flex;
 	align-items: flex-start;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 	h4 {
 		margin-top: 10px;
 	}
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		display: block;
-		margin-bottom: 50px;
+		margin-bottom: 20px;
 		h4 {
 			margin-bottom: 15px;
 		}
@@ -143,6 +145,48 @@ const RequestBtn = styled(RequestButton)`
 	}
 `;
 
+const UploadBox = styled.div``;
+
+const ImageDeleteButton = styled.button`
+	display: block;
+	width: 100%;
+	max-width: 400px;
+	height: 60px;
+	margin: 20px auto;
+	font-family: ${({ theme: { accentFont } }) => accentFont};
+	font-size: 1.6em;
+	color: ${({ theme: { headerDefault } }) => headerDefault};
+	border: 2px solid ${({ theme: { headerDefault } }) => headerDefault};
+	border-radius: 15px;
+	background-color: ${({ theme: { tableHeader } }) => tableHeader};
+`;
+
+const ButtonWrap = styled.div`
+	display: flex;
+	justify-content: space-between;
+	input {
+		display: block;
+		cursor: pointer;
+		width: 48%;
+		padding: 20px;
+		font-family: ${({ theme: { accentFont } }) => accentFont};
+		font-size: 1.6em;
+		border-radius: 15px;
+	}
+`;
+
+const SuccessButton = styled.input`
+	color: ${({ theme: { headerDefault } }) => headerDefault};
+	border: 2px solid ${({ theme: { headerDefault } }) => headerDefault};
+	background-color: ${({ theme: { tableHeader } }) => tableHeader};
+`;
+
+const DeleteButton = styled.input`
+	color: ${({ theme: { headerActive } }) => headerActive};
+	border: 2px solid ${({ theme: { headerActive } }) => headerActive};
+	background-color: rgba(255, 50, 50, 0.2);
+`;
+
 const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 	pageMode,
 	preview,
@@ -158,7 +202,7 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 		formState: { errors },
 	} = useFormContext();
 
-	return (
+return (
 		<Container>
 			<h2 className="blind">참여업체 신청하기</h2>
 			<MarketHeader>
@@ -166,7 +210,7 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 					src={
 						Utils.isMobile()
 							? "https://thegn.speedgabia.com/kmas-2021/market/mo-market-request-header.png"
-							: "https://thegn.speedgabia.com/kmas-2021/market/request-header.png"
+							: "https://thegn.speedgabia.com/kmas-2021/market/market-request-header.png"
 					}
 					alt=""
 				/>
@@ -210,33 +254,35 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 				})}
 				<UploadWrap htmlFor="image">
 					<h4>사진 업로드</h4>
-					<UploadButton>
-						{preview ? (
-							<MarketImage src={preview} alt="preview" />
-						) : (
-							<img
-								src="https://thegn.speedgabia.com/kmas-2021/market/upload-image.png"
-								alt="사진업로드 버튼"
-							/>
-						)}
-					</UploadButton>
+					<UploadBox>
+						<UploadButton preview={preview}>
+							{preview ? (
+								<MarketImage src={preview} alt="preview" />
+							) : (
+								<img
+									src="https://thegn.speedgabia.com/kmas-2021/market/upload-image.png"
+									alt="사진업로드 버튼"
+								/>
+							)}
+						</UploadButton>
 
-					<input
-						type="file"
-						id="image"
-						accept=" .jpg, .png"
-						style={{ display: "none" }}
-						{...register("image", {
-							onChange: onFileChange,
-						})}
-					/>
-					{errors && errors.image && <p>{errors.image?.message}</p>}
+						<input
+							type="file"
+							id="image"
+							accept=" .jpg, .png"
+							style={{ display: "none" }}
+							{...register("image", {
+								onChange: onFileChange,
+							})}
+						/>
+						{errors && errors.image && <p>{errors.image?.message}</p>}
+						{preview && (
+							<ImageDeleteButton type="button" onClick={onFileClear}>
+								파일삭제
+							</ImageDeleteButton>
+						)}
+					</UploadBox>
 				</UploadWrap>
-				{preview && (
-					<button type="button" onClick={onFileClear}>
-						파일삭제
-					</button>
-				)}
 				{pageMode === "C" && (
 					<RequestBtn type="submit">
 						<img
@@ -246,10 +292,10 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 					</RequestBtn>
 				)}
 				{pageMode !== "C" && (
-					<>
-						<input type="submit" value="수정하기" />
-						<input type="button" value="삭제하기" onClick={onMarketDelete} />
-					</>
+					<ButtonWrap>
+						<DeleteButton type="button" value="삭제하기" onClick={onMarketDelete} />
+						<SuccessButton type="submit" value="수정하기" />
+					</ButtonWrap>
 				)}
 			</Form>
 		</Container>

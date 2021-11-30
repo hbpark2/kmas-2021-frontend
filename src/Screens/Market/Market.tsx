@@ -25,7 +25,7 @@ const MarketHeader = styled.div`
 
 	img {
 		height: 380px;
-		margin-top: 50px;
+		margin-top: 80px;
 	}
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -205,6 +205,12 @@ const TableRow = styled.tr`
 	}
 `;
 
+const DisableRow = styled.tr`
+	td {
+		padding: 50px 0;
+	}
+`;
+
 export const RequestButton = styled.button`
 	display: block;
 	margin: 50px auto;
@@ -215,6 +221,60 @@ export const RequestButton = styled.button`
 		img {
 			width: 100%;
 		}
+	}
+`;
+
+const PromotionSection = styled.article``;
+const PromotionBanner = styled.img`
+	display: block;
+	margin: 0 auto 80px;
+	max-width: 1330px;
+	width: 100%;
+`;
+
+const KeyVisual = styled.img`
+	display: block;
+	margin: 0 auto;
+	box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3), -3px -3px 12px rgba(0, 0, 0, 0.3);
+	max-width: 1330px;
+	width: 90%;
+`;
+
+const DownloadButton = styled.button`
+	display: block;
+	width: 80%;
+	max-width: 820px;
+	margin: 50px auto;
+	img {
+		width: 100%;
+	}
+`;
+
+const NoteWrap = styled.article`
+	dl {
+		width: 90%;
+		max-width: 900px;
+		background-color: ${({ theme: { tableHeader } }) => tableHeader};
+		padding: 20px 30px;
+		margin: 20px auto;
+	}
+	dt {
+		font-size: 2.2rem;
+		display: flex;
+		align-items: center;
+		font-family: ${({ theme: { accentFont } }) => accentFont};
+		margin-bottom: 20px;
+		h4 {
+			margin-top: 4px;
+			margin-left: 5px;
+		}
+	}
+	li {
+		font-size: 2rem;
+		color: #a6a6a6;
+		list-style: disc;
+		margin: 10px 0;
+		margin-left: 50px;
 	}
 `;
 
@@ -334,9 +394,7 @@ const Market = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{data &&
-									data.results &&
-									data.results.length > 0 &&
+								{data && data.results && data.results.length > 0 ? (
 									data.results.map((market, index) => (
 										<TableRow key={market.id} onClick={() => onRowClick(market.id)}>
 											<TableDesc aria-hidden={!Utils.isMobile()}>
@@ -351,24 +409,89 @@ const Market = () => {
 											<TableDesc aria-hidden={!Utils.isMobile()}>{market.road_address}</TableDesc>
 											<TableDesc aria-hidden={!Utils.isMobile()}>{market.phone_number}</TableDesc>
 										</TableRow>
-									))}
+									))
+								) : (
+									<DisableRow>
+										<td colSpan={5}>데이터가 없습니다.</td>
+									</DisableRow>
+								)}
 							</tbody>
 						</Table>
-						<CustomPagination
-							page={page}
-							page_size={PAGE_SIZE}
-							total_count={data?.count || 0}
-							on_change={handlePageChange}
-						/>
+
+						{data && data.results && data.results.length > 0 && (
+							<CustomPagination
+								page={page}
+								page_size={PAGE_SIZE}
+								total_count={data?.count || 0}
+								on_change={handlePageChange}
+							/>
+						)}
+
 						<RequestButton onClick={() => history.push("/market/register")}>
 							<img
-								src="https://thegn.speedgabia.com/kmas-2021/market/market-request-btn.png"
+								src="https://thegn.speedgabia.com/kmas-2021/market/market-join-btn.png"
 								alt="신청하기 버튼"
-							/>
+							></img>
 						</RequestButton>
 					</MarketInner>
 				</MarketSection>
-				<button onClick={onFileDownload}>2021 K-MAS 라이브마켓 홍보물 다운받기</button>
+				<PromotionSection>
+					<PromotionBanner
+						src="https://thegn.speedgabia.com/kmas-2021/market/market-banner.png"
+						alt="홍보물다운받기배너"
+					/>
+					<KeyVisual
+						src="https://thegn.speedgabia.com/kmas-2021/market/market-keyvisual.png"
+						alt="키비주얼"
+					/>
+					<DownloadButton type="button" onClick={onFileDownload}>
+						<span className="blind">2021 K-MAS 라이브마켓 홍보물 다운받기</span>
+						<img
+							src="https://thegn.speedgabia.com/kmas-2021/market/market-download-button.png"
+							alt="홍보물다운받기 버튼"
+						/>
+					</DownloadButton>
+				</PromotionSection>
+
+				<NoteWrap>
+					<dl>
+						<dt>
+							<img
+								src="https://thegn.speedgabia.com/kmas-2021/market/snow-circle.png"
+								alt="눈 장식"
+							/>
+							<h4>광고물 활용 범위</h4>
+						</dt>
+						<dd>
+							<ul>
+								<li>
+									K-MAS 라이브마켓 참가 중,소상공인 오프라인 포스터, 현수막 등의 오프라인 광고등
+								</li>
+								<li>K-MAS 라이브마켓 참가 중,소상공인 온라인 광고물(웹배너, 웹포스터 등)</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<img
+								src="https://thegn.speedgabia.com/kmas-2021/market/snow-circle.png"
+								alt="눈 장식"
+							/>
+							<h4>주의사항</h4>
+						</dt>
+						<dd>
+							<ul>
+								<li>
+									광고물은 K-MAS 라이브마켓 기간(12/18 ~ 12/26)에만 사용 가능하며 행사 기간 후에는
+									회수 부탁드립니다.
+								</li>
+								<li>
+									위 사항을 위반하거나 불이행 하는 경우 법적 조치가 이루어지므로 주의가 필요합니다.
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</NoteWrap>
 			</Container>
 
 			{modalOpen && marketData && (
