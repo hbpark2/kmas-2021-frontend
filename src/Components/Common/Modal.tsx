@@ -49,7 +49,7 @@ const Layer = styled.div`
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: ${({ theme: { fullHeight } }) => fullHeight};
+	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 199;
 `;

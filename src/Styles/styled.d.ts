@@ -12,6 +12,7 @@ declare module "styled-components" {
 		tableHeader: string;
 		headerDefault: string;
 		headerActive: string;
+		defaultFont: string;
 		accentFont: string;
 		accentColor: string;
 		fullHeight: string;

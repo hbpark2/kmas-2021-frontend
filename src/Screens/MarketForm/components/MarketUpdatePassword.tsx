@@ -11,7 +11,7 @@ const MarketUpdatePassword: React.FC<IMarketUpdatePasswordProps> = ({
   return (
     <>
       <Label htmlFor={name}>
-        <h4>변경 비밀번호</h4>
+        <h4>비밀번호 변경</h4>
         <input
           type={type}
           id={name}

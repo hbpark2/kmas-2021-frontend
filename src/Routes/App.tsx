@@ -19,13 +19,13 @@ const queryClient = new QueryClient({
 });
 
 const App: React.FC = () => {
-	const { modalOpen } = useContext(CurrentContext);
+	const { modalOpen, menuOpen } = useContext(CurrentContext);
 
 	// MODAL - ARIA-HIDDEN ON/OFF
 	useEffect(() => {
 		const mainTarget = document.querySelector("main")! as HTMLElement;
 		const headerTarget = document.querySelector("header")! as HTMLElement;
-		if (modalOpen) {
+		if (modalOpen || menuOpen) {
 			document.body?.classList.remove("overflow-unset");
 			document.body?.classList.add("overflow-hidden");
 			mainTarget?.setAttribute("aria-hidden", "true");
@@ -36,11 +36,11 @@ const App: React.FC = () => {
 			mainTarget?.setAttribute("aria-hidden", "false");
 			headerTarget?.setAttribute("aria-hidden", "false");
 		}
-	}, [modalOpen]);
+	}, [modalOpen, menuOpen]);
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Meta data={{ title: "k-mas", description: "2021 k-mas", locale: "ko" }} />
+			<Meta data={{ title: "K-MAS", description: "2021 k-mas", locale: "ko" }} />
 			<BrowserRouter>
 				<ThemeProvider theme={defaultTheme}>
 					<GlobalStyles />

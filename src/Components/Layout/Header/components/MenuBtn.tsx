@@ -16,6 +16,7 @@ const Container = styled.button`
 		/* z-index: 10; */
 	}
 `;
+
 const MenuBar = styled.i<{ bg?: string }>`
 	display: block;
 	width: 100%;

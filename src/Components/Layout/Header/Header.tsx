@@ -4,13 +4,14 @@ import { useLocation } from "react-router-dom";
 import MenuBtn from "./components/MenuBtn";
 import { CurrentContext } from "../../../Context/ContextStore";
 import { useContext } from "react";
+import Utils from "../../../Utils/Utils";
 
 const Container = styled.header`
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100px;
+	height: 75px;
 	background-color: #fff;
 	z-index: 100;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -27,7 +28,8 @@ const Nav = styled.nav`
 	margin-left: 50px;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		margin: 0;
-		justify-content: center;
+		justify-content: flex-start;
+		margin-left: 20px;
 		align-items: center;
 	}
 `;
@@ -55,7 +57,7 @@ const MobileNavWrap = styled.div<{ menuOpen: boolean }>`
 		width: 80%;
 		height: 100%;
 		background-color: #fff;
-		height: ${({ theme: { fullHeight } }) => fullHeight};
+		height: 100vh;
 		transition: left 0.5s;
 		z-index: 5;
 
@@ -97,7 +99,7 @@ const Layer = styled.i<{ menuOpen: boolean }>`
 	left: 0;
 	display: block;
 	width: 100%;
-	height: ${({ theme: { fullHeight } }) => fullHeight};
+	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.5);
 
 	${({ menuOpen }) =>
@@ -188,14 +190,18 @@ const Header = () => {
 
 				<LogoWrap to="/">
 					<img
-						src="https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
+						src={
+							Utils.isMobile()
+								? "https://thegn.speedgabia.com/kmas-2021/main/mo-logo.png"
+								: "https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
+						}
 						alt="k--mas 로고"
 					/>
 				</LogoWrap>
 
 				<NavUl menuOpen={menuOpen}>
 					{menuArr.map((item, index) => (
-						<NavList current={location.pathname === item.pathname}>
+						<NavList current={location.pathname === item.pathname} key={`menu${index}`}>
 							<SLink to={item.pathname}>
 								<h3>{item.text}</h3>
 							</SLink>
@@ -215,6 +221,7 @@ const Header = () => {
 					{menuArr.map((item, index) => (
 						<NavList
 							current={location.pathname === item.pathname}
+							key={`menu${index}`}
 							onClick={() => setMenuOpen(false)}
 						>
 							<SLink to={item.pathname}>

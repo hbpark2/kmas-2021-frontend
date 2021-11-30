@@ -57,7 +57,7 @@ const DetailWrap = styled.div`
 		padding: 0 20px;
 	}
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-		font-size: 2rem;
+		font-size: 1.7rem;
 		dt {
 			width: 40%;
 			padding: 5px 0;

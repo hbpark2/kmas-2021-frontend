@@ -24,7 +24,6 @@ const KeyVisual = styled.img`
 	max-width: 1710px;
 	margin: 0 auto;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-		margin-top: 50px;
 	}
 `;
 
@@ -42,6 +41,7 @@ const CardWrap = styled.article`
 	overflow: hidden;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		margin: 0px auto 30px;
+		margin-top: -30px;
 	}
 `;
 
@@ -172,7 +172,14 @@ const Home = () => {
 			<h2 className="blind">본문 &#40;K-MAS home&#41; </h2>
 
 			<KeyVisualWrap>
-				<KeyVisual src="https://thegn.speedgabia.com/kmas-2021/main/main.png" alt="키비주얼" />
+				<KeyVisual
+					src={
+						Utils.isMobile()
+							? "https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"
+							: "https://thegn.speedgabia.com/kmas-2021/main/main.png"
+					}
+					alt="키비주얼"
+				/>
 			</KeyVisualWrap>
 			<SnowSection>
 				<CardWrap>

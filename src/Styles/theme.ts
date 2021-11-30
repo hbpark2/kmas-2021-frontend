@@ -36,6 +36,7 @@ export const defaultTheme: DefaultTheme = {
 	headerDefault: "#0b983a",
 	headerActive: "#e73031",
 	accentColor: "#e4cbac",
+	defaultFont: "GmarketSansMedium",
 	accentFont: "GmarketSansBold",
 	textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
 	fullHeight: window.innerWidth > 639 ? "100vh" : `${window.innerHeight}px`,
@@ -79,6 +80,8 @@ button {
 		transition: background-color 0.5s;
     font-size:1.6rem;
     height: auto;
+    font-family: ${({ theme: { defaultFont } }) => defaultFont};
+
     /* line-height: 1.4em; */
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile}{
       font-size:1.4rem;
@@ -88,7 +91,7 @@ button {
 
   main{
     width: auto;
-    margin-top:100px;
+    margin-top:75px;
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop}{
     margin-top: 70px;
     }
