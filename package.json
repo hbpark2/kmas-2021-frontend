@@ -41,13 +41,6 @@
     "eject": "react-scripts eject",
     "postbuild": "react-snap"
   },
-  "reactSnap": {
-    "crawl": false,
-    "include": [
-      "/",
-      "/market"
-    ]
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
