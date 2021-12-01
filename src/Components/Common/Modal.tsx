@@ -78,7 +78,7 @@ const Modal: React.FC<ModalProps> = ({
 	center,
 }) => {
 	const { setModalOpen, secondModalOpen, setSecondModalOpen } = useContext(CurrentContext);
-	console.log(width);
+
 
 	return (
 		<>

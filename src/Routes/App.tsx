@@ -40,7 +40,7 @@ const App: React.FC = () => {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Meta data={{ title: "K-MAS", description: "2021 k-mas", locale: "ko" }} />
+			<Meta data={{ title: "K-MAS 라이브마켓", description: "K-MAS 라이브마켓", locale: "ko" }} />
 			<BrowserRouter>
 				<ThemeProvider theme={defaultTheme}>
 					<GlobalStyles />
