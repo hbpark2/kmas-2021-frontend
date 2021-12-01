@@ -10,6 +10,7 @@ const SLabel = styled(Label)`
 	input {
 		width: 580px;
 	}
+
 	.label-button-wrap {
 		display: flex;
 		flex-direction: row;
@@ -32,6 +33,14 @@ const SLabel = styled(Label)`
 	}
 	.middle-input {
 		margin: 15px 0;
+	}
+	@media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.laptop} {
+		align-items: flex-start;
+		h4 {
+			display: flex;
+			align-items: center;
+			height: 60px;
+		}
 	}
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -106,18 +115,14 @@ const AddressInput: React.FC<AddressInpuProps> = ({ onPostOpen }) => {
 							type="text"
 							id="detail_address"
 							{...register("detail_address")}
-							placeholder="필수 입력사항입니다"
+							placeholder="상세주소를 입력해주세요"
 						/>
 					</div>
 				</AddressBox>
 			</SLabel>
-			{(errors.jibun_address || errors.road_address || errors.detail_address) && (
-				<p>
-					{errors.jibun_address.message ||
-						errors.road_address.message ||
-						errors.detail_address.message}
-				</p>
-			)}
+			{(errors["detail_address"] && <p>{errors["detail_address"].message}</p>) ||
+				(errors["jibun_address"] && <p>{errors["jibun_address"].message}</p>) ||
+				(errors["road_address"] && <p>{errors["road_address"].message}</p>)}
 		</>
 	);
 };
