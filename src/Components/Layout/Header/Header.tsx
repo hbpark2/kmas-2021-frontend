@@ -22,15 +22,20 @@ const Container = styled.header`
 const Nav = styled.nav`
 	position: relative;
 	display: flex;
-	/* width: 80%; */
 	height: 100%;
 	margin: 0 auto;
 	margin-left: 50px;
+	max-width: 1920px;
+
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		margin: 0;
 		justify-content: flex-start;
 		margin-left: 20px;
 		align-items: center;
+	}
+
+	@media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
+		margin: 0 auto;
 	}
 `;
 
@@ -151,11 +156,16 @@ const NavList = styled.li<{ current?: boolean | any }>`
 const SLink = styled(Link)``;
 
 const HeaderDecoration = styled.div`
+	position: fixed;
+	top: 70px;
+	left: 50%;
+	transform: translateX(-50%);
+
 	img {
 		display: block;
-		width: 100%;
-		max-width: 1920px;
 		margin: 0 auto;
+		/* max-width: 1920px;
+		margin: 0 auto; */
 	}
 `;
 
@@ -276,9 +286,11 @@ const Header = () => {
 				<HeaderDecoration>
 					<img
 						src={
-							window.innerWidth < 640
-								? "https://thegn.speedgabia.com/kmas-2021/common/mo-header-bottom.png"
-								: "https://thegn.speedgabia.com/kmas-2021/common/header-bottom.png"
+							window.innerWidth > 1920
+								? "https://thegn.speedgabia.com/kmas-2021/common/wide-header-bottom.png"
+								: window.innerWidth > 639
+								? "https://thegn.speedgabia.com/kmas-2021/common/header-bottom.png"
+								: "https://thegn.speedgabia.com/kmas-2021/common/mo-header-bottom.png"
 						}
 						alt="헤더장식이미지"
 					/>

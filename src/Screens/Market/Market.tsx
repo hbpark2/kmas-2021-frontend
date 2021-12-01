@@ -14,7 +14,12 @@ import FileDownload from "./components/FileDownload";
 import MarketDetail from "./components/MarketDetail";
 import PwdCheckForm from "./components/PwdCheckForm";
 
-const Container = styled.main``;
+const Container = styled.main`
+	padding-bottom: 100px;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		padding-bottom: 30px;
+	}
+`;
 const MarketHeader = styled.div`
 	width: 100%;
 	display: flex;

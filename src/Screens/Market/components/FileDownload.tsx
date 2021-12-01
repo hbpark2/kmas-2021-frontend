@@ -63,7 +63,7 @@ const FileDownload: React.FC<{ fileType?: string }> = ({ fileType }) => {
 			<p>
 				3G/LTE 등의 환경에서는
 				<br />
-				데이터 요금이 발생할 수 있습니다.(515MB)
+				데이터 요금이 발생할 수 있습니다.{fileType === "origin" ? "(500MB)" : "(13MB)"}
 			</p>
 			<ButtonWrap>
 				<DeleteButton type="button" value="취소하기" onClick={() => setModalOpen(false)} />

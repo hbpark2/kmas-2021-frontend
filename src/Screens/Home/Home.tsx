@@ -12,6 +12,10 @@ const Container = styled.main`
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	padding-bottom: 50px;
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		padding-bottom: 0;
+	}
 `;
 
 const KeyVisualWrap = styled.article`
@@ -23,8 +27,6 @@ const KeyVisual = styled.img`
 	width: 100%;
 	max-width: 1710px;
 	margin: 0 auto;
-	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-	}
 `;
 
 const SnowSection = styled.section`
