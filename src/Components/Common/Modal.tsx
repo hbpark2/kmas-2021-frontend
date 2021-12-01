@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { CurrentContext } from "../../Context/ContextStore";
 
-const Container = styled.div<{ width?: string; height?: string }>`
+const Container = styled.div<{ width?: string; height?: string; center?: boolean }>`
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -12,7 +12,7 @@ const Container = styled.div<{ width?: string; height?: string }>`
 	height: ${(props) => (props.height ? props.height : "60vh")};
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: ${({ center }) => (center ? "center" : "flex-start")};
 	background-color: #fff;
 	z-index: 200;
 	overflow-y: scroll;
@@ -63,6 +63,7 @@ interface ModalProps {
 	height?: string;
 	secondWidth?: string;
 	secondHeight?: string;
+	center?: boolean;
 	children: React.ReactChild;
 	secondChildren?: React.ReactNode;
 }
@@ -74,13 +75,14 @@ const Modal: React.FC<ModalProps> = ({
 	secondChildren,
 	secondWidth,
 	secondHeight,
+	center,
 }) => {
 	const { setModalOpen, secondModalOpen, setSecondModalOpen } = useContext(CurrentContext);
 	console.log(width);
 
 	return (
 		<>
-			<Container width={width} height={height} aria-hidden={secondModalOpen}>
+			<Container width={width} height={height} aria-hidden={secondModalOpen} center={center}>
 				{children}
 			</Container>
 			<Layer

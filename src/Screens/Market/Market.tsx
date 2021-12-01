@@ -40,7 +40,7 @@ const MarketHeader = styled.div`
 `;
 
 const MarketSection = styled.article`
-	padding-top: 120px;
+	padding-top: 80px;
 	background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png") no-repeat;
 	background-size: cover;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -64,7 +64,7 @@ const SearchSection = styled.div`
 	display: flex;
 	justify-content: space-around;
 	height: 75px;
-	margin-bottom: 120px;
+	margin-bottom: 80px;
 	font-size: 2.2rem;
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -160,11 +160,12 @@ const TableHead = styled.th<{ mobileActive?: boolean }>`
 	border-bottom: 1px solid ${({ theme: { gray } }) => gray};
 	word-break: keep-all;
 	vertical-align: middle;
-	height: 65px;
+	height: 55px;
 	background-color: ${({ theme: { tableHeader } }) => tableHeader};
 	border-left: none;
 	border-right: none;
 	font-family: ${({ theme: { accentFont } }) => accentFont};
+	font-size: 2rem;
 
 	&:first-child {
 		width: 60px;
@@ -176,7 +177,7 @@ const TableHead = styled.th<{ mobileActive?: boolean }>`
 		width: 230px;
 	}
 	&:nth-child(5) {
-		width: 120px;
+		width: 170px;
 	}
 	//
 
@@ -255,16 +256,29 @@ const KeyVisual = styled.img`
 	width: 90%;
 `;
 
+const DownloadWrap = styled.div`
+	display: flex;
+	max-width: 1230px;
+	width: 100%;
+	margin: 0 auto;
+
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+		width: 90%;
+		flex-direction: column;
+		margin: 20px auto;
+	}
+`;
+
 const DownloadButton = styled.button`
 	display: block;
-	width: 80%;
+	width: 48%;
 	max-width: 820px;
 	margin: 50px auto;
 	img {
 		width: 100%;
 	}
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-		margin: 20px auto;
+		margin: 5px auto;
 		width: 90%;
 	}
 `;
@@ -288,6 +302,7 @@ const NoteWrap = styled.article`
 			margin-left: 15px;
 		}
 	}
+
 	li {
 		font-size: 2rem;
 		color: #a6a6a6;
@@ -302,6 +317,7 @@ const NoteWrap = styled.article`
 		dl {
 			padding: 20px 12px;
 		}
+
 		li {
 			width: 90%;
 			margin-left: 30px;
@@ -324,7 +340,10 @@ const Market = () => {
 
 	const [category, setCategory] = useState(0);
 	const [marketId, setMarketId] = useState<number | undefined>();
-	const [fileModal, setFileModal] = useState<boolean>(false);
+	const [fileModal, setFileModal] = useState<{ modalState?: boolean; fileType?: string }>({
+		modalState: false,
+		fileType: "",
+	});
 
 	const { data: marketData } = useGetMarket(marketId);
 
@@ -349,7 +368,7 @@ const Market = () => {
 	}, [data, page, keyword, category, queryClient]);
 
 	const onRowClick = (id: number) => {
-		setFileModal(false);
+		setFileModal({ modalState: false, fileType: "" });
 		setMarketId(id);
 		setModalOpen(true);
 	};
@@ -364,8 +383,8 @@ const Market = () => {
 		}
 	};
 
-	const onFileModal = () => {
-		setFileModal(true);
+	const onFileModal = (fileType: string) => {
+		setFileModal({ modalState: true, fileType: fileType });
 		setModalOpen(true);
 	};
 
@@ -436,12 +455,28 @@ const Market = () => {
 													{data.count - ((page - 1) * PAGE_SIZE + index)}
 												</TableDesc>
 												<TableDesc aria-hidden={true} mobileActive={true}>
-													{market.name}
+													{Utils.isMobile()
+														? market.name && market.name.length > 6
+															? `${market.name.substr(0, 6)}...`
+															: market.name
+														: market.name && market.name.length > 10
+														? `${market.name.substr(0, 10)}...`
+														: market.name}
 												</TableDesc>
 												<TableDesc aria-hidden={true} mobileActive={true}>
-													{market.promotion}
+													{Utils.isMobile()
+														? market.promotion && market.promotion.length > 17
+															? `${market.promotion.substr(0, 17)}...`
+															: market.promotion
+														: market.promotion && market.promotion.length > 25
+														? `${market.promotion.substr(0, 25)}...`
+														: market.promotion}
 												</TableDesc>
-												<TableDesc aria-hidden={!Utils.isMobile()}>{market.road_address}</TableDesc>
+												<TableDesc aria-hidden={!Utils.isMobile()}>
+													{market.road_address && market.road_address.length > 10
+														? `${market.road_address.substr(0, 10)}...`
+														: market.road_address}
+												</TableDesc>
 												<TableDesc aria-hidden={!Utils.isMobile()}>{market.phone_number}</TableDesc>
 											</TableRow>
 										))
@@ -480,13 +515,23 @@ const Market = () => {
 						src="https://thegn.speedgabia.com/kmas-2021/market/market-keyvisual.png"
 						alt="키비주얼"
 					/>
-					<DownloadButton type="button" onClick={onFileModal}>
-						<span className="blind">2021 K-MAS 라이브마켓 홍보물 다운받기</span>
-						<img
-							src="https://thegn.speedgabia.com/kmas-2021/market/market-download-button.png"
-							alt="홍보물다운받기 버튼"
-						/>
-					</DownloadButton>
+					<DownloadWrap>
+						<DownloadButton type="button" onClick={() => onFileModal("origin")}>
+							<span className="blind">2021 K-MAS 라이브마켓 홍보물 다운받기</span>
+							<img
+								src="https://thegn.speedgabia.com/kmas-2021/market/mo-download-promotion-origin.png"
+								alt="홍보물다운받기 버튼"
+							/>
+						</DownloadButton>
+						<DownloadButton type="button" onClick={() => onFileModal("poster")}>
+							<span className="blind">2021 K-MAS 라이브마켓 홍보물 다운받기</span>
+
+							<img
+								src="https://thegn.speedgabia.com/kmas-2021/market/mo-download-promotion-poster.png"
+								alt="홍보물다운받기 버튼"
+							/>
+						</DownloadButton>
+					</DownloadWrap>
 				</PromotionSection>
 
 				<NoteWrap>
@@ -530,7 +575,7 @@ const Market = () => {
 				</NoteWrap>
 			</Container>
 
-			{modalOpen && marketData && (
+			{modalOpen && marketData && !fileModal.modalState && (
 				<Modal
 					secondChildren={<PwdCheckForm id={marketData.id} />}
 					width={Utils.isMobile() ? "90%" : "500px"}
@@ -551,9 +596,10 @@ const Market = () => {
 					/>
 				</Modal>
 			)}
-			{modalOpen && fileModal && (
-				<Modal width="300px" height="150px">
-					<FileDownload />
+
+			{modalOpen && fileModal.modalState && (
+				<Modal width="300px" height="150px" center={true}>
+					<FileDownload fileType={fileModal.fileType} />
 				</Modal>
 			)}
 		</>

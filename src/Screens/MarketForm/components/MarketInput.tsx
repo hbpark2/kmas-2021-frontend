@@ -18,6 +18,8 @@ export const Label = styled.label`
 		font-size: 2rem;
 		text-indent: 20px;
 		border: 1px solid ${({ theme: { gray } }) => gray};
+		word-wrap: break-word;
+		word-break: break-all;
 		&:focus {
 			border: 2px solid ${({ theme: { headerDefault } }) => headerDefault};
 			outline: none;

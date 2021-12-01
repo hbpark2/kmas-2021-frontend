@@ -33,6 +33,8 @@ const DetailWrap = styled.div`
 		justify-content: center;
 		align-items: center;
 		border-bottom: 1px solid ${({ theme: { gray } }) => gray};
+		background-color: ${({ theme: { tableHeader } }) => tableHeader};
+
 		&:last-child {
 			border: none;
 		}
@@ -46,16 +48,17 @@ const DetailWrap = styled.div`
 		word-break: break-all;
 		min-height: 60px;
 		line-height: 1.2em;
+		padding: 10px 20px;
 	}
 	dt {
 		width: 30%;
-		background-color: ${({ theme: { tableHeader } }) => tableHeader};
 	}
 	dd {
 		width: 70%;
 		justify-content: flex-start;
-		padding: 0 20px;
+		background-color: #fff;
 	}
+
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		font-size: 1.7rem;
 		dt {
