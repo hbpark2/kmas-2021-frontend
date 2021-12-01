@@ -276,7 +276,7 @@ const Header = () => {
 				<HeaderDecoration>
 					<img
 						src={
-							window.innerWidth > 640
+							window.innerWidth < 640
 								? "https://thegn.speedgabia.com/kmas-2021/common/mo-header-bottom.png"
 								: "https://thegn.speedgabia.com/kmas-2021/common/header-bottom.png"
 						}

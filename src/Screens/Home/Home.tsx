@@ -172,14 +172,23 @@ const Home = () => {
 			<h2 className="blind">본문 &#40;K-MAS home&#41; </h2>
 
 			<KeyVisualWrap>
-				<KeyVisual
+				{/* <KeyVisual
 					src={
-						window.innerWidth > 640
-							? "https://thegn.speedgabia.com/kmas-2021/main/main.png"
-							: "https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"
+						window.innerWidth < 640
+							? "https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"
+							: "https://thegn.speedgabia.com/kmas-2021/main/main.png"
 					}
 					alt="키비주얼"
-				/>
+				/> */}
+
+				{Utils.isMobile() ? (
+					<KeyVisual
+						src={"https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"}
+						alt="키비주얼"
+					/>
+				) : (
+					<KeyVisual src={"https://thegn.speedgabia.com/kmas-2021/main/main.png"} alt="키비주얼" />
+				)}
 			</KeyVisualWrap>
 			<SnowSection>
 				<CardWrap>
