@@ -46,7 +46,7 @@ const DeleteButton = styled.input`
 
 const FileDownload: React.FC<{ fileType?: string }> = ({ fileType }) => {
 	const { setModalOpen } = useContext(CurrentContext);
-
+	//
 	const onFileDownload = () => {
 		if (fileType === "origin") {
 			window.location.href =
