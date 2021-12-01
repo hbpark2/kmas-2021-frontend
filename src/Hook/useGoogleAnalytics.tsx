@@ -1,18 +1,18 @@
 // 구글 애널리틱스
 // 구글 통계 hook
-import React from "react";
 
 import analytics from "../analytics";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function useGoogleAnalytics() {
 	const location = useLocation();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		analytics.initGA();
 	}, []);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const currentPath = location.pathname + location.search;
 		analytics.sendPageview(currentPath);
 	}, [location]);

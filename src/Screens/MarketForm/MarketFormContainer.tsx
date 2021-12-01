@@ -12,18 +12,15 @@ import Utils from "../../Utils/Utils";
 import { getBase64Format } from "../../Utils/base64";
 import { useMutation } from "react-query";
 import { CurrentContext } from "../../Context/ContextStore";
-import { DELETE_MARKET, POST_MARKET, PUT_MARKET } from "../../Apis/MarketApi";
+import { POST_MARKET } from "../../Apis/MarketApi";
 import { useLocation, useHistory } from "react-router-dom";
 import { useGetMarket } from "../../Hook/useGetMarket";
-import {
-  CREATE_SUCCESS_TEXT,
-  DELETE_SUCCESS_TEXT,
-  MODIFY_SUCCESS_TEXT,
-} from "../../constants";
+import { CREATE_SUCCESS_TEXT } from "../../constants";
 import { ISuccessProps } from "../../Apis/CommonApi";
 import MarketFormPresenter from "./MarketFormPresenter";
 import Modal from "../../Components/Common/Modal";
 import DaumPostcode from "react-daum-postcode";
+import ModifyPwdCheckForm from "./components/ModifyPwdCheckForm";
 
 interface ILocation {
   id?: number;
@@ -38,7 +35,7 @@ const MarketFormContainer = () => {
 
   // * use-hook-form
   const methods = useForm<MarketFormValues>({
-    mode: "onChange",
+    // mode: "onChange",
     resolver: yupResolver(
       pageMode === "C" ? createValidSchema : modifyValidSchema
     ),
@@ -62,6 +59,12 @@ const MarketFormContainer = () => {
 
   // * 모달 Context
   const { modalOpen, setModalOpen } = useContext(CurrentContext);
+  const [postOpen, setPostOpen] = useState<boolean>(false);
+  const [pwdCheckOpen, setPwdCheckOpen] = useState<boolean>(false);
+
+  const [mutationFormData, setMutationFormData] = useState<FormData>(
+    new FormData()
+  );
 
   // * Image Preveiw
   const [preview, setPreview] = useState<string | null>(null);
@@ -89,25 +92,10 @@ const MarketFormContainer = () => {
   };
 
   // * 파일 삭제
-  const onFileClear = () => {
+  const onFileClear = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setValue("image", null);
     setPreview(null);
-  };
-
-  // * Mutation success function
-  const onSuccess = (data: ISuccessProps) => {
-    if (data.results) {
-      if (pageMode === "C") {
-        alert(CREATE_SUCCESS_TEXT);
-      } else if (pageMode === "U") {
-        alert(MODIFY_SUCCESS_TEXT);
-      } else {
-        alert(DELETE_SUCCESS_TEXT);
-      }
-      history.push("/market");
-    } else {
-      alert(data.message);
-    }
   };
 
   // * 등록 Mutation
@@ -116,41 +104,26 @@ const MarketFormContainer = () => {
     isLoading: isPostMarketLoading,
     isError: isPostMarketError,
   } = useMutation((formData: FormData) => POST_MARKET(formData), {
-    onSuccess,
+    onSuccess: (data: ISuccessProps) => {
+      if (data.results) {
+        alert(CREATE_SUCCESS_TEXT);
+        history.push("/market");
+      } else {
+        alert(data.message);
+      }
+    },
   });
-
-  // * 업데이트 Mutation
-  const {
-    mutate: putMarket,
-    isLoading: isPutMarketLoading,
-    isError: isPutMarketError,
-  } = useMutation(
-    ({ id, formData }: { id: number; formData: FormData }) =>
-      PUT_MARKET(id, formData),
-    {
-      onSuccess,
-    }
-  );
-
-  // * 삭제 Mutation
-  const {
-    mutate: deleteMarket,
-    isLoading: isDeleteMarketLoading,
-    isError: isDeleteMarketError,
-  } = useMutation(
-    ({ id, formData }: { id: number; formData: FormData }) =>
-      DELETE_MARKET(id, formData),
-    {
-      onSuccess,
-    }
-  );
 
   // * Submit
   const onSubmit: SubmitHandler<MarketFormValues> = (data) => {
     const formData = new FormData();
     for (const key in data) {
       if (key !== "image") {
-        formData.append(key, data[key]);
+        if (key === "hompage_link" || key === "exhibition_link") {
+          formData.append(key, Utils.addHttpHttps(data[key]));
+        } else {
+          formData.append(key, data[key]);
+        }
       } else if (key === "image") {
         const files = data.image;
         if (files && files.length > 0) formData.append(key, files[0]);
@@ -158,28 +131,30 @@ const MarketFormContainer = () => {
     }
 
     if (pageMode === "C") {
+      setPageMode("C");
       postMarket(formData);
-    } else if (pageMode === "U" && id) {
+    } else if (id) {
       formData.append("del_image", preview ? "F" : "T");
-      putMarket({ id, formData });
+      setPostOpen(false);
+      setPageMode("U");
+      setMutationFormData(formData);
+      setPwdCheckOpen(true);
+      setModalOpen(true);
     }
   };
 
-  // * Delete Function
-  const onMarketDelete = async () => {
-    // const password = getValues("original_password");
-    const password = await trigger("original_password", { shouldFocus: true });
-    if (password && id) {
-      const formData = new FormData();
-      formData.append("original_password", getValues("original_password"));
-      setPageMode("D");
-      deleteMarket({ id, formData });
-    }
+  const onMarketDelete = () => {
+    setPageMode("D");
+    setPostOpen(false);
+    setPwdCheckOpen(true);
+    setModalOpen(true);
   };
 
   // * 우편번호 찾기 Open
   const onPostOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setPwdCheckOpen(false);
+    setPostOpen(true);
     setModalOpen(true);
   };
 
@@ -195,9 +170,8 @@ const MarketFormContainer = () => {
     setModalOpen(false);
   };
 
-  const loading =
-    isPostMarketLoading || isPutMarketLoading || isMarketDataLoading;
-  const error = isPostMarketError || isPutMarketError || isMarketDataError;
+  const loading = isPostMarketLoading;
+  const error = isPostMarketError;
 
   return (
     <FormProvider {...methods}>
@@ -211,11 +185,20 @@ const MarketFormContainer = () => {
         onMarketDelete={onMarketDelete}
       />
 
-      {modalOpen && (
-        <Modal width="600px">
+      {modalOpen && postOpen && (
+        <Modal width={Utils.isMobile() ? "90%" : "600px"}>
           <DaumPostcode
             style={{ height: "100%" }}
             onComplete={onPostComplete}
+          />
+        </Modal>
+      )}
+      {modalOpen && pwdCheckOpen && id && (
+        <Modal width="300px" height="150px">
+          <ModifyPwdCheckForm
+            id={id}
+            formData={mutationFormData}
+            pageMode={pageMode}
           />
         </Modal>
       )}

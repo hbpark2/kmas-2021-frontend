@@ -1,4 +1,5 @@
 import { useFormContext } from "react-hook-form";
+import { Label } from "./MarketInput";
 
 const MarketUpdatePassword: React.FC<IMarketUpdatePasswordProps> = ({
   name,
@@ -9,30 +10,17 @@ const MarketUpdatePassword: React.FC<IMarketUpdatePasswordProps> = ({
 
   return (
     <>
-      <label htmlFor={"original_password"}>
-        <span>현재 비밀번호</span>
-        <input
-          type={type}
-          id="original_password"
-          {...register("original_password")}
-          placeholder={"현재 비밀번호"}
-          autoComplete="on"
-        />
-        {errors["original_password"] && (
-          <p>{errors["original_password"].message}</p>
-        )}
-      </label>
-      <label htmlFor={name}>
-        <span>변경 비밀번호</span>
+      <Label htmlFor={name}>
+        <h4>비밀번호 변경</h4>
         <input
           type={type}
           id={name}
-          {...register(name, { required: false })}
-          placeholder={"변경 비밀번호"}
+          {...register(name)}
+          placeholder="비밀번호 변경시 입력해주세요"
           autoComplete="on"
         />
-        {errors[name] && <p>{errors[name].message}</p>}
-      </label>
+      </Label>
+      {errors[name] && <p>{errors[name].message}</p>}
     </>
   );
 };

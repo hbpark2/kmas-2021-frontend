@@ -5,11 +5,29 @@ import Utils from "../../Utils/Utils";
 export const createValidSchema = yup
   .object()
   .shape({
-    category: yup.string().required(REQUIRED_TEXT),
-    name: yup.string().min(5, "5자 이상").required(REQUIRED_TEXT),
-    hompage_link: yup.string().required(REQUIRED_TEXT),
-    phone_number: yup.string().required(REQUIRED_TEXT),
-    password: yup.string().required(REQUIRED_TEXT),
+    category: yup
+      .string()
+      .required(REQUIRED_TEXT)
+      .test("is-category-test", REQUIRED_TEXT, (value) => {
+        return value !== "0";
+      }),
+    name: yup.string().trim().required(REQUIRED_TEXT),
+    hompage_link: yup.string().trim().required(REQUIRED_TEXT),
+    phone_number: yup
+      .string()
+      .required(REQUIRED_TEXT)
+      .test(
+        "is-phonenumber-test",
+        "올바른 핸드폰 번호를 입력해주세요.",
+        (value) => {
+          return Utils.checkPhoneNumber(value);
+        }
+      ),
+    password: yup
+      .string()
+      .min(4, "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.")
+      .max(12, "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.")
+      .required(REQUIRED_TEXT),
     crn: yup
       .string()
       .required(REQUIRED_TEXT)
@@ -19,21 +37,47 @@ export const createValidSchema = yup
     zonecode: yup.string().required(REQUIRED_TEXT),
     jibun_address: yup.string().required(REQUIRED_TEXT),
     road_address: yup.string().required(REQUIRED_TEXT),
-    detail_address: yup.string().required(REQUIRED_TEXT),
-    items: yup.string().required(REQUIRED_TEXT),
-    promotion: yup.string().required(REQUIRED_TEXT),
+    detail_address: yup.string().trim().required(REQUIRED_TEXT),
+    items: yup.string().trim().required(REQUIRED_TEXT),
+    promotion: yup.string().trim().required(REQUIRED_TEXT),
   })
   .required();
 
 export const modifyValidSchema = yup
   .object()
   .shape({
-    category: yup.string().required(REQUIRED_TEXT),
-    name: yup.string().min(5, "5자 이상").required(REQUIRED_TEXT),
-    hompage_link: yup.string().required(REQUIRED_TEXT),
-    phone_number: yup.string().required(REQUIRED_TEXT),
-    original_password: yup.string().required(REQUIRED_TEXT),
-    password: yup.string(),
+    category: yup
+      .string()
+      .required(REQUIRED_TEXT)
+      .test("is-category-test", REQUIRED_TEXT, (value) => {
+        return value !== "0";
+      }),
+    name: yup.string().trim().required(REQUIRED_TEXT),
+    hompage_link: yup.string().trim().required(REQUIRED_TEXT),
+    phone_number: yup
+      .string()
+      .required(REQUIRED_TEXT)
+      .test(
+        "is-phonenumber-test",
+        "올바른 핸드폰 번호를 입력해주세요.",
+        (value) => {
+          return Utils.checkPhoneNumber(value);
+        }
+      ),
+    password: yup
+      .string()
+      .nullable()
+      .notRequired()
+      .test(
+        "is-password-test",
+        "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.",
+        (value?: string | null) => {
+          if (value) {
+            return value.length >= 4 && value.length <= 12;
+          }
+          return true;
+        }
+      ),
     crn: yup
       .string()
       .required(REQUIRED_TEXT)
@@ -43,42 +87,36 @@ export const modifyValidSchema = yup
     zonecode: yup.string().required(REQUIRED_TEXT),
     jibun_address: yup.string().required(REQUIRED_TEXT),
     road_address: yup.string().required(REQUIRED_TEXT),
-    detail_address: yup.string().required(REQUIRED_TEXT),
-    items: yup.string().required(REQUIRED_TEXT),
-    promotion: yup.string().required(REQUIRED_TEXT),
+    detail_address: yup.string().trim().required(REQUIRED_TEXT),
+    items: yup.string().trim().required(REQUIRED_TEXT),
+    promotion: yup.string().trim().required(REQUIRED_TEXT),
   })
   .required();
 
 export const inputArr = [
   {
-    text: "이름",
+    text: "기업명",
     name: "name",
     type: "text",
-    placeholder: "필수 입력항목입니다.",
-  },
-  {
-    text: "홈페이지",
-    name: "hompage_link",
-    type: "text",
-    placeholder: "필수 입력항목입니다.",
-  },
-  {
-    text: "핸드폰 번호",
-    name: "phone_number",
-    type: "text",
-    placeholder: "필수 입력항목입니다.",
-  },
-  {
-    text: "비밀번호",
-    name: "password",
-    type: "password",
-    placeholder: "필수 입력항목입니다.",
+    placeholder: "필수 입력사항입니다",
   },
   {
     text: "사업자 번호",
     name: "crn",
     type: "text",
-    placeholder: "필수 입력항목입니다.",
+    placeholder: "필수 입력사항입니다",
+  },
+  {
+    text: "홈페이지",
+    name: "hompage_link",
+    type: "text",
+    placeholder: "필수 입력사항입니다",
+  },
+  {
+    text: "기업 전화번호",
+    name: "phone_number",
+    type: "text",
+    placeholder: "필수 입력사항입니다",
   },
   {
     text: "주소",
@@ -88,19 +126,29 @@ export const inputArr = [
     text: "주요 판매품목",
     name: "items",
     type: "text",
-    placeholder: "필수 입력항목입니다.",
+    placeholder: "필수 입력사항입니다",
   },
   {
     text: "프로모션 내용",
     name: "promotion",
     type: "text",
-    placeholder: "필수 입력항목입니다.",
+    placeholder: "필수 입력사항입니다",
   },
   {
     text: "기획전 링크",
     name: "exhibition_link",
     type: "text",
-    placeholder: "필수 입력항목입니다.",
+    placeholder: "",
+  },
+  {
+    text: "이미지",
+    name: "image",
+  },
+  {
+    text: "비밀번호",
+    name: "password",
+    type: "password",
+    placeholder: "필수 입력사항입니다",
   },
 ];
 

@@ -13,8 +13,3 @@ export const useGetMarket = (marketId?: number) => {
 
   return { data, isLoading, isError };
 };
-
-// Promise<void | {
-//   status: number;
-//   error: string;
-//   results: false | Promise<any>;

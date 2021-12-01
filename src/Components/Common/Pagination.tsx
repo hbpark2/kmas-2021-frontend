@@ -7,6 +7,7 @@ const Container = styled.div`
 		justify-content: center;
 		margin-top: 15px;
 	}
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -16,12 +17,10 @@ const Container = styled.div`
 		display: inline-block;
 		width: 30px;
 		height: 30px;
-		border: 1px solid #e2e2e2;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 1rem;
-
+		font-size: 2.2rem;
 		transition: all 0.5s;
 	}
 
@@ -35,23 +34,17 @@ const Container = styled.div`
 
 	ul.pagination li a {
 		text-decoration: none;
-		color: #337ab7;
-		font-size: 1rem;
+		color: #000;
 		transition: all 0.5s;
+		padding-top: 2px;
 	}
 
 	ul.pagination li.active a {
-		color: #fff;
+		color: ${({ theme: { tableAccent } }) => tableAccent};
 	}
 
-	ul.pagination li.active {
-		background-color: #337ab7;
-	}
-
-	ul.pagination li a:hover,
 	ul.pagination li a.active {
-		background-color: #337ab7;
-		color: #fff;
+		color: ${({ theme: { tableAccent } }) => tableAccent};
 	}
 
 	.page-selection {

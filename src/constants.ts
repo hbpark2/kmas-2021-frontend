@@ -1,6 +1,6 @@
 export const TRACKING_ID: string = process.env.REACT_APP_TRACKING_ID! as string;
 
-export const REQUIRED_TEXT = "필수 항목입니다";
+export const REQUIRED_TEXT = "필수 입력사항입니다";
 
 export const UNAUTHORIZED_TEXT = "권한이 없습니다";
 

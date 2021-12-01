@@ -244,6 +244,10 @@ export default {
     return `${year}${gubun}${month}${gubun}${day}`;
   },
   addHttpHttps(url) {
+    if (!url) {
+      return "";
+    }
+
     const regex = /http:\/\/|https:\/\//gi;
     if (regex.test(url)) {
       return url;
@@ -316,5 +320,12 @@ export default {
     }
 
     return tmp.filter((data) => data.length > 0);
+  },
+  isMobile() {
+    if (window.innerWidth < 640) {
+      return true;
+    } else {
+      return false;
+    }
   },
 };
