@@ -202,8 +202,7 @@ const TableHead = styled.th<{ mobileActive?: boolean }>`
 
 const TableDesc = styled(TableHead).attrs({ as: "td" })`
 	font-size: 1.8rem;
-
-	background-color: transparent;
+	background-color: rgba(255, 200, 200, 0.3);
 	font-family: ${({ theme: { defaultFont } }) => defaultFont};
 `;
 
@@ -217,7 +216,7 @@ const TableRow = styled.tr`
 
 	@media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.laptop} {
 		&:hover {
-			background-color: ${({ theme: { tableHeader } }) => tableHeader};
+			background-color: #ccc;
 		}
 	}
 `;

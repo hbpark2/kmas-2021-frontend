@@ -156,16 +156,19 @@ const NavList = styled.li<{ current?: boolean | any }>`
 const SLink = styled(Link)``;
 
 const HeaderDecoration = styled.div`
-	position: fixed;
-	top: 70px;
-	left: 50%;
-	transform: translateX(-50%);
-
 	img {
 		display: block;
 		margin: 0 auto;
-		/* max-width: 1920px;
-		margin: 0 auto; */
+		width: 100%;
+	}
+	@media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
+		position: fixed;
+		top: 75px;
+		left: 50%;
+		transform: translateX(-50%);
+		img {
+			width: auto;
+		}
 	}
 `;
 
