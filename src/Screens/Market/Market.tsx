@@ -48,6 +48,7 @@ const MarketSection = styled.article`
 	padding-top: 80px;
 	background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png") no-repeat;
 	background-size: cover;
+
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		padding-top: 60px;
 		background: none;

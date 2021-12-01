@@ -187,7 +187,7 @@ const Header = () => {
 	const location = useLocation();
 
 	const menuArr = [
-		{ text: "K-mas", pathname: "/", active: true },
+		{ text: "K-MAS 라이브 마켓", pathname: "/", active: true },
 		{ text: "이벤트", pathname: "/event", active: false },
 		{ text: "판매 기획전", pathname: "/exhibition", active: false },
 		{ text: "라이브커머스", pathname: "/live", active: false },
