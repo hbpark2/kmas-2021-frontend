@@ -91,7 +91,7 @@ button {
 
   main{
     width: auto;
-    margin-top:75px;
+    margin-top:80px;
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop}{
     margin-top: 70px;
     }

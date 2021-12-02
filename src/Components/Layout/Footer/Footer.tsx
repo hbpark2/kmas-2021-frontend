@@ -21,9 +21,10 @@ const Inner = styled.ul`
 const Footer = () => {
 	return (
 		<Container>
-			<h2 className="blind">푸터영역</h2>
+			<h2 className="blind">푸터</h2>
 			<Inner>
 				<li>
+					<h3 className="blind">중소벤처기업부</h3>
 					<a
 						href="https://www.mss.go.kr/site/smba/main.do"
 						target="_blank"
@@ -34,11 +35,13 @@ const Footer = () => {
 					</a>
 				</li>
 				<li>
+        <h3 className="blind">중소기업유통센터</h3>
 					<a href="https://www.sbdc.or.kr/" target="_blank" title="링크이동" rel="noreferrer">
 						<img src="https://thegn.speedgabia.com/kmas-2021/common/sbdc_logo_layer.png" alt="" />
 					</a>
 				</li>
 				<li>
+        <h3 className="blind">후원 네이버</h3>
 					<a href="https://www.naver.com/" target="_blank" title="링크이동" rel="noreferrer">
 						<img src="https://thegn.speedgabia.com/kmas-2021/common/naver-logo.png" alt="" />
 					</a>
