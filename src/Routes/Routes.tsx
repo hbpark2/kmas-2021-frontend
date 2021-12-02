@@ -9,10 +9,10 @@ import Market from "../Screens/Market/Market";
 
 import News from "../Screens/News/News";
 import { useEffect } from "react";
-import TreeEvent from "../Screens/Event/TreeEvent";
-import ReceiptEvent from "../Screens/Event/ReceiptEvent";
-import PhotoEvent from "../Screens/Event/PhotoEvent";
-import OnlineEvent from "../Screens/Event/OnlineEvent";
+import TreeEvent from "../Screens/Event/components/TreeEvent";
+import ReceiptEvent from "../Screens/Event/components/ReceiptEvent";
+import PhotoEvent from "../Screens/Event/components/PhotoEvent";
+import OnlineEvent from "../Screens/Event/components/OnlineEvent";
 
 type TEventRouteArrProps = {
   text: string;

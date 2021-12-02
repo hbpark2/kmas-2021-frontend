@@ -186,10 +186,16 @@ const LogoWrap = styled(Link)`
 const Header = () => {
 	const { menuOpen, setMenuOpen } = useContext(CurrentContext);
 	const location = useLocation();
+	console.log(location.pathname);
 
 	const menuArr = [
 		{ text: "K-MAS 라이브 마켓", pathname: "/", active: true },
-		{ text: "이벤트", pathname: "/event", active: false },
+		{
+			text: "이벤트",
+			pathname: "/event/tree",
+			active: true,
+			current: location.pathname.indexOf("event") > 0,
+		},
 		{ text: "판매 기획전", pathname: "/exhibition", active: false },
 		{ text: "라이브커머스", pathname: "/live", active: false },
 		{ text: "마켓뉴스", pathname: "/news", active: false },
@@ -240,7 +246,10 @@ const Header = () => {
 
 				<NavUl menuOpen={menuOpen}>
 					{menuArr.map((item, index) => (
-						<NavList current={location.pathname === item.pathname} key={`menu${index}`}>
+						<NavList
+							current={item.current ? item.current : location.pathname === item.pathname}
+							key={`menu${index}`}
+						>
 							{onHeaderCreator({
 								active: item.active,
 								pathname: item.pathname,
@@ -264,7 +273,7 @@ const Header = () => {
 					<MobileNavUl>
 						{menuArr.map((item, index) => (
 							<NavList
-								current={location.pathname === item.pathname}
+								current={item.current ? item.current : location.pathname === item.pathname}
 								key={`menu${index}`}
 								onClick={() => {
 									if (item.active) setMenuOpen(false);

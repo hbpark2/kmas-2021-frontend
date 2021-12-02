@@ -35,7 +35,7 @@ export const defaultTheme: DefaultTheme = {
 	tableHeader: "rgba(226, 244, 233,0.8)",
 	headerDefault: "#0b983a",
 	headerActive: "#e73031",
-	accentColor: "#e4cbac",
+	accentColor: "#0b983a",
 	defaultFont: "GmarketSansMedium",
 	accentFont: "GmarketSansBold",
 	textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
