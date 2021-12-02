@@ -24,17 +24,21 @@ const App: React.FC = () => {
 	// MODAL - ARIA-HIDDEN ON/OFF
 	useEffect(() => {
 		const mainTarget = document.querySelector("main")! as HTMLElement;
-		const headerTarget = document.querySelector("header")! as HTMLElement;
+		const headerTarget = document.querySelector("nav")! as HTMLElement;
 		if (modalOpen || menuOpen) {
 			document.body?.classList.remove("overflow-unset");
 			document.body?.classList.add("overflow-hidden");
 			mainTarget?.setAttribute("aria-hidden", "true");
-			headerTarget?.setAttribute("aria-hidden", "true");
 		} else {
 			document.body?.classList.remove("overflow-hidden");
 			document.body?.classList.add("overflow-unset");
 			mainTarget?.setAttribute("aria-hidden", "false");
+		}
+
+		if (menuOpen) {
 			headerTarget?.setAttribute("aria-hidden", "false");
+		} else {
+			headerTarget?.setAttribute("aria-hidden", "true");
 		}
 	}, [modalOpen, menuOpen]);
 

@@ -6,6 +6,7 @@ export const Container = styled.main`
 		padding-bottom: 30px;
 	}
 `;
+
 export const MarketHeader = styled.div`
 	width: 100%;
 	display: flex;

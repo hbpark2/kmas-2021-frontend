@@ -23,6 +23,7 @@ export const MarketHeader = styled.div`
 		max-width: 800px;
 		transform: translateY(12px);
 	}
+
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		height: auto;
 		img {

@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useQueryClient } from "react-query";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
+import { FadeLoader } from "react-spinners";
+import styled, { css } from "styled-components";
 import { GET_MARKETS } from "../../Apis/MarketApi";
 import Modal from "../../Components/Common/Modal";
 import CustomPagination from "../../Components/Common/Pagination";
+import Spinner from "../../Components/Common/Spinner";
 import { CurrentContext } from "../../Context/ContextStore";
 import { useGetMarket } from "../../Hook/useGetMarket";
 import { useGetMarkets } from "../../Hook/useGetMarkets";
@@ -69,13 +71,13 @@ const Market = () => {
 	});
 
 	// Prefetch the next page!
-	useEffect(() => {
-		if (data?.hasMore) {
-			queryClient.prefetchQuery(["GET_MARKETS", page + 1], () =>
-				GET_MARKETS({ page: page + 1, page_size: PAGE_SIZE, keyword, category })
-			);
-		}
-	}, [data, page, keyword, category, queryClient]);
+	// useEffect(() => {
+	// 	if (data?.hasMore) {
+	// 		queryClient.prefetchQuery(["GET_MARKETS", page + 1], () =>
+	// 			GET_MARKETS({ page: page + 1, page_size: PAGE_SIZE, keyword, category })
+	// 		);
+	// 	}
+	// }, [data, page, keyword, category, queryClient]);
 
 	const onRowClick = (id: number) => {
 		setFileModal({ modalState: false, fileType: "" });
@@ -112,6 +114,7 @@ const Market = () => {
 						alt=""
 					/>
 				</MarketHeader>
+
 				<MarketSection>
 					<MarketInner>
 						<SearchSection>
@@ -125,6 +128,7 @@ const Market = () => {
 									</option>
 								))}
 							</SelectBox>
+
 							<SearchInput
 								ref={keywordRef}
 								type="text"
@@ -135,6 +139,7 @@ const Market = () => {
 									}
 								}}
 							/>
+
 							<SearchSubmit onClick={onSearchClick}>
 								<img
 									src="https://thegn.speedgabia.com/kmas-2021/market/search-icon.png"
@@ -143,6 +148,7 @@ const Market = () => {
 								검색
 							</SearchSubmit>
 						</SearchSection>
+
 						<TableWrap>
 							<h3 className="blind">K-MAS 참여업체 테이블</h3>
 
@@ -162,6 +168,14 @@ const Market = () => {
 									</tr>
 								</thead>
 								<tbody>
+									{isLoading && (
+										<DisableRow>
+											<td colSpan={5}>
+												<Spinner />
+											</td>
+										</DisableRow>
+									)}
+
 									{data && data.results && data.results.length > 0 ? (
 										data.results.map((market, index) => (
 											<TableRow key={market.id} onClick={() => onRowClick(market.id)}>
