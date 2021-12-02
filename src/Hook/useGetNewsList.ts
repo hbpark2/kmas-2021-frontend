@@ -8,8 +8,6 @@ export const useGetNewsList = ({ page, page_size }: IUseGetNewsListProps) => {
     () => GET_NEWS_LIST({ page, page_size }),
     {
       keepPreviousData: true,
-      // * 삭제예정
-      enabled: false,
     }
   );
 
