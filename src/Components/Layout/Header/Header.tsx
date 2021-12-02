@@ -52,7 +52,7 @@ const NavUl = styled.ul<{ menuOpen: boolean }>`
 	}
 `;
 
-const MobileNavWrap = styled.nav<{ menuOpen: boolean }>`
+const MobileNavWrap = styled.div<{ menuOpen: boolean }>`
 	display: none;
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		position: fixed;
@@ -223,6 +223,7 @@ const Header = () => {
 	return (
 		<Container>
 			<h1 className="blind">K-MAS</h1>
+
 			<Nav>
 				<h2 className="blind">네비게이션</h2>
 
@@ -248,34 +249,37 @@ const Header = () => {
 						</NavList>
 					))}
 				</NavUl>
+
+				<MobileNavWrap menuOpen={menuOpen}>
+					<LeftBar>
+						<img src="https://thegn.speedgabia.com/kmas-2021/common/mo-nav-left.png" alt="" />
+					</LeftBar>
+
+					<MobileLogoWrap>
+						<img
+							src="https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
+							alt="k-mas 로고"
+						/>
+					</MobileLogoWrap>
+					<MobileNavUl>
+						{menuArr.map((item, index) => (
+							<NavList
+								current={location.pathname === item.pathname}
+								key={`menu${index}`}
+								onClick={() => {
+									if (item.active) setMenuOpen(false);
+								}}
+							>
+								{onHeaderCreator({
+									active: item.active,
+									pathname: item.pathname,
+									text: item.text,
+								})}
+							</NavList>
+						))}
+					</MobileNavUl>
+				</MobileNavWrap>
 			</Nav>
-
-			<MobileNavWrap menuOpen={menuOpen}>
-				<LeftBar>
-					<img src="https://thegn.speedgabia.com/kmas-2021/common/mo-nav-left.png" alt="" />
-				</LeftBar>
-
-				<MobileLogoWrap>
-					<img src="https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png" alt="k-mas 로고" />
-				</MobileLogoWrap>
-				<MobileNavUl>
-					{menuArr.map((item, index) => (
-						<NavList
-							current={location.pathname === item.pathname}
-							key={`menu${index}`}
-							onClick={() => {
-								if (item.active) setMenuOpen(false);
-							}}
-						>
-							{onHeaderCreator({
-								active: item.active,
-								pathname: item.pathname,
-								text: item.text,
-							})}
-						</NavList>
-					))}
-				</MobileNavUl>
-			</MobileNavWrap>
 
 			<MenuBtn />
 
