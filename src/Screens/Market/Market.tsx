@@ -182,7 +182,15 @@ const Market = () => {
                     </DisableRow>
                   )}
 
-                  {data && data.results && data.results.length > 0 ? (
+                  {!isLoading && !data && (
+                    <DisableRow>
+                      <td colSpan={5}>데이터가 없습니다.</td>
+                    </DisableRow>
+                  )}
+
+                  {data &&
+                    data.results &&
+                    data.results.length > 0 &&
                     data.results.map((market, index) => (
                       <TableRow
                         key={market.id}
@@ -219,12 +227,7 @@ const Market = () => {
                           {market.phone_number}
                         </TableDesc>
                       </TableRow>
-                    ))
-                  ) : (
-                    <DisableRow>
-                      <td colSpan={5}>데이터가 없습니다.</td>
-                    </DisableRow>
-                  )}
+                    ))}
                 </tbody>
               </Table>
             </TableWrap>
