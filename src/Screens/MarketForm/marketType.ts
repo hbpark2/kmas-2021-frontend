@@ -12,7 +12,13 @@ export const createValidSchema = yup
         return value !== "0";
       }),
     name: yup.string().trim().required(REQUIRED_TEXT),
-    hompage_link: yup.string().trim().required(REQUIRED_TEXT),
+    hompage_link: yup
+      .string()
+      .trim()
+      .required(REQUIRED_TEXT)
+      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+        return Utils.checkURL(value);
+      }),
     phone_number: yup
       .string()
       .required(REQUIRED_TEXT)
@@ -40,6 +46,12 @@ export const createValidSchema = yup
     detail_address: yup.string().trim().required(REQUIRED_TEXT),
     items: yup.string().trim().required(REQUIRED_TEXT),
     promotion: yup.string().trim().required(REQUIRED_TEXT),
+    exhibition_link: yup
+      .string()
+      .trim()
+      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+        return Utils.checkURL(value);
+      }),
   })
   .required();
 
@@ -90,6 +102,12 @@ export const modifyValidSchema = yup
     detail_address: yup.string().trim().required(REQUIRED_TEXT),
     items: yup.string().trim().required(REQUIRED_TEXT),
     promotion: yup.string().trim().required(REQUIRED_TEXT),
+    exhibition_link: yup
+      .string()
+      .trim()
+      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+        return Utils.checkURL(value);
+      }),
   })
   .required();
 
