@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Event from "./components/Event";
 
 const Container = styled.main`
   padding-bottom: 100px;
@@ -7,8 +8,12 @@ const Container = styled.main`
   }
 `;
 
-const OnlineEvent = () => {
-  return <Container>OnlineEvent</Container>;
+const ReceiptEvent = () => {
+  return (
+    <Event>
+      <Container>ReceiptEvent</Container>
+    </Event>
+  );
 };
 
-export default OnlineEvent;
+export default ReceiptEvent;

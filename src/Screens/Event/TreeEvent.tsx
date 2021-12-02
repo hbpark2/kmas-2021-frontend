@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Event from "./components/Event";
 
 const Container = styled.main`
   padding-bottom: 100px;
@@ -7,8 +8,12 @@ const Container = styled.main`
   }
 `;
 
-const PhotoEvent = () => {
-  return <Container>PhotoEvent</Container>;
+const TreeEvent = () => {
+  return (
+    <Event>
+      <Container>TreeEvent</Container>
+    </Event>
+  );
 };
 
-export default PhotoEvent;
+export default TreeEvent;
