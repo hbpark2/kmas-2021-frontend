@@ -38,6 +38,7 @@ import {
 
 const PAGE_SIZE = 5;
 const Market = () => {
+	const isMobile = Utils.isMobile();
 	const keywordRef = useRef(null);
 	const categoryRef = useRef(null);
 	const queryClient = useQueryClient();
@@ -107,7 +108,7 @@ const Market = () => {
 				<MarketHeader>
 					<img
 						src={
-							Utils.isMobile()
+							isMobile
 								? "https://thegn.speedgabia.com/kmas-2021/market/mo-market-header.png"
 								: "https://thegn.speedgabia.com/kmas-2021/market/market-header.png"
 						}
@@ -156,15 +157,15 @@ const Market = () => {
 								<caption className="blind">참여장터 현황</caption>
 								<thead>
 									<tr>
-										<TableHead aria-hidden={!Utils.isMobile() || false}>번호</TableHead>
+										<TableHead aria-hidden={!isMobile || false}>번호</TableHead>
 										<TableHead aria-hidden={true} mobileActive={true}>
 											기업명
 										</TableHead>
 										<TableHead aria-hidden={true} mobileActive={true}>
 											프로모션 내용
 										</TableHead>
-										<TableHead aria-hidden={!Utils.isMobile()}>기업주소</TableHead>
-										<TableHead aria-hidden={!Utils.isMobile()}>기업 전화번호</TableHead>
+										<TableHead aria-hidden={!isMobile}>기업주소</TableHead>
+										<TableHead aria-hidden={!isMobile}>기업 전화번호</TableHead>
 									</tr>
 								</thead>
 								<tbody>
@@ -187,11 +188,11 @@ const Market = () => {
 										data.results.length > 0 &&
 										data.results.map((market, index) => (
 											<TableRow key={market.id} onClick={() => onRowClick(market.id)}>
-												<TableDesc aria-hidden={!Utils.isMobile()}>
+												<TableDesc aria-hidden={!isMobile}>
 													{data.count - ((page - 1) * PAGE_SIZE + index)}
 												</TableDesc>
 												<TableDesc aria-hidden={true} mobileActive={true}>
-													{Utils.isMobile()
+													{isMobile
 														? market.name && market.name.length > 6
 															? `${market.name.substr(0, 6)}...`
 															: market.name
@@ -200,7 +201,7 @@ const Market = () => {
 														: market.name}
 												</TableDesc>
 												<TableDesc aria-hidden={true} mobileActive={true}>
-													{Utils.isMobile()
+													{isMobile
 														? market.promotion && market.promotion.length > 17
 															? `${market.promotion.substr(0, 17)}...`
 															: market.promotion
@@ -208,12 +209,12 @@ const Market = () => {
 														? `${market.promotion.substr(0, 25)}...`
 														: market.promotion}
 												</TableDesc>
-												<TableDesc aria-hidden={!Utils.isMobile()}>
+												<TableDesc aria-hidden={!isMobile}>
 													{market.road_address && market.road_address.length > 10
 														? `${market.road_address.substr(0, 10)}...`
 														: market.road_address}
 												</TableDesc>
-												<TableDesc aria-hidden={!Utils.isMobile()}>{market.phone_number}</TableDesc>
+												<TableDesc aria-hidden={!isMobile}>{market.phone_number}</TableDesc>
 											</TableRow>
 										))}
 								</tbody>
@@ -312,7 +313,7 @@ const Market = () => {
 			{modalOpen && marketData && !fileModal.modalState && (
 				<Modal
 					secondChildren={<PwdCheckForm id={marketData.id} />}
-					width={Utils.isMobile() ? "90%" : "500px"}
+					width={isMobile ? "90%" : "500px"}
 					secondWidth="300px"
 					secondHeight="150px"
 				>

@@ -18,6 +18,8 @@ import SwiperSection from "./components/SwiperSection";
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
 const Home = () => {
+	const isMobile = Utils.isMobile();
+
 	const goToLink = (url: string) => {
 		window.open(url);
 	};
@@ -31,7 +33,7 @@ const Home = () => {
 
 				<KeyVisual
 					src={
-						Utils.isMobile()
+						isMobile
 							? "https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"
 							: "https://thegn.speedgabia.com/kmas-2021/main/main.png"
 					}
@@ -41,7 +43,7 @@ const Home = () => {
 			<SnowSection>
 				<CardWrap>
 					<h3 className="blind">K-MAS 행사정보</h3>
-					{Utils.isMobile() ? (
+					{isMobile ? (
 						<Card src="https://thegn.speedgabia.com/kmas-2021/main/mo-card.png" alt="card" />
 					) : (
 						<Card src="https://thegn.speedgabia.com/kmas-2021/main/main-card.png" alt="card" />

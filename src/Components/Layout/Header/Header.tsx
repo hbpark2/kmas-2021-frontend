@@ -186,7 +186,7 @@ const LogoWrap = styled(Link)`
 const Header = () => {
 	const { menuOpen, setMenuOpen } = useContext(CurrentContext);
 	const location = useLocation();
-	console.log(location.pathname);
+	const isMobile = Utils.isMobile();
 
 	const menuArr = [
 		{ text: "K-MAS 라이브 마켓", pathname: "/", active: true },
@@ -236,7 +236,7 @@ const Header = () => {
 				<LogoWrap to="/">
 					<img
 						src={
-							Utils.isMobile()
+							isMobile
 								? "https://thegn.speedgabia.com/kmas-2021/main/mo-logo.png"
 								: "https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
 						}

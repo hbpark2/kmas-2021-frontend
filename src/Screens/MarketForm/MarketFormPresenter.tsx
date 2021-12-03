@@ -35,6 +35,7 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 		handleSubmit,
 		formState: { errors },
 	} = useFormContext();
+	const isMobile = Utils.isMobile();
 
 	return (
 		<Container>
@@ -42,7 +43,7 @@ const MarketFormPresenter: React.FC<IMarketFormPresenterProps> = ({
 			<MarketHeader>
 				<img
 					src={
-						Utils.isMobile()
+						isMobile
 							? "https://thegn.speedgabia.com/kmas-2021/market/mo-market-request-header.png"
 							: "https://thegn.speedgabia.com/kmas-2021/market/market-request-header.png"
 					}
