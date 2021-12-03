@@ -1,7 +1,5 @@
-// * 온라인 기획전 데이터 - 라이브 커머스 데이터
-
-// * 온라인 기획전 데이터
-export const onlineArray: ExhibitonCompany[] = [
+// * 기획전 데이터
+export const arrData: ExhibitonCompany[] = [
   {
     name: "롯데홈쇼핑",
     startDate: "2021-12-01",
@@ -310,10 +308,6 @@ export const onlineArray: ExhibitonCompany[] = [
     active: false,
     alertMessage: "12월 10일 오픈 예정",
   },
-];
-
-// * 라이브 커머스 데이터
-export const liveArray: ExhibitonCompany[] = [
   {
     name: "그립",
     startDate: "2021-12-20",

@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import analytics from "../../../analytics";
 import Utils from "../../../Utils/Utils";
-import { liveArray, onlineArray } from "./exhibitionData";
+import { arrData } from "./exhibitionData";
 
 const Grid = styled.div`
   display: grid;
@@ -104,36 +104,32 @@ const ExhibitionList = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => setTab("online")}>온라인 이벤트</button>
-      <button onClick={() => setTab("live")}>라이브 커머스</button>
-      <Grid>
-        {(tab === "online" ? onlineArray : liveArray).map((item) => {
-          return (
-            <ExhibitionItem key={item.name}>
-              <button
-                onClick={() =>
-                  onExhibitionClick({
-                    name: item.name,
-                    startDate: item.startDate,
-                    endDate: item.endDate,
-                    active: item.active,
-                    link: item.link,
-                    alertMessage: item.alertMessage,
-                  })
-                }
-              >
-                {exhibitionImageCreator({
+    <Grid>
+      {arrData.map((item) => {
+        return (
+          <ExhibitionItem key={item.name}>
+            <button
+              onClick={() =>
+                onExhibitionClick({
                   name: item.name,
-                  moImage: item.moImage,
-                  pcImage: item.pcImage,
-                })}
-              </button>
-            </ExhibitionItem>
-          );
-        })}
-      </Grid>
-    </div>
+                  startDate: item.startDate,
+                  endDate: item.endDate,
+                  active: item.active,
+                  link: item.link,
+                  alertMessage: item.alertMessage,
+                })
+              }
+            >
+              {exhibitionImageCreator({
+                name: item.name,
+                moImage: item.moImage,
+                pcImage: item.pcImage,
+              })}
+            </button>
+          </ExhibitionItem>
+        );
+      })}
+    </Grid>
   );
 };
 
