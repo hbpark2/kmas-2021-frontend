@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import analytics from "../../../analytics";
 import Utils from "../../../Utils/Utils";
 import { liveArray, onlineArray } from "./exhibitionData";
 
@@ -44,26 +45,44 @@ const ExhibitionList = () => {
   const [tab, setTab] = useState<"online" | "live">("online");
 
   const onExhibitionClick = ({
+    name,
     startDate,
     endDate,
     active,
     link,
+    alertMessage,
   }: {
+    name: string;
     startDate: string;
     endDate: string;
     active: boolean;
     link: string | null;
+    alertMessage?: string;
   }) => {
     if (active) {
       if (Utils.betweenDate(startDate, endDate) && link) {
+        // * GA 설정
+        analytics.sendEvent({
+          category: "기획전",
+          action: "기획전 클릭",
+          label: name,
+        });
         window.open(link, "_blank");
       } else if (Utils.closeDate(endDate)) {
         alert("마감되었습니다");
       } else {
-        alert("12월 오픈 예정");
+        if (alertMessage) {
+          alert(alertMessage);
+        } else {
+          alert("12월 오픈 예정");
+        }
       }
     } else {
-      alert("12월 오픈 예정");
+      if (alertMessage) {
+        alert(alertMessage);
+      } else {
+        alert("12월 오픈 예정");
+      }
     }
   };
 
@@ -95,10 +114,12 @@ const ExhibitionList = () => {
               <button
                 onClick={() =>
                   onExhibitionClick({
-                    active: item.active,
-                    link: item.link,
+                    name: item.name,
                     startDate: item.startDate,
                     endDate: item.endDate,
+                    active: item.active,
+                    link: item.link,
+                    alertMessage: item.alertMessage,
                   })
                 }
               >
