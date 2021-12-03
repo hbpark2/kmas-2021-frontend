@@ -263,6 +263,25 @@ export default {
     }
     return `http://${url}`;
   },
+  betweenDate(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const now = new Date();
+
+    if (start.getDate() <= now.getDate() && now.getDate() <= end.getDate()) {
+      return true;
+    }
+    return false;
+  },
+  closeDate(endDate) {
+    const end = new Date(endDate);
+    const now = new Date();
+
+    if (end.getDate() <= now.getDate()) {
+      return true;
+    }
+    return false;
+  },
   betweenTime(startTime, endTime, startDate, endDate) {
     const thisDate = startDate || this.getToday("-");
     const otherDate = endDate || thisDate;

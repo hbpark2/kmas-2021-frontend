@@ -1,5 +1,12 @@
+import ExhibitionList from "./components/ExhibitionList";
+import { Container } from "./style";
+
 const Exhibition = () => {
-	return <div></div>;
+  return (
+    <Container>
+      <ExhibitionList />
+    </Container>
+  );
 };
 
 export default Exhibition;
