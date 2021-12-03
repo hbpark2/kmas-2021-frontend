@@ -50,10 +50,10 @@ const SLabel = styled(Label)`
 		}
 		.label-button-wrap {
 			input {
-				width: 200px !important;
+				width: 65% !important;
 			}
 			button {
-				width: 120px;
+				width: 30%;
 				height: 60px;
 			}
 		}

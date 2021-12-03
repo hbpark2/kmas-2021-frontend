@@ -25,6 +25,7 @@ const App: React.FC = () => {
 	useEffect(() => {
 		const mainTarget = document.querySelector("main")! as HTMLElement;
 		const headerTarget = document.querySelector("nav")! as HTMLElement;
+
 		if (modalOpen || menuOpen) {
 			document.body?.classList.remove("overflow-unset");
 			document.body?.classList.add("overflow-hidden");

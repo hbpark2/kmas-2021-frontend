@@ -18,8 +18,14 @@ const Container = styled.div<{ width?: string; height?: string; center?: boolean
 	overflow-y: scroll;
 	border-radius: 20px;
 	padding: 20px 0;
+	box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
+
 	&::-webkit-scrollbar {
 		display: none;
+	}
+
+	@media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
+		max-height: ${(props) => (props.height ? props.height : "800px")};
 	}
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
@@ -36,7 +42,7 @@ const SecondContainer = styled(Container)<{ secondWidth?: string; secondHeight?:
 	height: ${(props) => (props.secondHeight ? props.secondHeight : "50vh")};
 	z-index: 220;
 	overflow: unset;
-	box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+	box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		width: ${(props) => (props.secondWidth ? props.secondWidth : "250px")};
@@ -78,7 +84,6 @@ const Modal: React.FC<ModalProps> = ({
 	center,
 }) => {
 	const { setModalOpen, secondModalOpen, setSecondModalOpen } = useContext(CurrentContext);
-
 
 	return (
 		<>

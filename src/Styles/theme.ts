@@ -5,7 +5,7 @@ import reset from "styled-reset";
 const deviceSizes = {
 	mobile: 639,
 	tablet: 767,
-	laptop: 1023,
+	laptop: 1024,
 	normalPC: 1279,
 	wide: 1920,
 };
@@ -43,14 +43,15 @@ export const defaultTheme: DefaultTheme = {
 	deviceScreenMax: deviceMax,
 	deviceScreenMin: deviceMin,
 	blind:
-		"position: absolute; width: 1px !important; height: 1px !important; clip: rect(0 0 0 0); overflow: hidden;",
+		"position: absolute !important; width: 1px !important; height: 1px !important; clip: rect(0 0 0 0) !important; overflow: hidden !important;",
 };
 
 //global
 export const GlobalStyles = createGlobalStyle`
   ${reset};
+
   input,
-button {
+  button {
 	padding: 0;
 	margin: 0;
 	border: 0;
@@ -82,7 +83,6 @@ button {
     height: auto;
     font-family: ${({ theme: { defaultFont } }) => defaultFont};
 
-    /* line-height: 1.4em; */
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile}{
       font-size:1.4rem;
       line-height: 1.2em;
@@ -92,6 +92,8 @@ button {
   main{
     width: auto;
     margin-top:80px;
+    min-height: 80vh;
+
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop}{
     margin-top: 70px;
     }

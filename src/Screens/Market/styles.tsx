@@ -159,20 +159,24 @@ export const TableHead = styled.th<{ mobileActive?: boolean }>`
 	border-right: none;
 	font-family: ${({ theme: { accentFont } }) => accentFont};
 	font-size: 2rem;
+	line-height: 2rem;
+	padding: 7px 0;
 
 	&:first-child {
 		width: 60px;
 	}
+
 	&:nth-child(2) {
 		width: 200px;
 	}
+
 	&:nth-child(4) {
 		width: 230px;
 	}
+
 	&:nth-child(5) {
 		width: 170px;
 	}
-	//
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
 		${({ mobileActive, theme: { blind } }) => !mobileActive && blind};

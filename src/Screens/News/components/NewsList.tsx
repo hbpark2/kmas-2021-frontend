@@ -43,7 +43,7 @@ const Info = styled.div`
 		display: none;
 	}
 	.title {
-		line-height: 21px;
+		line-height: 1.3em;
 		font-size: 14.5px;
 		font-weight: 700;
 		font-family: ${({ theme: { accentFont } }) => accentFont};
