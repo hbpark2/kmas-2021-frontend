@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 
 export const Container = styled.main`
@@ -53,7 +52,10 @@ export const Card = styled.img`
 
 export const BannerWrap = styled.div`
 	margin: 0px auto 130px;
-
+	button {
+		display: block;
+		margin: 0 auto;
+	}
 	img {
 		display: block;
 		margin: 30px auto;
@@ -67,4 +69,3 @@ export const BannerWrap = styled.div`
 		}
 	}
 `;
-

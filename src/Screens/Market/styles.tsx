@@ -259,9 +259,15 @@ export const DownloadWrap = styled.div`
 	margin: 0 auto;
 
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-		width: 90%;
 		flex-direction: column;
 		margin: 20px auto;
+		img {
+			max-width: 450px;
+		}
+	}
+
+	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+		width: 90%;
 	}
 `;
 
@@ -275,7 +281,7 @@ export const DownloadButton = styled.button`
 	}
 	@media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
 		margin: 5px auto;
-		width: 90%;
+		width: 80%;
 	}
 `;
 

@@ -18,6 +18,10 @@ import SwiperSection from "./components/SwiperSection";
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
 const Home = () => {
+	const goToLink = (url: string) => {
+		window.open(url);
+	};
+
 	return (
 		<Container>
 			<h2 className="blind">K-MAS 메인페이지</h2>
@@ -47,20 +51,19 @@ const Home = () => {
 				<BannerWrap>
 					<h3 className="blind">K-MAS 행사배너</h3>
 
-					<a href="https://sbdcmarket.co.kr/" target="_blank" title="소원링크" rel="noreferrer">
+					<button onClick={() => goToLink("https://sbdcmarket.co.kr/")}>
 						<img
 							src="https://thegn.speedgabia.com/kmas-2021/main/pc-wish-banner.png"
 							alt="WishBanner"
 						/>
-					</a>
-					{/* <a href="/" target="_blank" title="vr링크" rel="noreferrer"> */}
-					<img
-						src="https://thegn.speedgabia.com/kmas-2021/main/pc-vr-banner.png"
-						alt="VRBanner"
-						onClick={() => alert("준비중입니다")}
-						style={{ cursor: "pointer" }}
-					/>
-					{/* </a> */}
+					</button>
+
+					<button onClick={() => alert("준비중입니다")}>
+						<img
+							src="https://thegn.speedgabia.com/kmas-2021/main/pc-vr-banner.png"
+							alt="VRBanner"
+						/>
+					</button>
 				</BannerWrap>
 				<SwiperSection />
 			</SnowSection>
