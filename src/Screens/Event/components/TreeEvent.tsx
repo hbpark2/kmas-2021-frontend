@@ -4,11 +4,11 @@ import Event from "../Event";
 const Container = styled.div``;
 
 const TreeEvent = () => {
-	return (
-		<Event>
-			<Container>TreeEvent</Container>
-		</Event>
-	);
+  return (
+    <Event>
+      <Container>TreeEvent</Container>
+    </Event>
+  );
 };
 
 export default TreeEvent;

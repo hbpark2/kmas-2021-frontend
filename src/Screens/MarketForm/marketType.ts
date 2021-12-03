@@ -22,13 +22,9 @@ export const createValidSchema = yup
     phone_number: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test(
-        "is-phonenumber-test",
-        "올바른 핸드폰 번호를 입력해주세요.",
-        (value) => {
-          return Utils.checkPhoneNumber(value);
-        }
-      ),
+      .test("is-phonenumber-test", "올바른 핸드폰 번호를 입력해주세요.", (value) => {
+        return Utils.checkPhoneNumber(value);
+      }),
     password: yup
       .string()
       .min(4, "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.")
@@ -69,13 +65,9 @@ export const modifyValidSchema = yup
     phone_number: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test(
-        "is-phonenumber-test",
-        "올바른 핸드폰 번호를 입력해주세요.",
-        (value) => {
-          return Utils.checkPhoneNumber(value);
-        }
-      ),
+      .test("is-phonenumber-test", "올바른 핸드폰 번호를 입력해주세요.", (value) => {
+        return Utils.checkPhoneNumber(value);
+      }),
     password: yup
       .string()
       .nullable()
