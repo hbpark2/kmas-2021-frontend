@@ -145,14 +145,14 @@ const ExhibitionList = () => {
         if (alertMessage) {
           alert(alertMessage);
         } else {
-          alert("행사 시작 전 입니다");
+          alert("기획전 오픈 전입니다");
         }
       }
     } else {
       if (alertMessage) {
         alert(alertMessage);
       } else {
-        alert("행사 시작 전 입니다");
+        alert("기획전 오픈 전입니다");
       }
     }
   };
