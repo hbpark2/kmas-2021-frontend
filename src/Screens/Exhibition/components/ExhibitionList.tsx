@@ -2,18 +2,43 @@ import { useState } from "react";
 import styled from "styled-components";
 import analytics from "../../../analytics";
 import Utils from "../../../Utils/Utils";
-import { arrData } from "./exhibitionData";
+import { liveArray, onlineArray } from "./exhibitionData";
 
-const Grid = styled.div`
+const Container = styled.div`
+  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png")
+    no-repeat;
+  background-size: contain;
+`;
+
+const OnlineGrid = styled.div`
+  position: relative;
   display: grid;
-  /* grid-auto-rows: 290px; */
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  @media screen and (min-width: 1280px) {
-    width: 1100px;
-    margin: 0 auto;
+  background-color: #fcefef;
+  padding: 100px 30px;
+  margin: 150px auto 0;
+  width: calc(100% - 60px);
+  max-width: 1200px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 00px;
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    width: auto;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 0px;
+    padding: 50px 10px;
+    margin: 100px auto 0;
+  }
+`;
+
+const Banner = styled.img`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -65px;
+  display: block;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    width: 80%;
+    top: -40px;
   }
 `;
 
@@ -21,29 +46,75 @@ const ExhibitionItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  overflow: hidden;
-  a {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
   img {
     display: block;
     width: 100%;
+    /* transform: scale(1.15); */
   }
+`;
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    /* height: 330px; */
+const LiveWrap = styled.div`
+  position: relative;
+  background-color: #effcf0;
+  width: calc(100% - 60px);
+  max-width: 1200px;
+  margin: 150px auto 0;
+  padding: 100px 30px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    width: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
+    padding: 50px 10px;
+    margin: 100px auto 0;
   }
-  @media screen and (min-width: 1280px) {
-    height: 216px;
+`;
+
+const LiveGrid = styled(OnlineGrid)`
+  background-color: transparent;
+  width: 740px;
+  margin: 0 auto;
+  padding: 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: auto;
+  }
+`;
+
+const ExhibitionLiveItem = styled(ExhibitionItem)`
+  @media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.laptop} {
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+`;
+
+const SnowDecoration = styled.img`
+  position: absolute;
+  display: block;
+  &:nth-of-type(2) {
+    top: 15px;
+    left: 15px;
+  }
+  &:nth-of-type(3) {
+    top: 15px;
+    right: 15px;
+  }
+  &:nth-of-type(4) {
+    bottom: 15px;
+    left: 15px;
+  }
+  &:nth-of-type(5) {
+    bottom: 15px;
+    right: 15px;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    display: none;
   }
 `;
 
 const ExhibitionList = () => {
-  const [tab, setTab] = useState<"online" | "live">("online");
-
   const onExhibitionClick = ({
     name,
     startDate,
@@ -74,14 +145,14 @@ const ExhibitionList = () => {
         if (alertMessage) {
           alert(alertMessage);
         } else {
-          alert("12월 오픈 예정");
+          alert("행사 시작 전 입니다");
         }
       }
     } else {
       if (alertMessage) {
         alert(alertMessage);
       } else {
-        alert("12월 오픈 예정");
+        alert("행사 시작 전 입니다");
       }
     }
   };
@@ -95,41 +166,115 @@ const ExhibitionList = () => {
     moImage: string | null;
     pcImage: string | null;
   }) => {
-    const isMobile = Utils.isMobile();
-    if (moImage && pcImage) {
-      return <img src={isMobile ? moImage : pcImage} alt="기획전 이미지" />;
-    } else {
-      return <p>{name}</p>;
+    if (pcImage) {
+      return (
+        <>
+          <h5 className="blind">{name}</h5>
+          <img src={pcImage} alt={`${name} 기획전이미지`} />
+        </>
+      );
     }
   };
 
   return (
-    <Grid>
-      {arrData.map((item) => {
-        return (
-          <ExhibitionItem key={item.name}>
-            <button
-              onClick={() =>
-                onExhibitionClick({
+    <Container>
+      <OnlineGrid>
+        <Banner
+          src="https://thegn.speedgabia.com/kmas-2021/sale/sale-online-banner.png"
+          alt="온라인기획전 타이틀"
+        />
+
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+
+        {onlineArray.map((item) => {
+          return (
+            <ExhibitionItem key={item.name}>
+              <button
+                onClick={() =>
+                  onExhibitionClick({
+                    name: item.name,
+                    startDate: item.startDate,
+                    endDate: item.endDate,
+                    active: item.active,
+                    link: item.link,
+                    alertMessage: item.alertMessage,
+                  })
+                }
+              >
+                {exhibitionImageCreator({
                   name: item.name,
-                  startDate: item.startDate,
-                  endDate: item.endDate,
-                  active: item.active,
-                  link: item.link,
-                  alertMessage: item.alertMessage,
-                })
-              }
-            >
-              {exhibitionImageCreator({
-                name: item.name,
-                moImage: item.moImage,
-                pcImage: item.pcImage,
-              })}
-            </button>
-          </ExhibitionItem>
-        );
-      })}
-    </Grid>
+                  moImage: item.moImage,
+                  pcImage: item.pcImage,
+                })}
+              </button>
+            </ExhibitionItem>
+          );
+        })}
+      </OnlineGrid>
+      <LiveWrap>
+        <Banner
+          src="https://thegn.speedgabia.com/kmas-2021/sale/sale-live-banner.png"
+          alt="온라인기획전 타이틀"
+        />
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+        <SnowDecoration
+          src="https://thegn.speedgabia.com/kmas-2021/sale/snow-pink.png"
+          alt="눈꽃이미지"
+        />
+        <LiveGrid>
+          {liveArray.map((item) => {
+            return (
+              <ExhibitionLiveItem key={item.name}>
+                <button
+                  onClick={() =>
+                    onExhibitionClick({
+                      name: item.name,
+                      startDate: item.startDate,
+                      endDate: item.endDate,
+                      active: item.active,
+                      link: item.link,
+                      alertMessage: item.alertMessage,
+                    })
+                  }
+                >
+                  {exhibitionImageCreator({
+                    name: item.name,
+                    moImage: item.moImage,
+                    pcImage: item.pcImage,
+                  })}
+                </button>
+              </ExhibitionLiveItem>
+            );
+          })}
+        </LiveGrid>
+      </LiveWrap>
+    </Container>
   );
 };
 
