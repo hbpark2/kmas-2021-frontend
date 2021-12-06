@@ -1,14 +1,14 @@
 import styled from "styled-components";
+import Event from "../Event";
 
-const Container = styled.main`
-  padding-bottom: 100px;
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    padding-bottom: 30px;
-  }
-`;
+const Container = styled.div``;
 
 const ReceiptEvent = () => {
-  return <Container>ReceiptEvent</Container>;
+  return (
+    <Event>
+      <Container>ReceiptEvent</Container>
+    </Event>
+  );
 };
 
 export default ReceiptEvent;

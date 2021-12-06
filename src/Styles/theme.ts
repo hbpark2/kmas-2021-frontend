@@ -3,54 +3,55 @@ import reset from "styled-reset";
 
 // Media query
 const deviceSizes = {
-	mobile: 639,
-	tablet: 767,
-	laptop: 1023,
-	normalPC: 1279,
-	wide: 1920,
+  mobile: 639,
+  tablet: 767,
+  laptop: 1024,
+  normalPC: 1279,
+  wide: 1920,
 };
 
 const deviceMax = {
-	mobile: `screen and (max-width: ${deviceSizes.mobile}px)`,
-	tablet: `screen and (max-width: ${deviceSizes.tablet}px)`,
-	laptop: `screen and (max-width: ${deviceSizes.laptop}px)`,
-	normalPC: `screen and (max-width: ${deviceSizes.normalPC}px)`,
+  mobile: `screen and (max-width: ${deviceSizes.mobile}px)`,
+  tablet: `screen and (max-width: ${deviceSizes.tablet}px)`,
+  laptop: `screen and (max-width: ${deviceSizes.laptop}px)`,
+  normalPC: `screen and (max-width: ${deviceSizes.normalPC}px)`,
 };
 
 const deviceMin = {
-	mobile: `screen and (min-width: ${deviceSizes.mobile + 1}px)`,
-	tablet: `screen and (min-width: ${deviceSizes.tablet + 1}px)`,
-	laptop: `screen and (min-width: ${deviceSizes.laptop + 1}px)`,
-	wide: `screen and (min-width: ${deviceSizes.wide + 1}px)`,
+  mobile: `screen and (min-width: ${deviceSizes.mobile + 1}px)`,
+  tablet: `screen and (min-width: ${deviceSizes.tablet + 1}px)`,
+  laptop: `screen and (min-width: ${deviceSizes.laptop + 1}px)`,
+  wide: `screen and (min-width: ${deviceSizes.wide + 1}px)`,
 };
 
 export const defaultTheme: DefaultTheme = {
-	bgColor1: "#fff",
-	bgColor2: "#706260",
-	bgColor3: "#9a7951",
-	gray: "#dadada",
-	deepGreen: "#499a63",
-	inputBorderColor: "#a6a6a6",
-	tableAccent: "#499a63",
-	tableHeader: "rgba(226, 244, 233,0.8)",
-	headerDefault: "#0b983a",
-	headerActive: "#e73031",
-	accentColor: "#e4cbac",
-	defaultFont: "GmarketSansMedium",
-	accentFont: "GmarketSansBold",
-	textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-	fullHeight: window.innerWidth > 639 ? "100vh" : `${window.innerHeight}px`,
-	deviceScreenMax: deviceMax,
-	deviceScreenMin: deviceMin,
-	blind:
-		"position: absolute; width: 1px !important; height: 1px !important; clip: rect(0 0 0 0); overflow: hidden;",
+  bgColor1: "#fff",
+  bgColor2: "#706260",
+  bgColor3: "#9a7951",
+  gray: "#dadada",
+  deepGreen: "#499a63",
+  inputBorderColor: "#a6a6a6",
+  tableAccent: "#499a63",
+  tableHeader: "rgba(226, 244, 233,0.8)",
+  headerDefault: "#0b983a",
+  headerActive: "#e73031",
+  accentColor: "#0b983a",
+  defaultFont: "GmarketSansMedium",
+  accentFont: "GmarketSansBold",
+  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+  fullHeight: window.innerWidth > 639 ? "100vh" : `${window.innerHeight}px`,
+  deviceScreenMax: deviceMax,
+  deviceScreenMin: deviceMin,
+  blind:
+    "position: absolute !important; width: 1px !important; height: 1px !important; clip: rect(0 0 0 0) !important; overflow: hidden !important;",
 };
 
 //global
 export const GlobalStyles = createGlobalStyle`
   ${reset};
+
   input,
-button {
+  button {
 	padding: 0;
 	margin: 0;
 	border: 0;
@@ -82,7 +83,6 @@ button {
     height: auto;
     font-family: ${({ theme: { defaultFont } }) => defaultFont};
 
-    /* line-height: 1.4em; */
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile}{
       font-size:1.4rem;
       line-height: 1.2em;
@@ -91,7 +91,9 @@ button {
 
   main{
     width: auto;
-    margin-top:75px;
+    margin-top:80px;
+    min-height: 80vh;
+
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop}{
     margin-top: 70px;
     }

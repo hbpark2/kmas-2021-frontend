@@ -9,9 +9,7 @@ export default {
   },
   convertUTCToISODate(d0) {
     const d = new Date(d0);
-    return new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000)
-      .toISOString()
-      .split("T")[0];
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000).toISOString().split("T")[0];
   },
   checkCrn(number) {
     const numberMap = number
@@ -35,10 +33,19 @@ export default {
 
     return false;
   },
-  checkHomepage(url) {
-    const regex =
-      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
-    return regex.test(url);
+  checkURL(url) {
+    // const regex =
+    //   /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
+    var pattern = new RegExp(
+      // '^(https?:\\/\\/)?'+ // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(url);
   },
   checkPhoneNumber(phoneNumber) {
     if (phoneNumber.toString().split("-").length !== 3) {
@@ -112,10 +119,7 @@ export default {
     }
     if (originStr.toString().split("-").length !== 3) {
       // 1) -가 없는 경우
-      phoneStr =
-        originStr.length < 11
-          ? originStr.match(/\d{10}/gi)
-          : originStr.match(/\d{11}/gi);
+      phoneStr = originStr.length < 11 ? originStr.match(/\d{10}/gi) : originStr.match(/\d{11}/gi);
       if (this.checkNull(phoneStr) === true) {
         return originStr;
       }
@@ -123,18 +127,12 @@ export default {
         // 1.1) 0110000000
         maskingStr = originStr
           .toString()
-          .replace(
-            phoneStr,
-            phoneStr.toString().replace(/(\d{3})(\d{3})(\d{4})/gi, "$1***$3")
-          );
+          .replace(phoneStr, phoneStr.toString().replace(/(\d{3})(\d{3})(\d{4})/gi, "$1***$3"));
       } else {
         // 1.2) 01000000000
         maskingStr = originStr
           .toString()
-          .replace(
-            phoneStr,
-            phoneStr.toString().replace(/(\d{3})(\d{4})(\d{4})/gi, "$1****$3")
-          );
+          .replace(phoneStr, phoneStr.toString().replace(/(\d{3})(\d{4})(\d{4})/gi, "$1****$3"));
       }
     } else {
       // 2) -가 있는 경우
@@ -146,18 +144,12 @@ export default {
         // 2.1) 00-000-0000
         maskingStr = originStr
           .toString()
-          .replace(
-            phoneStr,
-            phoneStr.toString().replace(/-[0-9]{3}-/g, "-***-")
-          );
+          .replace(phoneStr, phoneStr.toString().replace(/-[0-9]{3}-/g, "-***-"));
       } else if (/-[0-9]{4}-/.test(phoneStr)) {
         // 2.2) 00-0000-0000
         maskingStr = originStr
           .toString()
-          .replace(
-            phoneStr,
-            phoneStr.toString().replace(/-[0-9]{4}-/g, "-****-")
-          );
+          .replace(phoneStr, phoneStr.toString().replace(/-[0-9]{4}-/g, "-****-"));
       }
     }
     return maskingStr;
@@ -253,6 +245,25 @@ export default {
       return url;
     }
     return `http://${url}`;
+  },
+  betweenDate(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const now = new Date();
+
+    if (start.getDate() <= now.getDate() && now.getDate() <= end.getDate()) {
+      return true;
+    }
+    return false;
+  },
+  closeDate(endDate) {
+    const end = new Date(endDate);
+    const now = new Date();
+
+    if (end.getDate() <= now.getDate()) {
+      return true;
+    }
+    return false;
   },
   betweenTime(startTime, endTime, startDate, endDate) {
     const thisDate = startDate || this.getToday("-");

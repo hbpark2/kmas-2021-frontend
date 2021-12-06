@@ -12,17 +12,19 @@ export const createValidSchema = yup
         return value !== "0";
       }),
     name: yup.string().trim().required(REQUIRED_TEXT),
-    hompage_link: yup.string().trim().required(REQUIRED_TEXT),
+    hompage_link: yup
+      .string()
+      .trim()
+      .required(REQUIRED_TEXT)
+      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+        return Utils.checkURL(value);
+      }),
     phone_number: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test(
-        "is-phonenumber-test",
-        "올바른 핸드폰 번호를 입력해주세요.",
-        (value) => {
-          return Utils.checkPhoneNumber(value);
-        }
-      ),
+      .test("is-phonenumber-test", "올바른 핸드폰 번호를 입력해주세요.", (value) => {
+        return Utils.checkPhoneNumber(value);
+      }),
     password: yup
       .string()
       .min(4, "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.")
@@ -40,6 +42,12 @@ export const createValidSchema = yup
     detail_address: yup.string().trim().required(REQUIRED_TEXT),
     items: yup.string().trim().required(REQUIRED_TEXT),
     promotion: yup.string().trim().required(REQUIRED_TEXT),
+    exhibition_link: yup
+      .string()
+      .trim()
+      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+        return Utils.checkURL(value);
+      }),
   })
   .required();
 
@@ -57,13 +65,9 @@ export const modifyValidSchema = yup
     phone_number: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test(
-        "is-phonenumber-test",
-        "올바른 핸드폰 번호를 입력해주세요.",
-        (value) => {
-          return Utils.checkPhoneNumber(value);
-        }
-      ),
+      .test("is-phonenumber-test", "올바른 핸드폰 번호를 입력해주세요.", (value) => {
+        return Utils.checkPhoneNumber(value);
+      }),
     password: yup
       .string()
       .nullable()
@@ -90,6 +94,12 @@ export const modifyValidSchema = yup
     detail_address: yup.string().trim().required(REQUIRED_TEXT),
     items: yup.string().trim().required(REQUIRED_TEXT),
     promotion: yup.string().trim().required(REQUIRED_TEXT),
+    exhibition_link: yup
+      .string()
+      .trim()
+      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+        return Utils.checkURL(value);
+      }),
   })
   .required();
 

@@ -6,14 +6,14 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function useGoogleAnalytics() {
-	const location = useLocation();
+  const location = useLocation();
 
-	useEffect(() => {
-		analytics.initGA();
-	}, []);
+  useEffect(() => {
+    analytics.initGA();
+  }, []);
 
-	useEffect(() => {
-		const currentPath = location.pathname + location.search;
-		analytics.sendPageview(currentPath);
-	}, [location]);
+  useEffect(() => {
+    const currentPath = location.pathname + location.search;
+    analytics.sendPageview(currentPath);
+  }, [location]);
 }

@@ -1,11 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { Label } from "./MarketInput";
 
-const MarketUpdatePassword: React.FC<IMarketUpdatePasswordProps> = ({
-  name,
-  type,
-  errors,
-}) => {
+const MarketUpdatePassword: React.FC<IMarketUpdatePasswordProps> = ({ name, type, errors }) => {
   const { register } = useFormContext();
 
   return (

@@ -3,11 +3,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useContext, useEffect, useState } from "react";
-import {
-  MarketFormValues,
-  createValidSchema,
-  modifyValidSchema,
-} from "./marketType";
+import { MarketFormValues, createValidSchema, modifyValidSchema } from "./marketType";
 import Utils from "../../Utils/Utils";
 import { getBase64Format } from "../../Utils/base64";
 import { useMutation } from "react-query";
@@ -36,9 +32,7 @@ const MarketFormContainer = () => {
   // * use-hook-form
   const methods = useForm<MarketFormValues>({
     // mode: "onChange",
-    resolver: yupResolver(
-      pageMode === "C" ? createValidSchema : modifyValidSchema
-    ),
+    resolver: yupResolver(pageMode === "C" ? createValidSchema : modifyValidSchema),
   });
 
   const { setValue, trigger, reset, getValues } = methods;
@@ -62,9 +56,7 @@ const MarketFormContainer = () => {
   const [postOpen, setPostOpen] = useState<boolean>(false);
   const [pwdCheckOpen, setPwdCheckOpen] = useState<boolean>(false);
 
-  const [mutationFormData, setMutationFormData] = useState<FormData>(
-    new FormData()
-  );
+  const [mutationFormData, setMutationFormData] = useState<FormData>(new FormData());
 
   // * Image Preveiw
   const [preview, setPreview] = useState<string | null>(null);
@@ -160,8 +152,7 @@ const MarketFormContainer = () => {
 
   // * 우편번호 찾기 Complete
   const onPostComplete = (data: any) => {
-    const { zonecode, jibunAddress, autoJibunAddress, address, roadAddress } =
-      data;
+    const { zonecode, jibunAddress, autoJibunAddress, address, roadAddress } = data;
     setValue("zonecode", zonecode);
     setValue("jibun_address", jibunAddress || autoJibunAddress);
     setValue("road_address", address || roadAddress);
@@ -169,6 +160,7 @@ const MarketFormContainer = () => {
 
     setModalOpen(false);
   };
+  const isMobile = Utils.isMobile();
 
   const loading = isPostMarketLoading;
   const error = isPostMarketError;
@@ -186,20 +178,13 @@ const MarketFormContainer = () => {
       />
 
       {modalOpen && postOpen && (
-        <Modal width={Utils.isMobile() ? "90%" : "600px"}>
-          <DaumPostcode
-            style={{ height: "100%" }}
-            onComplete={onPostComplete}
-          />
+        <Modal width={isMobile ? "90%" : "600px"}>
+          <DaumPostcode style={{ height: "100%" }} onComplete={onPostComplete} />
         </Modal>
       )}
       {modalOpen && pwdCheckOpen && id && (
         <Modal width="300px" height="150px">
-          <ModifyPwdCheckForm
-            id={id}
-            formData={mutationFormData}
-            pageMode={pageMode}
-          />
+          <ModifyPwdCheckForm id={id} formData={mutationFormData} pageMode={pageMode} />
         </Modal>
       )}
     </FormProvider>

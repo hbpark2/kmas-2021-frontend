@@ -1,16 +1,12 @@
-import { useState } from "react";
-import { useGetNewsList } from "../../Hook/useGetNewsList";
+import NewsList from "./components/NewsList";
+import { Container } from "./styles";
 
-const PAGE_SIZE = 5;
 const News = () => {
-  const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useGetNewsList({
-    page,
-    page_size: PAGE_SIZE,
-  });
-  console.log(data);
-
-  return <div></div>;
+  return (
+    <Container>
+      <NewsList />
+    </Container>
+  );
 };
 
 export default News;

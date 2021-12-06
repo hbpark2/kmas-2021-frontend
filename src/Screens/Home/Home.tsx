@@ -8,203 +8,59 @@ import SwiperCore, {
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import {
+  Container,
+  KeyVisualWrap,
+  KeyVisual,
+  SnowSection,
+  CardWrap,
+  Card,
+  BannerWrap,
+} from "./styles";
 
-import { Link } from "react-router-dom";
 import Utils from "../../Utils/Utils";
+import SwiperSection from "./components/SwiperSection";
+import analytics from "../../analytics";
 
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
-const Container = styled.main`
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  padding-bottom: 50px;
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    padding-bottom: 0;
-  }
-`;
-
-const KeyVisualWrap = styled.article`
-  width: 100%;
-`;
-
-const KeyVisual = styled.img`
-  display: block;
-  width: 100%;
-  max-width: 1710px;
-  margin: 0 auto;
-`;
-
-const SnowSection = styled.section`
-  background: url("https://thegn.speedgabia.com/kmas-2021/main/main-snowbg.png")
-    no-repeat;
-  background-size: contain;
-  background-position: center center;
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    background-size: contain;
-  }
-`;
-
-const CardWrap = styled.article`
-  margin: 0px auto 130px;
-  overflow: hidden;
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    margin: 0px auto 30px;
-    margin-top: -30px;
-  }
-`;
-
-const Card = styled.img`
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1420px;
-  transform: translateX(10px);
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    transform: translateX(0);
-  }
-`;
-
-const BannerWrap = styled.div`
-  margin: 0px auto 130px;
-
-  img {
-    display: block;
-    margin: 30px auto;
-    width: 100%;
-    max-width: 1360px;
-  }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    margin-bottom: 50px;
-    img {
-      margin: 10px auto;
-    }
-  }
-`;
-
-const SwiperWrap = styled.div`
-  margin: 0 auto;
-  padding-bottom: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: ${({ theme: { headerDefault } }) => headerDefault};
-  }
-  .swiper-button-next {
-    margin-right: 65px;
-  }
-  .swiper-button-prev {
-    margin-left: 65px;
-  }
-  .swiper-pagination-bullet {
-    background-color: ${({ theme: { headerDefault } }) => headerDefault};
-  }
-  iframe {
-    margin: 0 auto;
-    width: 1220px;
-    height: 770px;
-  }
-
-  @media screen and (min-width: 1600px) {
-    width: 1600px;
-    iframe {
-      width: 85% !important;
-    }
-  }
-
-  @media screen and (max-width: 1279px) {
-    iframe {
-      width: 85% !important;
-      height: 400px !important;
-    }
-
-    .swiper-pagination {
-      bottom: 10px;
-    }
-    .swiper-button-next {
-      margin-right: 20px;
-    }
-    .swiper-button-prev {
-      margin-left: 20px;
-    }
-
-    .swiper-button-next {
-      &::after {
-        font-size: 3.2rem;
-      }
-    }
-    .swiper-button-prev {
-      &::after {
-        font-size: 3.2rem;
-      }
-    }
-  }
-
-  @media screen and (max-width: 767px) {
-    padding-bottom: 50px;
-
-    iframe {
-      width: 85% !important;
-      height: 198px !important;
-    }
-    .swiper-button-next {
-      margin-right: -5px;
-    }
-    .swiper-button-prev {
-      margin-left: -5px;
-    }
-    .swiper-pagination {
-      span {
-        width: 8px;
-        height: 8px;
-      }
-    }
-  }
-`;
-
-const EventLinkButton = styled(Link)`
-  display: block;
-  margin: 0 auto;
-  max-width: 700px;
-  margin: 0 auto;
-  width: 80%;
-  img {
-    width: 100%;
-  }
-`;
-
 const Home = () => {
+  const isMobile = Utils.isMobile();
+
+  const goToLink = (url: string, type: string) => {
+    if (url) {
+      // * GA 설정
+      analytics.sendEvent({
+        category: "배너",
+        action: "배너 클릭",
+        label: type === "wish" ? "메인 소원 배너" : "메인 VR 배너",
+      });
+      window.open(url);
+    } else {
+      alert("준비중입니다");
+    }
+  };
+
   return (
     <Container>
-      <h2 className="blind">본문 &#40;K-MAS home&#41; </h2>
+      <h2 className="blind">K-MAS 메인페이지</h2>
 
       <KeyVisualWrap>
-        {/* <KeyVisual
-					src={
-						window.innerWidth < 640
-							? "https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"
-							: "https://thegn.speedgabia.com/kmas-2021/main/main.png"
-					}
-					alt="키비주얼"
-				/> */}
+        <h3 className="blind">K-MAS 키비주얼</h3>
 
-        {Utils.isMobile() ? (
-          <KeyVisual
-            src={"https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"}
-            alt="키비주얼"
-          />
-        ) : (
-          <KeyVisual
-            src={"https://thegn.speedgabia.com/kmas-2021/main/main.png"}
-            alt="키비주얼"
-          />
-        )}
+        <KeyVisual
+          src={
+            isMobile
+              ? "https://thegn.speedgabia.com/kmas-2021/main/mo-main.png"
+              : "https://thegn.speedgabia.com/kmas-2021/main/main.png"
+          }
+          alt="키비주얼"
+        />
       </KeyVisualWrap>
       <SnowSection>
         <CardWrap>
-          {Utils.isMobile() ? (
+          <h3 className="blind">K-MAS 행사정보</h3>
+          {isMobile ? (
             <Card
               src="https://thegn.speedgabia.com/kmas-2021/main/mo-card.png"
               alt="card"
@@ -218,61 +74,23 @@ const Home = () => {
         </CardWrap>
 
         <BannerWrap>
-          <a
-            href="https://sbdcmarket.co.kr/"
-            target="_blank"
-            title="소원링크"
-            rel="noreferrer"
-          >
+          <h3 className="blind">K-MAS 행사배너</h3>
+
+          <button onClick={() => goToLink("https://sbdcmarket.co.kr/", "wish")}>
             <img
               src="https://thegn.speedgabia.com/kmas-2021/main/pc-wish-banner.png"
               alt="WishBanner"
             />
-          </a>
-          {/* <a href="/" target="_blank" title="vr링크" rel="noreferrer"> */}
-          <img
-            src="https://thegn.speedgabia.com/kmas-2021/main/pc-vr-banner.png"
-            alt="VRBanner"
-            onClick={() => alert("준비중입니다")}
-            style={{ cursor: "pointer" }}
-          />
-          {/* </a> */}
-        </BannerWrap>
+          </button>
 
-        <SwiperWrap>
-          {/* <Swiper navigation spaceBetween={0} slidesPerView={1} pagination={{ clickable: true }}>
-						<SwiperSlide
-							style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-						>
-							{({ isActive }) =>
-								isActive && (
-									<iframe
-										width={window.innerWidth > 1280 ? "1200px" : "80%"}
-										height={window.innerWidth > 1280 ? "675px" : "80%"}
-										src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
-										title="YouTube video player"
-										frameBorder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowFullScreen
-									/>
-								)
-							}
-						</SwiperSlide>
-					</Swiper> */}
-          <iframe
-            src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </SwiperWrap>
-        {/* <EventLinkButton to="/">
-					<img
-						src="https://thegn.speedgabia.com/kmas-2021/main/video-event-btn.png"
-						alt="이벤트바로가기버튼"
-					/>
-				</EventLinkButton> */}
+          <button onClick={() => goToLink("", "vr")}>
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/main/pc-vr-banner.png"
+              alt="VRBanner"
+            />
+          </button>
+        </BannerWrap>
+        <SwiperSection />
       </SnowSection>
     </Container>
   );

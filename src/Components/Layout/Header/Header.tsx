@@ -186,11 +186,17 @@ const LogoWrap = styled(Link)`
 const Header = () => {
   const { menuOpen, setMenuOpen } = useContext(CurrentContext);
   const location = useLocation();
+  const isMobile = Utils.isMobile();
 
   const menuArr = [
     { text: "K-MAS 라이브 마켓", pathname: "/", active: true },
-    { text: "이벤트", pathname: "/event", active: false },
-    { text: "판매 기획전", pathname: "/exhibition", active: false },
+    {
+      text: "이벤트",
+      pathname: "/event/tree",
+      active: false,
+      current: location.pathname.indexOf("event") > 0,
+    },
+    { text: "판매 기획전", pathname: "/exhibition", active: true },
     { text: "라이브커머스", pathname: "/live", active: false },
     { text: "마켓뉴스", pathname: "/news", active: false },
     { text: "참여장터", pathname: "/market", active: true },
@@ -223,13 +229,14 @@ const Header = () => {
   return (
     <Container>
       <h1 className="blind">K-MAS</h1>
+
       <Nav>
         <h2 className="blind">네비게이션</h2>
 
         <LogoWrap to="/">
           <img
             src={
-              Utils.isMobile()
+              isMobile
                 ? "https://thegn.speedgabia.com/kmas-2021/main/mo-logo.png"
                 : "https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
             }
@@ -240,7 +247,11 @@ const Header = () => {
         <NavUl menuOpen={menuOpen}>
           {menuArr.map((item, index) => (
             <NavList
-              current={location.pathname === item.pathname}
+              current={
+                item.current
+                  ? item.current
+                  : location.pathname === item.pathname
+              }
               key={`menu${index}`}
             >
               {onHeaderCreator({
@@ -251,39 +262,44 @@ const Header = () => {
             </NavList>
           ))}
         </NavUl>
-      </Nav>
-      <MobileNavWrap menuOpen={menuOpen}>
-        <LeftBar>
-          <img
-            src="https://thegn.speedgabia.com/kmas-2021/common/mo-nav-left.png"
-            alt=""
-          />
-        </LeftBar>
 
-        <MobileLogoWrap>
-          <img
-            src="https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
-            alt="k-mas 로고"
-          />
-        </MobileLogoWrap>
-        <MobileNavUl>
-          {menuArr.map((item, index) => (
-            <NavList
-              current={location.pathname === item.pathname}
-              key={`menu${index}`}
-              onClick={() => {
-                if (item.active) setMenuOpen(false);
-              }}
-            >
-              {onHeaderCreator({
-                active: item.active,
-                pathname: item.pathname,
-                text: item.text,
-              })}
-            </NavList>
-          ))}
-        </MobileNavUl>
-      </MobileNavWrap>
+        <MobileNavWrap menuOpen={menuOpen}>
+          <LeftBar>
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/common/mo-nav-left.png"
+              alt=""
+            />
+          </LeftBar>
+
+          <MobileLogoWrap>
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/common/kmas-logo.png"
+              alt="k-mas 로고"
+            />
+          </MobileLogoWrap>
+          <MobileNavUl>
+            {menuArr.map((item, index) => (
+              <NavList
+                current={
+                  item.current
+                    ? item.current
+                    : location.pathname === item.pathname
+                }
+                key={`menu${index}`}
+                onClick={() => {
+                  if (item.active) setMenuOpen(false);
+                }}
+              >
+                {onHeaderCreator({
+                  active: item.active,
+                  pathname: item.pathname,
+                  text: item.text,
+                })}
+              </NavList>
+            ))}
+          </MobileNavUl>
+        </MobileNavWrap>
+      </Nav>
 
       <MenuBtn />
 
