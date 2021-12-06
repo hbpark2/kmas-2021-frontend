@@ -177,7 +177,7 @@ const Market = () => {
                     </DisableRow>
                   )}
 
-                  {!isLoading && !data && (
+                  {!isLoading && !data?.results.length && (
                     <DisableRow>
                       <td colSpan={5}>데이터가 없습니다.</td>
                     </DisableRow>
