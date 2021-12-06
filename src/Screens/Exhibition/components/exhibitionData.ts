@@ -12,7 +12,7 @@ export const onlineArray: ExhibitonCompany[] = [
   },
   {
     name: "쿠팡",
-    startDate: "2021-12-18",
+    startDate: "2021-12-01",
     endDate: "2021-12-26",
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-2-coupang.png",
@@ -47,18 +47,18 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-5-interpark.png",
     moImage: "",
-    link: "https://events.interpark.com/exhibition/preview?exhibitionCode=211118009",
+    link: "https://events.interpark.com/exhibition?exhibitionCode=211118009",
     active: true,
   },
   {
     name: "11번가",
-    startDate: "2021-12-16",
+    startDate: "2021-12-01",
     endDate: "2021-12-26",
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-6-11st.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "https://plan.11st.co.kr/plan/front/exhibitions/2062079/detail",
+    active: true,
   },
   {
     name: "옥션",
@@ -97,8 +97,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-10-ssg.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000363350",
+    active: true,
   },
   {
     name: "CJ몰",
@@ -127,7 +127,7 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-13-boribori.png",
     moImage: "",
-    link: "https://www.boribori.co.kr/#!/event/main?planNo=36455",
+    link: "http://www.boribori.co.kr/event/main?planNo=36455%3Fv%3D20211202",
     active: true,
   },
   {
@@ -177,7 +177,7 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-18-youtoo.png",
     moImage: "",
-    link: "http://kt.togetherwel.co.kr/main/main",
+    link: "https://kt.togetherwel.co.kr/main/main",
     active: true,
   },
   {
