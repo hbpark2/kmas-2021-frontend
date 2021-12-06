@@ -187,7 +187,11 @@ const Market = () => {
                     data.results &&
                     data.results.length > 0 &&
                     data.results.map((market, index) => (
-                      <TableRow key={market.id} onClick={() => onRowClick(market.id)}>
+                      <TableRow
+                        key={market.id}
+                        onClick={() => onRowClick(market.id)}
+                        tabIndex={0}
+                      >
                         <TableDesc aria-hidden={!isMobile}>
                           {data.count - ((page - 1) * PAGE_SIZE + index)}
                         </TableDesc>
@@ -210,11 +214,14 @@ const Market = () => {
                             : market.promotion}
                         </TableDesc>
                         <TableDesc aria-hidden={!isMobile}>
-                          {market.road_address && market.road_address.length > 10
+                          {market.road_address &&
+                          market.road_address.length > 10
                             ? `${market.road_address.substr(0, 10)}...`
                             : market.road_address}
                         </TableDesc>
-                        <TableDesc aria-hidden={!isMobile}>{market.phone_number}</TableDesc>
+                        <TableDesc aria-hidden={!isMobile}>
+                          {market.phone_number}
+                        </TableDesc>
                       </TableRow>
                     ))}
                 </tbody>
@@ -251,14 +258,18 @@ const Market = () => {
           />
           <DownloadWrap>
             <DownloadButton type="button" onClick={() => onFileModal("origin")}>
-              <span className="blind">2021 K-MAS 라이브마켓 홍보물 다운받기</span>
+              <span className="blind">
+                2021 K-MAS 라이브마켓 홍보물 다운받기
+              </span>
               <img
                 src="https://thegn.speedgabia.com/kmas-2021/market/mo-download-promotion-origin.png"
                 alt="홍보물다운받기 버튼"
               />
             </DownloadButton>
             <DownloadButton type="button" onClick={() => onFileModal("poster")}>
-              <span className="blind">2021 K-MAS 라이브마켓 홍보물 다운받기</span>
+              <span className="blind">
+                2021 K-MAS 라이브마켓 홍보물 다운받기
+              </span>
 
               <img
                 src="https://thegn.speedgabia.com/kmas-2021/market/mo-download-promotion-poster.png"
@@ -279,9 +290,13 @@ const Market = () => {
               <dd>
                 <ul>
                   <li>
-                    K-MAS 라이브마켓 참가 중,소상공인 오프라인 포스터, 현수막 등의 오프라인 광고등
+                    K-MAS 라이브마켓 참가 중,소상공인 오프라인 포스터, 현수막
+                    등의 오프라인 광고등
                   </li>
-                  <li>K-MAS 라이브마켓 참가 중,소상공인 온라인 광고물(웹배너, 웹포스터 등)</li>
+                  <li>
+                    K-MAS 라이브마켓 참가 중,소상공인 온라인 광고물(웹배너,
+                    웹포스터 등)
+                  </li>
                 </ul>
               </dd>
             </dl>
@@ -296,12 +311,12 @@ const Market = () => {
               <dd>
                 <ul>
                   <li>
-                    광고물은 K-MAS 라이브마켓 기간(12/18 ~ 12/26)에만 사용 가능하며 행사 기간 후에는
-                    회수 부탁드립니다.
+                    광고물은 K-MAS 라이브마켓 기간(12/18 ~ 12/26)에만 사용
+                    가능하며 행사 기간 후에는 회수 부탁드립니다.
                   </li>
                   <li>
-                    위 사항을 위반하거나 불이행 하는 경우 법적 조치가 이루어지므로 주의가
-                    필요합니다.
+                    위 사항을 위반하거나 불이행 하는 경우 법적 조치가
+                    이루어지므로 주의가 필요합니다.
                   </li>
                 </ul>
               </dd>

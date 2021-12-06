@@ -196,7 +196,7 @@ const Header = () => {
       active: false,
       current: location.pathname.indexOf("event") > 0,
     },
-    { text: "판매 기획전", pathname: "/exhibition", active: false },
+    { text: "판매 기획전", pathname: "/exhibition", active: true },
     { text: "라이브커머스", pathname: "/live", active: false },
     { text: "마켓뉴스", pathname: "/news", active: false },
     { text: "참여장터", pathname: "/market", active: true },
@@ -247,7 +247,11 @@ const Header = () => {
         <NavUl menuOpen={menuOpen}>
           {menuArr.map((item, index) => (
             <NavList
-              current={item.current ? item.current : location.pathname === item.pathname}
+              current={
+                item.current
+                  ? item.current
+                  : location.pathname === item.pathname
+              }
               key={`menu${index}`}
             >
               {onHeaderCreator({
@@ -261,7 +265,10 @@ const Header = () => {
 
         <MobileNavWrap menuOpen={menuOpen}>
           <LeftBar>
-            <img src="https://thegn.speedgabia.com/kmas-2021/common/mo-nav-left.png" alt="" />
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/common/mo-nav-left.png"
+              alt=""
+            />
           </LeftBar>
 
           <MobileLogoWrap>
@@ -273,7 +280,11 @@ const Header = () => {
           <MobileNavUl>
             {menuArr.map((item, index) => (
               <NavList
-                current={item.current ? item.current : location.pathname === item.pathname}
+                current={
+                  item.current
+                    ? item.current
+                    : location.pathname === item.pathname
+                }
                 key={`menu${index}`}
                 onClick={() => {
                   if (item.active) setMenuOpen(false);
