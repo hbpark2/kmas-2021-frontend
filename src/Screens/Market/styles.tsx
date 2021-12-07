@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   padding-bottom: 100px;
+  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png");
+  background-size: contain;
+  padding-bottom: 100px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding-bottom: 30px;
   }
@@ -13,7 +16,8 @@ export const MarketHeader = styled.div`
   justify-content: center;
   align-items: center;
   height: 370px;
-  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png") no-repeat;
+  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png")
+    no-repeat;
   background-size: cover;
 
   img {
@@ -33,8 +37,6 @@ export const MarketHeader = styled.div`
 
 export const MarketSection = styled.div`
   padding-top: 80px;
-  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png") no-repeat;
-  background-size: cover;
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding-top: 60px;
@@ -83,8 +85,8 @@ export const SelectBox = styled.select`
   text-align: start;
   text-indent: 20px;
   appearance: none;
-  background: url("https://thegn.speedgabia.com/kmas-2021/market/select-arrow.png") no-repeat right
-    9px center;
+  background: url("https://thegn.speedgabia.com/kmas-2021/market/select-arrow.png")
+    no-repeat right 9px center;
   color: #333;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     background-size: 2rem;

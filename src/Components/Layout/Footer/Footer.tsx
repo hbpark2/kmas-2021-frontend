@@ -119,7 +119,10 @@
 //           <Span>후원</Span>
 //           <Line />
 //         </Title>
-//         <img src='https://thegn.speedgabia.com/kmas-2021/common/footer-support.png alt="후원사 목록 이미지" />
+//         <img
+//           src="https://thegn.speedgabia.com/kmas-2021/common/footer-support.png"
+//           alt="후원사 목록 이미지"
+//         />
 //       </Support>
 //     </Container>
 //   );
