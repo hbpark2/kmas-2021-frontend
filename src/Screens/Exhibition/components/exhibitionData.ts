@@ -127,7 +127,7 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-13-boribori.png",
     moImage: "",
-    link: "http://www.boribori.co.kr/event/main?planNo=36455%3Fv%3D20211202",
+    link: "http://www.boribori.co.kr/event/main?planNo=26186",
     active: true,
   },
   {
