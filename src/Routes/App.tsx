@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import KMAS from "../Components/Common/KMAS";
 import Meta from "../Components/Common/Meta";
 import Footer from "../Components/Layout/Footer/Footer";
 import Header from "../Components/Layout/Header/Header";
@@ -45,7 +46,14 @@ const App: React.FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Meta data={{ title: "K-MAS 라이브마켓", description: "K-MAS 라이브마켓", locale: "ko" }} />
+      <Meta
+        data={{
+          title: "K-MAS 라이브마켓",
+          description: "K-MAS 라이브마켓",
+          locale: "ko",
+        }}
+      />
+      <KMAS />
       <BrowserRouter>
         <ThemeProvider theme={defaultTheme}>
           <GlobalStyles />
