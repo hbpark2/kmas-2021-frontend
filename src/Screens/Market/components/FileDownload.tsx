@@ -55,6 +55,7 @@ const FileDownload: React.FC<{ fileType?: string }> = ({ fileType }) => {
       action: "다운로드 클릭",
       label: origin ? "원본" : "포스터",
     });
+
     if (fileType === "origin") {
       window.location.href =
         "https://kmas2021.s3.ap-northeast-2.amazonaws.com/media/2021+KMAS+%E1%84%92%E1%85%A9%E1%86%BC%E1%84%87%E1%85%A9%E1%84%86%E1%85%AE%E1%86%AF+%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%87%E1%85%A9%E1%86%AB%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF.zip";
@@ -62,6 +63,7 @@ const FileDownload: React.FC<{ fileType?: string }> = ({ fileType }) => {
       window.location.href =
         "https://kmas2021.s3.ap-northeast-2.amazonaws.com/media/2021+KMAS+%E1%84%92%E1%85%A9%E1%86%BC%E1%84%87%E1%85%A9%E1%84%86%E1%85%AE%E1%86%AF+%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5.zip";
     }
+
     setModalOpen(false);
   };
 
