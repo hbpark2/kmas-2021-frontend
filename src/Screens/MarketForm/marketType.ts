@@ -1,5 +1,11 @@
 import * as yup from "yup";
-import { REQUIRED_TEXT } from "../../constants";
+import {
+  REQUIRED_TEXT,
+  VALID_CRN_TEXT,
+  VALID_LINK_TEXT,
+  VALID_PASSWORD_TEXT,
+  VALID_PHONE_NUMBER_TEXT,
+} from "../../constants";
 import Utils from "../../Utils/Utils";
 
 export const createValidSchema = yup
@@ -16,24 +22,24 @@ export const createValidSchema = yup
       .string()
       .trim()
       .required(REQUIRED_TEXT)
-      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+      .test("is-link-test", VALID_LINK_TEXT, (value) => {
         return Utils.checkURL(value);
       }),
     phone_number: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test("is-phonenumber-test", "올바른 핸드폰 번호를 입력해주세요.", (value) => {
+      .test("is-phonenumber-test", VALID_PHONE_NUMBER_TEXT, (value) => {
         return Utils.checkPhoneNumber(value);
       }),
     password: yup
       .string()
-      .min(4, "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.")
-      .max(12, "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.")
+      .min(4, VALID_PASSWORD_TEXT)
+      .max(12, VALID_PASSWORD_TEXT)
       .required(REQUIRED_TEXT),
     crn: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test("is-crn-test", "올바른 사업자 번호를 입력해주세요.", (value) => {
+      .test("is-crn-test", VALID_CRN_TEXT, (value) => {
         return Utils.checkCrn(value);
       }),
     zonecode: yup.string().required(REQUIRED_TEXT),
@@ -45,7 +51,7 @@ export const createValidSchema = yup
     exhibition_link: yup
       .string()
       .trim()
-      .test("is-link-test", "올바른 링크를 입력해주세요.", (value) => {
+      .test("is-link-test", VALID_LINK_TEXT, (value) => {
         return Utils.checkURL(value);
       }),
   })
@@ -65,7 +71,7 @@ export const modifyValidSchema = yup
     phone_number: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test("is-phonenumber-test", "올바른 핸드폰 번호를 입력해주세요.", (value) => {
+      .test("is-phonenumber-test", VALID_PHONE_NUMBER_TEXT, (value) => {
         return Utils.checkPhoneNumber(value);
       }),
     password: yup
@@ -74,7 +80,7 @@ export const modifyValidSchema = yup
       .notRequired()
       .test(
         "is-password-test",
-        "비밀번호는 4자리 이상 12자리 이하로 작성해주세요.",
+        VALID_PASSWORD_TEXT,
         (value?: string | null) => {
           if (value) {
             return value.length >= 4 && value.length <= 12;
@@ -85,7 +91,7 @@ export const modifyValidSchema = yup
     crn: yup
       .string()
       .required(REQUIRED_TEXT)
-      .test("is-crn-test", "올바른 사업자 번호를 입력해주세요.", (value) => {
+      .test("is-crn-test", VALID_CRN_TEXT, (value) => {
         return Utils.checkCrn(value);
       }),
     zonecode: yup.string().required(REQUIRED_TEXT),

@@ -12,7 +12,8 @@ import { useEffect } from "react";
 import TreeEvent from "../Screens/Event/components/TreeEvent";
 import ReceiptEvent from "../Screens/Event/components/ReceiptEvent";
 import PhotoEvent from "../Screens/Event/components/PhotoEvent";
-import OnlineEvent from "../Screens/Event/components/OnlineEvent";
+import QuizEvent from "../Screens/Event/components/QuizEvent/QuizEvent";
+import ChallangeEvent from "../Screens/Event/components/ChallangeEvent";
 
 type TEventRouteArrProps = {
   text: string;
@@ -43,9 +44,15 @@ export const eventRouteArr: TEventRouteArrProps[] = [
     active: true,
   },
   {
-    text: "온라인 이벤트",
-    pathname: `${eventBaseUrl}/online`,
-    component: <OnlineEvent />,
+    text: "퀴즈 이벤트",
+    pathname: `${eventBaseUrl}/quiz`,
+    component: <QuizEvent />,
+    active: true,
+  },
+  {
+    text: "크확행 챌린지",
+    pathname: `${eventBaseUrl}/challange`,
+    component: <ChallangeEvent />,
     active: true,
   },
 ];
