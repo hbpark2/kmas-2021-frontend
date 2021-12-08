@@ -8,6 +8,9 @@ const Container = styled.div`
   background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png");
   background-size: contain;
   padding-bottom: 100px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    background: none;
+  }
 `;
 
 const OnlineGrid = styled.div`
