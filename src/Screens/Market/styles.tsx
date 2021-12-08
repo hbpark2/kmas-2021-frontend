@@ -6,6 +6,7 @@ export const Container = styled.main`
   background-size: contain;
   padding-bottom: 100px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    background:none;
     padding-bottom: 30px;
   }
 `;
