@@ -123,3 +123,6 @@ package-lock.json
 
 # vscode setting
 .vscode
+
+# DS.Store
+.DS_Store
