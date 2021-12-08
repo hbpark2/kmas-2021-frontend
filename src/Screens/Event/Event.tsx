@@ -64,7 +64,7 @@ const NavList = styled.li<{ current?: boolean | any }>`
 
 const SLink = styled(Link)``;
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
   padding-bottom: 100px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding-bottom: 30px;
@@ -83,7 +83,10 @@ const Event = ({ children }: { children: React.ReactChild }) => {
           {eventRouteArr.map(
             (item, index) =>
               item.active && (
-                <NavList current={location.pathname === item.pathname} key={`tab${index}`}>
+                <NavList
+                  current={location.pathname === item.pathname}
+                  key={`tab${index}`}
+                >
                   <SLink to={item.pathname}>
                     <h3>{item.text}</h3>
                   </SLink>

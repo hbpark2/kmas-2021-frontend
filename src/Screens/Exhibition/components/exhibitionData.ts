@@ -257,8 +257,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-26-woori.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "https://www.wooricoop.com/event/catSosang_211208?isMobileUrl=false",
+    active: true,
   },
   {
     name: "대명크렌시아(크렌시아닷컴)",
