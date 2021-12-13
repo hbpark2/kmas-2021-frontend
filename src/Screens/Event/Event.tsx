@@ -6,25 +6,33 @@ import Utils from "../../Utils/Utils";
 
 const Container = styled.main`
   /* padding-bottom: 100px; */
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding-bottom: 0;
   }
 `;
 
 const Nav = styled.div`
-  position: relative;
+  position: fixed;
   display: flex;
   height: 110px;
   margin: 0 auto;
   background-color: #ceded6;
+  width: 100%;
+  top: 75px;
+  z-index: 10;
+  box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    margin-top: 70px;
+    top: 70px;
     justify-content: center;
     align-items: center;
     background-color: #fff;
     height: auto;
     padding: 15px 0;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    padding: 0 0 15px;
   }
 
   @media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
@@ -55,6 +63,8 @@ const NavList = styled.li<{ current?: boolean | any; tintColor?: string }>`
   width: 100%;
   height: 100%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 
   a {
     display: flex;
@@ -137,6 +147,7 @@ const SLinkIcon = styled.img`
   width: 16px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin-right: 5px;
+    margin-bottom: 3px;
   }
 `;
 
@@ -156,7 +167,10 @@ const Line = styled.i`
 
 const Wrapper = styled.div`
   /* padding-bottom: 100px; */
+  margin-top: 185px;
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-top: 165px;
     padding-bottom: 0px;
   }
 `;
@@ -166,12 +180,12 @@ const Event = () => {
   const isMobile = Utils.isMobile();
 
   const ReadyClick = (e: React.MouseEvent, index: number) => {
-    if (index < 2) {
-      return;
-    } else {
-      e.preventDefault();
-      alert("준비중 입니다.");
-    }
+    // if (index < 2) {
+    //   return;
+    // } else {
+    //   e.preventDefault();
+    //   alert("준비중 입니다.");
+    // }
   };
 
   return (

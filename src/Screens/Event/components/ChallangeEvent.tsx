@@ -24,7 +24,7 @@ const Top = styled.div`
   img {
     width: 100%;
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     margin-top: -50px;
   }
 `;
@@ -200,20 +200,25 @@ const NoteWrap = styled.div`
   }
 `;
 
-const SwiperInner = styled.a`
+const SwiperInner = styled.a<{ background?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
-  height: 250px;
+  width: 92%;
+  padding-bottom: 100%;
   background-color: #d1b2a3;
+  background: url(${({ background }) => background});
+  background-size: 100%;
+  background-position: center center;
+  /* width: 250px; */
+  /* height: 250px; */
   img {
     display: block;
     width: 100%;
     margin: 0 auto;
   }
 
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  /* @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 200px;
     height: 200px;
   }
@@ -221,7 +226,7 @@ const SwiperInner = styled.a`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: 100px;
     height: 100px;
-  }
+  } */
 `;
 
 const ChallangeEvent = () => {
@@ -331,11 +336,12 @@ const ChallangeEvent = () => {
                       target="_blank"
                       title="인스타그램 영상"
                       rel="noreferrer"
+                      background="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg"
                     >
-                      <img
+                      {/* <img
                         src="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg"
                         alt="인스타그램 이미지"
-                      />
+                      /> */}
                     </SwiperInner>
                   </SwiperSlide>
                 ))}

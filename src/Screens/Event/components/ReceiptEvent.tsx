@@ -19,7 +19,7 @@ const Top = styled.div`
     }
   }
 
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     margin-top: -50px;
   }
 `;
