@@ -13,11 +13,6 @@ const Top = styled.div`
   img {
     width: 100%;
   }
-  @media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
-    img {
-      width: 50%;
-    }
-  }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     margin-top: -50px;
