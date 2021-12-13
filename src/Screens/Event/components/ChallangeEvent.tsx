@@ -200,7 +200,7 @@ const NoteWrap = styled.div`
   }
 `;
 
-const SwiperInner = styled.a<{ background?: string }>`
+const SwiperInner = styled.div<{ background?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -331,18 +331,14 @@ const ChallangeEvent = () => {
                   })} */}
                 {blankData.map((item, index) => (
                   <SwiperSlide key={`insta${index}`}>
-                    <SwiperInner
+                    {/* <SwiperInner
                       href={item.link}
                       target="_blank"
                       title="인스타그램 영상"
                       rel="noreferrer"
                       background="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg"
-                    >
-                      {/* <img
-                        src="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg"
-                        alt="인스타그램 이미지"
-                      /> */}
-                    </SwiperInner>
+                    /> */}
+                    <SwiperInner background="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg" />
                   </SwiperSlide>
                 ))}
               </Swiper>
