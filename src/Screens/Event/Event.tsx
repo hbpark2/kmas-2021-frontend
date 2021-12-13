@@ -87,8 +87,8 @@ const NavList = styled.li<{ current?: boolean | any; tintColor?: string }>`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     border: 1px solid ${({ tintColor }) => tintColor};
     border-radius: 30px;
-    margin: 0 10px;
-    padding: 5px 10px;
+    margin: 0 5px;
+    padding: 5px 5px;
     background-color: ${({ current, tintColor }) =>
       current ? tintColor : "transparent"};
 

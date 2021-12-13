@@ -16,6 +16,9 @@ const Top = styled.div`
   img {
     width: 100%;
   }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-top: -50px;
+  }
 `;
 const Bottom = styled.div`
   background-color: #a82a38;
@@ -71,9 +74,8 @@ const ShareButton = styled.button`
   display: block;
   margin: 45px auto 75px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    width: 40%;
+    width: 45%;
     margin: 25px auto 35px;
-
     img {
       width: 100%;
     }
@@ -86,7 +88,7 @@ const QuizWrap = styled.div`
     width: 100%;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    padding-top: 40px;
+    padding: 40px 0 20px;
   }
 `;
 
@@ -117,7 +119,7 @@ const JoinButton = styled.button`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     display: block;
     position: static;
-    margin: 20px auto 30px;
+    margin: 25px auto 35px;
     transform: none;
     width: 60%;
   }
@@ -221,9 +223,10 @@ const QuizEvent = () => {
         <Modal
           secondChildren={<QuizCancel secondModalType={seconModalType} />}
           width={isMobile ? "90%" : "80%"}
-          height={isMobile ? "90%" : "80%"}
+          height={isMobile ? "400px" : "80%"}
           secondWidth={isMobile ? "90%" : "80%"}
-          secondHeight={isMobile ? "90%" : "80%"}
+          secondHeight={isMobile ? "400px" : "80%"}
+          isQuiz={true}
         >
           <QuizForm
             seconModalType={seconModalType}

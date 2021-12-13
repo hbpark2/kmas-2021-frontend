@@ -30,6 +30,8 @@ const QuizForm: React.FC<QuizeFormProps> = ({
   seconModalType,
   setSecondModalType,
 }) => {
+  const isMobile = Utils.isMobile();
+
   const { setModalOpen, setSecondModalOpen } = useContext(CurrentContext);
   const methods = useForm<QuizFormValues>({
     // mode: "onChange",
@@ -82,7 +84,11 @@ const QuizForm: React.FC<QuizeFormProps> = ({
       <h2 className="blind">영상 퀴즈 이벤트 참여</h2>
       <RequestHeader>
         <img
-          src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-header.png"
+          src={
+            isMobile
+              ? "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-header-mo.png"
+              : "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-header.png"
+          }
           alt="이벤트 참가 신청"
         />
       </RequestHeader>
@@ -90,7 +96,11 @@ const QuizForm: React.FC<QuizeFormProps> = ({
         <Form onSubmit={handleSubmit(onSubmit)}>
           <RequestIcon>
             <img
-              src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-icon.png"
+              src={
+                isMobile
+                  ? "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-icon-mo.png"
+                  : "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-icon.png"
+              }
               alt="신청아이콘"
             />
           </RequestIcon>
@@ -110,7 +120,11 @@ const QuizForm: React.FC<QuizeFormProps> = ({
           })}
           <NoteWrap>
             <img
-              src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-note.png"
+              src={
+                isMobile
+                  ? "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-note-mo.png"
+                  : "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-note.png"
+              }
               alt="이벤트 참가 신청 유의사항"
             />
           </NoteWrap>

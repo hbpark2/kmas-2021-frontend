@@ -24,6 +24,9 @@ const Top = styled.div`
   img {
     width: 100%;
   }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-top: -50px;
+  }
 `;
 
 const Bottom = styled.div`
@@ -73,6 +76,9 @@ const InfoWrap = styled.div`
     max-width: 1258px;
     margin: 0 auto;
   }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    padding-bottom: 35px;
+  }
 `;
 
 const WayWrap = styled.div`
@@ -85,7 +91,7 @@ const WayWrap = styled.div`
     max-width: 1088px;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    padding: 70px 0;
+    padding: 35px 0;
   }
 `;
 
@@ -134,6 +140,9 @@ const PhotosWarp = styled.div`
 const SwiperWrap = styled.div`
   max-width: 1100px;
   margin: 75px auto 120px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin: 45px auto 80px;
+  }
 `;
 
 const PhotosTitle = styled.div`
@@ -169,8 +178,12 @@ const SwiperInner = styled.a`
   background-color: #d1b2a3;
   img {
     display: block;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -249,7 +262,11 @@ const ChallangeEvent = () => {
               />
             </PhotosTitle>
             <SwiperWrap>
-              <Swiper navigation slidesPerView={4} spaceBetween={0}>
+              <Swiper
+                navigation
+                slidesPerView={isMobile ? 3 : 4}
+                spaceBetween={isMobile ? -30 : 0}
+              >
                 {!isLoading &&
                   data?.map((item, index) => {
                     return (

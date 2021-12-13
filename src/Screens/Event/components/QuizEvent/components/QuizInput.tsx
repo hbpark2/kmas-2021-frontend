@@ -25,9 +25,12 @@ export const Label = styled.label`
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     display: block;
+    margin: 30px 0 10px;
     input {
       width: 100%;
-      text-indent: 10px;
+      height: 45px;
+
+      text-indent: 5px;
       &::placeholder {
         font-size: 12.5px;
         letter-spacing: -0.5px;

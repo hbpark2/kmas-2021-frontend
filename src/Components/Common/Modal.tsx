@@ -20,7 +20,7 @@ const Container = styled.div<{
   background-color: #fff;
   z-index: 200;
   overflow-y: scroll;
-  border-radius: 20px;
+  border-radius: 25px;
   padding: 20px 0;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
 
@@ -40,10 +40,11 @@ const Container = styled.div<{
 const SecondContainer = styled(Container)<{
   secondWidth?: string;
   secondHeight?: string;
+  isQuiz?: boolean;
 }>`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${({ isQuiz }) => (isQuiz ? "flex-start" : "center")};
   align-items: center;
   width: ${(props) => (props.secondWidth ? props.secondWidth : "40vw")};
   height: ${(props) => (props.secondHeight ? props.secondHeight : "50vh")};
@@ -51,7 +52,7 @@ const SecondContainer = styled(Container)<{
   overflow: unset;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
   overflow-y: scroll;
-
+  padding: ${({ isQuiz }) => isQuiz && "22px 0"};
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: ${(props) => (props.secondWidth ? props.secondWidth : "250px")};
     min-height: ${(props) =>
@@ -81,6 +82,7 @@ interface ModalProps {
   center?: boolean;
   children: React.ReactChild;
   secondChildren?: React.ReactNode;
+  isQuiz?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -91,6 +93,7 @@ const Modal: React.FC<ModalProps> = ({
   secondWidth,
   secondHeight,
   center,
+  isQuiz,
 }) => {
   const { setModalOpen, secondModalOpen, setSecondModalOpen } =
     useContext(CurrentContext);
@@ -117,6 +120,7 @@ const Modal: React.FC<ModalProps> = ({
           <SecondContainer
             secondWidth={secondWidth}
             secondHeight={secondHeight}
+            isQuiz={isQuiz}
           >
             {secondChildren}
           </SecondContainer>

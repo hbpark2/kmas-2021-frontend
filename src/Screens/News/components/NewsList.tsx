@@ -21,7 +21,10 @@ const NewsListWrap = styled.div`
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin-top: 0;
-    padding: 80px 0 30px;
+    padding: 40px 0 30px;
+    .pagination {
+      margin-top: 25px;
+    }
   }
 `;
 const NewsListHeader = styled.div`
