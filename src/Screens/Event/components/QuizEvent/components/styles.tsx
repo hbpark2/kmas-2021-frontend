@@ -4,13 +4,17 @@ export const Container = styled.main`
   width: 100%;
   margin: 0;
   margin-top: -25px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
+  min-height: unset;
 
   button {
     background: transparent;
   }
   img {
     display: block;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    padding-bottom: 0;
   }
 `;
 
@@ -29,6 +33,23 @@ export const Inner = styled.div`
     }
   }
 `;
+export const CancelInner = styled.div`
+  position: relative;
+  width: 92%;
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 30px;
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    padding-top: 0;
+    margin: 60px auto 0;
+    width: 90%;
+    input {
+      width: 100%;
+    }
+    padding-bottom: 20px;
+  }
+`;
 export const CancelTitle = styled.div`
   display: flex;
   justify-content: center;
@@ -43,6 +64,9 @@ export const CancelTitle = styled.div`
     max-width: 550px;
     margin: 0 auto;
   }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-bottom: 30px;
+  }
 `;
 export const CancelDescription = styled.div`
   margin-bottom: 55px;
@@ -56,6 +80,14 @@ export const CancelDescription = styled.div`
     max-width: 735px;
     margin: 0 auto;
   }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-bottom: 30px;
+    font-size: 12px;
+    line-height: 1.4em;
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 export const RequestHeader = styled.div`
@@ -68,7 +100,29 @@ export const RequestIcon = styled.i<{ top?: string }>`
   display: block;
   left: 50%;
   transform: translateX(-50%);
-  top: ${({ top }) => (top ? top : "-65px")};
+  top: -65px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    top: -62px;
+    img {
+      width: 48%;
+      margin: 0 auto;
+    }
+  }
+`;
+
+export const CancelRequestIcon = styled.i<{ top?: string }>`
+  position: absolute;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -75px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    top: -80px;
+    img {
+      width: 48%;
+      margin: 0 auto;
+    }
+  }
 `;
 
 export const Form = styled.form`
@@ -102,7 +156,8 @@ export const Form = styled.form`
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    margin: 60px auto;
+    padding-top: 0;
+    margin: 40px auto;
     width: 90%;
     input {
       width: 100%;
@@ -111,7 +166,7 @@ export const Form = styled.form`
       font-family: ${({ theme: { accentFont } }) => accentFont};
       width: 100%;
       max-width: 210px;
-      font-size: 24px;
+      font-size: 26px;
     }
   }
 `;
@@ -122,6 +177,13 @@ export const NoteWrap = styled.div`
     width: 80%;
     max-width: 820px;
     margin: 0 auto;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin: 35px auto;
+
+    img {
+      width: 100%;
+    }
   }
 `;
 

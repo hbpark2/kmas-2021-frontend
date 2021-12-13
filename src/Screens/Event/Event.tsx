@@ -14,7 +14,7 @@ const Container = styled.main`
 const Nav = styled.div`
   position: relative;
   display: flex;
-  height: 140px;
+  height: 110px;
   margin: 0 auto;
   max-width: 1920px;
   background-color: #ceded6;
@@ -88,7 +88,7 @@ const NavList = styled.li<{ current?: boolean | any; tintColor?: string }>`
     border: 1px solid ${({ tintColor }) => tintColor};
     border-radius: 30px;
     margin: 0 10px;
-    padding: 5px 10px;
+    padding: 5px 5px;
     background-color: ${({ current, tintColor }) =>
       current ? tintColor : "transparent"};
 
@@ -166,6 +166,15 @@ const Event = () => {
   const location = useLocation();
   const isMobile = Utils.isMobile();
 
+  const ReadyClick = (e: React.MouseEvent, index: number) => {
+    if (index < 2) {
+      return;
+    } else {
+      e.preventDefault();
+      alert("준비중 입니다.");
+    }
+  };
+
   return (
     <Container>
       <Nav>
@@ -181,7 +190,10 @@ const Event = () => {
                   key={`tab${index}`}
                 >
                   {index === 2 && <Line />}
-                  <SLink to={item.pathname}>
+                  <SLink
+                    to={item.pathname}
+                    onClick={(e) => ReadyClick(e, index)}
+                  >
                     <SLinkText>
                       {item.text.split("<br />").map((line, idx) => {
                         let makeSpanKey = `line${idx}`;

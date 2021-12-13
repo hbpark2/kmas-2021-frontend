@@ -13,6 +13,9 @@ const Top = styled.div`
   img {
     width: 100%;
   }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-top: -50px;
+  }
 `;
 
 const Bottom = styled.div`
@@ -21,31 +24,45 @@ const Bottom = styled.div`
   background-size: cover;
   padding: 120px 0 200px;
   img {
-    width: 90%;
+    width: 50%;
     max-width: 1320px;
     margin: 0 auto;
   }
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    padding-top: 50px;
+    img {
+      width: 90%;
+    }
+    padding-top: 25px;
     background-image: none;
     padding-bottom: 50px;
   }
 `;
 
 const TreeEvent = () => {
+  const isMobile = Utils.isMobile();
+
   return (
     <Container>
-      <h3 className="blind">크확행챌린지</h3>
+      <h3 className="blind">크확행 트리 이벤트</h3>
 
       <Top>
         <img
-          src="https://thegn.speedgabia.com/kmas-2021/event/scene-3-tree/event-3-top.png"
+          src={
+            isMobile
+              ? "https://thegn.speedgabia.com/kmas-2021/event/scene-3-tree/event-3-top-mo.png"
+              : "https://thegn.speedgabia.com/kmas-2021/event/scene-3-tree/event-3-top.png"
+          }
           alt=""
         />
       </Top>
       <Bottom>
         <img
-          src="https://thegn.speedgabia.com/kmas-2021/event/scene-3-tree/event-3-content.png"
+          src={
+            isMobile
+              ? "https://thegn.speedgabia.com/kmas-2021/event/scene-3-tree/event-3-content-mo.png"
+              : "https://thegn.speedgabia.com/kmas-2021/event/scene-3-tree/event-3-content.png"
+          }
           alt=""
         />
       </Bottom>

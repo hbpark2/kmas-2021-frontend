@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { CurrentContext } from "../../../../../Context/ContextStore";
+import Utils from "../../../../../Utils/Utils";
 import {
   Container,
   ButtonWrap,
   RequestButton,
   RequestHeader,
-  Inner,
-  RequestIcon,
   CancelTitle,
   CancelDescription,
+  CancelRequestIcon,
+  CancelInner,
 } from "./styles";
 
 interface QuizCancelProp {
@@ -17,23 +18,28 @@ interface QuizCancelProp {
 }
 
 const QuizCancel: React.FC<QuizCancelProp> = ({ secondModalType }) => {
+  const isMobile = Utils.isMobile();
   const { setModalOpen, setSecondModalOpen } = useContext(CurrentContext);
-  console.log(secondModalType);
+
   return (
     <Container>
       <RequestHeader>
         <img
-          src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-header.png"
+          src={
+            isMobile
+              ? "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-cancel-header.png"
+              : "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-header.png"
+          }
           alt="이벤트 참가 신청 취소"
         />
       </RequestHeader>
-      <Inner>
-        <RequestIcon top="-75px">
+      <CancelInner>
+        <CancelRequestIcon>
           <img
             src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-icon.png"
             alt="신청아이콘"
           />
-        </RequestIcon>
+        </CancelRequestIcon>
         {secondModalType === "cancel" ? (
           <>
             <CancelTitle>
@@ -50,7 +56,11 @@ const QuizCancel: React.FC<QuizCancelProp> = ({ secondModalType }) => {
               취소 버튼을 클릭하시면 작성 중 페이지로 돌아갑니다.
               <br /> */}
               <img
-                src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-cancel-description.png"
+                src={
+                  isMobile
+                    ? "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-cancel-description-mo.png"
+                    : "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-cancel-description.png"
+                }
                 alt="참여취소 설명 글"
               />
             </CancelDescription>
@@ -65,7 +75,11 @@ const QuizCancel: React.FC<QuizCancelProp> = ({ secondModalType }) => {
             </CancelTitle>
             <CancelDescription>
               <img
-                src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-success-description.png"
+                src={
+                  isMobile
+                    ? "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-success-description-mo.png"
+                    : "https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-success-description.png"
+                }
                 alt="당첨자발표 설명 글"
               />
             </CancelDescription>
@@ -87,7 +101,7 @@ const QuizCancel: React.FC<QuizCancelProp> = ({ secondModalType }) => {
             onClick={() => setSecondModalOpen(false)}
           />
         </ButtonWrap>
-      </Inner>
+      </CancelInner>
     </Container>
   );
 };
