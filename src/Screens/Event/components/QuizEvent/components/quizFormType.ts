@@ -67,13 +67,13 @@ export const quizFormValidSchema = yup.object().shape(
 
 export const inputArr = [
   {
-    text: "성명",
+    text: "참여자 실명",
     name: "name",
     type: "text",
     placeholder: "한글만 기입 가능합니다 (5자 내외)",
   },
   {
-    text: "핸드폰번호 4자리",
+    text: "휴대폰 뒷번호",
     name: "phone_number",
     type: "text",
     placeholder: "중복자 구분을 위해 뒷번호 4자리를 남겨주세요",

@@ -72,7 +72,7 @@ const MobileNavWrap = styled.div<{ menuOpen: boolean }>`
             left: 20%;
           `
         : css`
-            left: 100%;
+            left: 105%;
           `}
   }
 `;
@@ -192,7 +192,7 @@ const Header = () => {
     { text: "K-MAS 라이브 마켓", pathname: "/", active: true },
     {
       text: "이벤트",
-      pathname: "/event/tree",
+      pathname: "/event/quiz",
       active: false,
       current: location.pathname.indexOf("event") > 0,
     },

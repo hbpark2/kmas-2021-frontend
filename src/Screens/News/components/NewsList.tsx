@@ -4,6 +4,44 @@ import { useGetNewsList } from "../../../Hook/useGetNewsList";
 import Utils from "../../../Utils/Utils";
 import CustomPagination from "../../../Components/Common/Pagination";
 
+const Container = styled.div`
+  margin-top: 180px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-top: 100px;
+  }
+`;
+const NewsListWrap = styled.div`
+  position: relative;
+  background-color: #efefef;
+  max-width: 1380px;
+  margin: 225px auto 0;
+  padding: 120px 0;
+  .pagination {
+    margin-top: 45px;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin-top: 0;
+    padding: 80px 0 30px;
+  }
+`;
+const NewsListHeader = styled.div`
+  img {
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    left: 50%;
+    top: -195px;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 880px;
+  }
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    img {
+      top: -75px;
+    }
+  }
+`;
 const SLink = styled.a`
   position: relative;
   display: flex;
@@ -63,17 +101,24 @@ const Info = styled.div`
   div {
     display: flex;
     width: 96%;
-    justify-content: space-between;
+    justify-content: flex-start;
+    margin-top: 17px;
   }
   span {
     font-size: 12px;
   }
+
   .origin {
-    /* color: ${({ theme: { accentColor } }) => accentColor}; */
+    color: #b7b7b7;
+  }
+
+  .middle {
+    margin: 0 8px;
   }
 
   .date {
-    color: ${({ theme: { gray } }) => gray};
+    color: ${({ theme: { headerDefault } }) => headerDefault};
+    font-family: ${({ theme }) => theme.accentFont};
   }
 
   @media screen and (min-width: 768px) {
@@ -100,7 +145,7 @@ const Image = styled.div`
   img.thumb {
     width: 75px;
     height: 75px;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   @media screen and (min-width: 768px) {
@@ -129,45 +174,59 @@ const NewsList = () => {
   };
 
   return (
-    <div>
-      {newsData &&
-        newsData.count > 0 &&
-        newsData.results.map((news, index) => (
-          <SLink key={index} href={news.link} target="_blank" rel="noreferrer">
-            <Info>
-              <h4 className="title">{news.title ? news.title : ""}</h4>
-              <p className="description">
-                {news.description ? news.description : ""}
-              </p>
-              <div>
-                <span className="origin">{news.press ? news.press : ""}</span>
-                <span className="date">
-                  {news.date ? Utils.toStringDateFormat(news.date, ".") : ""}
-                </span>
-              </div>
-            </Info>
-            <Image>
-              {news.image && (
-                <img
-                  src={news.image}
-                  width="55"
-                  height="55"
-                  alt="뉴스 이미지"
-                  className="thumb"
-                />
-              )}
-            </Image>
-          </SLink>
-        ))}
-      {newsData && newsData.results && newsData.results.length > 0 && (
-        <CustomPagination
-          page={page}
-          page_size={PAGE_SIZE}
-          total_count={newsData?.count || 0}
-          on_change={handlePageChange}
-        />
-      )}
-    </div>
+    <Container>
+      <NewsListWrap>
+        <NewsListHeader>
+          <img
+            src="https://thegn.speedgabia.com/kmas-2021/news/news-list-header.png"
+            alt="크리스마스 마켓 관련기사"
+          />
+        </NewsListHeader>
+        {newsData &&
+          newsData.count > 0 &&
+          newsData.results.map((news, index) => (
+            <SLink
+              key={index}
+              href={news.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Info>
+                <h4 className="title">{news.title ? news.title : ""}</h4>
+                <p className="description">
+                  {news.description ? news.description : ""}
+                </p>
+                <div className="etc">
+                  <span className="origin">{news.press ? news.press : ""}</span>
+                  {news.press && <span className="middle">·</span>}
+                  <span className="date">
+                    {news.date ? Utils.toStringDateFormat(news.date, ".") : ""}
+                  </span>
+                </div>
+              </Info>
+              <Image>
+                {news.image && (
+                  <img
+                    src={news.image}
+                    width="55"
+                    height="55"
+                    alt="뉴스 이미지"
+                    className="thumb"
+                  />
+                )}
+              </Image>
+            </SLink>
+          ))}
+        {newsData && newsData.results && newsData.results.length > 0 && (
+          <CustomPagination
+            page={page}
+            page_size={PAGE_SIZE}
+            total_count={newsData?.count || 0}
+            on_change={handlePageChange}
+          />
+        )}
+      </NewsListWrap>
+    </Container>
   );
 };
 

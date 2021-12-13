@@ -8,11 +8,9 @@ export const Label = styled.label`
   margin: 30px 0;
   font-size: 2.2rem;
 
-  h4 {
-    width: 150px;
-  }
   input {
-    width: 580px;
+    width: 90%;
+    max-width: 710px;
     height: 60px;
     border-radius: 10px;
     font-size: 2rem;
@@ -27,6 +25,14 @@ export const Label = styled.label`
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     display: block;
+    input {
+      width: 100%;
+      text-indent: 10px;
+      &::placeholder {
+        font-size: 12.5px;
+        letter-spacing: -0.5px;
+      }
+    }
     h4 {
       margin-bottom: 15px;
     }
