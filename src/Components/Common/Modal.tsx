@@ -12,7 +12,7 @@ const Container = styled.div<{
   left: 50%;
   transform: translate(-50%, -50%);
   width: ${(props) => (props.width ? props.width : "50vw")};
-  max-width: 800px;
+  max-width: 1000px;
   height: ${(props) => (props.height ? props.height : "60vh")};
   display: flex;
   justify-content: center;
@@ -50,6 +50,7 @@ const SecondContainer = styled(Container)<{
   z-index: 220;
   overflow: unset;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: ${(props) => (props.secondWidth ? props.secondWidth : "250px")};

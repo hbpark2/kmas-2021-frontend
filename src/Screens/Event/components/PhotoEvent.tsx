@@ -4,11 +4,7 @@ import Event from "../Event";
 const Container = styled.div``;
 
 const PhotoEvent = () => {
-  return (
-    <Event>
-      <Container>PhotoEvent</Container>
-    </Event>
-  );
+  return <Container>PhotoEvent</Container>;
 };
 
 export default PhotoEvent;

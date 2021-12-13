@@ -14,12 +14,22 @@ import QuizLinkInput from "./QuizLinkInput";
 import {
   ButtonWrap,
   Container,
-  DeleteButton,
   Form,
-  SuccessButton,
+  RequestHeader,
+  RequestIcon,
+  RequestButton,
+  NoteWrap,
 } from "./styles";
 
-const QuizForm = () => {
+interface QuizeFormProps {
+  seconModalType: string;
+  setSecondModalType: (T: string) => void;
+}
+
+const QuizForm: React.FC<QuizeFormProps> = ({
+  seconModalType,
+  setSecondModalType,
+}) => {
   const { setModalOpen, setSecondModalOpen } = useContext(CurrentContext);
   const methods = useForm<QuizFormValues>({
     // mode: "onChange",
@@ -42,8 +52,6 @@ const QuizForm = () => {
           action: "이벤트 참여",
           label: "영상 퀴즈 이벤트",
         });
-        alert(EVENT_SUCCESS_TEXT);
-        setModalOpen(false);
       } else {
         alert(data.message);
       }
@@ -60,13 +68,32 @@ const QuizForm = () => {
       }
     }
     postQuiz(formData);
+    setSecondModalType("success");
+    setSecondModalOpen(true);
+  };
+
+  const onCancel = () => {
+    setSecondModalType("cancel");
+    setSecondModalOpen(true);
   };
 
   return (
     <Container>
       <h2 className="blind">영상 퀴즈 이벤트 참여</h2>
+      <RequestHeader>
+        <img
+          src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-header.png"
+          alt="이벤트 참가 신청"
+        />
+      </RequestHeader>
       <FormProvider {...methods}>
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <RequestIcon>
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-icon.png"
+              alt="신청아이콘"
+            />
+          </RequestIcon>
           {inputArr.map((item, index) => {
             if (item.text === "link") {
               return <QuizLinkInput key={`label${index}`} />;
@@ -81,13 +108,15 @@ const QuizForm = () => {
               />
             );
           })}
-          <ButtonWrap>
-            <DeleteButton
-              type="button"
-              value="뒤로가기"
-              onClick={() => setSecondModalOpen(true)}
+          <NoteWrap>
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-request-note.png"
+              alt="이벤트 참가 신청 유의사항"
             />
-            <SuccessButton type="submit" value="정답 제출" />
+          </NoteWrap>
+          <ButtonWrap>
+            <RequestButton type="button" value="뒤로가기" onClick={onCancel} />
+            <RequestButton type="submit" value="정답 제출" />
           </ButtonWrap>
         </Form>
       </FormProvider>

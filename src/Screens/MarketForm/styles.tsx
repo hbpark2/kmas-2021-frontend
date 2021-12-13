@@ -14,7 +14,8 @@ export const MarketHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png") no-repeat;
+  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png")
+    no-repeat;
   background-size: cover;
   overflow: hidden;
 
@@ -46,8 +47,8 @@ export const Form = styled.form`
   input {
     box-sizing: border-box;
     margin-bottom: 5px;
-    s &::placeholder {
-      color: ${({ theme: { gray } }) => gray};
+    &::placeholder {
+      /* color: ${({ theme: { gray } }) => gray}; */
     }
   }
 
@@ -78,8 +79,8 @@ export const SelectBox = styled.select`
   border-radius: 15px;
   text-align: center;
   appearance: none;
-  background: url("https://thegn.speedgabia.com/kmas-2021/market/select-arrow.png") no-repeat right
-    9px center;
+  background: url("https://thegn.speedgabia.com/kmas-2021/market/select-arrow.png")
+    no-repeat right 9px center;
   border: 1px solid ${({ theme: { gray } }) => gray};
   color: #333;
   &:focus {

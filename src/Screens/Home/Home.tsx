@@ -1,13 +1,3 @@
-import styled from "styled-components";
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Autoplay,
-  Keyboard,
-  Mousewheel,
-} from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
 import {
   Container,
   KeyVisualWrap,
@@ -21,8 +11,6 @@ import {
 import Utils from "../../Utils/Utils";
 import SwiperSection from "./components/SwiperSection";
 import analytics from "../../analytics";
-
-SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
 const Home = () => {
   const isMobile = Utils.isMobile();

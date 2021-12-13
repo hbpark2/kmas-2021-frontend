@@ -4,11 +4,7 @@ import Event from "../Event";
 const Container = styled.div``;
 
 const OnlineEvent = () => {
-  return (
-    <Event>
-      <Container>OnlineEvent</Container>
-    </Event>
-  );
+  return <Container>OnlineEvent</Container>;
 };
 
 export default OnlineEvent;

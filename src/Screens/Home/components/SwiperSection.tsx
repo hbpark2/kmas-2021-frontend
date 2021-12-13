@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Autoplay,
+  Keyboard,
+  Mousewheel,
+} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
+
 export const SwiperWrap = styled.div`
   margin: 0 auto;
   padding-bottom: 100px;

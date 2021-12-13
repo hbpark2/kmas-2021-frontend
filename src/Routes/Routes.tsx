@@ -14,46 +14,64 @@ import ReceiptEvent from "../Screens/Event/components/ReceiptEvent";
 import PhotoEvent from "../Screens/Event/components/PhotoEvent";
 import QuizEvent from "../Screens/Event/components/QuizEvent/QuizEvent";
 import ChallangeEvent from "../Screens/Event/components/ChallangeEvent";
+import Event from "../Screens/Event/Event";
 
 type TEventRouteArrProps = {
   text: string;
   pathname: string;
   component: React.ReactElement;
   active: boolean;
+  icon: string;
+  iconActive: string;
 };
 
 const eventBaseUrl = "/event";
 
 export const eventRouteArr: TEventRouteArrProps[] = [
   {
-    text: "크확행 트리 이벤트",
-    pathname: `${eventBaseUrl}/tree`,
-    component: <TreeEvent />,
-    active: true,
-  },
-  {
-    text: "영수증 이벤트",
-    pathname: `${eventBaseUrl}/receipt`,
-    component: <ReceiptEvent />,
-    active: true,
-  },
-  {
-    text: "포토 이벤트",
-    pathname: `${eventBaseUrl}/photo`,
-    component: <PhotoEvent />,
-    active: true,
-  },
-  {
-    text: "퀴즈 이벤트",
+    text: "EVENT 01<br />영상 퀴즈 이벤트",
     pathname: `${eventBaseUrl}/quiz`,
     component: <QuizEvent />,
     active: true,
+    icon: "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon.png",
+    iconActive:
+      "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon-active.png",
   },
   {
-    text: "크확행 챌린지",
+    text: "EVENT 02<br />크확행 챌린지",
     pathname: `${eventBaseUrl}/challange`,
     component: <ChallangeEvent />,
     active: true,
+    icon: "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon.png",
+    iconActive:
+      "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon-active.png",
+  },
+  {
+    text: "현장 이벤트1<br />크확행 트리 EVENT",
+    pathname: `${eventBaseUrl}/tree`,
+    component: <TreeEvent />,
+    active: true,
+    icon: "https://thegn.speedgabia.com/kmas-2021/event/event-nav-snow-icon.png",
+    iconActive:
+      "https://thegn.speedgabia.com/kmas-2021/event/event-nav-snow-icon-active.png",
+  },
+  {
+    text: "현장 이벤트2<br />영수증 응모 EVENT",
+    pathname: `${eventBaseUrl}/receipt`,
+    component: <ReceiptEvent />,
+    active: true,
+    icon: "https://thegn.speedgabia.com/kmas-2021/event/event-nav-snow-icon.png",
+    iconActive:
+      "https://thegn.speedgabia.com/kmas-2021/event/event-nav-snow-icon-active.png",
+  },
+  {
+    text: "현장 이벤트3<br />크확행 포토 EVENT",
+    pathname: `${eventBaseUrl}/photo`,
+    component: <PhotoEvent />,
+    active: true,
+    icon: "https://thegn.speedgabia.com/kmas-2021/event/event-nav-snow-icon.png",
+    iconActive:
+      "https://thegn.speedgabia.com/kmas-2021/event/event-nav-snow-icon-active.png",
   },
 ];
 
@@ -69,18 +87,21 @@ const Routes = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/intro" component={Intro} />
       <Route exact path="/exhibition" component={Exhibition} />
-
-      {eventRouteArr.map(
+      <Route exact path="/event/quiz" component={Event} />
+      <Route exact path="/event/challange" component={Event} />
+      <Route exact path="/event/tree" component={Event} />
+      <Route exact path="/event/receipt" component={Event} />
+      <Route exact path="/event/photo" component={Event} />
+      {/* {eventRouteArr.map(
         (event) =>
           event.active && (
             <Route
-              key={event.pathname}
               exact
               path={event.pathname}
               component={() => event.component}
             />
           )
-      )}
+      )} */}
 
       <Route exact path="/live" component={Live} />
       <Route exact path="/news" component={News} />
