@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Modal from "../../../../Components/Common/Modal";
 import { CurrentContext } from "../../../../Context/ContextStore";
@@ -6,6 +6,7 @@ import Utils from "../../../../Utils/Utils";
 import Event from "../../Event";
 import QuizCancel from "./components/QuizCancel";
 import QuizForm from "./components/QuizForm";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Container = styled.div`
   img {
@@ -31,42 +32,54 @@ const Bottom = styled.div`
     background-image: none;
   }
 `;
+
 const BottomHedaerWrap = styled.div`
-  padding-top: 160px;
+  padding-top: 60px;
   img {
     display: block;
     margin: 0 auto;
-    width: 80%;
+    width: 40%;
     max-width: 1155px;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding-top: 40px;
+    img {
+      width: 80%;
+    }
   }
 `;
-
 const BottomInner = styled.div`
   background-color: #f4ead5;
-  width: 94%;
+  width: 50%;
   max-width: 1320px;
+  min-width: 830px;
   margin: 0 auto;
+  min-height: 100vh;
   border-radius: 25px;
-  padding-top: 100px;
+  padding-top: 60px;
   overflow: hidden;
-
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 94%;
     padding-top: 40px;
     border-radius: 15px;
+    min-width: unset;
   }
 `;
-
 const VideoWrap = styled.div`
-  width: 1140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
   height: 595px;
   background-color: #ccc;
   margin: 0 auto;
+  color: #fff;
+  font-size: 52px;
+  font-family: ${({ theme: { accentFont } }) => accentFont};
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 92%;
     height: 200px;
+    font-size: 32px;
   }
 `;
 
@@ -94,22 +107,24 @@ const QuizWrap = styled.div`
 
 const GiftWrap = styled.div`
   position: relative;
-  padding-top: 100px;
-  padding: 100px 0 20px;
+  padding: 55px 0 20px;
   img {
     display: block;
-    width: 100%;
+    width: 98%;
     max-width: 1280px;
     margin: 0 auto;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding: 35px 0 0;
+    img {
+      width: 100%;
+    }
   }
 `;
 
 const JoinButton = styled.button`
   position: absolute;
-  bottom: 80px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
 
@@ -126,7 +141,7 @@ const JoinButton = styled.button`
 `;
 
 const NoteWrap = styled.div`
-  padding: 60px 150px;
+  padding: 40px;
   background-color: #d1b2a3;
   img {
     width: 100%;
@@ -143,6 +158,19 @@ const QuizEvent = () => {
   const { modalOpen, setModalOpen } = useContext(CurrentContext);
 
   const [seconModalType, setSecondModalType] = useState("cancel");
+
+  const [copyVideo, setCopyVideo] = useState(false);
+
+  const onReadyClick = () => {
+    alert("준비중입니다.");
+  };
+
+  useEffect(() => {
+    if (copyVideo) {
+      alert("바이럴영상 링크가 복사되었습니다.");
+      setCopyVideo(false);
+    }
+  }, [copyVideo]);
 
   const onJoinButtonClick = () => {
     setModalOpen(true);
@@ -169,15 +197,18 @@ const QuizEvent = () => {
             />
           </BottomHedaerWrap>
           <BottomInner>
-            <VideoWrap />
-
-            <ShareButton type="button">
+            <VideoWrap>준비중 입니다.</VideoWrap>
+            <ShareButton type="button" onClick={onReadyClick}>
+              {/* <CopyToClipboard
+                text={"https://www.youtube.com/watch?v=itJzYcBhPeU"}
+                onCopy={() => setCopyVideo(true)}
+              > */}
               <img
                 src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-share-button.png"
                 alt="공유하기"
               />
+              {/* </CopyToClipboard> */}
             </ShareButton>
-
             <QuizWrap>
               <img
                 src={
@@ -188,7 +219,6 @@ const QuizEvent = () => {
                 alt="퀴즈"
               />
             </QuizWrap>
-
             <GiftWrap>
               <img
                 src={

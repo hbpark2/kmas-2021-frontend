@@ -10,6 +10,7 @@ const Container = styled.div`
   padding-bottom: 100px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     background: none;
+    padding-bottom: 0;
   }
 `;
 
