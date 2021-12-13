@@ -17,7 +17,7 @@ const Top = styled.div`
   img {
     width: 100%;
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     margin-top: -50px;
   }
 `;
