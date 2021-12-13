@@ -78,7 +78,7 @@ const VideoWrap = styled.div`
   font-family: ${({ theme: { accentFont } }) => accentFont};
   iframe {
     width: 90%;
-    height: 595px;
+    height: 482px;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 92%;
@@ -86,7 +86,7 @@ const VideoWrap = styled.div`
 
     iframe {
       width: 92%;
-      height: 200px;
+      height: 185px;
     }
   }
 `;
