@@ -69,17 +69,25 @@ const VideoWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  /* width: 90%; */
   height: 595px;
-  background-color: #ccc;
+  /* background-color: #ccc; */
   margin: 0 auto;
   color: #fff;
   font-size: 52px;
   font-family: ${({ theme: { accentFont } }) => accentFont};
+  iframe {
+    width: 90%;
+    height: 595px;
+  }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 92%;
     height: 200px;
-    font-size: 32px;
+
+    iframe {
+      width: 92%;
+      height: 200px;
+    }
   }
 `;
 
@@ -167,14 +175,14 @@ const QuizEvent = () => {
 
   useEffect(() => {
     if (copyVideo) {
-      alert("바이럴영상 링크가 복사되었습니다.");
+      alert("링크가 복사되었습니다.");
       setCopyVideo(false);
     }
   }, [copyVideo]);
 
   const onJoinButtonClick = () => {
-    alert("준비중입니다.");
-    // setModalOpen(true);
+    // alert("준비중입니다.");
+    setModalOpen(true);
   };
 
   return (
@@ -198,17 +206,26 @@ const QuizEvent = () => {
             />
           </BottomHedaerWrap>
           <BottomInner>
-            <VideoWrap>준비중 입니다.</VideoWrap>
-            <ShareButton type="button" onClick={onReadyClick}>
-              {/* <CopyToClipboard
-                text={"https://www.youtube.com/watch?v=itJzYcBhPeU"}
-                onCopy={() => setCopyVideo(true)}
-              > */}
-              <img
-                src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-share-button.png"
-                alt="공유하기"
+            <VideoWrap>
+              <iframe
+                src="https://www.youtube.com/embed/XZbyn7j5Hc4?mute=1&autoplay=1&playlist=XZbyn7j5Hc4&loop=1"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
-              {/* </CopyToClipboard> */}
+            </VideoWrap>
+            {/* <ShareButton type="button" onClick={onReadyClick}> */}
+            <ShareButton type="button">
+              <CopyToClipboard
+                text={"https://youtu.be/XZbyn7j5Hc4"}
+                onCopy={() => setCopyVideo(true)}
+              >
+                <img
+                  src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-share-button.png"
+                  alt="공유하기"
+                />
+              </CopyToClipboard>
             </ShareButton>
             <QuizWrap>
               <img
