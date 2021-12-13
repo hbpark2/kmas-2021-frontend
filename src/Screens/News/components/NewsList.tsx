@@ -13,7 +13,8 @@ const Container = styled.div`
 const NewsListWrap = styled.div`
   position: relative;
   background-color: #efefef;
-  max-width: 1380px;
+
+  max-width: 1260px;
   margin: 225px auto 0;
   padding: 120px 0;
   .pagination {

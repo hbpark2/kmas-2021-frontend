@@ -173,7 +173,8 @@ const QuizEvent = () => {
   }, [copyVideo]);
 
   const onJoinButtonClick = () => {
-    setModalOpen(true);
+    alert("준비중입니다.");
+    // setModalOpen(true);
   };
 
   return (

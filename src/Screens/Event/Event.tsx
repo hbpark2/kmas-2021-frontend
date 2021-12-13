@@ -16,7 +16,6 @@ const Nav = styled.div`
   display: flex;
   height: 110px;
   margin: 0 auto;
-  max-width: 1920px;
   background-color: #ceded6;
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
