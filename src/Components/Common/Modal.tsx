@@ -53,6 +53,12 @@ const SecondContainer = styled(Container)<{
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
   overflow-y: scroll;
   padding: ${({ isQuiz }) => isQuiz && "22px 0"};
+
+  @media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
+    max-height: ${(props) =>
+      props.secondHeight ? props.secondHeight : "800px"};
+  }
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: ${(props) => (props.secondWidth ? props.secondWidth : "250px")};
     min-height: ${(props) =>
