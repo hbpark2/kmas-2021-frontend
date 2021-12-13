@@ -93,7 +93,7 @@ const VideoWrap = styled.div`
 
 const ShareButton = styled.button`
   display: block;
-  margin: 45px auto 75px;
+  margin: 0 auto 75px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 45%;
     margin: 25px auto 35px;
