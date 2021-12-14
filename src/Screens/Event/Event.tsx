@@ -1,8 +1,13 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import { eventRouteArr } from "../../Routes/Routes";
 import Utils from "../../Utils/Utils";
+import ChallangeEvent from "./components/ChallangeEvent";
+import PhotoEvent from "./components/PhotoEvent";
+import QuizEvent from "./components/QuizEvent/QuizEvent";
+import ReceiptEvent from "./components/ReceiptEvent";
+import TreeEvent from "./components/TreeEvent";
 
 const Container = styled.main`
   /* padding-bottom: 100px; */
@@ -175,7 +180,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Event = () => {
+const Event = ({ match }: RouteComponentProps) => {
   const location = useLocation();
   const isMobile = Utils.isMobile();
 
@@ -194,55 +199,125 @@ const Event = () => {
         <h2 className="blind">이벤트 네비게이션</h2>
 
         <NavUl>
-          {eventRouteArr.map(
-            (item, index) =>
-              item.active && (
-                <NavList
-                  current={location.pathname === item.pathname}
-                  tintColor={index < 2 ? "#f4dcd5" : "#ceded6"}
-                  key={`tab${index}`}
-                >
-                  {index === 2 && <Line />}
-                  <SLink
-                    to={item.pathname}
-                    onClick={(e) => ReadyClick(e, index)}
-                  >
-                    <SLinkText>
-                      {item.text.split("<br />").map((line, idx) => {
-                        let makeSpanKey = `line${idx}`;
-                        return (
-                          <React.Fragment key={makeSpanKey}>
-                            <span>
-                              {idx === 0 && (
-                                <SLinkIcon
-                                  src={
-                                    location.pathname === item.pathname
-                                      ? item.iconActive
-                                      : item.icon
-                                  }
-                                  alt="선물 아이콘"
-                                />
-                              )}
-                              {line}
-                            </span>
-                          </React.Fragment>
-                        );
-                      })}
-                    </SLinkText>
-                  </SLink>
-                </NavList>
-              )
-          )}
+          {/* tintColor={index < 2 ? "#f4dcd5" : "#ceded6"} */}
+          <NavList
+            current={location.pathname === "/event/quiz"}
+            tintColor="#f4dcd5"
+          >
+            <SLink to="/event/quiz">
+              <SLinkText>
+                <span>
+                  <SLinkIcon
+                    src={
+                      location.pathname === "/event/quiz"
+                        ? "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon-active.png"
+                        : "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon.png"
+                    }
+                    alt="선물 아이콘"
+                  />
+                  EVENT 01
+                </span>
+                <span>영상 퀴즈 이벤트</span>
+              </SLinkText>
+            </SLink>
+          </NavList>
+
+          <NavList
+            current={location.pathname === "/event/challange"}
+            tintColor="#f4dcd5"
+          >
+            <SLink to="/event/challange">
+              <SLinkText>
+                <span>
+                  <SLinkIcon
+                    src={
+                      location.pathname === "/event/challange"
+                        ? "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon-active.png"
+                        : "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon.png"
+                    }
+                    alt="선물 아이콘"
+                  />
+                  EVENT 02
+                </span>
+                <span>크확행 챌린지</span>
+              </SLinkText>
+            </SLink>
+          </NavList>
+
+          <NavList
+            current={location.pathname === "/event/tree"}
+            tintColor="#ceded6"
+          >
+            <Line />
+            <SLink to="/event/tree">
+              <SLinkText>
+                <span>
+                  <SLinkIcon
+                    src={
+                      location.pathname === "/event/tree"
+                        ? "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon-active.png"
+                        : "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon.png"
+                    }
+                    alt="선물 아이콘"
+                  />
+                  현장 이벤트 1
+                </span>
+                <span>크확행 트리 EVENT</span>
+              </SLinkText>
+            </SLink>
+          </NavList>
+
+          <NavList
+            current={location.pathname === "/event/receipt"}
+            tintColor="#ceded6"
+          >
+            <SLink to="/event/receipt">
+              <SLinkText>
+                <span>
+                  <SLinkIcon
+                    src={
+                      location.pathname === "/event/receipt"
+                        ? "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon-active.png"
+                        : "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon.png"
+                    }
+                    alt="선물 아이콘"
+                  />
+                  현장 이벤트 2
+                </span>
+                <span>영수증 응모 EVENT</span>
+              </SLinkText>
+            </SLink>
+          </NavList>
+
+          <NavList
+            current={location.pathname === "/event/photo"}
+            tintColor="#ceded6"
+          >
+            <SLink to="/event/photo">
+              <SLinkText>
+                <span>
+                  <SLinkIcon
+                    src={
+                      location.pathname === "/event/photo"
+                        ? "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon-active.png"
+                        : "https://thegn.speedgabia.com/kmas-2021/event/event-nav-gift-icon.png"
+                    }
+                    alt="선물 아이콘"
+                  />
+                  현장 이벤트 3
+                </span>
+                <span>크확행 포토 EVENT</span>
+              </SLinkText>
+            </SLink>
+          </NavList>
         </NavUl>
       </Nav>
       <Wrapper>
-        {eventRouteArr.map((item, index) => {
-          return (
-            <React.Fragment key={`path${index}`}>
-              {item.pathname === location.pathname && item.component}
-            </React.Fragment>
-          );
-        })}
+        {match.path === "/event/quiz" && <QuizEvent />}
+        {match.path === "/event/challange" && <ChallangeEvent />}
+        {match.path === "/event/tree" && <TreeEvent />}
+        {match.path === "/event/receipt" && <ReceiptEvent />}
+        {match.path === "/event/photo" && <PhotoEvent />}
       </Wrapper>
     </Container>
   );
