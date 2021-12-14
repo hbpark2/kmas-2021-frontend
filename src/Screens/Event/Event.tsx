@@ -56,7 +56,10 @@ const Event = ({ match }: RouteComponentProps) => {
           </NavList>
 
           <NavList
-            current={location.pathname === "/event/challange"}
+            current={
+              location.pathname === "/event/challange" ||
+              location.pathname === "/event/challage/"
+            }
             tintColor="#f4dcd5"
           >
             <SLink to="/event/challange">
@@ -78,7 +81,10 @@ const Event = ({ match }: RouteComponentProps) => {
           </NavList>
 
           <NavList
-            current={location.pathname === "/event/tree"}
+            current={
+              location.pathname === "/event/tree" ||
+              location.pathname === "/event/tree/"
+            }
             tintColor="#ceded6"
           >
             <Line />
@@ -101,7 +107,10 @@ const Event = ({ match }: RouteComponentProps) => {
           </NavList>
 
           <NavList
-            current={location.pathname === "/event/receipt"}
+            current={
+              location.pathname === "/event/receipt" ||
+              location.pathname === "/event/receipt/"
+            }
             tintColor="#ceded6"
           >
             <SLink to="/event/receipt">
@@ -123,7 +132,10 @@ const Event = ({ match }: RouteComponentProps) => {
           </NavList>
 
           <NavList
-            current={location.pathname === "/event/photo"}
+            current={
+              location.pathname === "/event/photo" ||
+              location.pathname === "/event/photo/"
+            }
             tintColor="#ceded6"
           >
             <SLink to="/event/photo">
