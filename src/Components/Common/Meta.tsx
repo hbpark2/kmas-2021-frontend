@@ -28,7 +28,7 @@ const Meta = ({ data }: MetaProps) => {
   const title = data.title;
   const description = data.description;
   const image = data.image !== undefined && `${data.image}`;
-  const canonical = `https://k-mas.org/${data.canonical}`;
+  const canonical = `https://k-mas.org/${data.canonical ? data.canonical : ""}`;
   const type = data.type === undefined ? "website" : data.type;
   const width: string | undefined = data.image && (data.width || "1200");
   const height: string | undefined = data.image && (data.height || "630");

@@ -1,20 +1,10 @@
-import { hydrate, render } from "react-dom";
-import App from "./Routes/App";
+import ReactDOM from "react-dom";
 import { StoreProvider } from "./Context/ContextStore";
+import App from "./Routes/App";
 
-const rootElement = document.getElementById("root")! as HTMLElement;
-if (rootElement.hasChildNodes()) {
-  hydrate(
-    <StoreProvider>
-      <App />
-    </StoreProvider>,
-    rootElement
-  );
-} else {
-  render(
-    <StoreProvider>
-      <App />
-    </StoreProvider>,
-    rootElement
-  );
-}
+ReactDOM.render(
+  <StoreProvider>
+    <App />
+  </StoreProvider>,
+  document.getElementById("root")
+);

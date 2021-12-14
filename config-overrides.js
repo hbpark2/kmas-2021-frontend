@@ -5,7 +5,14 @@ module.exports = (config, env) => {
   if (env === "production") {
     config.plugins = config.plugins.concat([
       new PrerenderSPAPlugin({
-        routes: ["/", "/market"],
+        routes: [
+          "/",
+          "/event/quiz",
+          "/event/challange",
+          "/event/tree",
+          "/event/receipt",
+          "/event/photo",
+        ],
         staticDir: path.join(__dirname, "build"),
       }),
     ]);
