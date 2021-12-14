@@ -7,6 +7,7 @@ import Event from "../../Event";
 import QuizCancel from "./components/QuizCancel";
 import QuizForm from "./components/QuizForm";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import Meta from "../../../../Components/Common/Meta";
 
 const Container = styled.div`
   img {
@@ -187,6 +188,14 @@ const QuizEvent = () => {
 
   return (
     <>
+      <Meta
+        data={{
+          title: "K-MAS 라이브마켓",
+          description: "K-MAS 영상 퀴즈 이벤트",
+          locale: "ko",
+          canonical: "event/quiz",
+        }}
+      />
       <Container>
         <Top>
           <img
@@ -270,9 +279,9 @@ const QuizEvent = () => {
       {modalOpen && (
         <Modal
           secondChildren={<QuizCancel secondModalType={seconModalType} />}
-          width={isMobile ? "90%" : "80%"}
+          width={isMobile ? "90%" : "600px"}
           height={isMobile ? "400px" : "80%"}
-          secondWidth={isMobile ? "90%" : "80%"}
+          secondWidth={isMobile ? "90%" : "600px"}
           secondHeight={isMobile ? "400px" : "80%"}
           isQuiz={true}
         >
