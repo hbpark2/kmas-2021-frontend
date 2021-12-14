@@ -24,15 +24,6 @@ const Event = ({ match }: RouteComponentProps) => {
   const location = useLocation();
   const isMobile = Utils.isMobile();
 
-  const ReadyClick = (e: React.MouseEvent, index: number) => {
-    // if (index < 2) {
-    //   return;
-    // } else {
-    //   e.preventDefault();
-    //   alert("준비중 입니다.");
-    // }
-  };
-
   return (
     <Container>
       <Nav>
@@ -40,7 +31,10 @@ const Event = ({ match }: RouteComponentProps) => {
 
         <NavUl>
           <NavList
-            current={location.pathname === "/event/quiz"}
+            current={
+              location.pathname === "/event/quiz" ||
+              location.pathname === "/event/quiz/"
+            }
             tintColor="#f4dcd5"
           >
             <SLink to="/event/quiz">

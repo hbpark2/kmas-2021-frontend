@@ -200,7 +200,7 @@ const NoteWrap = styled.div`
   }
 `;
 
-const SwiperInner = styled.div<{ background?: string }>`
+const SwiperInner = styled.a<{ background?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -210,23 +210,7 @@ const SwiperInner = styled.div<{ background?: string }>`
   background: url(${({ background }) => background});
   background-size: 100%;
   background-position: center center;
-  /* width: 250px; */
-  /* height: 250px; */
-  img {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  /* @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    width: 200px;
-    height: 200px;
-  }
-
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
-    width: 100px;
-    height: 100px;
-  } */
+  background-repeat: no-repeat;
 `;
 
 const ChallangeEvent = () => {
@@ -314,7 +298,7 @@ const ChallangeEvent = () => {
                 slidesPerView={isMobile ? 3 : 3}
                 spaceBetween={0}
               >
-                {/* {!isLoading &&
+                {!isLoading &&
                   data?.map((item, index) => {
                     return (
                       <SwiperSlide key={`insta${index}`}>
@@ -323,24 +307,17 @@ const ChallangeEvent = () => {
                           target="_blank"
                           title="인스타그램 영상"
                           rel="noreferrer"
-                        >
-                          <img src={item.image} alt="인스타그램 이미지" />
-                        </SwiperInner>
+                          background={item.image}
+                        />
                       </SwiperSlide>
                     );
-                  })} */}
-                {blankData.map((item, index) => (
+                  })}
+                {/* {blankData.map((item, index) => (
                   <SwiperSlide key={`insta${index}`}>
-                    {/* <SwiperInner
-                      href={item.link}
-                      target="_blank"
-                      title="인스타그램 영상"
-                      rel="noreferrer"
-                      background="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg"
-                    /> */}
+
                     <SwiperInner background="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg" />
                   </SwiperSlide>
-                ))}
+                ))} */}
               </Swiper>
             </SwiperWrap>
           </PhotosWarp>
