@@ -1,5 +1,5 @@
 {
-  "preset": ["/babel"],
+  "preset": ["babel"],
   "plugins": [
     [
       "babel-plugin-styled-components",
