@@ -9,7 +9,9 @@ export default {
   },
   convertUTCToISODate(d0) {
     const d = new Date(d0);
-    return new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000).toISOString().split("T")[0];
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000)
+      .toISOString()
+      .split("T")[0];
   },
   checkCrn(number) {
     const numberMap = number
@@ -119,7 +121,10 @@ export default {
     }
     if (originStr.toString().split("-").length !== 3) {
       // 1) -가 없는 경우
-      phoneStr = originStr.length < 11 ? originStr.match(/\d{10}/gi) : originStr.match(/\d{11}/gi);
+      phoneStr =
+        originStr.length < 11
+          ? originStr.match(/\d{10}/gi)
+          : originStr.match(/\d{11}/gi);
       if (this.checkNull(phoneStr) === true) {
         return originStr;
       }
@@ -127,12 +132,18 @@ export default {
         // 1.1) 0110000000
         maskingStr = originStr
           .toString()
-          .replace(phoneStr, phoneStr.toString().replace(/(\d{3})(\d{3})(\d{4})/gi, "$1***$3"));
+          .replace(
+            phoneStr,
+            phoneStr.toString().replace(/(\d{3})(\d{3})(\d{4})/gi, "$1***$3")
+          );
       } else {
         // 1.2) 01000000000
         maskingStr = originStr
           .toString()
-          .replace(phoneStr, phoneStr.toString().replace(/(\d{3})(\d{4})(\d{4})/gi, "$1****$3"));
+          .replace(
+            phoneStr,
+            phoneStr.toString().replace(/(\d{3})(\d{4})(\d{4})/gi, "$1****$3")
+          );
       }
     } else {
       // 2) -가 있는 경우
@@ -144,12 +155,18 @@ export default {
         // 2.1) 00-000-0000
         maskingStr = originStr
           .toString()
-          .replace(phoneStr, phoneStr.toString().replace(/-[0-9]{3}-/g, "-***-"));
+          .replace(
+            phoneStr,
+            phoneStr.toString().replace(/-[0-9]{3}-/g, "-***-")
+          );
       } else if (/-[0-9]{4}-/.test(phoneStr)) {
         // 2.2) 00-0000-0000
         maskingStr = originStr
           .toString()
-          .replace(phoneStr, phoneStr.toString().replace(/-[0-9]{4}-/g, "-****-"));
+          .replace(
+            phoneStr,
+            phoneStr.toString().replace(/-[0-9]{4}-/g, "-****-")
+          );
       }
     }
     return maskingStr;
@@ -310,6 +327,20 @@ export default {
     }
     return `${year}${month}${day}`;
   },
+  getFormatStrDate(strDate, gubun, isYear = true) {
+    const date = new Date(strDate);
+    const year = date.getFullYear(); // yyyy
+    let month = 1 + date.getMonth(); // M
+    month = month >= 10 ? month : `0${month}`; // month 두자리로 저장
+    let day = date.getDate(); // d
+    day = day >= 10 ? day : `0${day}`; // day 두자리로 저장
+
+    if (isYear) {
+      return `${year}${gubun}${month}${gubun}${day}`;
+    } else {
+      return `${month}${gubun}${day}`;
+    }
+  },
   getFormatTime(date) {
     let hour = date.getHours();
     hour = hour >= 10 ? hour : `0${hour}`;
@@ -319,6 +350,10 @@ export default {
     sec = sec >= 10 ? sec : `0${sec}`;
 
     return `${hour}:${min}:${sec}`;
+  },
+  strReplace(str, search, gubun) {
+    const regexAllCase = new RegExp(search, "gi");
+    return str.replace(regexAllCase, gubun);
   },
   // array 나누기
   arrDivision(arr, n) {
