@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import { useGetChallangeList } from "../../../Hook/useGetChallangeList";
-import Event from "../Event";
+// import Event from "../Event";
 
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Autoplay,
-  Keyboard,
-  Mousewheel,
-} from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
+// import SwiperCore, {
+//   Navigation,
+//   Pagination,
+//   Autoplay,
+//   Keyboard,
+//   Mousewheel,
+// } from "swiper";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/swiper-bundle.css";
 import Utils from "../../../Utils/Utils";
-SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
+// SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
 const Container = styled.div`
   img {
@@ -233,14 +233,14 @@ const SwiperInner = styled.a<{ background?: string }>`
 `;
 
 const ChallangeEvent = () => {
-  const { data, isLoading, isError } = useGetChallangeList();
+  // const { data, isLoading, isError } = useGetChallangeList();
   const isMobile = Utils.isMobile();
-  const blankData = [
-    { link: "", image: "" },
-    { link: "", image: "" },
-    { link: "", image: "" },
-    { link: "", image: "" },
-  ];
+  // const blankData = [
+  //   { link: "", image: "" },
+  //   { link: "", image: "" },
+  //   { link: "", image: "" },
+  //   { link: "", image: "" },
+  // ];
   return (
     <Container>
       <h3 className="blind">크확행챌린지</h3>
