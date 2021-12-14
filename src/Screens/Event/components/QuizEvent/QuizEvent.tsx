@@ -165,14 +165,9 @@ const QuizEvent = () => {
   const isMobile = Utils.isMobile();
 
   const { modalOpen, setModalOpen } = useContext(CurrentContext);
-
+  const [imageModal, setImageModal] = useState(false);
   const [seconModalType, setSecondModalType] = useState("cancel");
-
   const [copyVideo, setCopyVideo] = useState(false);
-
-  const onReadyClick = () => {
-    alert("준비중입니다.");
-  };
 
   useEffect(() => {
     if (copyVideo) {
@@ -183,6 +178,12 @@ const QuizEvent = () => {
 
   const onJoinButtonClick = () => {
     // alert("준비중입니다.");
+    setImageModal(false);
+    setModalOpen(true);
+  };
+
+  const imageModalOpen = () => {
+    setImageModal(true);
     setModalOpen(true);
   };
 
@@ -235,6 +236,9 @@ const QuizEvent = () => {
                   alt="공유하기"
                 />
               </CopyToClipboard>
+              <button type="button" onClick={imageModalOpen}>
+                imageModalOpen
+              </button>
             </ShareButton>
             <QuizWrap>
               <img
@@ -276,7 +280,20 @@ const QuizEvent = () => {
         </Bottom>
       </Container>
 
-      {modalOpen && (
+      {modalOpen && imageModal && (
+        <Modal
+          secondChildren={<QuizCancel secondModalType={seconModalType} />}
+          width={isMobile ? "90%" : "600px"}
+          height={isMobile ? "400px" : "80%"}
+          secondWidth={isMobile ? "90%" : "600px"}
+          secondHeight={isMobile ? "400px" : "80%"}
+          isQuiz={true}
+        >
+          aa
+        </Modal>
+      )}
+
+      {modalOpen && !imageModal && (
         <Modal
           secondChildren={<QuizCancel secondModalType={seconModalType} />}
           width={isMobile ? "90%" : "600px"}

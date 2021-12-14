@@ -11,22 +11,16 @@ export const MarketHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 370px;
   background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png")
     no-repeat;
   background-size: cover;
-
-  img {
-    height: 380px;
-    margin-top: 80px;
-  }
+  padding: 20px 0;
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     height: auto;
     img {
       width: 100%;
       height: auto;
-      margin-top: 35px;
     }
   }
 `;

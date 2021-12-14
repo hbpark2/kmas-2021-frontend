@@ -18,6 +18,23 @@ const Container = styled.div`
   img {
     display: block;
   }
+  #instagram {
+    width: 92%;
+    margin: 0 auto;
+    .fennec-overlay {
+      z-index: 100 !important;
+    }
+  }
+
+  .taglive_iframe {
+    width: 100%;
+    height: 350px;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    .taglive_iframe {
+      height: 140px;
+    }
+  }
 `;
 
 const Top = styled.div`
@@ -176,14 +193,16 @@ const SwiperWrap = styled.div`
 `;
 
 const PhotosTitle = styled.div`
+  margin-bottom: 35px;
   img {
     width: 560px;
     margin: 0 auto;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin-top: 20px;
+    margin-bottom: 20px;
     img {
-      width: 60%;
+      width: 80%;
     }
   }
 `;
@@ -284,15 +303,23 @@ const ChallangeEvent = () => {
           <PhotosWarp>
             <PhotosTitle>
               <img
-                src={
-                  isMobile
-                    ? "https://thegn.speedgabia.com/kmas-2021/event/online-2-challange/event-online-photo-title-mo.png"
-                    : "https://thegn.speedgabia.com/kmas-2021/event/online-2-challange/event-online-photo-title.png"
-                }
+                src="https://thegn.speedgabia.com/kmas-2021/event/online-2-challange/event-online-photo-title.png"
                 alt="경품 안내"
               />
             </PhotosTitle>
-            <SwiperWrap>
+
+            <div id="instagram">
+              <iframe
+                title="taglive"
+                id="taglive_iframe1"
+                name="taglive_iframe"
+                className="taglive_iframe"
+                src="https://hosting.taglive.net/taglive4/823/?idname=taglive_iframe1"
+                scrolling="no"
+              ></iframe>
+            </div>
+
+            {/* <SwiperWrap>
               <Swiper
                 navigation
                 slidesPerView={isMobile ? 3 : 3}
@@ -312,14 +339,9 @@ const ChallangeEvent = () => {
                       </SwiperSlide>
                     );
                   })}
-                {/* {blankData.map((item, index) => (
-                  <SwiperSlide key={`insta${index}`}>
 
-                    <SwiperInner background="https://kmas2021.s3.amazonaws.com/media/event/challange/2021%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%89%E1%85%B3%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA_%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-01.jpg" />
-                  </SwiperSlide>
-                ))} */}
               </Swiper>
-            </SwiperWrap>
+            </SwiperWrap> */}
           </PhotosWarp>
           <NoteWrap>
             <img

@@ -11,15 +11,15 @@ SwiperCore.use([Navigation]);
 const Container = styled.div``;
 
 const ScheduleInner = styled.div`
-  max-width: 1320px;
+  max-width: 1200px;
   padding: 0 50px;
   margin: 0 auto;
 `;
 
 const SwiperWrap = styled.div`
   padding: 0 50px;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 50px auto 30px;
 
   .swiper-button-prev::after,
   .swiper-button-next::after {
@@ -32,11 +32,11 @@ const SwiperWrap = styled.div`
   }
 
   .swiper-button-prev {
-    left: -8px;
+    left: -6px;
   }
 
   .swiper-button-next {
-    right: -8px;
+    right: -6px;
   }
 `;
 
@@ -50,22 +50,40 @@ const SwiperInner = styled.div`
   }
 `;
 
-const Schedule = styled.div`
-  box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  width: 1240px;
-  margin: 20px auto 40px;
-  background-color: #f4f4f4;
-  overflow: hidden;
-  img {
-    width: 75px;
+const Button = styled.button<{ isActive?: boolean }>`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: ${(props) => (props.isActive ? props.theme.headerActive : "#000")};
+  font-size: 24px;
+
+  span:first-child {
+    font-family: ${({ theme: { accentFont } }) => accentFont};
+  }
+
+  span:last-child {
+    font-family: ${({ theme: { defaultFont } }) => defaultFont};
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    font-size: 12px;
+  }
+`;
+
+const Schedule = styled.div`
+  box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  width: 930px;
+  margin: 20px auto 40px;
+  background-color: #f4f4f4;
+  overflow: hidden;
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 90%;
-    img {
-      width: 30px;
-    }
   }
 `;
 const ScheduleHeader = styled.ul`
@@ -88,7 +106,7 @@ const ScheduleHeader = styled.ul`
     width: 560px;
   }
   .header-logo {
-    width: 75px;
+    width: 145px;
   }
 `;
 
@@ -96,7 +114,7 @@ const ScheduleRow = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 0;
+  padding: 15px 0;
   margin: 0 40px;
   font-family: ${({ theme: { accentFont } }) => accentFont};
   border-bottom: 2px solid #dadada;
@@ -105,38 +123,32 @@ const ScheduleRow = styled.ul`
   }
   .time {
     width: 130px;
-    font-size: 4.6rem;
+    font-size: 3.5rem;
     text-align: center;
+    color: #555;
   }
   .content {
-    font-size: 3rem;
+    width: 560px;
+    text-align: center;
+    font-size: 2.6rem;
     color: #777;
   }
   .logo {
-  }
-`;
-
-const Button = styled.button<{ isActive?: boolean }>`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  color: ${(props) => (props.isActive ? props.theme.headerActive : "#000")};
-  font-size: 30px;
-
-  span:first-child {
-    font-family: ${({ theme: { accentFont } }) => accentFont};
-  }
-
-  span:last-child {
-    font-family: ${({ theme: { defaultFont } }) => defaultFont};
+    display: flex;
+    width: 145px;
+    img {
+      width: 65px;
+      margin-left: 5px;
+    }
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    font-size: 12px;
+    width: 90%;
+    .logo {
+      img {
+        width: 30px;
+      }
+    }
   }
 `;
 
@@ -212,6 +224,7 @@ const LiveList = () => {
                   {Utils.strReplace(live.item, ",", " /")}
                 </li>
                 <li className="logo">
+                  <img src={live.channel.image} alt="로고" />
                   <img src={live.channel.image} alt="로고" />
                 </li>
               </ScheduleRow>
