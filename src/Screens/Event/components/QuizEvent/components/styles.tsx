@@ -37,7 +37,7 @@ export const CancelInner = styled.div`
   position: relative;
   width: 92%;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 70px;
   padding-bottom: 30px;
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -100,7 +100,11 @@ export const RequestIcon = styled.i<{ top?: string }>`
   display: block;
   left: 50%;
   transform: translateX(-50%);
-  top: -65px;
+  top: -35px;
+  img {
+    width: 60%;
+    margin: 0 auto;
+  }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     top: -62px;
     img {
@@ -115,7 +119,11 @@ export const CancelRequestIcon = styled.i<{ top?: string }>`
   display: block;
   left: 50%;
   transform: translateX(-50%);
-  top: -75px;
+  top: -35px;
+  img {
+    width: 60%;
+    margin: 0 auto;
+  }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     top: -80px;
     img {
@@ -129,12 +137,12 @@ export const Form = styled.form`
   position: relative;
   width: 92%;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 20px;
   h4 {
     font-family: ${({ theme: { accentFont } }) => accentFont};
     width: 40%;
     max-width: 210px;
-    font-size: 30px;
+    font-size: 24px;
   }
 
   input {
@@ -172,15 +180,14 @@ export const Form = styled.form`
 `;
 
 export const NoteWrap = styled.div`
-  margin: 65px auto;
+  margin: 35px auto 45px;
   img {
-    width: 80%;
+    width: 95%;
     max-width: 820px;
     margin: 0 auto;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin: 35px auto;
-
     img {
       width: 100%;
     }
@@ -206,8 +213,10 @@ export const RequestButton = styled.input`
   background-color: ${({ theme: { headerDefault } }) => headerDefault};
   border: none;
   max-width: 438px;
-  height: 115px;
-  font-size: 36px !important;
+  height: 50px;
+  font-size: 24px !important;
+  padding: 10px !important;
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     height: 50px;
     font-size: 24px !important;

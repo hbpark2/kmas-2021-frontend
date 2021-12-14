@@ -8,62 +8,28 @@ import {
 } from "../../../../../constants";
 import Utils from "../../../../../Utils/Utils";
 
-export const quizFormValidSchema = yup.object().shape(
-  {
-    name: yup.string().required(REQUIRED_TEXT),
-    phone_number: yup
-      .string()
-      .required(REQUIRED_TEXT)
-      .matches(/^[0-9]+$/, VALID_NUMBER_TEXT)
-      .min(4, VALID_PHONE_NUMBER_4_TEXT)
-      .max(4, VALID_PHONE_NUMBER_4_TEXT),
-    answer: yup.string().required(REQUIRED_TEXT),
-    url_1: yup.string().when(["url_2", "url_3"], {
-      is: (url_2: string, url_3: string) => !url_2 && !url_3,
-      then: yup
-        .string()
-        .required(VALID_EVENT_LINK)
-        .test("is-link-test", VALID_LINK_TEXT, (value) => {
-          return Utils.checkURL(value);
-        }),
-      otherwise: yup.string().test("is-link-test", VALID_LINK_TEXT, (value) => {
-        if (!value) return true;
-        return Utils.checkURL(value);
-      }),
-    }),
-    url_2: yup.string().when(["url_1", "url_3"], {
-      is: (url_1: string, url_3: string) => !url_1 && !url_3,
-      then: yup
-        .string()
-        .required(VALID_EVENT_LINK)
-        .test("is-link-test", VALID_LINK_TEXT, (value) => {
-          return Utils.checkURL(value);
-        }),
-      otherwise: yup.string().test("is-link-test", VALID_LINK_TEXT, (value) => {
-        if (!value) return true;
-        return Utils.checkURL(value);
-      }),
-    }),
-    url_3: yup.string().when(["url_1", "url_2"], {
-      is: (url_1: string, url_2: string) => !url_1 && !url_2,
-      then: yup
-        .string()
-        .required(VALID_EVENT_LINK)
-        .test("is-link-test", VALID_LINK_TEXT, (value) => {
-          return Utils.checkURL(value);
-        }),
-      otherwise: yup.string().test("is-link-test", VALID_LINK_TEXT, (value) => {
-        if (!value) return true;
-        return Utils.checkURL(value);
-      }),
-    }),
-  },
-  [
-    ["url_2", "url_3"],
-    ["url_1", "url_3"],
-    ["url_1", "url_2"],
-  ]
-);
+export const quizFormValidSchema = yup.object().shape({
+  name: yup.string().required(REQUIRED_TEXT),
+  phone_number: yup
+    .string()
+    .required(REQUIRED_TEXT)
+    .matches(/^[0-9]+$/, VALID_NUMBER_TEXT)
+    .min(4, VALID_PHONE_NUMBER_4_TEXT)
+    .max(4, VALID_PHONE_NUMBER_4_TEXT),
+  answer: yup.string().required(REQUIRED_TEXT),
+  url_1: yup.string().test("is-link-test", VALID_LINK_TEXT, (value) => {
+    if (!value) return true;
+    return Utils.checkURL(value);
+  }),
+  url_2: yup.string().test("is-link-test", VALID_LINK_TEXT, (value) => {
+    if (!value) return true;
+    return Utils.checkURL(value);
+  }),
+  url_3: yup.string().test("is-link-test", VALID_LINK_TEXT, (value) => {
+    if (!value) return true;
+    return Utils.checkURL(value);
+  }),
+});
 
 export const inputArr = [
   {
