@@ -39,7 +39,6 @@ const Event = ({ match }: RouteComponentProps) => {
         <h2 className="blind">이벤트 네비게이션</h2>
 
         <NavUl>
-          {/* tintColor={index < 2 ? "#f4dcd5" : "#ceded6"} */}
           <NavList
             current={location.pathname === "/event/quiz"}
             tintColor="#f4dcd5"
