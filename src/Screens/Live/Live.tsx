@@ -46,6 +46,12 @@ const LiveBanner = styled.button`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 96%;
     margin: 40px auto 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    img {
+      display: block;
+      height: 100%;
+      box-shadow: none;
+    }
   }
 `;
 

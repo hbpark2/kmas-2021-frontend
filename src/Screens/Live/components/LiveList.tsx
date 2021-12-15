@@ -109,7 +109,7 @@ const Schedule = styled.div`
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 96%;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 `;
 const ScheduleHeader = styled.ul`
