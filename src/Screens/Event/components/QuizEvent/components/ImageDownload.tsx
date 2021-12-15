@@ -39,7 +39,7 @@ const DownloadItem = styled.li`
   }
 `;
 
-const Button = styled.a`
+const Button = styled.button`
   display: block;
   margin: 10px auto 15px;
   img {
@@ -69,15 +69,52 @@ const Footer = styled.div`
 `;
 
 const ImageDownload = () => {
-  const downloadClick: Function = (type: string) => {
+  const downloadClick = (type: 1 | 2 | 3 | 4) => {
     // * GA 설정
     analytics.sendEvent({
       category: "퀴즈 이벤트 이미지 다운로드",
       action: "퀴즈 이벤트 이미지 다운로드 클릭",
-      label: type,
+      label: `퀴즈 이벤트 이미지 ${type}`,
     });
-  };
 
+    const name =
+      type === 1
+        ? "quiz_001"
+        : type === 2
+        ? "quiz_003"
+        : type === 3
+        ? "quiz_004"
+        : "quiz_002";
+
+    fetch(
+      `https://kmas2021.s3.ap-northeast-2.amazonaws.com/media/event/quiz/${name}.png`
+    )
+      .then((res) => res.blob())
+      .then((blob) => {
+        let dName =
+          type === 1
+            ? "quiz_001"
+            : type === 2
+            ? "quiz_002"
+            : type === 3
+            ? "quiz_003"
+            : "quiz_004";
+
+        let objectURL = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = objectURL;
+        link.download = dName;
+        document.body.appendChild(link);
+        link.dispatchEvent(
+          new MouseEvent("click", {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+          })
+        );
+        document.body.removeChild(link);
+      });
+  };
   return (
     <Container>
       <Header>
@@ -93,13 +130,7 @@ const ImageDownload = () => {
             src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-1.png"
             alt="이미지 1"
           />
-          <Button
-            href={DownloadImage1}
-            target="_blank"
-            download
-            rel="noreferrer"
-            onClick={() => downloadClick("퀴즈 이벤트 이미지1")}
-          >
+          <Button onClick={() => downloadClick(1)}>
             <img
               src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-button.png"
               alt="이미지 1 다운로드"
@@ -111,13 +142,7 @@ const ImageDownload = () => {
             src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-2.png"
             alt="이미지 2"
           />
-          <Button
-            href={DownloadImage2}
-            target="_blank"
-            download
-            rel="noreferrer"
-            onClick={() => downloadClick("퀴즈 이벤트 이미지2")}
-          >
+          <Button onClick={() => downloadClick(2)}>
             <img
               src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-button.png"
               alt="이미지 2 다운로드"
@@ -129,13 +154,7 @@ const ImageDownload = () => {
             src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-3.png"
             alt="이미지 3"
           />
-          <Button
-            href={DownloadImage3}
-            target="_blank"
-            download
-            rel="noreferrer"
-            onClick={() => downloadClick("퀴즈 이벤트 이미지3")}
-          >
+          <Button onClick={() => downloadClick(3)}>
             <img
               src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-button.png"
               alt="이미지 3 다운로드"
@@ -147,13 +166,7 @@ const ImageDownload = () => {
             src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-4.png"
             alt="이미지 4"
           />
-          <Button
-            href={DownloadImage4}
-            target="_blank"
-            download
-            rel="noreferrer"
-            onClick={() => downloadClick("퀴즈 이벤트 이미지4")}
-          >
+          <Button onClick={() => downloadClick(4)}>
             <img
               src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/image-download-button.png"
               alt="이미지 4 다운로드"
