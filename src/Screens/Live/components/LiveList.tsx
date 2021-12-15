@@ -48,10 +48,11 @@ const SwiperWrap = styled.div`
   .swiper-button-next {
     right: -6px;
   }
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 80%;
     padding: 0;
-    margin: 50px auto 20px;
+    margin: 50px auto 30px;
 
     .swiper-container {
       height: 50px;
@@ -64,6 +65,10 @@ const SwiperWrap = styled.div`
     .swiper-button-next {
       right: -6px;
     }
+  }
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    margin: 50px auto 20px;
   }
 `;
 
