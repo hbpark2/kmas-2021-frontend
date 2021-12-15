@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Utils from "../../Utils/Utils";
 import LiveList from "./components/LiveList";
@@ -5,8 +6,13 @@ import LiveList from "./components/LiveList";
 const Container = styled.div`
   margin-top: 75px;
   padding-bottom: 150px;
+
+  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png");
+  background-size: 100%;
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding-bottom: 50px;
+    background: none;
   }
 `;
 
@@ -29,19 +35,17 @@ export const MarketHeader = styled.div`
   }
 `;
 
-const LiveBanner = styled.div`
-  width: 90%;
-  max-width: 1280px;
+const LiveBanner = styled.a`
+  display: block;
+  width: 930px;
   margin: 60px auto;
   img {
     width: 100%;
+    box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.3);
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 96%;
     margin: 40px auto 20px;
-    img {
-      box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
-    }
   }
 `;
 
@@ -58,7 +62,12 @@ const Live = () => {
         />
       </MarketHeader>
       <LiveList />
-      <LiveBanner>
+      <LiveBanner
+        href="https://v.dongbanmall.com/exhibition/3707?groupNo=all"
+        target="_blank"
+        title="기획전 바로가기"
+        rel="norefferer"
+      >
         <img
           src={
             isMobile

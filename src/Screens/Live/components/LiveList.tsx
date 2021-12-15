@@ -5,17 +5,11 @@ import Spinner from "../../../Components/Common/Spinner";
 import Utils from "../../../Utils/Utils";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
+import { Link } from "react-router-dom";
 
 SwiperCore.use([Navigation]);
 
-const Container = styled.div`
-  background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png");
-  background-size: 100%;
-
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    background: none;
-  }
-`;
+const Container = styled.div``;
 
 const ScheduleInner = styled.div`
   max-width: 1200px;
@@ -110,7 +104,7 @@ const Schedule = styled.div`
   box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   width: 930px;
-  margin: 20px auto 60px;
+  margin: 20px auto 40px;
   background-color: #f4f4f4;
   overflow: hidden;
 
@@ -327,7 +321,12 @@ const LiveList = () => {
               </ScheduleRow>
             ))}
         </Schedule>
-        <GoLiveCommerce>
+        <GoLiveCommerce
+          href="https://v.dongbanmall.com/liveSchedule"
+          title="라이브커머스 보러가기"
+          target="_blank"
+          rel="norefferer"
+        >
           <img
             src="https://thegn.speedgabia.com/kmas-2021/live/live-go-commerce.png"
             alt="라이브커머스 바로가기"
