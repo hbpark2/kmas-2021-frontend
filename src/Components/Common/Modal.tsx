@@ -6,6 +6,7 @@ const Container = styled.div<{
   width?: string;
   height?: string;
   center?: boolean;
+  isDownload?: boolean;
 }>`
   position: fixed;
   top: 50%;
@@ -21,7 +22,7 @@ const Container = styled.div<{
   z-index: 200;
   overflow-y: scroll;
   border-radius: 25px;
-  padding: 20px 0;
+  padding: ${({ isDownload }) => (isDownload ? "0" : "20px 0")};
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
 
   &::-webkit-scrollbar {
@@ -30,6 +31,8 @@ const Container = styled.div<{
 
   @media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
     max-height: ${(props) => (props.height ? props.height : "800px")};
+    /* max-height: ${(props) =>
+      props.isDownload ? "760px" : props.height ? props.height : "800px"}; */
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
@@ -89,6 +92,7 @@ interface ModalProps {
   children: React.ReactChild;
   secondChildren?: React.ReactNode;
   isQuiz?: boolean;
+  isDownload?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -100,6 +104,7 @@ const Modal: React.FC<ModalProps> = ({
   secondHeight,
   center,
   isQuiz,
+  isDownload,
 }) => {
   const { setModalOpen, secondModalOpen, setSecondModalOpen } =
     useContext(CurrentContext);
@@ -111,6 +116,7 @@ const Modal: React.FC<ModalProps> = ({
         height={height}
         aria-hidden={secondModalOpen}
         center={center}
+        isDownload={isDownload}
       >
         {children}
       </Container>

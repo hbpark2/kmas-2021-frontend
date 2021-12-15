@@ -1,9 +1,14 @@
+import { useContext } from "react";
+import Modal from "../../Components/Common/Modal";
+import { CurrentContext } from "../../Context/ContextStore";
 import Utils from "../../Utils/Utils";
 import NewsList from "./components/NewsList";
-import { Container, MarketHeader } from "./styles";
+import TimeTable from "./components/TimeTable";
+import { Container, MarketHeader, NewsBanner } from "./styles";
 
 const News = () => {
   const isMobile = Utils.isMobile();
+  const { modalOpen, setModalOpen } = useContext(CurrentContext);
 
   return (
     <Container>
@@ -19,6 +24,16 @@ const News = () => {
         />
       </MarketHeader>
       <NewsList />
+
+      {/* <NewsBanner onClick={() => setModalOpen(true)}>뉴스배너</NewsBanner>
+      {modalOpen && (
+        <Modal
+          width={isMobile ? "92%" : "600px"}
+          height={isMobile ? "450px" : "760px"}
+        >
+          <TimeTable />
+        </Modal>
+      )} */}
     </Container>
   );
 };

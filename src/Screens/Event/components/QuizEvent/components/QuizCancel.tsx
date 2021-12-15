@@ -89,17 +89,25 @@ const QuizCancel: React.FC<QuizCancelProp> = ({ secondModalType }) => {
         <ButtonWrap>
           <RequestButton
             type="button"
-            value="확인"
             onClick={() => {
               setSecondModalOpen(false);
               setModalOpen(false);
             }}
-          />
+          >
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/quiz-success.png"
+              alt="확인"
+            />
+          </RequestButton>
           <RequestButton
             type="button"
-            value="취소"
             onClick={() => setSecondModalOpen(false)}
-          />
+          >
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/quiz-cancel.png"
+              alt="취소"
+            />
+          </RequestButton>
         </ButtonWrap>
       </CancelInner>
     </Container>

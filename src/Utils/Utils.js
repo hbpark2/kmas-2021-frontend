@@ -367,6 +367,12 @@ export default {
 
     return tmp.filter((data) => data.length > 0);
   },
+  ellipsis(str, length) {
+    if (str.length > length) {
+      return str.substr(0, length - 2) + "...";
+    }
+    return str;
+  },
   isMobile() {
     if (window.innerWidth < 640) {
       return true;

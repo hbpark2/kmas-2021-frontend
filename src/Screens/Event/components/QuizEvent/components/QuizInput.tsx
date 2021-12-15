@@ -51,6 +51,7 @@ const QuizInput: React.FC<IQuizInputProps> = ({
   type,
   placeholder,
 }) => {
+  //
   const {
     register,
     formState: { errors },

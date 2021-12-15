@@ -129,8 +129,18 @@ const QuizForm: React.FC<QuizeFormProps> = ({
             />
           </NoteWrap>
           <ButtonWrap>
-            <RequestButton type="button" value="뒤로가기" onClick={onCancel} />
-            <RequestButton type="submit" value="정답 제출" />
+            <RequestButton type="button" onClick={onCancel}>
+              <img
+                src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/quiz-back.png"
+                alt="뒤로가기"
+              />
+            </RequestButton>
+            <RequestButton type="submit">
+              <img
+                src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/quiz-submit.png"
+                alt="정답 제출"
+              />
+            </RequestButton>
           </ButtonWrap>
         </Form>
       </FormProvider>

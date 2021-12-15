@@ -8,6 +8,7 @@ import QuizCancel from "./components/QuizCancel";
 import QuizForm from "./components/QuizForm";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Meta from "../../../../Components/Common/Meta";
+import ImageDownload from "./components/ImageDownload";
 
 const Container = styled.div`
   img {
@@ -81,7 +82,7 @@ const VideoWrap = styled.div`
     width: 90%;
     height: 482px;
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: 92%;
     height: 200px;
 
@@ -92,17 +93,33 @@ const VideoWrap = styled.div`
   }
 `;
 
-const ShareButton = styled.button`
-  display: block;
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: center;
   margin: 0 auto 75px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    width: 45%;
     margin: 25px auto 35px;
     img {
       width: 100%;
     }
   }
 `;
+
+const ShareButton = styled.button`
+  display: block;
+  width: 45%;
+  margin: 0 10px;
+  img {
+    width: 100%;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin: 0 5px;
+
+    width: 45%;
+  }
+`;
+
+const ImageDownloadButton = styled(ShareButton)``;
 
 const QuizWrap = styled.div`
   background-color: #d1b2a3;
@@ -165,14 +182,9 @@ const QuizEvent = () => {
   const isMobile = Utils.isMobile();
 
   const { modalOpen, setModalOpen } = useContext(CurrentContext);
-
+  const [imageModal, setImageModal] = useState(false);
   const [seconModalType, setSecondModalType] = useState("cancel");
-
   const [copyVideo, setCopyVideo] = useState(false);
-
-  const onReadyClick = () => {
-    alert("준비중입니다.");
-  };
 
   useEffect(() => {
     if (copyVideo) {
@@ -183,6 +195,12 @@ const QuizEvent = () => {
 
   const onJoinButtonClick = () => {
     // alert("준비중입니다.");
+    setImageModal(false);
+    setModalOpen(true);
+  };
+
+  const imageModalOpen = () => {
+    setImageModal(true);
     setModalOpen(true);
   };
 
@@ -224,18 +242,25 @@ const QuizEvent = () => {
                 allowFullScreen
               />
             </VideoWrap>
-            {/* <ShareButton type="button" onClick={onReadyClick}> */}
-            <ShareButton type="button">
-              <CopyToClipboard
-                text={"https://youtu.be/XZbyn7j5Hc4"}
-                onCopy={() => setCopyVideo(true)}
-              >
+            <ButtonWrap>
+              <ShareButton type="button">
+                <CopyToClipboard
+                  text={"https://youtu.be/XZbyn7j5Hc4"}
+                  onCopy={() => setCopyVideo(true)}
+                >
+                  <img
+                    src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-share-button.png"
+                    alt="공유하기"
+                  />
+                </CopyToClipboard>
+              </ShareButton>
+              <ImageDownloadButton type="button" onClick={imageModalOpen}>
                 <img
-                  src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-share-button.png"
-                  alt="공유하기"
+                  src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-image-download-button.png"
+                  alt="이미지 다운로드"
                 />
-              </CopyToClipboard>
-            </ShareButton>
+              </ImageDownloadButton>
+            </ButtonWrap>
             <QuizWrap>
               <img
                 src={
@@ -276,7 +301,20 @@ const QuizEvent = () => {
         </Bottom>
       </Container>
 
-      {modalOpen && (
+      {modalOpen && imageModal && (
+        <Modal
+          secondChildren={<QuizCancel secondModalType={seconModalType} />}
+          width={isMobile ? "92%" : "600px"}
+          // width={isMobile ? "300px" : "600px"}
+          // height={isMobile ? "450px" : "760px"}
+          height={window.innerHeight > 900 ? "846px" : "450px"}
+          isDownload={true}
+        >
+          <ImageDownload />
+        </Modal>
+      )}
+
+      {modalOpen && !imageModal && (
         <Modal
           secondChildren={<QuizCancel secondModalType={seconModalType} />}
           width={isMobile ? "90%" : "600px"}

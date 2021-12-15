@@ -161,7 +161,7 @@ const Image = styled.div`
   }
 `;
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 const NewsList = () => {
   const [page, setPage] = useState(1);
   const {

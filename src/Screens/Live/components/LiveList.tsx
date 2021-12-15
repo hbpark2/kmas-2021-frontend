@@ -11,15 +11,18 @@ SwiperCore.use([Navigation]);
 const Container = styled.div``;
 
 const ScheduleInner = styled.div`
-  max-width: 1320px;
+  max-width: 1200px;
   padding: 0 50px;
   margin: 0 auto;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    padding: 0 1%;
+  }
 `;
 
 const SwiperWrap = styled.div`
   padding: 0 50px;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 50px auto 30px;
 
   .swiper-button-prev::after,
   .swiper-button-next::after {
@@ -32,11 +35,33 @@ const SwiperWrap = styled.div`
   }
 
   .swiper-button-prev {
-    left: -8px;
+    left: -6px;
   }
 
   .swiper-button-next {
-    right: -8px;
+    right: -6px;
+  }
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 80%;
+    padding: 0;
+    margin: 50px auto 30px;
+
+    .swiper-container {
+      height: 50px;
+    }
+
+    .swiper-button-prev {
+      left: -6px;
+    }
+
+    .swiper-button-next {
+      right: -6px;
+    }
+  }
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    margin: 50px auto 20px;
   }
 `;
 
@@ -50,22 +75,41 @@ const SwiperInner = styled.div`
   }
 `;
 
-const Schedule = styled.div`
-  box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  width: 1240px;
-  margin: 20px auto 40px;
-  background-color: #f4f4f4;
-  overflow: hidden;
-  img {
-    width: 75px;
+const Button = styled.button<{ isActive?: boolean }>`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: ${(props) => (props.isActive ? props.theme.headerActive : "#000")};
+  font-size: 24px;
+
+  span:first-child {
+    font-family: ${({ theme: { accentFont } }) => accentFont};
+  }
+
+  span:last-child {
+    font-family: ${({ theme: { defaultFont } }) => defaultFont};
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    width: 90%;
-    img {
-      width: 30px;
-    }
+    font-size: 2rem;
+  }
+`;
+
+const Schedule = styled.div`
+  box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  width: 930px;
+  margin: 20px auto 40px;
+  background-color: #f4f4f4;
+  overflow: hidden;
+
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 96%;
+    margin-bottom: 30px;
   }
 `;
 const ScheduleHeader = styled.ul`
@@ -88,7 +132,20 @@ const ScheduleHeader = styled.ul`
     width: 560px;
   }
   .header-logo {
-    width: 75px;
+    width: 145px;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    font-size: 2rem;
+    padding: 15px 10px;
+    .header-time {
+      width: 25%;
+    }
+    .header-content {
+      width: 50%;
+    }
+    .header-logo {
+      width: 25%;
+    }
   }
 `;
 
@@ -96,7 +153,7 @@ const ScheduleRow = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 0;
+  padding: 15px 0;
   margin: 0 40px;
   font-family: ${({ theme: { accentFont } }) => accentFont};
   border-bottom: 2px solid #dadada;
@@ -104,43 +161,76 @@ const ScheduleRow = styled.ul`
     border-bottom: none;
   }
   .time {
-    width: 130px;
-    font-size: 4.6rem;
+    width: 120px;
+    font-size: 3.5rem;
     text-align: center;
+    color: #555;
   }
   .content {
-    font-size: 3rem;
+    width: 560px;
+    text-align: center;
+    font-size: 2.6rem;
     color: #777;
   }
   .logo {
-  }
-`;
+    display: flex;
+    justify-content: center;
 
-const Button = styled.button<{ isActive?: boolean }>`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  color: ${(props) => (props.isActive ? props.theme.headerActive : "#000")};
-  font-size: 30px;
-
-  span:first-child {
-    font-family: ${({ theme: { accentFont } }) => accentFont};
-  }
-
-  span:last-child {
-    font-family: ${({ theme: { defaultFont } }) => defaultFont};
+    width: 145px;
+    img {
+      width: 65px;
+      margin-left: 5px;
+    }
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    font-size: 12px;
+    margin: 0 10px;
+    padding: 12px 0;
+
+    .time {
+      width: 25%;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #555;
+    }
+    .content {
+      width: 50%;
+      text-align: center;
+      font-size: 1.6rem;
+      color: #777;
+    }
+    .logo {
+      width: 25%;
+      display: flex;
+      justify-content: flex-end;
+
+      img {
+        width: 40px;
+        margin-left: 3px;
+      }
+    }
   }
 `;
 
-const liveArr = [
+const GoLiveCommerce = styled.a`
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
+  img {
+    width: 100%;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 80%;
+  }
+`;
+
+const SpinnerWrap = styled.div`
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+`;
+
+export const liveArr = [
   { date: "2021-12-18", day: "토" },
   { date: "2021-12-19", day: "일" },
   { date: "2021-12-20", day: "월" },
@@ -152,6 +242,7 @@ const liveArr = [
 ];
 
 const LiveList = () => {
+  const isMobile = Utils.isMobile();
   const toDay = Utils.getToday("-");
   const [liveDate, setLiveDate] = useState<string>(
     liveArr.map((live) => {
@@ -200,7 +291,12 @@ const LiveList = () => {
             <li className="header-content">제품</li>
             <li className="header-logo"></li>
           </ScheduleHeader>
-          {isLoading && <Spinner />}
+
+          {isLoading && (
+            <SpinnerWrap>
+              <Spinner />
+            </SpinnerWrap>
+          )}
           {!isError &&
             !isLoading &&
             data &&
@@ -209,14 +305,37 @@ const LiveList = () => {
               <ScheduleRow key={live.id}>
                 <li className="time">{live.start_time.slice(0, -3)}</li>
                 <li className="content">
-                  {Utils.strReplace(live.item, ",", " /")}
+                  {isMobile
+                    ? Utils.ellipsis(Utils.strReplace(live.item, ",", " /"), 14)
+                    : Utils.ellipsis(
+                        Utils.strReplace(live.item, ",", " /"),
+                        27
+                      )}
                 </li>
                 <li className="logo">
-                  <img src={live.channel.image} alt="로고" />
+                  {live.channel.image !==
+                    "https://thegn.speedgabia.com/kmas-2021/channel/logo_gachi.png" && (
+                    <img src={live.channel.image} alt="로고" />
+                  )}
+                  <img
+                    src="https://thegn.speedgabia.com/kmas-2021/channel/logo_gachi.png"
+                    alt="로고"
+                  />
                 </li>
               </ScheduleRow>
             ))}
         </Schedule>
+        <GoLiveCommerce
+          href="https://v.dongbanmall.com/liveSchedule"
+          title="라이브커머스 보러가기"
+          target="_blank"
+          rel="norefferer"
+        >
+          <img
+            src="https://thegn.speedgabia.com/kmas-2021/live/live-go-commerce.png"
+            alt="라이브커머스 바로가기"
+          />
+        </GoLiveCommerce>
       </ScheduleInner>
     </Container>
   );
