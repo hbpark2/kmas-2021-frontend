@@ -220,7 +220,8 @@ export const RequestButton = styled.button`
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    height: 50px;
+    width: 48%;
+    height: auto;
     font-size: 24px !important;
   }
 `;
