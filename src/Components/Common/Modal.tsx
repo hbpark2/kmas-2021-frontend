@@ -31,6 +31,8 @@ const Container = styled.div<{
 
   @media ${({ theme: { deviceScreenMin } }) => deviceScreenMin.wide} {
     max-height: ${(props) => (props.height ? props.height : "800px")};
+    /* max-height: ${(props) =>
+      props.isDownload ? "760px" : props.height ? props.height : "800px"}; */
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {

@@ -82,7 +82,7 @@ const VideoWrap = styled.div`
     width: 90%;
     height: 482px;
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: 92%;
     height: 200px;
 
