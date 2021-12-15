@@ -4,6 +4,10 @@ import LiveList from "./components/LiveList";
 
 const Container = styled.div`
   margin-top: 75px;
+  padding-bottom: 150px;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    padding-bottom: 50px;
+  }
 `;
 
 export const MarketHeader = styled.div`
@@ -25,6 +29,22 @@ export const MarketHeader = styled.div`
   }
 `;
 
+const LiveBanner = styled.div`
+  width: 90%;
+  max-width: 1280px;
+  margin: 60px auto;
+  img {
+    width: 100%;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 96%;
+    margin: 40px auto 20px;
+    img {
+      box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
+    }
+  }
+`;
+
 const Live = () => {
   const isMobile = Utils.isMobile();
 
@@ -38,6 +58,16 @@ const Live = () => {
         />
       </MarketHeader>
       <LiveList />
+      <LiveBanner>
+        <img
+          src={
+            isMobile
+              ? "https://thegn.speedgabia.com/kmas-2021/live/live-banner-mo.png"
+              : "https://thegn.speedgabia.com/kmas-2021/live/live-banner.png"
+          }
+          alt="라이브커머스 바로가기"
+        />
+      </LiveBanner>
     </Container>
   );
 };

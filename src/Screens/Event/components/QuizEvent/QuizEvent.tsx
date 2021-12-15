@@ -8,6 +8,7 @@ import QuizCancel from "./components/QuizCancel";
 import QuizForm from "./components/QuizForm";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Meta from "../../../../Components/Common/Meta";
+import ImageDownload from "./components/ImageDownload";
 
 const Container = styled.div`
   img {
@@ -92,17 +93,33 @@ const VideoWrap = styled.div`
   }
 `;
 
-const ShareButton = styled.button`
-  display: block;
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: center;
   margin: 0 auto 75px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    width: 45%;
     margin: 25px auto 35px;
     img {
       width: 100%;
     }
   }
 `;
+
+const ShareButton = styled.button`
+  display: block;
+  width: 45%;
+  margin: 0 10px;
+  img {
+    width: 100%;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    margin: 0 5px;
+
+    width: 45%;
+  }
+`;
+
+const ImageDownloadButton = styled(ShareButton)``;
 
 const QuizWrap = styled.div`
   background-color: #d1b2a3;
@@ -225,21 +242,25 @@ const QuizEvent = () => {
                 allowFullScreen
               />
             </VideoWrap>
-            {/* <ShareButton type="button" onClick={onReadyClick}> */}
-            <ShareButton type="button">
-              <CopyToClipboard
-                text={"https://youtu.be/XZbyn7j5Hc4"}
-                onCopy={() => setCopyVideo(true)}
-              >
+            <ButtonWrap>
+              <ShareButton type="button">
+                <CopyToClipboard
+                  text={"https://youtu.be/XZbyn7j5Hc4"}
+                  onCopy={() => setCopyVideo(true)}
+                >
+                  <img
+                    src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-share-button.png"
+                    alt="공유하기"
+                  />
+                </CopyToClipboard>
+              </ShareButton>
+              <ImageDownloadButton type="button" onClick={imageModalOpen}>
                 <img
-                  src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-share-button.png"
-                  alt="공유하기"
+                  src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-image-download-button.png"
+                  alt="이미지 다운로드"
                 />
-              </CopyToClipboard>
-              <button type="button" onClick={imageModalOpen}>
-                imageModalOpen
-              </button>
-            </ShareButton>
+              </ImageDownloadButton>
+            </ButtonWrap>
             <QuizWrap>
               <img
                 src={
@@ -283,13 +304,11 @@ const QuizEvent = () => {
       {modalOpen && imageModal && (
         <Modal
           secondChildren={<QuizCancel secondModalType={seconModalType} />}
-          width={isMobile ? "90%" : "600px"}
-          height={isMobile ? "400px" : "80%"}
-          secondWidth={isMobile ? "90%" : "600px"}
-          secondHeight={isMobile ? "400px" : "80%"}
-          isQuiz={true}
+          width={isMobile ? "92%" : "600px"}
+          height={isMobile ? "450px" : "80%"}
+          isDownload={true}
         >
-          aa
+          <ImageDownload />
         </Modal>
       )}
 
