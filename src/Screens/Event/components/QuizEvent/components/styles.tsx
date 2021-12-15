@@ -208,18 +208,19 @@ export const ButtonWrap = styled.div`
   }
 `;
 
-export const RequestButton = styled.input`
+export const RequestButton = styled.button`
   color: #fff;
   background-color: ${({ theme: { headerDefault } }) => headerDefault};
   border: none;
   max-width: 438px;
   height: 50px;
   font-size: 24px !important;
-  padding: 10px !important;
+  img {
+    width: 100%;
+  }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     height: 50px;
     font-size: 24px !important;
-    padding: 10px !important;
   }
 `;
