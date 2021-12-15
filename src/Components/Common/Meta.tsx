@@ -27,7 +27,10 @@ const Meta = ({ data }: MetaProps) => {
   const lang: string = locales[data.locale] || locales["en"];
   const title = data.title;
   const description = data.description;
-  const image = data.image !== undefined && `${data.image}`;
+  const image =
+    data.image !== undefined
+      ? `${data.image}`
+      : "https://thegn.speedgabia.com/kmas-2021/main/main.png";
   const canonical = `https://k-mas.org/${data.canonical ? data.canonical : ""}`;
   const type = data.type === undefined ? "website" : data.type;
   const width: string | undefined = data.image && (data.width || "1200");
