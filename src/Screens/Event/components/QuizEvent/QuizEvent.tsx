@@ -305,7 +305,7 @@ const QuizEvent = () => {
         <Modal
           secondChildren={<QuizCancel secondModalType={seconModalType} />}
           width={isMobile ? "92%" : "600px"}
-          height={isMobile ? "450px" : "80%"}
+          height={isMobile ? "450px" : "760px"}
           isDownload={true}
         >
           <ImageDownload />

@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import analytics from "../../../../../analytics";
-import DownloadImage1 from "../../../../../Assets/download-image-1.png";
-import DownloadImage2 from "../../../../../Assets/download-image-2.png";
-import DownloadImage3 from "../../../../../Assets/download-image-3.png";
-import DownloadImage4 from "../../../../../Assets/download-image-4.png";
+
 const Container = styled.div`
   width: 100%;
   img {

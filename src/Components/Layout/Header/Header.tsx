@@ -197,7 +197,7 @@ const Header = () => {
       current: location.pathname.indexOf("event") > 0,
     },
     { text: "판매 기획전", pathname: "/exhibition", active: true },
-    { text: "라이브커머스", pathname: "/live", active: false },
+    { text: "라이브커머스", pathname: "/live", active: true },
     { text: "마켓뉴스", pathname: "/news", active: true },
     { text: "참여장터", pathname: "/market", active: true },
   ];
