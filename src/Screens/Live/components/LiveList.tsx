@@ -5,7 +5,6 @@ import Spinner from "../../../Components/Common/Spinner";
 import Utils from "../../../Utils/Utils";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
-import { Link } from "react-router-dom";
 
 SwiperCore.use([Navigation]);
 
@@ -175,6 +174,8 @@ const ScheduleRow = styled.ul`
   }
   .logo {
     display: flex;
+    justify-content: center;
+
     width: 145px;
     img {
       width: 65px;
@@ -229,7 +230,7 @@ const SpinnerWrap = styled.div`
   justify-content: center;
 `;
 
-const liveArr = [
+export const liveArr = [
   { date: "2021-12-18", day: "토" },
   { date: "2021-12-19", day: "일" },
   { date: "2021-12-20", day: "월" },
@@ -312,7 +313,10 @@ const LiveList = () => {
                       )}
                 </li>
                 <li className="logo">
-                  <img src={live.channel.image} alt="로고" />
+                  {live.channel.image !==
+                    "https://thegn.speedgabia.com/kmas-2021/channel/logo_gachi.png" && (
+                    <img src={live.channel.image} alt="로고" />
+                  )}
                   <img
                     src="https://thegn.speedgabia.com/kmas-2021/channel/logo_gachi.png"
                     alt="로고"

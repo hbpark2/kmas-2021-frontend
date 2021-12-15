@@ -5,7 +5,7 @@ import LiveList from "./components/LiveList";
 
 const Container = styled.div`
   margin-top: 75px;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
 
   background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png");
   background-size: 100%;
@@ -35,10 +35,10 @@ export const MarketHeader = styled.div`
   }
 `;
 
-const LiveBanner = styled.a`
+const LiveBanner = styled.button`
   display: block;
   width: 930px;
-  margin: 60px auto;
+  margin: 60px auto 0;
   img {
     width: 100%;
     box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.3);
@@ -51,6 +51,9 @@ const LiveBanner = styled.a`
 
 const Live = () => {
   const isMobile = Utils.isMobile();
+  const onReadyClick = () => {
+    alert("준비중입니다.");
+  };
 
   return (
     <Container>
@@ -63,10 +66,11 @@ const Live = () => {
       </MarketHeader>
       <LiveList />
       <LiveBanner
-        href="https://v.dongbanmall.com/exhibition/3707?groupNo=all"
-        target="_blank"
-        title="기획전 바로가기"
-        rel="norefferer"
+        // href="https://v.dongbanmall.com/exhibition/3707?groupNo=all"
+        // target="_blank"
+        // title="기획전 바로가기"
+        // rel="norefferer"
+        onClick={onReadyClick}
       >
         <img
           src={
