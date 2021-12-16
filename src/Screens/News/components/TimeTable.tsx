@@ -220,11 +220,14 @@ const ScheduleBottom = styled.ul<{ spaceBetween?: boolean }>`
     img {
       height: 60px;
     }
+
     .team-title {
       font-size: 13px;
+      width: ${({ spaceBetween }) => !spaceBetween && "100px"};
     }
     .team-name {
-      font-size: 13px;
+      font-size: 15px;
+      padding: 7px 0;
     }
     .team-desc {
       align-items: start;
