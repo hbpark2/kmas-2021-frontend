@@ -67,8 +67,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-7-auction.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "http://rpp.auction.co.kr/?exhib=50621",
+    active: true,
   },
   {
     name: "지마켓",
@@ -77,8 +77,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-8-gmarket.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "http://rpp.gmarket.co.kr/?exhib=51034",
+    active: true,
   },
   {
     name: "G9",
@@ -127,7 +127,7 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-13-boribori.png",
     moImage: "",
-    link: "http://www.boribori.co.kr/event/main?planNo=26186",
+    link: "http://www.boribori.co.kr/event/main?planNo=36455",
     active: true,
   },
   {
@@ -302,13 +302,13 @@ export const onlineArray: ExhibitonCompany[] = [
   },
   {
     name: "우아한형제들(배달의민족)",
-    startDate: "2021-12-18",
+    startDate: "2021-12-16",
     endDate: "2021-12-26",
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-31-baemin.png",
     moImage: "",
     link: "https://event-view.baemin.com/apps/8xweIrS?mode=no-lottie",
-    active: false,
+    active: true,
   },
   {
     name: "아이디어스",
