@@ -41,6 +41,7 @@ const News = () => {
           width={window.innerWidth > 900 ? "900px" : "92%"}
           height={window.innerHeight > 900 ? "870px" : "450px"}
           isConcert={true}
+          center={true}
         >
           <TimeTable />
         </Modal>

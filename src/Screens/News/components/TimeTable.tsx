@@ -15,6 +15,8 @@ const Container = styled.div`
   border-radius: 25px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 96%;
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     height: 450px;
     overflow-y: scroll;
   }
