@@ -4,10 +4,10 @@ export const Container = styled.main`
   padding-bottom: 100px;
   background: url("https://thegn.speedgabia.com/kmas-2021/market/market-bg.png");
   background-size: contain;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     background: none;
-    padding-bottom: 30px;
+    padding-bottom: 00px;
   }
 `;
 
@@ -46,6 +46,7 @@ export const NewsBanner = styled.button`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 100%;
     padding: 0;
+    margin-bottom: 30px;
     img {
       width: 100%;
     }
