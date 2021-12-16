@@ -230,7 +230,7 @@ const ExhibitionList = () => {
           );
         })}
       </OnlineGrid>
-      <LiveWrap>
+      {/* <LiveWrap>
         <Banner
           src="https://thegn.speedgabia.com/kmas-2021/sale/sale-live-banner.png"
           alt="온라인기획전 타이틀"
@@ -277,7 +277,7 @@ const ExhibitionList = () => {
             );
           })}
         </LiveGrid>
-      </LiveWrap>
+      </LiveWrap> */}
     </Container>
   );
 };

@@ -307,7 +307,7 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-31-baemin.png",
     moImage: "",
-    link: "",
+    link: "https://event-view.baemin.com/apps/8xweIrS?mode=no-lottie",
     active: false,
   },
   {
