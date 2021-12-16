@@ -11,7 +11,8 @@ export const MarketHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 380px;
+  /* height: 380px; */
+  padding: 12px 0;
   background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png")
     no-repeat;
   background-size: cover;
@@ -20,6 +21,7 @@ export const MarketHeader = styled.div`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     height: auto;
     margin-bottom: 70px;
+    padding: 0;
 
     img {
       width: 100%;
