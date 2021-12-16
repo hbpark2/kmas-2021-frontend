@@ -325,13 +325,7 @@ const TimeTable = () => {
                   onClick={() => setLiveDate(dates.date.substring(0, 5))}
                   isActive={dates.date.substring(0, 5) === liveDate}
                 >
-                  <span>
-                    {Utils.getFormatStrDate(
-                      dates.date.substring(0, 5),
-                      ".",
-                      false
-                    )}
-                  </span>
+                  <span>{dates.date.substring(0, 5)}</span>
                   <span>{dates.date.substring(7, 8)}</span>
                 </Button>
               </SwiperInner>
