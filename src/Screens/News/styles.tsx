@@ -48,6 +48,6 @@ export const NewsBanner = styled.button`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 100%;
     padding: 0;
-    margin-bottom: 30px;
+    margin: 40px auto 30px;
   }
 `;
