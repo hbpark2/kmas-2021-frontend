@@ -91,7 +91,7 @@ export const GlobalStyles = createGlobalStyle`
 
   main{
     width: auto;
-    margin-top:80px;
+    margin-top:75px;
     min-height: 80vh;
 
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop}{

@@ -6,7 +6,7 @@ export const Container = styled.main`
   background-size: contain;
   padding-bottom: 100px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    background:none;
+    background: none;
     padding-bottom: 30px;
   }
 `;
@@ -22,8 +22,7 @@ export const MarketHeader = styled.div`
   background-size: cover;
 
   img {
-    height: 380px;
-    margin-top: 80px;
+    margin-top: 72px;
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
