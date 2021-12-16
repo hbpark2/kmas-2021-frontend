@@ -15,8 +15,11 @@ const Container = styled.div`
   border-radius: 25px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 96%;
+    height: 450px;
+    overflow-y: scroll;
   }
 `;
+
 const Title = styled.div`
   img {
     margin: 40px auto 65px;
