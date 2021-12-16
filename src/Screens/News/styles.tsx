@@ -40,7 +40,6 @@ export const MarketHeader = styled.div`
 
 export const NewsBanner = styled.button`
   display: block;
-  width: 80%;
   padding: 10px;
   text-align: center;
   margin: 50px auto;
