@@ -209,6 +209,7 @@ const ScheduleBottom = styled.ul<{ spaceBetween?: boolean }>`
     justify-content: center;
     align-items: center;
     height: 50px;
+    line-height: 20px;
     padding: 0 25px;
     background-color: #fff;
     color: #c60080;
@@ -232,6 +233,8 @@ const ScheduleBottom = styled.ul<{ spaceBetween?: boolean }>`
     .team-desc {
       align-items: start;
       font-size: 12px;
+      line-height: 14px;
+
       padding: 7px 3px 0;
       height: 60px;
     }
