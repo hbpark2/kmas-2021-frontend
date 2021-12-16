@@ -20,7 +20,7 @@ const NewsListWrap = styled.div`
   .pagination {
     margin-top: 45px;
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     margin-top: 0;
     padding: 40px 0 30px;
     .pagination {
@@ -28,6 +28,7 @@ const NewsListWrap = styled.div`
     }
   }
 `;
+
 const NewsListHeader = styled.div`
   img {
     position: absolute;
@@ -39,8 +40,12 @@ const NewsListHeader = styled.div`
     width: 90%;
     max-width: 880px;
   }
-
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    img {
+      top: -145px;
+    }
+  }
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     img {
       top: -75px;
     }

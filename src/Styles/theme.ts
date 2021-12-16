@@ -98,7 +98,9 @@ export const GlobalStyles = createGlobalStyle`
     margin-top: 70px;
     }
   }
-
+  img{
+    display:block;
+  }
   a {
     text-decoration: none;
     color:inherit;
