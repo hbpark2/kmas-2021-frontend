@@ -44,4 +44,11 @@ export const NewsBanner = styled.button`
   padding: 10px;
   text-align: center;
   margin: 50px auto;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 100%;
+    padding: 0;
+    img {
+      width: 100%;
+    }
+  }
 `;
