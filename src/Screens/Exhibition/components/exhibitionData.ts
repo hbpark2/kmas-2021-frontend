@@ -67,8 +67,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-7-auction.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "http://rpp.auction.co.kr/?exhib=50621",
+    active: true,
   },
   {
     name: "지마켓",
@@ -77,8 +77,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-8-gmarket.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "http://rpp.gmarket.co.kr/?exhib=51034",
+    active: true,
   },
   {
     name: "G9",
