@@ -6,7 +6,7 @@ export const Container = styled.main`
   background-size: contain;
   padding-bottom: 100px;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    background:none;
+    background: none;
     padding-bottom: 30px;
   }
 `;
@@ -16,22 +16,23 @@ export const MarketHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 370px;
   background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png")
     no-repeat;
   background-size: cover;
-
+  height: 384px;
   img {
-    height: 380px;
-    margin-top: 80px;
+    position: relative;
+    top: 30px;
+    left: 26px;
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     height: auto;
     img {
+      top: 15px;
+      left: 0;
       width: 100%;
       height: auto;
-      margin-top: 35px;
     }
   }
 `;

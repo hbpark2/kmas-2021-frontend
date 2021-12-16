@@ -20,10 +20,17 @@ export const MarketHeader = styled.div`
   background: url("https://thegn.speedgabia.com/kmas-2021/market/market-header-bg.png")
     no-repeat;
   background-size: cover;
+  padding: 8px 0 6px;
+  img {
+    position: relative;
+    left: 10px;
+  }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    padding: 0;
     height: auto;
     img {
+      position: static;
       width: 100%;
       height: auto;
       margin: 15px 0;
