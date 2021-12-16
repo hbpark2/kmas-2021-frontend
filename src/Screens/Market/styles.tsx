@@ -232,6 +232,7 @@ export const RequestButton = styled.button`
     margin: 25px auto;
     img {
       width: 80%;
+      margin: 0 auto;
     }
   }
 `;

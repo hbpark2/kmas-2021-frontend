@@ -19,17 +19,17 @@ export const data: TConcert[] = [
     team: [
       {
         name: "노빌레앙상블",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-1-1.png",
         description: "잔잔한 감동을 전하는 여성 듀오",
       },
       {
         name: "보이저런처",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-1-2.png",
         description: "모든 생명체가 사라진 지구에 살고 있는 로봇들의 이야기",
       },
       {
         name: "유랑밴드",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-1-3.png",
         description: "스토리텔링 재즈힙합 밴드",
       },
     ],
@@ -41,17 +41,17 @@ export const data: TConcert[] = [
     team: [
       {
         name: "Connesso.5",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-2-1.png",
         description: "클래식 음악으로 연결되는 젊은 연주자들",
       },
       {
         name: "놀래놀래",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-2-2.png",
         description: "예술계의 장르를 파괴하고 싶은 이단아",
       },
       {
         name: "소나무길",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-2-3.png",
         description: "견고하지만 때로는 누구보다 섬세하게 움직이는 소나무",
       },
     ],
@@ -63,17 +63,17 @@ export const data: TConcert[] = [
     team: [
       {
         name: "이즈콰르텟",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-3-1.png",
         description: "당신의 하루를 아름답게 수놓을 감성 클래식 콰르텟",
       },
       {
         name: "예지루마림바",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-3-2.png",
         description: "따뜻한 음색으로 힐링을 주는 편안한 마림바연주자",
       },
       {
         name: "행락객",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-3-3.png",
         description: "놀거나 즐기러 온 사람들 행락객",
       },
     ],
@@ -85,12 +85,12 @@ export const data: TConcert[] = [
     team: [
       {
         name: "GOOD樂",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-4-1.png",
         description: "추임새 유발하는 국악 크로스오버 밴드",
       },
       {
         name: "시원하갱",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-4-2.png",
         description: "새벽공기같은 편안한 어쿠스틱 사운드",
       },
     ],
@@ -102,12 +102,12 @@ export const data: TConcert[] = [
     team: [
       {
         name: "알렌앙상블",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-5-1.png",
         description: "개성이 뚜렷한 4인 음악가의 따뜻한 클래식 음악",
       },
       {
         name: "베어콰르텟",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-5-2.png",
         description: "클래식 아티스트 4인이 들려주는 음악 이야기",
       },
     ],
@@ -119,17 +119,17 @@ export const data: TConcert[] = [
     team: [
       {
         name: "까도까도",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-6-1.png",
         description: "소리를 내는 기은과 움직임을 하는 지혜",
       },
       {
         name: "누룽지",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-6-2.png",
         description: "긍정적인 기운 듬뿍 신나는 가야금 사운드",
       },
       {
         name: "롱아일랜드",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-6-3.png",
         description: "즐거움, 낭만, 개성 넘치는 비주얼 5인조",
       },
     ],
@@ -141,12 +141,12 @@ export const data: TConcert[] = [
     team: [
       {
         name: "비디오로즈",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-7-1.png",
         description: "사이키델릭, 록 전자음악을 지향하는 2인조 아트 그룹",
       },
       {
         name: "신수동3평",
-        image: "",
+        image: "https://thegn.speedgabia.com/kmas-2021/news/concert-7-2.png",
         description: "일상을 노래하는 인디국악",
       },
     ],

@@ -252,6 +252,22 @@ export default {
 
     return `${year}${gubun}${month}${gubun}${day}`;
   },
+  getTodayWithoutYear(gubun) {
+    const date = new Date();
+
+    let month = String(date.getMonth() + 1);
+    let day = String(date.getDate());
+
+    // 한자리수일 경우 0을 채워준다.
+    if (month.length === 1) {
+      month = `0${month}`;
+    }
+    if (day.length === 1) {
+      day = `0${day}`;
+    }
+
+    return `${month}${gubun}${day}`;
+  },
   addHttpHttps(url) {
     if (!url) {
       return "";

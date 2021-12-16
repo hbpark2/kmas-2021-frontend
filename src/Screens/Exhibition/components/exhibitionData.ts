@@ -67,8 +67,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-7-auction.png",
     moImage: "",
-    link: "http://rpp.auction.co.kr/?exhib=50621",
-    active: true,
+    link: "",
+    active: false,
   },
   {
     name: "지마켓",
@@ -77,8 +77,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-8-gmarket.png",
     moImage: "",
-    link: "http://rpp.gmarket.co.kr/?exhib=51034",
-    active: true,
+    link: "",
+    active: false,
   },
   {
     name: "G9",
@@ -307,7 +307,7 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-31-baemin.png",
     moImage: "",
-    link: "",
+    link: "https://event-view.baemin.com/apps/8xweIrS?mode=no-lottie",
     active: false,
   },
   {
@@ -338,6 +338,26 @@ export const onlineArray: ExhibitonCompany[] = [
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-34-namdo40.png",
     moImage: "",
     link: "",
+    active: false,
+  },
+  {
+    name: "프레시지",
+    startDate: "2021-12-18",
+    endDate: "2021-12-26",
+    pcImage:
+      "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-35-fresheasy.png",
+    moImage: "",
+    link: "https://fresheasy.co.kr/goods/catalog?code=0082",
+    active: false,
+  },
+  {
+    name: "오아시스",
+    startDate: "2021-12-18",
+    endDate: "2021-12-26",
+    pcImage:
+      "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-36-oasis40.png",
+    moImage: "",
+    link: "https://www.oasis.co.kr/event/catSosang_211215",
     active: false,
   },
 ];

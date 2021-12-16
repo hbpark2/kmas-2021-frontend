@@ -7,6 +7,7 @@ const Container = styled.div<{
   height?: string;
   center?: boolean;
   isDownload?: boolean;
+  isConcert?: boolean;
 }>`
   position: fixed;
   top: 50%;
@@ -24,6 +25,9 @@ const Container = styled.div<{
   border-radius: 25px;
   padding: ${({ isDownload }) => (isDownload ? "0" : "20px 0")};
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
+  background: ${({ isConcert }) =>
+    isConcert &&
+    'url("https://thegn.speedgabia.com/kmas-2021/news/concert-bg.png")'};
 
   &::-webkit-scrollbar {
     display: none;
@@ -93,6 +97,7 @@ interface ModalProps {
   secondChildren?: React.ReactNode;
   isQuiz?: boolean;
   isDownload?: boolean;
+  isConcert?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -105,6 +110,7 @@ const Modal: React.FC<ModalProps> = ({
   center,
   isQuiz,
   isDownload,
+  isConcert,
 }) => {
   const { setModalOpen, secondModalOpen, setSecondModalOpen } =
     useContext(CurrentContext);
@@ -117,6 +123,7 @@ const Modal: React.FC<ModalProps> = ({
         aria-hidden={secondModalOpen}
         center={center}
         isDownload={isDownload}
+        isConcert={isConcert}
       >
         {children}
       </Container>
