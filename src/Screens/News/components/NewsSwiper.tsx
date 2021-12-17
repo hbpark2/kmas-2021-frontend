@@ -111,6 +111,15 @@ const IframeWrap = styled.div`
   }
 `;
 
+const NewsListHeader = styled.div`
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 880px;
+  }
+`;
+
 const NewsSwiper = () => {
   return (
     <>
@@ -159,7 +168,12 @@ const NewsSwiper = () => {
             }}
           </SwiperSlide>
         </Swiper> */}
-
+        <NewsListHeader>
+          <img
+            src="https://thegn.speedgabia.com/kmas-2021/news/news-iframe-banner-1.png"
+            alt="영상 타이틀"
+          />
+        </NewsListHeader>
         <IframeWrap>
           <iframe
             width={window.innerWidth > 1280 ? "1260px" : "80%"}
