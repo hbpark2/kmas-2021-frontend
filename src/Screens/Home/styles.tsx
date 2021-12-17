@@ -22,7 +22,8 @@ export const KeyVisual = styled.img`
 `;
 
 export const SnowSection = styled.div`
-  background: url("https://thegn.speedgabia.com/kmas-2021/main/main-snowbg.png") no-repeat;
+  background: url("https://thegn.speedgabia.com/kmas-2021/main/main-snowbg.png")
+    no-repeat;
   background-size: contain;
   background-position: center center;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -33,9 +34,18 @@ export const SnowSection = styled.div`
 export const CardWrap = styled.div`
   margin: 0px auto 130px;
   overflow: hidden;
+  img {
+    position: relative;
+    left: 15px;
+  }
+
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin: 0px auto 30px;
     margin-top: -30px;
+
+    img {
+      position: static;
+    }
   }
 `;
 
@@ -58,14 +68,14 @@ export const BannerWrap = styled.div`
   }
   img {
     display: block;
-    margin: 30px auto;
+    margin: 10px auto;
     width: 100%;
     max-width: 1360px;
   }
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin-bottom: 50px;
     img {
-      margin: 10px auto;
+      margin: 5px auto;
     }
   }
 `;

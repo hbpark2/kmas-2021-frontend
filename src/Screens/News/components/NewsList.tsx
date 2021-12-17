@@ -15,7 +15,7 @@ const NewsListWrap = styled.div`
   background-color: #efefef;
 
   max-width: 1260px;
-  margin: 225px auto 0;
+  margin: 280px auto 0;
   padding: 120px 0;
   .pagination {
     margin-top: 45px;

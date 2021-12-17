@@ -21,7 +21,7 @@ const Home = () => {
       analytics.sendEvent({
         category: "배너",
         action: "배너 클릭",
-        label: type === "wish" ? "메인 소원 배너" : "메인 VR 배너",
+        label: type,
       });
       window.open(url);
     } else {
@@ -64,16 +64,44 @@ const Home = () => {
         <BannerWrap>
           <h3 className="blind">K-MAS 행사배너</h3>
 
-          <button onClick={() => goToLink("https://sbdcmarket.co.kr/", "wish")}>
+          <button
+            onClick={() =>
+              goToLink("https://sbdcmarket.co.kr/", "메인 소원 배너")
+            }
+          >
             <img
               src="https://thegn.speedgabia.com/kmas-2021/main/pc-wish-banner.png"
               alt="WishBanner"
             />
           </button>
 
-          <button onClick={() => goToLink("", "vr")}>
+          <button onClick={() => goToLink("", "메인 VR 배너")}>
             <img
               src="https://thegn.speedgabia.com/kmas-2021/main/pc-vr-banner.png"
+              alt="VRBanner"
+            />
+          </button>
+
+          <button
+            onClick={() =>
+              goToLink(
+                "https://blog.naver.com/zeropay_official/222597142788",
+                "제로페이 배너"
+              )
+            }
+          >
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/main/pc-zero-banner.png"
+              alt="VRBanner"
+            />
+          </button>
+          <button
+            onClick={() =>
+              goToLink("http://m.site.naver.com/0QWuP", "정책퀴즈 배너")
+            }
+          >
+            <img
+              src="https://thegn.speedgabia.com/kmas-2021/main/pc-quiz-banner.png"
               alt="VRBanner"
             />
           </button>
