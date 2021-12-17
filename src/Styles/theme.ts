@@ -68,8 +68,8 @@ export const GlobalStyles = createGlobalStyle`
     cursor:pointer;
   }
 
+  height:100%;
 	body, html{
-		height:100%;
     font-size:62.5%;
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile}{
       font-size:50%;
@@ -88,12 +88,12 @@ export const GlobalStyles = createGlobalStyle`
       line-height: 1.2em;
     }
 	}
-
+  
   main{
     width: auto;
     margin-top:75px;
     min-height: 80vh;
-
+    
     @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop}{
     margin-top: 70px;
     }
@@ -121,6 +121,10 @@ export const GlobalStyles = createGlobalStyle`
 		clip: rect(0 0 0 0);
 		overflow: hidden;
 	}
+
+  /* *:focus{
+    border: 5px solid #f00;
+  } */
 
   @font-face {
     font-family: 'GmarketSansMedium';	

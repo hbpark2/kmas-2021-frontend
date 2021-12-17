@@ -22,7 +22,8 @@ export const KeyVisual = styled.img`
 `;
 
 export const SnowSection = styled.div`
-  background: url("https://thegn.speedgabia.com/kmas-2021/main/main-snowbg.png") no-repeat;
+  background: url("https://thegn.speedgabia.com/kmas-2021/main/main-snowbg.png")
+    no-repeat;
   background-size: contain;
   background-position: center center;
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
@@ -58,7 +59,7 @@ export const BannerWrap = styled.div`
   }
   img {
     display: block;
-    margin: 30px auto;
+    margin: 10px auto;
     width: 100%;
     max-width: 1360px;
   }

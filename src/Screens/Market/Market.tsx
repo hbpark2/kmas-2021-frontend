@@ -191,6 +191,7 @@ const Market = () => {
                         key={market.id}
                         onClick={() => onRowClick(market.id)}
                         tabIndex={0}
+                        aria-haspopup="true"
                       >
                         <TableDesc aria-hidden={!isMobile}>
                           {data.count - ((page - 1) * PAGE_SIZE + index)}
@@ -257,7 +258,11 @@ const Market = () => {
             alt="키비주얼"
           />
           <DownloadWrap>
-            <DownloadButton type="button" onClick={() => onFileModal("origin")}>
+            <DownloadButton
+              type="button"
+              onClick={() => onFileModal("origin")}
+              aria-haspopup="true"
+            >
               <span className="blind">
                 2021 K-MAS 라이브마켓 홍보물 다운받기
               </span>
@@ -266,7 +271,11 @@ const Market = () => {
                 alt="홍보물다운받기 버튼"
               />
             </DownloadButton>
-            <DownloadButton type="button" onClick={() => onFileModal("poster")}>
+            <DownloadButton
+              type="button"
+              onClick={() => onFileModal("poster")}
+              aria-haspopup="true"
+            >
               <span className="blind">
                 2021 K-MAS 라이브마켓 홍보물 다운받기
               </span>

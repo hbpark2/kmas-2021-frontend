@@ -254,7 +254,11 @@ const QuizEvent = () => {
                   />
                 </CopyToClipboard>
               </ShareButton>
-              <ImageDownloadButton type="button" onClick={imageModalOpen}>
+              <ImageDownloadButton
+                type="button"
+                onClick={imageModalOpen}
+                aria-haspopup="true"
+              >
                 <img
                   src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-image-download-button.png"
                   alt="이미지 다운로드"
@@ -280,7 +284,11 @@ const QuizEvent = () => {
                 }
                 alt="경품 안내"
               />
-              <JoinButton type="button" onClick={onJoinButtonClick}>
+              <JoinButton
+                type="button"
+                onClick={onJoinButtonClick}
+                aria-haspopup="true"
+              >
                 <img
                   src="https://thegn.speedgabia.com/kmas-2021/event/online-1-quiz/event-online-join-button.png"
                   alt="이벤트 참여하기"

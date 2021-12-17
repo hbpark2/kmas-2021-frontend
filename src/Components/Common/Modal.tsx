@@ -132,6 +132,7 @@ const Modal: React.FC<ModalProps> = ({
         center={center}
         isDownload={isDownload}
         isConcert={isConcert}
+        role="dialog"
       >
         {children}
         <CloseButton
@@ -157,6 +158,7 @@ const Modal: React.FC<ModalProps> = ({
             secondWidth={secondWidth}
             secondHeight={secondHeight}
             isQuiz={isQuiz}
+            role="dialog"
           >
             {secondChildren}
             <CloseButton

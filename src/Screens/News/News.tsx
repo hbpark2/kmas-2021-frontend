@@ -3,6 +3,7 @@ import Modal from "../../Components/Common/Modal";
 import { CurrentContext } from "../../Context/ContextStore";
 import Utils from "../../Utils/Utils";
 import NewsList from "./components/NewsList";
+import NewsSwiper from "./components/NewsSwiper";
 import TimeTable from "./components/TimeTable";
 import { Container, MarketHeader, NewsBanner } from "./styles";
 
@@ -23,9 +24,12 @@ const News = () => {
           alt="헤더"
         />
       </MarketHeader>
+
+      {/* <NewsSwiper /> */}
+
       <NewsList />
 
-      <NewsBanner onClick={() => setModalOpen(true)}>
+      <NewsBanner onClick={() => setModalOpen(true)} aria-haspopup="true">
         <img
           src={
             isMobile
