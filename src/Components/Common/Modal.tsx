@@ -87,6 +87,14 @@ const SecondLayer = styled(Layer)`
   z-index: 210;
 `;
 
+const CloseButton = styled.button`
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: block;
+  visibility: hidden;
+`;
+
 interface ModalProps {
   width?: string;
   height?: string;
@@ -126,6 +134,15 @@ const Modal: React.FC<ModalProps> = ({
         isConcert={isConcert}
       >
         {children}
+        <CloseButton
+          aria-hidden={secondModalOpen}
+          tabIndex={5}
+          onClick={() => {
+            setModalOpen(false);
+          }}
+        >
+          닫기
+        </CloseButton>
       </Container>
       <Layer
         aria-hidden={secondModalOpen}
@@ -142,6 +159,15 @@ const Modal: React.FC<ModalProps> = ({
             isQuiz={isQuiz}
           >
             {secondChildren}
+            <CloseButton
+              aria-hidden={secondModalOpen}
+              tabIndex={5}
+              onClick={() => {
+                setSecondModalOpen(false);
+              }}
+            >
+              닫기
+            </CloseButton>
           </SecondContainer>
           <SecondLayer
             onClick={() => {

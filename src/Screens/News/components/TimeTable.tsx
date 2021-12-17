@@ -311,7 +311,6 @@ const TimeTable = () => {
     })[0]
   );
 
-  console.log(liveDate);
   return (
     <Container>
       <Title>
@@ -328,8 +327,8 @@ const TimeTable = () => {
           spaceBetween={0}
           initialSlide={data.findIndex((dates) => dates.date === liveDate)}
         >
-          {data.map((dates) => (
-            <SwiperSlide key={dates.date} className="main_swiper">
+          {data.map((dates, index) => (
+            <SwiperSlide key={`date${index}`} className="main_swiper">
               <SwiperInner>
                 <Button
                   key={dates.date}
@@ -355,15 +354,14 @@ const TimeTable = () => {
           data.map(
             (item, index) =>
               item.date.substring(0, 5) === liveDate && (
-                <React.Fragment key={`schedule${index}`}>
+                <React.Fragment key={`schedule ${index}`}>
                   <ScheduleTop>
-                    {console.log(item)}
                     <li className="time">
                       {item.startTime} ~ {item.endTime}
                     </li>
                     <li className="content">
                       {item.team.map((teamItem, idx) => (
-                        <span key={`teamName${idx}`}>
+                        <span key={`teamName ${idx}`}>
                           {teamItem.name}
                           {item.team.length !== idx + 1 && ","}
                           &nbsp;
@@ -377,7 +375,7 @@ const TimeTable = () => {
                     )}
 
                     {item.team.map((teamItem, idx) => (
-                      <li>
+                      <li key={`teamImage ${idx}`}>
                         <img src={teamItem.image} alt={`팀 이미지${idx}`} />
                         <span className="team-name">{teamItem.name}</span>
                         <span className="team-desc">
