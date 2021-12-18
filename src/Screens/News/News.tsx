@@ -25,7 +25,7 @@ const News = () => {
         />
       </MarketHeader>
 
-      {/* <NewsSwiper /> */}
+      <NewsSwiper />
 
       <NewsList />
 

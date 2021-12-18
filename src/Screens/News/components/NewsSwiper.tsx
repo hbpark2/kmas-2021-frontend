@@ -111,6 +111,15 @@ const IframeWrap = styled.div`
   }
 `;
 
+const NewsListHeader = styled.div`
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 880px;
+  }
+`;
+
 const NewsSwiper = () => {
   return (
     <>
@@ -159,12 +168,17 @@ const NewsSwiper = () => {
             }}
           </SwiperSlide>
         </Swiper> */}
-
+        <NewsListHeader>
+          <img
+            src="https://thegn.speedgabia.com/kmas-2021/news/news-iframe-banner-1.png"
+            alt="영상 타이틀"
+          />
+        </NewsListHeader>
         <IframeWrap>
           <iframe
             width={window.innerWidth > 1280 ? "1260px" : "80%"}
             height={window.innerWidth > 1280 ? "709px" : "80%"}
-            src="https://www.youtube.com/embed/XZbyn7j5Hc4?mute=1&autoplay=1&playlist=XZbyn7j5Hc4&loop=1"
+            src="https://www.youtube.com/embed/4KXuOHNd32Y?mute=1&autoplay=1&playlist=4KXuOHNd32Y&loop=1"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

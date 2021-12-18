@@ -317,8 +317,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-32-idus.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "https://www.idus.com/w/showroom/2212",
+    active: true,
   },
   {
     name: "E-경남몰",
@@ -327,8 +327,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-33-gyeongnam.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "https://www.egnmall.kr/kwa-ABS_goods_l-1010?pc=p",
+    active: true,
   },
   {
     name: "남도장터",
@@ -337,8 +337,8 @@ export const onlineArray: ExhibitonCompany[] = [
     pcImage:
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-34-namdo40.png",
     moImage: "",
-    link: "",
-    active: false,
+    link: "https://jnmallsubs.kr/index.html",
+    active: true,
   },
   {
     name: "프레시지",
@@ -348,7 +348,7 @@ export const onlineArray: ExhibitonCompany[] = [
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-35-fresheasy.png",
     moImage: "",
     link: "https://fresheasy.co.kr/goods/catalog?code=0082",
-    active: false,
+    active: true,
   },
   {
     name: "오아시스",
@@ -358,7 +358,7 @@ export const onlineArray: ExhibitonCompany[] = [
       "https://thegn.speedgabia.com/kmas-2021/sale/online/sale-online-36-oasis40.png",
     moImage: "",
     link: "https://www.oasis.co.kr/event/catSosang_211215",
-    active: false,
+    active: true,
   },
 ];
 
