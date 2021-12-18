@@ -304,7 +304,7 @@ const TimeTable = () => {
   const [liveDate, setLiveDate] = useState<string>(
     data.map((live) => {
       if (live.date.substring(0, 5) === toDay) {
-        return live.date;
+        return live.date.substring(0, 5);
       } else {
         return "12.18";
       }
