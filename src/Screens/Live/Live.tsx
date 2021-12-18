@@ -36,7 +36,7 @@ export const MarketHeader = styled.div`
   }
 `;
 
-const LiveBanner = styled.button`
+const LiveBanner = styled.a`
   display: block;
   width: 930px;
   margin: 60px auto 0;
@@ -73,11 +73,10 @@ const Live = () => {
       </MarketHeader>
       <LiveList />
       <LiveBanner
-        // href="https://v.dongbanmall.com/exhibition/3707?groupNo=all"
-        // target="_blank"
-        // title="기획전 바로가기"
-        // rel="norefferer"
-        onClick={onReadyClick}
+        href="https://v.dongbanmall.com/exhibition/3707?groupNo=all"
+        target="_blank"
+        title="기획전 바로가기"
+        rel="norefferer"
       >
         <img
           src={
