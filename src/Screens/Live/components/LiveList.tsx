@@ -247,7 +247,9 @@ const LiveList = () => {
   const isMobile = Utils.isMobile();
   const toDay = Utils.getToday("-");
   const [liveDate, setLiveDate] = useState<string>(
-    liveArr.filter((live) => live.date === toDay)[0].date
+    liveArr.filter((live) => live.date === toDay)[0]
+      ? liveArr.filter((live) => live.date === toDay)[0].date
+      : "2021-12-18"
   );
 
   const { data, isLoading, isError } = useGetLiveList(liveDate);
