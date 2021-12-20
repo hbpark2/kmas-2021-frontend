@@ -5,6 +5,7 @@ import Spinner from "../../../Components/Common/Spinner";
 import Utils from "../../../Utils/Utils";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
+import { createNoSubstitutionTemplateLiteral } from "typescript";
 
 SwiperCore.use([Navigation]);
 
@@ -246,13 +247,9 @@ const LiveList = () => {
   const isMobile = Utils.isMobile();
   const toDay = Utils.getToday("-");
   const [liveDate, setLiveDate] = useState<string>(
-    liveArr.map((live) => {
-      if (live.date === toDay) {
-        return live.date;
-      } else {
-        return "2021-12-18";
-      }
-    })[0]
+    liveArr.filter((live) => live.date === toDay)[0]
+      ? liveArr.filter((live) => live.date === toDay)[0].date
+      : "2021-12-18"
   );
 
   const { data, isLoading, isError } = useGetLiveList(liveDate);
