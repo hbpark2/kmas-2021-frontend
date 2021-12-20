@@ -302,13 +302,11 @@ const TimeTable = () => {
   const isMobile = Utils.isMobile();
   const toDay = Utils.getTodayWithoutYear(".");
   const [liveDate, setLiveDate] = useState<string>(
-    data.map((live) => {
-      if (live.date.substring(0, 5) === toDay) {
-        return live.date.substring(0, 5);
-      } else {
-        return "12.18";
-      }
-    })[0]
+    data.filter((live) => live.date.substring(0, 5) === toDay)[0]
+      ? data
+          .filter((live) => live.date.substring(0, 5) === toDay)[0]
+          .date.substring(0, 5)
+      : "12.18"
   );
 
   return (
