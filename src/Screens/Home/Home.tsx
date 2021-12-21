@@ -75,7 +75,7 @@ const Home = () => {
             />
           </button>
 
-          <button onClick={() => goToLink("", "메인 VR 배너")}>
+          <button onClick={() => goToLink("https://nollaplace.com/2021_K_MAS_Live_Market/", "메인 VR 배너")}>
             <img
               src="https://thegn.speedgabia.com/kmas-2021/main/pc-vr-banner.png"
               alt="VRBanner"
