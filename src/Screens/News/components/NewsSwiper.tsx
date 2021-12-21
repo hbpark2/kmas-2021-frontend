@@ -125,6 +125,13 @@ const NewsSwiper = () => {
     <>
       <SwiperWrap>
         <h3 className="blind">K-MAS CF영상</h3>
+
+        <NewsListHeader>
+          <img
+            src="https://thegn.speedgabia.com/kmas-2021/news/news-iframe-banner-1.png"
+            alt="영상 타이틀"
+          />
+        </NewsListHeader>
         {/* <Swiper
           navigation
           spaceBetween={0}
@@ -168,12 +175,7 @@ const NewsSwiper = () => {
             }}
           </SwiperSlide>
         </Swiper> */}
-        <NewsListHeader>
-          <img
-            src="https://thegn.speedgabia.com/kmas-2021/news/news-iframe-banner-1.png"
-            alt="영상 타이틀"
-          />
-        </NewsListHeader>
+
         <IframeWrap>
           <iframe
             width={window.innerWidth > 1280 ? "1260px" : "80%"}
