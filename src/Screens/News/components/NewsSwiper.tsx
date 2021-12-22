@@ -10,6 +10,7 @@ import SwiperCore, {
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import { useState } from "react";
 
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
@@ -121,6 +122,7 @@ const NewsListHeader = styled.div`
 `;
 
 const NewsSwiper = () => {
+  const [isConcertTitle, setIsConcertTitle] = useState(0);
   return (
     <>
       <SwiperWrap>
@@ -128,33 +130,21 @@ const NewsSwiper = () => {
 
         <NewsListHeader>
           <img
-            src="https://thegn.speedgabia.com/kmas-2021/news/news-iframe-banner-1.png"
+            src={
+              isConcertTitle === 0
+                ? "https://thegn.speedgabia.com/kmas-2021/news/news-iframe-banner-1.png"
+                : "https://thegn.speedgabia.com/kmas-2021/news/news-iframe-banner-2.png"
+            }
             alt="영상 타이틀"
           />
         </NewsListHeader>
-        {/* <Swiper
+        <Swiper
           navigation
           spaceBetween={0}
           slidesPerView={1}
           pagination={{ clickable: true }}
+          onSlideChange={(item) => setIsConcertTitle(item.activeIndex)}
         >
-          <SwiperSlide>
-            {({ isActive }) =>
-              isActive && (
-                <div className="videoBox">
-                  <iframe
-                    width={window.innerWidth > 1280 ? "1260px" : "80%"}
-                    height={window.innerWidth > 1280 ? "710px" : "80%"}
-                    src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              )
-            }
-          </SwiperSlide>
           <SwiperSlide>
             {({ isActive }) => {
               return (
@@ -163,7 +153,7 @@ const NewsSwiper = () => {
                     <iframe
                       width={window.innerWidth > 1280 ? "1260px" : "80%"}
                       height={window.innerWidth > 1280 ? "710px" : "80%"}
-                      src="https://www.youtube.com/embed/XZbyn7j5Hc4?mute=1&autoplay=1&playlist=XZbyn7j5Hc4&loop=1"
+                      src="https://www.youtube.com/embed/4KXuOHNd32Y?mute=1&autoplay=1&playlist=4KXuOHNd32Y&loop=1"
                       title="YouTube video player"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -174,9 +164,47 @@ const NewsSwiper = () => {
               );
             }}
           </SwiperSlide>
-        </Swiper> */}
+          <SwiperSlide>
+            {({ isActive }) => {
+              return (
+                isActive && (
+                  <div className="videoBox">
+                    <iframe
+                      width={window.innerWidth > 1280 ? "1260px" : "80%"}
+                      height={window.innerWidth > 1280 ? "710px" : "80%"}
+                      src="https://www.youtube.com/embed/uZlew6IArTo?mute=1&autoplay=1&playlist=uZlew6IArTo&loop=1"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                )
+              );
+            }}
+          </SwiperSlide>
+          <SwiperSlide>
+            {({ isActive }) => {
+              return (
+                isActive && (
+                  <div className="videoBox">
+                    <iframe
+                      width={window.innerWidth > 1280 ? "1260px" : "80%"}
+                      height={window.innerWidth > 1280 ? "710px" : "80%"}
+                      src="https://www.youtube.com/embed/MnfUEZyiEpg?mute=1&autoplay=1&playlist=MnfUEZyiEpg&loop=1"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                )
+              );
+            }}
+          </SwiperSlide>
+        </Swiper>
 
-        <IframeWrap>
+        {/* <IframeWrap>
           <iframe
             width={window.innerWidth > 1280 ? "1260px" : "80%"}
             height={window.innerWidth > 1280 ? "709px" : "80%"}
@@ -186,7 +214,7 @@ const NewsSwiper = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
-        </IframeWrap>
+        </IframeWrap> */}
       </SwiperWrap>
     </>
   );

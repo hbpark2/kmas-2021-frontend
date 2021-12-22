@@ -13,9 +13,9 @@ import "swiper/swiper-bundle.css";
 import { useState } from "react";
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]);
 
-export const SwiperWrap = styled.div<{ buttonCurrent?: boolean }>`
+export const SwiperWrap = styled.div<{ buttonCurrent?: number }>`
   ${({ buttonCurrent }) =>
-    buttonCurrent
+    buttonCurrent === 1
       ? css`
           margin: 0 auto 50px;
         `
@@ -119,7 +119,7 @@ export const EventLinkButton = styled(Link)`
 `;
 
 const SwiperSection = () => {
-  const [buttonCurrent, setButtonCurrent] = useState(false);
+  const [buttonCurrent, setButtonCurrent] = useState(0);
   return (
     <>
       <SwiperWrap buttonCurrent={buttonCurrent}>
@@ -129,6 +129,7 @@ const SwiperSection = () => {
           spaceBetween={0}
           slidesPerView={1}
           pagination={{ clickable: true }}
+          onSlideChange={(item) => setButtonCurrent(item.activeIndex)}
         >
           <SwiperSlide>
             {({ isActive }) =>
@@ -149,7 +150,6 @@ const SwiperSection = () => {
           </SwiperSlide>
           <SwiperSlide>
             {({ isActive }) => {
-              setButtonCurrent(isActive);
               return (
                 isActive && (
                   <div className="videoBox">
@@ -168,62 +168,8 @@ const SwiperSection = () => {
             }}
           </SwiperSlide>
         </Swiper>
-        {/* <Swiper
-          navigation
-          spaceBetween={0}
-          slidesPerView={1}
-          pagination={{ clickable: true }}
-        >
-          <SwiperSlide
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <iframe
-              src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
-              title="YouTube video player"
-              width={window.innerWidth > 1280 ? "1200px" : "80%"}
-              height={window.innerWidth > 1280 ? "675px" : "80%"}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </SwiperSlide>
-          <SwiperSlide
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {({ isActive }) => {
-              setButtonCurrent(isActive);
-              return (
-                isActive && (
-                  <iframe
-                    src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                )
-              );
-            }}
-          </SwiperSlide>
-        </Swiper> */}
-
-        {/* <iframe
-        src="https://www.youtube.com/embed/PQ7urgHCm4E?mute=1&autoplay=1&playlist=PQ7urgHCm4E&loop=1"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      /> */}
       </SwiperWrap>
-      {buttonCurrent && (
+      {buttonCurrent === 1 && (
         <EventLinkButton to="/event/quiz">
           <img
             src="https://thegn.speedgabia.com/kmas-2021/main/video-event-btn.png"
