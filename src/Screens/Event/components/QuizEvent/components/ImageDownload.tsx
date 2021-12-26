@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import analytics from "../../../../../analytics";
+import Quiz01 from "../../../../../Assets/event/quiz/quiz_001.png";
+import Quiz02 from "../../../../../Assets/event/quiz/quiz_002.png";
+import Quiz03 from "../../../../../Assets/event/quiz/quiz_003.png";
+import Quiz04 from "../../../../../Assets/event/quiz/quiz_004.png";
 
 const Container = styled.div`
   width: 100%;
@@ -74,43 +78,12 @@ const ImageDownload = () => {
       label: `퀴즈 이벤트 이미지 ${type}`,
     });
 
-    const name =
-      type === 1
-        ? "quiz_001"
-        : type === 2
-        ? "quiz_003"
-        : type === 3
-        ? "quiz_004"
-        : "quiz_002";
-
-    fetch(
-      `https://kmas2021.s3.ap-northeast-2.amazonaws.com/media/event/quiz/${name}.png`
-    )
-      .then((res) => res.blob())
-      .then((blob) => {
-        let dName =
-          type === 1
-            ? "quiz_001"
-            : type === 2
-            ? "quiz_002"
-            : type === 3
-            ? "quiz_003"
-            : "quiz_004";
-
-        let objectURL = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = objectURL;
-        link.download = dName;
-        document.body.appendChild(link);
-        link.dispatchEvent(
-          new MouseEvent("click", {
-            bubbles: true,
-            cancelable: true,
-            view: window,
-          })
-        );
-        document.body.removeChild(link);
-      });
+    const element = document.createElement("a");
+    element.href =
+      type === 1 ? Quiz01 : type === 2 ? Quiz02 : type === 3 ? Quiz03 : Quiz04;
+    element.setAttribute("download", `Quiz${type}`);
+    document.body.appendChild(element);
+    element.click();
   };
   return (
     <Container>
