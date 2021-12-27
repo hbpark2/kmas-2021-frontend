@@ -193,7 +193,7 @@ const Header = () => {
     {
       text: "이벤트",
       pathname: "/event/quiz",
-      active: false,
+      active: true,
       current: location.pathname.indexOf("event") > 0,
     },
     { text: "판매 기획전", pathname: "/exhibition", active: true },

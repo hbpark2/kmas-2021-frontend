@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.main`
-  /* padding-bottom: 100px; */
-
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     padding-bottom: 0;
   }
@@ -19,7 +17,7 @@ export const Nav = styled.div`
   top: 75px;
   z-index: 10;
   box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
-
+  filter: blur(3px);
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     top: 70px;
     justify-content: center;
@@ -168,6 +166,7 @@ export const Line = styled.i`
 export const Wrapper = styled.div`
   /* padding-bottom: 100px; */
   margin-top: 185px;
+  filter: blur(3px);
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin-top: 165px;
