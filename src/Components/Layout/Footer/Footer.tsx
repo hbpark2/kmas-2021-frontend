@@ -134,7 +134,10 @@ const SuportItem = styled.li<{
 
 const Footer = () => {
   const location = useLocation();
-  if (location.pathname === "/event/quiz") {
+  if (
+    location.pathname === "/event/quiz" ||
+    location.pathname === "/event/quiz/"
+  ) {
     return <div />;
   }
   return (
