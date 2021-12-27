@@ -193,7 +193,7 @@ const Header = () => {
     {
       text: "이벤트",
       pathname: "/event/quiz",
-      active: true,
+      active: false,
       current: location.pathname.indexOf("event") > 0,
     },
     { text: "판매 기획전", pathname: "/exhibition", active: true },
@@ -219,7 +219,12 @@ const Header = () => {
       );
     } else {
       return (
-        <SLink to="#" onClick={() => alert("준비중입니다")}>
+        <SLink
+          to="#"
+          onClick={() =>
+            alert("이벤트가 종료되었습니다.\n* 당첨자 발표 : 1/13(목)")
+          }
+        >
           <h3>{text}</h3>
         </SLink>
       );
