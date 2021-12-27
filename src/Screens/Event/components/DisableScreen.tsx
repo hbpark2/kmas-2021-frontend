@@ -40,6 +40,7 @@ const Disabled = styled.div`
   }
   .desc {
     font-size: 3rem;
+    color: #bbb;
   }
 
   .margin {
