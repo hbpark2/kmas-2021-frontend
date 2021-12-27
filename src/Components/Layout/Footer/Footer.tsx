@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import styled, { css } from "styled-components";
 import { supportArr } from "./suppportData";
 
@@ -132,6 +133,10 @@ const SuportItem = styled.li<{
 `;
 
 const Footer = () => {
+  const location = useLocation();
+  if (location.pathname === "/event/quiz") {
+    return <div />;
+  }
   return (
     <Container>
       <h2 className="blind">푸터</h2>
