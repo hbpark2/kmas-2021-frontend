@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  /* height: 100vh; */
+  /* overflow: hidden; */
 `;
 
 const Disabled = styled.div`
   position: fixed;
-  top: 75px;
+  top: 185px;
   left: 0;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@ const Disabled = styled.div`
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
-    top: 70px;
+    top: 145px;
     span {
       text-align: center;
       width: 350px;
@@ -93,7 +93,7 @@ const DisableScreen: React.FC<{ children: React.ReactNode }> = ({
   return (
     <Container>
       <Disabled>
-        <Inner>
+        {/* <Inner>
           <span className="title margin">이벤트가 종료되었습니다.</span>
           <br />
           <span className="desc custom-margin-1">EVENT 01. 영상퀴즈이벤트</span>
@@ -107,7 +107,7 @@ const DisableScreen: React.FC<{ children: React.ReactNode }> = ({
           <span className="desc">현장이벤트2. 영수증 응모 EVENT</span>
           <span className="desc">현장이벤트3. 크확행 포토 EVENT</span>
           <span className="bottom margin">당첨자 발표 : 12/29(수)</span>
-        </Inner>
+        </Inner> */}
       </Disabled>
       {children}
     </Container>

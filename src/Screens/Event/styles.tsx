@@ -17,7 +17,7 @@ export const Nav = styled.div`
   top: 75px;
   z-index: 10;
   box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
-  filter: blur(3px);
+  /* filter: blur(3px); */
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     top: 70px;
     justify-content: center;

@@ -2,8 +2,9 @@ import { useLocation } from "react-router";
 import styled, { css } from "styled-components";
 import { supportArr } from "./suppportData";
 
-const Container = styled.footer`
+const Container = styled.footer<{ disable?: boolean }>`
   background-color: ${({ theme: { gray } }) => gray};
+  ${({ disable }) => disable && "filter: blur(3px)"};
 `;
 
 const Inner = styled.ul`
@@ -134,14 +135,9 @@ const SuportItem = styled.li<{
 
 const Footer = () => {
   const location = useLocation();
-  if (
-    location.pathname === "/event/quiz" ||
-    location.pathname === "/event/quiz/"
-  ) {
-    return <div />;
-  }
+
   return (
-    <Container>
+    <Container disable={location.pathname.indexOf("event") === 1}>
       <h2 className="blind">푸터</h2>
       <Inner>
         <li>
