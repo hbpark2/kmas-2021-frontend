@@ -36,6 +36,7 @@ const Home = () => {
       alert("준비중입니다");
     }
   };
+  
   useEffect(() => {
     if (location.pathname === "/") {
       setModalOpen(true);
