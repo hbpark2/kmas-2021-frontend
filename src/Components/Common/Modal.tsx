@@ -1,3 +1,9 @@
+import {
+  faClosedCaptioning,
+  faEdit,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { CurrentContext } from "../../Context/ContextStore";
@@ -8,6 +14,7 @@ const Container = styled.div<{
   center?: boolean;
   isDownload?: boolean;
   isConcert?: boolean;
+  isCloseVisible?: boolean;
 }>`
   position: fixed;
   top: 50%;
@@ -22,6 +29,8 @@ const Container = styled.div<{
   background-color: #fff;
   z-index: 200;
   overflow-y: scroll;
+  ${({ isCloseVisible }) => isCloseVisible && "overflow:inherit"};
+
   border-radius: 25px;
   padding: ${({ isDownload }) => (isDownload ? "0" : "20px 0")};
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 12px rgba(0, 0, 0, 0.2);
@@ -87,12 +96,19 @@ const SecondLayer = styled(Layer)`
   z-index: 210;
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled.button<{ isCloseVisible?: boolean }>`
   position: fixed;
-  top: 15px;
-  left: 15px;
+  top: -25px;
+  right: -30px;
   display: block;
-  visibility: hidden;
+  visibility: ${({ isCloseVisible }) =>
+    isCloseVisible ? "visible" : "hidden"};
+  font-size: 30px;
+  color: #fff;
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
+    top: -20px;
+    right: -20px;
+  }
 `;
 
 interface ModalProps {
@@ -106,6 +122,7 @@ interface ModalProps {
   isQuiz?: boolean;
   isDownload?: boolean;
   isConcert?: boolean;
+  isCloseVisible?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -119,6 +136,7 @@ const Modal: React.FC<ModalProps> = ({
   isQuiz,
   isDownload,
   isConcert,
+  isCloseVisible,
 }) => {
   const { setModalOpen, secondModalOpen, setSecondModalOpen } =
     useContext(CurrentContext);
@@ -132,17 +150,19 @@ const Modal: React.FC<ModalProps> = ({
         center={center}
         isDownload={isDownload}
         isConcert={isConcert}
+        isCloseVisible={isCloseVisible}
         role="dialog"
       >
         {children}
         <CloseButton
+          isCloseVisible={isCloseVisible}
           aria-hidden={secondModalOpen}
           tabIndex={5}
           onClick={() => {
             setModalOpen(false);
           }}
         >
-          닫기
+          <FontAwesomeIcon icon={faTimes} />
         </CloseButton>
       </Container>
       <Layer

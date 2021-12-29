@@ -15,6 +15,7 @@ const Container = styled.div`
     display: block;
   }
 `;
+
 const Top = styled.div`
   img {
     width: 100%;
