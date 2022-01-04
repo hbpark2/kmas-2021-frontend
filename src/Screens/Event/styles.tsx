@@ -17,6 +17,8 @@ export const Nav = styled.div`
   top: 75px;
   z-index: 10;
   box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
+
+  //FIXME: 블러 적용하면 disable
   /* filter: blur(3px); */
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     top: 70px;
@@ -164,9 +166,10 @@ export const Line = styled.i`
 `;
 
 export const Wrapper = styled.div`
-  /* padding-bottom: 100px; */
   margin-top: 185px;
-  filter: blur(3px);
+
+  //FIXME: 블러 적용하면 disable
+  /* filter: blur(3px); */
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin-top: 165px;
