@@ -24,20 +24,20 @@ import {
 const Event = ({ match }: RouteComponentProps) => {
   const location = useLocation();
   const isMobile = Utils.isMobile();
-  // useEffect(() => {
-  //   let alertMessage = "";
-  //   if (location.pathname.indexOf("quiz") !== -1) {
-  //     alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
-  //   } else if (location.pathname.indexOf("challange") !== -1) {
-  //     alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
-  //   } else if (location.pathname.indexOf("receipt") !== -1) {
-  //     alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2021.12.29(수)";
-  //   } else {
-  //     alertMessage = "이벤트가 종료되었습니다.";
-  //   }
+  useEffect(() => {
+    let alertMessage = "";
+    if (location.pathname.indexOf("quiz") !== -1) {
+      alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
+    } else if (location.pathname.indexOf("challange") !== -1) {
+      alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
+    } else if (location.pathname.indexOf("receipt") !== -1) {
+      alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2021.12.29(수)";
+    } else {
+      alertMessage = "이벤트가 종료되었습니다.";
+    }
 
-  //   alert(alertMessage);
-  // }, [location]);
+    alert(alertMessage);
+  }, [location]);
 
   return (
     <>
@@ -173,15 +173,15 @@ const Event = ({ match }: RouteComponentProps) => {
             </NavList>
           </NavUl>
         </Nav>
-        {/* <DisableScreen> */}
-        <Wrapper>
-          {match.path === "/event/quiz" && <QuizEvent />}
-          {match.path === "/event/challange" && <ChallangeEvent />}
-          {match.path === "/event/tree" && <TreeEvent />}
-          {match.path === "/event/receipt" && <ReceiptEvent />}
-          {match.path === "/event/photo" && <PhotoEvent />}
-        </Wrapper>
-        {/* </DisableScreen> */}
+        <DisableScreen>
+          <Wrapper>
+            {match.path === "/event/quiz" && <QuizEvent />}
+            {match.path === "/event/challange" && <ChallangeEvent />}
+            {match.path === "/event/tree" && <TreeEvent />}
+            {match.path === "/event/receipt" && <ReceiptEvent />}
+            {match.path === "/event/photo" && <PhotoEvent />}
+          </Wrapper>
+        </DisableScreen>
       </Container>
     </>
   );

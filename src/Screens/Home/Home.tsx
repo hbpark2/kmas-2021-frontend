@@ -25,18 +25,22 @@ const Home = () => {
 
   const goToLink = (url: string, type: string) => {
     if (url) {
-      // * GA 설정
-      analytics.sendEvent({
-        category: "배너",
-        action: "배너 클릭",
-        label: type,
-      });
-      window.open(url);
+      if (type === "메인 VR 배너") {
+        // * GA 설정
+        analytics.sendEvent({
+          category: "배너",
+          action: "배너 클릭",
+          label: type,
+        });
+        window.open(url);
+      } else {
+        alert("마감되었습니다");
+      }
     } else {
       alert("준비중입니다");
     }
   };
-  
+
   useEffect(() => {
     if (location.pathname === "/") {
       setModalOpen(true);

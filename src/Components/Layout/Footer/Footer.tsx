@@ -4,7 +4,7 @@ import { supportArr } from "./suppportData";
 
 const Container = styled.footer<{ disable?: boolean }>`
   background-color: ${({ theme: { gray } }) => gray};
-  /* ${({ disable }) => disable && "filter: blur(3px)"}; */
+  ${({ disable }) => disable && "filter: blur(3px)"};
 `;
 
 const Inner = styled.ul`

@@ -214,7 +214,7 @@ const ScheduleRow = styled.ul`
   }
 `;
 
-const GoLiveCommerce = styled.a`
+const GoLiveCommerce = styled.button`
   display: block;
   max-width: 500px;
   margin: 0 auto;
@@ -324,10 +324,12 @@ const LiveList = () => {
             ))}
         </Schedule>
         <GoLiveCommerce
-          href="https://v.dongbanmall.com/liveSchedule"
-          title="라이브커머스 보러가기"
-          target="_blank"
-          rel="norefferer"
+          // href="https://v.dongbanmall.com/liveSchedule"
+          // title="라이브커머스 보러가기"
+          // target="_blank"
+          // rel="norefferer"
+          type="button"
+          onClick={() => alert("마감되었습니다")}
         >
           <img
             src="https://thegn.speedgabia.com/kmas-2021/live/live-go-commerce.png"
