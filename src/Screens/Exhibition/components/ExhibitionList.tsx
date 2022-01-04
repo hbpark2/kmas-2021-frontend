@@ -144,7 +144,7 @@ const ExhibitionList = () => {
         });
         window.open(link, "_blank");
       } else if (Utils.closeDate(endDate)) {
-        alert("마감되었습니다");
+        alert("마감되었습니다.");
       } else {
         if (alertMessage) {
           alert(alertMessage);
@@ -154,9 +154,9 @@ const ExhibitionList = () => {
       }
     } else {
       if (alertMessage) {
-        alert(alertMessage);
+        alert("마감되었습니다.");
       } else {
-        alert("기획전 오픈 전입니다");
+        alert("마감되었습니다.");
       }
     }
   };
