@@ -119,7 +119,7 @@ const GiftBottomWrap = styled.div<{ isLast?: boolean }>`
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     width: 94%;
     padding: 20px 0 15px;
-    margin-bottom: ${({ isLast }) => (isLast ? "20px" : "40px")};
+    margin-bottom: ${({ isLast }) => (isLast ? "20px" : "25px")};
   }
 `;
 
