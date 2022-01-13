@@ -153,7 +153,7 @@ const GiftBottomItem = styled.div`
       width: 98%;
       li {
         margin-bottom: 5px;
-        font-size: 11.2px;
+        font-size: 11px;
       }
     }
   }
