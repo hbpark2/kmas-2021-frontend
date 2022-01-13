@@ -36,7 +36,9 @@ const Event = ({ match }: RouteComponentProps) => {
       alertMessage = "이벤트가 종료되었습니다.";
     }
 
+    // setTimeout(() => {
     alert(alertMessage);
+    // }, 300);
   }, [location]);
 
   return (

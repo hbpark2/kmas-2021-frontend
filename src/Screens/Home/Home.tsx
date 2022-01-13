@@ -13,7 +13,7 @@ import SwiperSection from "./components/SwiperSection";
 import analytics from "../../analytics";
 import { useContext, useEffect, useState } from "react";
 import Modal from "../../Components/Common/Modal";
-import Winner from "./components/Winner";
+import Winner from "./components/WinnerModal";
 import NewWindow from "rc-new-window";
 import { CurrentContext } from "../../Context/ContextStore";
 import { useLocation } from "react-router-dom";
