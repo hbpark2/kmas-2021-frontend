@@ -163,7 +163,7 @@ const GiftBottomItem = styled.div`
       li {
         margin-bottom: 7px;
         font-size: 11px;
-        text-indent: 10px;
+        text-indent: 5px;
       }
     }
   }
