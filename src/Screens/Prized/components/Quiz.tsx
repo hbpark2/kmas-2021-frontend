@@ -24,7 +24,7 @@ const Bottom = styled.div`
   background-size: cover;
   padding: 120px 0 160px;
 
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     padding-top: 25px;
     background-image: none;
     padding-bottom: 50px;
@@ -46,7 +46,7 @@ const BottomInner = styled.div`
   background-color: #f4ead5;
   border-radius: 15px;
 
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     padding: 35px 0;
   }
 `;
@@ -67,7 +67,7 @@ const BottomTitle = styled.div`
     width: 96%;
   }
 
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     margin: 30px 0;
   }
 `;
@@ -79,7 +79,7 @@ const GiftTopWrap = styled.div`
   max-width: 1050px;
   width: 94%;
   margin: 0 auto 70px;
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     gap: 5px;
     margin-bottom: 35px;
   }
@@ -97,7 +97,7 @@ const GiftTopItem = styled.div`
     margin-bottom: 10px;
     font-size: 20px;
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     img {
       margin-bottom: 20px;
     }
@@ -117,7 +117,7 @@ const GiftBottomWrap = styled.div<{ isLast?: boolean }>`
   border-radius: 15px;
   margin-bottom: ${({ isLast }) => (isLast ? "30px" : "55px")};
 
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: 94%;
     padding: 20px 0 15px;
     margin-bottom: ${({ isLast }) => (isLast ? "20px" : "25px")};
@@ -142,7 +142,7 @@ const GiftBottomItem = styled.div`
       margin-bottom: 10px;
     }
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     img {
       width: 50%;
       max-width: 230px;
@@ -166,7 +166,7 @@ const LinkButton = styled.a`
   img {
     width: 100%;
   }
-  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+  @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.mobile} {
     width: 70%;
     max-width: 400px;
   }
