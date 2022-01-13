@@ -125,7 +125,8 @@ const GiftBottomWrap = styled.div<{ isLast?: boolean }>`
 
 const GiftBottomItem = styled.div`
   img {
-    width: 368px;
+    /* width: 368px; */
+    max-width: 400px;
     margin: 0 auto;
     margin-bottom: 50px;
   }
