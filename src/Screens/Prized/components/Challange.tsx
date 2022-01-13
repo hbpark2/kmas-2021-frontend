@@ -154,6 +154,7 @@ const GiftBottomItem = styled.div`
       li {
         margin-bottom: 5px;
         font-size: 11px;
+        text-indent: 10px;
       }
     }
   }
