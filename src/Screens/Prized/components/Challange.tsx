@@ -94,13 +94,15 @@ const GiftTopItem = styled.div`
   }
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
+    width: 40%;
     margin: 0 5px;
     img {
+      max-width: 173px;
       margin-bottom: 20px;
     }
     span {
       margin-bottom: 10px;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 `;
@@ -152,7 +154,7 @@ const GiftBottomItem = styled.div`
       grid-template-columns: repeat(3, 1fr);
       width: 98%;
       li {
-        margin-bottom: 5px;
+        margin-bottom: 7px;
         font-size: 11px;
         text-indent: 10px;
       }
