@@ -15,7 +15,9 @@ import PhotoEvent from "../Screens/Event/components/PhotoEvent";
 import QuizEvent from "../Screens/Event/components/QuizEvent/QuizEvent";
 import ChallangeEvent from "../Screens/Event/components/ChallangeEvent";
 import Event from "../Screens/Event/Event";
-import Prized from "../Screens/Prized/Prized";
+import Receipt from "../Screens/Prized/Receipt";
+import Challange from "../Screens/Prized/Challange";
+import Quiz from "../Screens/Prized/Quiz";
 
 type TEventRouteArrProps = {
   text: string;
@@ -109,7 +111,10 @@ const Routes = () => {
       <Route exact path="/market" component={Market} />
       <Route exact path="/market/register" component={MarketForm} />
       <Route exact path="/market/modify" component={MarketForm} />
-      <Route exact path="/prized" component={Prized} />
+      <Route exact path="/prized/receipt" component={Receipt} />
+      <Route exact path="/prized/challange" component={Challange} />
+      <Route exact path="/prized/quiz" component={Quiz} />
+
       <Redirect to="/" />
     </Switch>
   );

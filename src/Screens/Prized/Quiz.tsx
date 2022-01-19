@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Utils from "../../../Utils/Utils";
+import Utils from "../../Utils/Utils";
 import {
   quizGift1,
   quizGift2,
@@ -10,7 +10,7 @@ import {
   quizGift7,
   quizGift8,
   quizGift9,
-} from "./quiz_winner_data";
+} from "./data/quiz_winner_data";
 
 const Top = styled.div`
   img {
