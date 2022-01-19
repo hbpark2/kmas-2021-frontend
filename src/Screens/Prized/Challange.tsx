@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Utils from "../../../Utils/Utils";
+import Utils from "../../Utils/Utils";
 import {
   challangeGift1,
   challangeGift2,
   challangeGift3,
   challangeGift4,
   challangeGift5,
-} from "./challange_winner_data";
+} from "./data/challange_winner_data";
 const Top = styled.div`
   img {
     width: 100%;

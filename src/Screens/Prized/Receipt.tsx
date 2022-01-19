@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Utils from "../../../Utils/Utils";
+import Utils from "../../Utils/Utils";
 
 const Top = styled.div`
   img {

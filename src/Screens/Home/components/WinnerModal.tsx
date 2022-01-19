@@ -101,7 +101,7 @@ const WinnerModal = () => {
           <span>영수증 이벤트</span>
           <span>당첨자 발표</span>
 
-          <LinkButton to={{ pathname: "/prized", state: "receipt" }}>
+          <LinkButton to={{ pathname: "/prized/receipt", state: "receipt" }}>
             바로가기
           </LinkButton>
         </LinkWrap>
@@ -110,7 +110,7 @@ const WinnerModal = () => {
           <span>영상퀴즈 이벤트</span>
           <span>당첨자 발표</span>
 
-          <LinkButton to={{ pathname: "/prized", state: "quiz" }}>
+          <LinkButton to={{ pathname: "/prized/quiz", state: "quiz" }}>
             바로가기
           </LinkButton>
         </LinkWrap>
@@ -119,7 +119,9 @@ const WinnerModal = () => {
           <span>크확행 챌린지</span>
           <span>당첨자 발표</span>
 
-          <LinkButton to={{ pathname: "/prized", state: "challange" }}>
+          <LinkButton
+            to={{ pathname: "/prized/challange", state: "challange" }}
+          >
             바로가기
           </LinkButton>
         </LinkWrap>
