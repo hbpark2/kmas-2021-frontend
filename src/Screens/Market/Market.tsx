@@ -260,7 +260,8 @@ const Market = () => {
           <DownloadWrap>
             <DownloadButton
               type="button"
-              onClick={() => onFileModal("origin")}
+              // onClick={() => onFileModal("origin")}
+              onClick={() => alert("이벤트가 종료되었습니다.")}
               aria-haspopup="true"
             >
               <span className="blind">
@@ -273,7 +274,8 @@ const Market = () => {
             </DownloadButton>
             <DownloadButton
               type="button"
-              onClick={() => onFileModal("poster")}
+              // onClick={() => onFileModal("poster")}
+              onClick={() => alert("이벤트가 종료되었습니다.")}
               aria-haspopup="true"
             >
               <span className="blind">
