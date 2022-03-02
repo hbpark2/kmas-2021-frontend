@@ -175,15 +175,15 @@ const Event = ({ match }: RouteComponentProps) => {
             </NavList>
           </NavUl>
         </Nav>
-        <DisableScreen>
-          <Wrapper>
-            {match.path === "/event/quiz" && <QuizEvent />}
-            {match.path === "/event/challange" && <ChallangeEvent />}
-            {match.path === "/event/tree" && <TreeEvent />}
-            {match.path === "/event/receipt" && <ReceiptEvent />}
-            {match.path === "/event/photo" && <PhotoEvent />}
-          </Wrapper>
-        </DisableScreen>
+        {/* <DisableScreen> */}
+        <Wrapper>
+          {match.path === "/event/quiz" && <QuizEvent />}
+          {match.path === "/event/challange" && <ChallangeEvent />}
+          {match.path === "/event/tree" && <TreeEvent />}
+          {match.path === "/event/receipt" && <ReceiptEvent />}
+          {match.path === "/event/photo" && <PhotoEvent />}
+        </Wrapper>
+        {/* </DisableScreen> */}
       </Container>
     </>
   );
