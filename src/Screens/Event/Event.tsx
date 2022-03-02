@@ -24,22 +24,22 @@ import {
 const Event = ({ match }: RouteComponentProps) => {
   const location = useLocation();
   const isMobile = Utils.isMobile();
-  useEffect(() => {
-    let alertMessage = "";
-    if (location.pathname.indexOf("quiz") !== -1) {
-      alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
-    } else if (location.pathname.indexOf("challange") !== -1) {
-      alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
-    } else if (location.pathname.indexOf("receipt") !== -1) {
-      alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2021.12.29(수)";
-    } else {
-      alertMessage = "이벤트가 종료되었습니다.";
-    }
+  // useEffect(() => {
+  //   let alertMessage = "";
+  //   if (location.pathname.indexOf("quiz") !== -1) {
+  //     alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
+  //   } else if (location.pathname.indexOf("challange") !== -1) {
+  //     alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2022.01.13(목)";
+  //   } else if (location.pathname.indexOf("receipt") !== -1) {
+  //     alertMessage = "이벤트가 종료되었습니다. 당첨자 발표일 2021.12.29(수)";
+  //   } else {
+  //     alertMessage = "이벤트가 종료되었습니다.";
+  //   }
 
-    // setTimeout(() => {
-    alert(alertMessage);
-    // }, 300);
-  }, [location]);
+  //   // setTimeout(() => {
+  //   alert(alertMessage);
+  //   // }, 300);
+  // }, [location]);
 
   return (
     <>

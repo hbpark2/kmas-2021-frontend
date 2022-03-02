@@ -167,7 +167,7 @@ export const Wrapper = styled.div`
   margin-top: 185px;
 
   //FIXME: 블러 적용하면 disable
-  filter: blur(3px);
+  /* filter: blur(3px); */
 
   @media ${({ theme: { deviceScreenMax } }) => deviceScreenMax.laptop} {
     margin-top: 165px;
