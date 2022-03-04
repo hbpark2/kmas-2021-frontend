@@ -1,8 +1,11 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { CurrentContext } from "../../Context/ContextStore";
+
+const faPropTimes = faTimes as IconProp;
 
 const Container = styled.div<{
   width?: string;
@@ -158,7 +161,7 @@ const Modal: React.FC<ModalProps> = ({
             setModalOpen(false);
           }}
         >
-          <FontAwesomeIcon icon={faTimes} />
+          <FontAwesomeIcon icon={faPropTimes} />
         </CloseButton>
       </Container>
       <Layer
